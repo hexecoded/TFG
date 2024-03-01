@@ -1,5 +1,26 @@
 \chapter{Introducción}
 
-Intro
-\newpage
-Intro2
+ \section{Motivación}
+El cáncer es una de las enfermedades con mayor tasa de muertes en el mundo. Su complejo diagnóstico, debido a la variedad de formas, manifestaciones y localizaciones de los tumores, dificultan a los expertos en su clasificación y seguimiento.\\
+
+Tan solo en España, durante el año 2023 se registraron 295.675 nuevos diagnósticos cancerígenos, lo que supone un 1.6 \% más que el año 2022 (290294 nuevos pacientes). Se estima que esta tendencia continue al alza, siendo cada vez más frecuente encontrar nuevos dianósticos en relación a su tasa por cada 100000 habitantes.\\
+
+El gran aumento de los diagnóstico provoca la dilatación de los tiempos de espera en hospitales para este diagnóstico. Esto es un gran problema, ya que es imprescindible realizar las pruebas oportunas que verifiquen el diagnóstico y permitan comenzar tratamientos cuanto antes. Uno de los mecanismos más usados en la medicina es la realización de biopsias: pequeñas extracciones del tejido afectado para su posterior análisis bajo microscopio, que permite identificar adecuadamente la composición celular, y examinar si se trata de estructuras cancerosas malignas, u otro tipo de tumor beningno.\\
+
+Si analizamos los datos actuales, podremos observar que los cánceres más comunes son el cáncer de mama (mujeres), y el cáncer de próstata (hombres). Sin embargo, hay otro tipo de tumores que afectan a ambos sexos y pueden ser fácilmente confundidos con otro tipo de lesiones: el cáncer de piel. Se trata de uno de los cánceres más frecuentes a nivel mundial, siendo un tercio de los diagnósticos cáncer de piel. \\
+
+Se manifiesta, sobre todo, por largas exposiciones continuadas a la luz solar, que acaba dañando el ADN de las células cutáneas, y que dan lugar a mutaciones indeseadas no detectable por los mecanismos de defensa. Frecuentemente, los tumores surgen en zonas más expuestas, como puede ser la cara, el cuero cabelludo, los hombros y la espalda. \\
+
+Acelerar el proceso de diagnóstico es clave para mejorar la tasa de supervivencia, ya que si no se tratan a tiempo, pueden causar metástasis en el paciente, y acabar con su vida. Por esto motivo, considero oportuno desarrollar una herramienta que facilite la decisión de los especialistas durante el diagnóstico, empleando el uso de smartphones y DeepLearning, reduciendo los costes.\\
+
+Es clave destacar que esta modelo de aprendizaje no pretende sustituir las funciones y el conocimiento de un médico dermatólogo; simplemente, se trata de una herramienta que tratará de ayudar a clasificar el tipo de lesión cutánea de la forma más segura posible y que permita acelerar el diagnóstico y discriminar los casos más graves de los de menor grado, o benignos. Por tanto, no debe ser confundido como tal.\\
+
+El objetivo es elaborar una arquitectura de aprendizaje profundo eficiente que sea capaz de procesar imágenes tomadas del paciente en tiempo real, y permita segmentar y clasificar las regiones de interés para obtener un diagnóstico fiable, con alta tasa de acierto.
+
+\section{Situación de mercado actual}
+
+El factor que ha provocado la elección de este proyecto ha sido, principalmente, la privatización de este tipo de aplicaciones; en el mercado, podemos encontrar diversas soluciones que intentan resolver este problema mediante el uso de pequeños dispositivos inalámbricos conectados al telefóno móvil, o bien, hacen uso de extensas bases de datos para comparar con un gran número de casos, por lo que es necesario realizar peticiones a un servidor externo, el cual se encarga de realizar la inferencia. Ambas opciones suponen un desembolso económico para el usuario.\\
+
+El objetivo de este proyecto es que la arquitectura a diseñar pueda ser usada en cualquier dispostitivo movil, y que no se requiera enviar datos a servidores externos para realizar la inferencia. Este trabajo se centrará en analizar arquitecturas de redes convolucionales eficientes para poder ser en ejecutadas por la capacidad hardware del smartphone en poco tiempo, y evitar así los tiempso de espera. Además, haciendo uso de la cámara, podemos reducir los costes a cero, por lo que el resultado sería la obtención de una aplicación gratuita y de código abierto.
+
+\section {Descripción del proceso}

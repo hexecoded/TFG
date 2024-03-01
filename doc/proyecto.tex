@@ -1,41 +1,35 @@
-\documentclass[a4paper,11pt]{book}
-%\documentclass[a4paper,twoside,11pt,titlepage]{book}
+\documentclass[fontsize=11pt, paper=a4, twoside=true, BCOR=5mm, DIV=10]{scrbook}
+
+% -------------------------------------------------------------------
+% PAQUETES Y OPCIONES
+% -------------------------------------------------------------------
+\RequirePackage[utf8]{inputenc} 
+\RequirePackage[english, spanish, es-nodecimaldot, es-noindentfirst, es-tabla]{babel}
+
 \usepackage{listings}
-\usepackage{fourier}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-
-% \usepackage[style=list, number=none]{glossary} %
-%\usepackage{titlesec}
-%\usepackage{pailatino}
-
-\decimalpoint
 \usepackage{dcolumn}
+
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
 \makeatletter
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
 \makeatother
-
 
 %\usepackage[chapter]{algorithm}
 \RequirePackage{verbatim}
 %\RequirePackage[Glenn]{fncychap}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{afterpage}
-
-\usepackage{longtable}
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
-% ********************************************************************
-% Re-usable information
-% ********************************************************************
+% -------------------------------------------------------------------
+% INFORMACIÓN DEL TFG Y EL AUTOR
+% -------------------------------------------------------------------
 \newcommand{\myTitle}{Título del proyecto\xspace}
-\newcommand{\myDegree}{Grado en ...\xspace}
-\newcommand{\myName}{Nombre Apllido1 Apellido2 (alumno)\xspace}
-\newcommand{\myProf}{Nombre Apllido1 Apellido2 (tutor1)\xspace}
-\newcommand{\myOtherProf}{Nombre Apllido1 Apellido2 (tutor2)\xspace}
+\newcommand{\myDegree}{Grado en Ingeniería informática}
+\newcommand{\myName}{Cristhian Moya Mota (alumno)\xspace}
+\newcommand{\myProf}{Diego Jesús García Gil (tutor1)\xspace}
+\newcommand{\myOtherProf}{Julián Luengo Martín (tutor2)\xspace}
 %\newcommand{\mySupervisor}{Put name here\xspace}
 \newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
 Telecomunicación\xspace}
@@ -48,17 +42,47 @@ Telecomunicación\xspace}
 \newcommand{\myVersion}{Version 0.1\xspace}
 
 
+% -------------------------------------------------------------------
+% ESTILOS DE LA CLASE KOMA
+% -------------------------------------------------------------------
+% Selecciona el tipo de fuente para los títulos (capítulo, sección, subsección) del documento.
+\setkomafont{disposition}{\sffamily\bfseries}
+
+% Cambia el ancho de la cita. Al inicio de un capítulo podemos usar el comando \dictum[autor]{cita} para añadir una cita famosa de un autor.
+\renewcommand{\dictumwidth}{0.45\textwidth} 
+
+\recalctypearea % Necesario tras definir la tipografía a usar.
+
 \hypersetup{
-pdfauthor = {\myName (email (en) ugr (punto) es)},
-pdftitle = {\myTitle},
-pdfsubject = {},
-pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
-pdfcreator = {LaTeX con el paquete ....},
-pdfproducer = {pdflatex}
+	    pdfauthor = {\myName (email (en) ugr (punto) es)},
+		% hidelinks,            % Enlaces sin color ni borde. El borde no se imprime
+		linkbordercolor=0.8 0 0,
+		citebordercolor=0 0.8 0,
+		citebordercolor=0 0.8 0,
+		colorlinks = true,            % Color en texto de los enlaces. Comentar esta línea o cambiar `true` por `false` para imprimir el documento.
+		linkcolor = [rgb]{0.5, 0, 0}, % Color de los enlaces internos
+		urlcolor = [rgb]{0, 0, 0.5},  % Color de los hipervínculos
+		citecolor = [rgb]{0, 0.5, 0}, % Color de las referencias bibliográficas
+		pdfsubject={Trabajo de fin de Grado},%
+		pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
+		pdfcreator={pdfLaTeX}%
+	}
+
+
+% Normal font: 			URW Palladio typeface. 
+% Sans-serif font: 	Gill Sans (paquete cabin)
+% Monospace font: 	Inconsolata
+\RequirePackage[T1]{fontenc}
+\RequirePackage[sc, osf]{mathpazo} \linespread{1.05}         
+\IfFileExists{cabin.sty}{
+	\RequirePackage[scaled=.95,type1]{cabin} 
+} %else
+{
+	% Si cabin da ERROR usar el siguiente comando en su lugar
+	\renewcommand{\sfdefault}{iwona} 
 }
 
 %\hyphenation{}
-
 
 %\usepackage{doxygen/doxygen}
 \usepackage{pdfpages}
@@ -80,7 +104,7 @@ pdfproducer = {pdflatex}
 \fancyhead[LO]{\leftmark}
 \fancyhead[RE]{\rightmark}
 \fancyhead[RO,LE]{\textbf{\thepage}}
-%\renewcommand{\chaptermark}[1]{\markboth{\textbf{#1}}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\textbf{#1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}}
 
 \setlength{\headheight}{1.5\headheight}
@@ -171,7 +195,6 @@ pdfproducer = {pdflatex}
 }
 \makeatother
 
-\usepackage{pdfpages}
 \begin{document}
 	% Plantilla portada UGR
 	\input{portada/portada}
@@ -211,7 +234,7 @@ pdfproducer = {pdflatex}
 	
 	\input{capitulos/10_Conclusiones}
 	
-	\chapter{Conclusiones y Trabajos Futuros}
+	%\chapter{Conclusiones y Trabajos Futuros}
 	%
 	%
 	\nocite{}
