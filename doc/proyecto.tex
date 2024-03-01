@@ -8,17 +8,26 @@
 
 \usepackage{listings}
 \usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage[chapter]{algorithm}
+\RequirePackage{verbatim}
+%\RequirePackage[Glenn]{fncychap}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+%\usepackage{doxygen/doxygen}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{colortbl,longtable}
+\usepackage[stable]{footmisc}
+\usepackage{index}
+
 
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
 \makeatletter
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
 \makeatother
 
-%\usepackage[chapter]{algorithm}
-\RequirePackage{verbatim}
-%\RequirePackage[Glenn]{fncychap}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
+
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
@@ -84,12 +93,6 @@ Telecomunicación\xspace}
 
 %\hyphenation{}
 
-%\usepackage{doxygen/doxygen}
-\usepackage{pdfpages}
-\usepackage{url}
-\usepackage{colortbl,longtable}
-\usepackage[stable]{footmisc}
-\usepackage{index}
 
 %\makeindex
 %\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
@@ -194,6 +197,10 @@ Telecomunicación\xspace}
   \penalty -\@Mi
 }
 \makeatother
+
+% -------------------------------------------------------------------
+% DESARROLLO DE LOS CAPÍTULOS DEL TRABAJO
+% -------------------------------------------------------------------
 
 \begin{document}
 	% Plantilla portada UGR

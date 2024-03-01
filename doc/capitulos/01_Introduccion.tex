@@ -24,3 +24,14 @@ El factor que ha provocado la elección de este proyecto ha sido, principalmente
 El objetivo de este proyecto es que la arquitectura a diseñar pueda ser usada en cualquier dispostitivo movil, y que no se requiera enviar datos a servidores externos para realizar la inferencia. Este trabajo se centrará en analizar arquitecturas de redes convolucionales eficientes para poder ser en ejecutadas por la capacidad hardware del smartphone en poco tiempo, y evitar así los tiempso de espera. Además, haciendo uso de la cámara, podemos reducir los costes a cero, por lo que el resultado sería la obtención de una aplicación gratuita y de código abierto.
 
 \section {Descripción del proceso}
+Para resolver el problema propuesto, en este documento se analizarán los diferentes aspectos fundamentales de la creación de un modelo profundo. Partieremos por el análisis del los datos disponibles, para posteriormente estudiar las arquitecturas de red presentes en el estado del arte, valorando sus ventajas frente a otros modelos clásicos. Por tanto, el contenido de este trabajo es el siguiente:
+\begin{itemize}
+	\item Estudio del estado del arte. Análisis de los modelos propuestos en la actualidad, tanto para arquitecturas tradicionales como arquitecturas eficientes para dispositivos móviles, así como su funcionamiento para usuarios habituales del software.
+	\item Preprocesado. Evaluación del mecanismo de preprocesado utilizado para, a partir de una imagen macroscópica tomada con el teléfono móvil, puedan extraerse los lunares y lesiones de interés minimizando el ruido. Se evalúan técnicas de segmentación de la propia mancha, y filtro del ruido que pueda contener (ruido gaussiano por desenfoque, vellos...)
+	\item Análisis de las técnicas a emplear. En este punto se valorará la eficacia de los modelos profundos frente al aprendizaje mediante extracción de caracteristicas. Se estudia la composición por ensembling de modelos de ambos enfoques como compensación al rendimiento.
+	\item Extracción de características y DeepLearning. Estudiaremos, a nivel de arquitectura, el modelo propuesto para la construcción del modelo.
+	\item Diseño, implementación y pruebas: valoración del modelo propuesto, comparándolos con los modelos expuestos en el estado del arte haciendo uso de validación. Además, se diseñará, siguiendo las técnicas de desarrollo software adecuadas, una interfaz de usuario amigable para que los poseedores de la aplicación puedan usarla con facilidad, estudiando los diferentes requisitos.
+	\item Pruebas. Consiste en valorar la corrección del producto final con nuevos casos de diagnóstico conocido haciendo uso directo de la aplicación, para comprobar la fiabilidad de los resultados al tomar una fotografía de su portador.
+\end{itemize}
+
+En los siguientes capítulos, podremos encontrar toda esta información de manera detallada y precisa.	
