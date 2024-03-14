@@ -1,0 +1,8 @@
+## Aplicación móvil para la prognosis y detección del cáncer de piel usando Deep Learning
+
+Las lesiones en la piel son muy comunes en nuestro día a día. Puede tratarse desde una simple abrasión hasta lunares de extraño aspecto. Debido a la alta exposición a la radiación solar que recibimos por el deterioro de la capa de ozono, las lesiones son cada vez más comunes si no usamos protección. Si las quemaduras se producen de forma continuada, pueden surgir problemas como el cáncer de piel, cuya probabilidad va en aumento, siendo un 2.6% la probabilidad de sufrirlo en algún momento vital. Sólo en España, fallecieron casi 1100 personas en 2022.
+
+Normalmente, este tipo de lesiones no son fáciles de analizar a simple vista en sus fases iniciales. Por ello, se quiere construir un modelo capaz de identificar los diferentes tipos de lesiones y facilitar el autodiagnóstico de lesiones cancerosas, con el fin de acelerar el tratamiento lo máximo posible y reducir la invasividad del tumor. Sólo en el 11% de los casos, se identifican los tumores terminales a tiempo.
+Dado a que en la actualidad son frecuentes los dispositivos móviles, el objetivo consistirá en realizar una aplicación gratuita que permita utilizar el modelo diseñado para hacer conocer al usuario un resultado preliminar. Usando técnicas de visión por computación y aprendizaje profundo, se realizará el tratamiento de la imagen tomada por el usuario en su lesión, y se realizará su diagnóstico basado en los casos estudiados por el modelo.
+
+En este repositorio, puede encontrar la implementación realizada y los datos empleados para el entrenamiento del modelo.
