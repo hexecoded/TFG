@@ -1,0 +1,864 @@
+image,dir,class,dataset
+ISIC_0012249.JPG,datasets/ISIC\Acrochordon\ISIC_0012249.JPG,acrochordon,ISIC
+ISIC_0013368.JPG,datasets/ISIC\Acrochordon\ISIC_0013368.JPG,acrochordon,ISIC
+ISIC_0021126.JPG,datasets/ISIC\Acrochordon\ISIC_0021126.JPG,acrochordon,ISIC
+ISIC_0021127.JPG,datasets/ISIC\Acrochordon\ISIC_0021127.JPG,acrochordon,ISIC
+ISIC_0021128.JPG,datasets/ISIC\Acrochordon\ISIC_0021128.JPG,acrochordon,ISIC
+ISIC_0021142.JPG,datasets/ISIC\Acrochordon\ISIC_0021142.JPG,acrochordon,ISIC
+ISIC_0021143.JPG,datasets/ISIC\Acrochordon\ISIC_0021143.JPG,acrochordon,ISIC
+ISIC_0021144.JPG,datasets/ISIC\Acrochordon\ISIC_0021144.JPG,acrochordon,ISIC
+ISIC_0021184.JPG,datasets/ISIC\Acrochordon\ISIC_0021184.JPG,acrochordon,ISIC
+ISIC_0021185.JPG,datasets/ISIC\Acrochordon\ISIC_0021185.JPG,acrochordon,ISIC
+ISIC_0021186.JPG,datasets/ISIC\Acrochordon\ISIC_0021186.JPG,acrochordon,ISIC
+ISIC_0021211.JPG,datasets/ISIC\Acrochordon\ISIC_0021211.JPG,acrochordon,ISIC
+ISIC_0021212.JPG,datasets/ISIC\Acrochordon\ISIC_0021212.JPG,acrochordon,ISIC
+ISIC_0021213.JPG,datasets/ISIC\Acrochordon\ISIC_0021213.JPG,acrochordon,ISIC
+ISIC_0021217.JPG,datasets/ISIC\Acrochordon\ISIC_0021217.JPG,acrochordon,ISIC
+ISIC_0021218.JPG,datasets/ISIC\Acrochordon\ISIC_0021218.JPG,acrochordon,ISIC
+ISIC_0021219.JPG,datasets/ISIC\Acrochordon\ISIC_0021219.JPG,acrochordon,ISIC
+ISIC_0021220.JPG,datasets/ISIC\Acrochordon\ISIC_0021220.JPG,acrochordon,ISIC
+ISIC_0021222.JPG,datasets/ISIC\Acrochordon\ISIC_0021222.JPG,acrochordon,ISIC
+ISIC_0021223.JPG,datasets/ISIC\Acrochordon\ISIC_0021223.JPG,acrochordon,ISIC
+ISIC_0021247.JPG,datasets/ISIC\Acrochordon\ISIC_0021247.JPG,acrochordon,ISIC
+ISIC_0021248.JPG,datasets/ISIC\Acrochordon\ISIC_0021248.JPG,acrochordon,ISIC
+ISIC_0021249.JPG,datasets/ISIC\Acrochordon\ISIC_0021249.JPG,acrochordon,ISIC
+ISIC_0021275.JPG,datasets/ISIC\Acrochordon\ISIC_0021275.JPG,acrochordon,ISIC
+ISIC_0021276.JPG,datasets/ISIC\Acrochordon\ISIC_0021276.JPG,acrochordon,ISIC
+ISIC_0021277.JPG,datasets/ISIC\Acrochordon\ISIC_0021277.JPG,acrochordon,ISIC
+ISIC_0021308.JPG,datasets/ISIC\Acrochordon\ISIC_0021308.JPG,acrochordon,ISIC
+ISIC_0021309.JPG,datasets/ISIC\Acrochordon\ISIC_0021309.JPG,acrochordon,ISIC
+ISIC_0021310.JPG,datasets/ISIC\Acrochordon\ISIC_0021310.JPG,acrochordon,ISIC
+ISIC_0021350.JPG,datasets/ISIC\Acrochordon\ISIC_0021350.JPG,acrochordon,ISIC
+ISIC_0021351.JPG,datasets/ISIC\Acrochordon\ISIC_0021351.JPG,acrochordon,ISIC
+ISIC_0021352.JPG,datasets/ISIC\Acrochordon\ISIC_0021352.JPG,acrochordon,ISIC
+ISIC_0021361.JPG,datasets/ISIC\Acrochordon\ISIC_0021361.JPG,acrochordon,ISIC
+ISIC_0021362.JPG,datasets/ISIC\Acrochordon\ISIC_0021362.JPG,acrochordon,ISIC
+ISIC_0021363.JPG,datasets/ISIC\Acrochordon\ISIC_0021363.JPG,acrochordon,ISIC
+ISIC_0021364.JPG,datasets/ISIC\Acrochordon\ISIC_0021364.JPG,acrochordon,ISIC
+ISIC_0021365.JPG,datasets/ISIC\Acrochordon\ISIC_0021365.JPG,acrochordon,ISIC
+ISIC_0021367.JPG,datasets/ISIC\Acrochordon\ISIC_0021367.JPG,acrochordon,ISIC
+ISIC_0021375.JPG,datasets/ISIC\Acrochordon\ISIC_0021375.JPG,acrochordon,ISIC
+ISIC_0021376.JPG,datasets/ISIC\Acrochordon\ISIC_0021376.JPG,acrochordon,ISIC
+ISIC_0021377.JPG,datasets/ISIC\Acrochordon\ISIC_0021377.JPG,acrochordon,ISIC
+ISIC_0021419.JPG,datasets/ISIC\Acrochordon\ISIC_0021419.JPG,acrochordon,ISIC
+ISIC_0021420.JPG,datasets/ISIC\Acrochordon\ISIC_0021420.JPG,acrochordon,ISIC
+ISIC_0021421.JPG,datasets/ISIC\Acrochordon\ISIC_0021421.JPG,acrochordon,ISIC
+ISIC_0021425.JPG,datasets/ISIC\Acrochordon\ISIC_0021425.JPG,acrochordon,ISIC
+ISIC_0021433.JPG,datasets/ISIC\Acrochordon\ISIC_0021433.JPG,acrochordon,ISIC
+ISIC_0021444.JPG,datasets/ISIC\Acrochordon\ISIC_0021444.JPG,acrochordon,ISIC
+ISIC_0021445.JPG,datasets/ISIC\Acrochordon\ISIC_0021445.JPG,acrochordon,ISIC
+ISIC_0021456.JPG,datasets/ISIC\Acrochordon\ISIC_0021456.JPG,acrochordon,ISIC
+ISIC_0021460.JPG,datasets/ISIC\Acrochordon\ISIC_0021460.JPG,acrochordon,ISIC
+ISIC_0021461.JPG,datasets/ISIC\Acrochordon\ISIC_0021461.JPG,acrochordon,ISIC
+ISIC_0021462.JPG,datasets/ISIC\Acrochordon\ISIC_0021462.JPG,acrochordon,ISIC
+ISIC_0021467.JPG,datasets/ISIC\Acrochordon\ISIC_0021467.JPG,acrochordon,ISIC
+ISIC_0021476.JPG,datasets/ISIC\Acrochordon\ISIC_0021476.JPG,acrochordon,ISIC
+ISIC_0021540.JPG,datasets/ISIC\Acrochordon\ISIC_0021540.JPG,acrochordon,ISIC
+ISIC_0021609.JPG,datasets/ISIC\Acrochordon\ISIC_0021609.JPG,acrochordon,ISIC
+ISIC_0021610.JPG,datasets/ISIC\Acrochordon\ISIC_0021610.JPG,acrochordon,ISIC
+ISIC_0021612.JPG,datasets/ISIC\Acrochordon\ISIC_0021612.JPG,acrochordon,ISIC
+ISIC_0021619.JPG,datasets/ISIC\Acrochordon\ISIC_0021619.JPG,acrochordon,ISIC
+ISIC_0021620.JPG,datasets/ISIC\Acrochordon\ISIC_0021620.JPG,acrochordon,ISIC
+ISIC_0021621.JPG,datasets/ISIC\Acrochordon\ISIC_0021621.JPG,acrochordon,ISIC
+ISIC_0021626.JPG,datasets/ISIC\Acrochordon\ISIC_0021626.JPG,acrochordon,ISIC
+ISIC_0021628.JPG,datasets/ISIC\Acrochordon\ISIC_0021628.JPG,acrochordon,ISIC
+ISIC_0021629.JPG,datasets/ISIC\Acrochordon\ISIC_0021629.JPG,acrochordon,ISIC
+ISIC_0021630.JPG,datasets/ISIC\Acrochordon\ISIC_0021630.JPG,acrochordon,ISIC
+ISIC_0021656.JPG,datasets/ISIC\Acrochordon\ISIC_0021656.JPG,acrochordon,ISIC
+ISIC_0021657.JPG,datasets/ISIC\Acrochordon\ISIC_0021657.JPG,acrochordon,ISIC
+ISIC_0021658.JPG,datasets/ISIC\Acrochordon\ISIC_0021658.JPG,acrochordon,ISIC
+ISIC_0021666.JPG,datasets/ISIC\Acrochordon\ISIC_0021666.JPG,acrochordon,ISIC
+ISIC_0021667.JPG,datasets/ISIC\Acrochordon\ISIC_0021667.JPG,acrochordon,ISIC
+ISIC_0021668.JPG,datasets/ISIC\Acrochordon\ISIC_0021668.JPG,acrochordon,ISIC
+ISIC_0021793.JPG,datasets/ISIC\Acrochordon\ISIC_0021793.JPG,acrochordon,ISIC
+ISIC_0021794.JPG,datasets/ISIC\Acrochordon\ISIC_0021794.JPG,acrochordon,ISIC
+ISIC_0021795.JPG,datasets/ISIC\Acrochordon\ISIC_0021795.JPG,acrochordon,ISIC
+ISIC_0021866.JPG,datasets/ISIC\Acrochordon\ISIC_0021866.JPG,acrochordon,ISIC
+ISIC_0021868.JPG,datasets/ISIC\Acrochordon\ISIC_0021868.JPG,acrochordon,ISIC
+ISIC_0021869.JPG,datasets/ISIC\Acrochordon\ISIC_0021869.JPG,acrochordon,ISIC
+ISIC_0021895.JPG,datasets/ISIC\Acrochordon\ISIC_0021895.JPG,acrochordon,ISIC
+ISIC_0022026.JPG,datasets/ISIC\Acrochordon\ISIC_0022026.JPG,acrochordon,ISIC
+ISIC_0022030.JPG,datasets/ISIC\Acrochordon\ISIC_0022030.JPG,acrochordon,ISIC
+ISIC_0022031.JPG,datasets/ISIC\Acrochordon\ISIC_0022031.JPG,acrochordon,ISIC
+ISIC_0022032.JPG,datasets/ISIC\Acrochordon\ISIC_0022032.JPG,acrochordon,ISIC
+ISIC_0022033.JPG,datasets/ISIC\Acrochordon\ISIC_0022033.JPG,acrochordon,ISIC
+ISIC_0022034.JPG,datasets/ISIC\Acrochordon\ISIC_0022034.JPG,acrochordon,ISIC
+ISIC_0022035.JPG,datasets/ISIC\Acrochordon\ISIC_0022035.JPG,acrochordon,ISIC
+ISIC_0022036.JPG,datasets/ISIC\Acrochordon\ISIC_0022036.JPG,acrochordon,ISIC
+ISIC_0022037.JPG,datasets/ISIC\Acrochordon\ISIC_0022037.JPG,acrochordon,ISIC
+ISIC_0022038.JPG,datasets/ISIC\Acrochordon\ISIC_0022038.JPG,acrochordon,ISIC
+ISIC_0022054.JPG,datasets/ISIC\Acrochordon\ISIC_0022054.JPG,acrochordon,ISIC
+ISIC_0022055.JPG,datasets/ISIC\Acrochordon\ISIC_0022055.JPG,acrochordon,ISIC
+ISIC_0022056.JPG,datasets/ISIC\Acrochordon\ISIC_0022056.JPG,acrochordon,ISIC
+ISIC_0022057.JPG,datasets/ISIC\Acrochordon\ISIC_0022057.JPG,acrochordon,ISIC
+ISIC_0022058.JPG,datasets/ISIC\Acrochordon\ISIC_0022058.JPG,acrochordon,ISIC
+ISIC_0022060.JPG,datasets/ISIC\Acrochordon\ISIC_0022060.JPG,acrochordon,ISIC
+ISIC_0022061.JPG,datasets/ISIC\Acrochordon\ISIC_0022061.JPG,acrochordon,ISIC
+ISIC_0022062.JPG,datasets/ISIC\Acrochordon\ISIC_0022062.JPG,acrochordon,ISIC
+ISIC_0022063.JPG,datasets/ISIC\Acrochordon\ISIC_0022063.JPG,acrochordon,ISIC
+ISIC_0022064.JPG,datasets/ISIC\Acrochordon\ISIC_0022064.JPG,acrochordon,ISIC
+ISIC_0022065.JPG,datasets/ISIC\Acrochordon\ISIC_0022065.JPG,acrochordon,ISIC
+ISIC_0022072.JPG,datasets/ISIC\Acrochordon\ISIC_0022072.JPG,acrochordon,ISIC
+ISIC_0022084.JPG,datasets/ISIC\Acrochordon\ISIC_0022084.JPG,acrochordon,ISIC
+ISIC_0022091.JPG,datasets/ISIC\Acrochordon\ISIC_0022091.JPG,acrochordon,ISIC
+ISIC_0022098.JPG,datasets/ISIC\Acrochordon\ISIC_0022098.JPG,acrochordon,ISIC
+ISIC_0022099.JPG,datasets/ISIC\Acrochordon\ISIC_0022099.JPG,acrochordon,ISIC
+ISIC_0022100.JPG,datasets/ISIC\Acrochordon\ISIC_0022100.JPG,acrochordon,ISIC
+ISIC_0022101.JPG,datasets/ISIC\Acrochordon\ISIC_0022101.JPG,acrochordon,ISIC
+ISIC_0022262.JPG,datasets/ISIC\Acrochordon\ISIC_0022262.JPG,acrochordon,ISIC
+ISIC_0022263.JPG,datasets/ISIC\Acrochordon\ISIC_0022263.JPG,acrochordon,ISIC
+ISIC_0022265.JPG,datasets/ISIC\Acrochordon\ISIC_0022265.JPG,acrochordon,ISIC
+ISIC_0022279.JPG,datasets/ISIC\Acrochordon\ISIC_0022279.JPG,acrochordon,ISIC
+ISIC_0022280.JPG,datasets/ISIC\Acrochordon\ISIC_0022280.JPG,acrochordon,ISIC
+ISIC_0022281.JPG,datasets/ISIC\Acrochordon\ISIC_0022281.JPG,acrochordon,ISIC
+ISIC_0022287.JPG,datasets/ISIC\Acrochordon\ISIC_0022287.JPG,acrochordon,ISIC
+ISIC_0022298.JPG,datasets/ISIC\Acrochordon\ISIC_0022298.JPG,acrochordon,ISIC
+ISIC_0022309.JPG,datasets/ISIC\Acrochordon\ISIC_0022309.JPG,acrochordon,ISIC
+ISIC_0022341.JPG,datasets/ISIC\Acrochordon\ISIC_0022341.JPG,acrochordon,ISIC
+ISIC_0022400.JPG,datasets/ISIC\Acrochordon\ISIC_0022400.JPG,acrochordon,ISIC
+ISIC_0022401.JPG,datasets/ISIC\Acrochordon\ISIC_0022401.JPG,acrochordon,ISIC
+ISIC_0022403.JPG,datasets/ISIC\Acrochordon\ISIC_0022403.JPG,acrochordon,ISIC
+ISIC_0022404.JPG,datasets/ISIC\Acrochordon\ISIC_0022404.JPG,acrochordon,ISIC
+ISIC_0022426.JPG,datasets/ISIC\Acrochordon\ISIC_0022426.JPG,acrochordon,ISIC
+ISIC_0022427.JPG,datasets/ISIC\Acrochordon\ISIC_0022427.JPG,acrochordon,ISIC
+ISIC_0022428.JPG,datasets/ISIC\Acrochordon\ISIC_0022428.JPG,acrochordon,ISIC
+ISIC_0022506.JPG,datasets/ISIC\Acrochordon\ISIC_0022506.JPG,acrochordon,ISIC
+ISIC_0022508.JPG,datasets/ISIC\Acrochordon\ISIC_0022508.JPG,acrochordon,ISIC
+ISIC_0022509.JPG,datasets/ISIC\Acrochordon\ISIC_0022509.JPG,acrochordon,ISIC
+ISIC_0022510.JPG,datasets/ISIC\Acrochordon\ISIC_0022510.JPG,acrochordon,ISIC
+ISIC_0022511.JPG,datasets/ISIC\Acrochordon\ISIC_0022511.JPG,acrochordon,ISIC
+ISIC_0022512.JPG,datasets/ISIC\Acrochordon\ISIC_0022512.JPG,acrochordon,ISIC
+ISIC_0022513.JPG,datasets/ISIC\Acrochordon\ISIC_0022513.JPG,acrochordon,ISIC
+ISIC_0022514.JPG,datasets/ISIC\Acrochordon\ISIC_0022514.JPG,acrochordon,ISIC
+ISIC_0022515.JPG,datasets/ISIC\Acrochordon\ISIC_0022515.JPG,acrochordon,ISIC
+ISIC_0022516.JPG,datasets/ISIC\Acrochordon\ISIC_0022516.JPG,acrochordon,ISIC
+ISIC_0022517.JPG,datasets/ISIC\Acrochordon\ISIC_0022517.JPG,acrochordon,ISIC
+ISIC_0022519.JPG,datasets/ISIC\Acrochordon\ISIC_0022519.JPG,acrochordon,ISIC
+ISIC_0022569.JPG,datasets/ISIC\Acrochordon\ISIC_0022569.JPG,acrochordon,ISIC
+ISIC_0022576.JPG,datasets/ISIC\Acrochordon\ISIC_0022576.JPG,acrochordon,ISIC
+ISIC_0022587.JPG,datasets/ISIC\Acrochordon\ISIC_0022587.JPG,acrochordon,ISIC
+ISIC_0022595.JPG,datasets/ISIC\Acrochordon\ISIC_0022595.JPG,acrochordon,ISIC
+ISIC_0022645.JPG,datasets/ISIC\Acrochordon\ISIC_0022645.JPG,acrochordon,ISIC
+ISIC_0022647.JPG,datasets/ISIC\Acrochordon\ISIC_0022647.JPG,acrochordon,ISIC
+ISIC_0022648.JPG,datasets/ISIC\Acrochordon\ISIC_0022648.JPG,acrochordon,ISIC
+ISIC_0022664.JPG,datasets/ISIC\Acrochordon\ISIC_0022664.JPG,acrochordon,ISIC
+ISIC_0022665.JPG,datasets/ISIC\Acrochordon\ISIC_0022665.JPG,acrochordon,ISIC
+ISIC_0022666.JPG,datasets/ISIC\Acrochordon\ISIC_0022666.JPG,acrochordon,ISIC
+ISIC_0022667.JPG,datasets/ISIC\Acrochordon\ISIC_0022667.JPG,acrochordon,ISIC
+ISIC_0022669.JPG,datasets/ISIC\Acrochordon\ISIC_0022669.JPG,acrochordon,ISIC
+ISIC_0022670.JPG,datasets/ISIC\Acrochordon\ISIC_0022670.JPG,acrochordon,ISIC
+ISIC_0022760.JPG,datasets/ISIC\Acrochordon\ISIC_0022760.JPG,acrochordon,ISIC
+ISIC_0022771.JPG,datasets/ISIC\Acrochordon\ISIC_0022771.JPG,acrochordon,ISIC
+ISIC_0022784.JPG,datasets/ISIC\Acrochordon\ISIC_0022784.JPG,acrochordon,ISIC
+ISIC_0022987.JPG,datasets/ISIC\Acrochordon\ISIC_0022987.JPG,acrochordon,ISIC
+ISIC_0022988.JPG,datasets/ISIC\Acrochordon\ISIC_0022988.JPG,acrochordon,ISIC
+ISIC_0023123.JPG,datasets/ISIC\Acrochordon\ISIC_0023123.JPG,acrochordon,ISIC
+ISIC_0023239.JPG,datasets/ISIC\Acrochordon\ISIC_0023239.JPG,acrochordon,ISIC
+ISIC_0023240.JPG,datasets/ISIC\Acrochordon\ISIC_0023240.JPG,acrochordon,ISIC
+ISIC_0023244.JPG,datasets/ISIC\Acrochordon\ISIC_0023244.JPG,acrochordon,ISIC
+ISIC_0023245.JPG,datasets/ISIC\Acrochordon\ISIC_0023245.JPG,acrochordon,ISIC
+ISIC_0023319.JPG,datasets/ISIC\Acrochordon\ISIC_0023319.JPG,acrochordon,ISIC
+ISIC_0023330.JPG,datasets/ISIC\Acrochordon\ISIC_0023330.JPG,acrochordon,ISIC
+ISIC_0023333.JPG,datasets/ISIC\Acrochordon\ISIC_0023333.JPG,acrochordon,ISIC
+ISIC_0023334.JPG,datasets/ISIC\Acrochordon\ISIC_0023334.JPG,acrochordon,ISIC
+ISIC_0023335.JPG,datasets/ISIC\Acrochordon\ISIC_0023335.JPG,acrochordon,ISIC
+ISIC_0023336.JPG,datasets/ISIC\Acrochordon\ISIC_0023336.JPG,acrochordon,ISIC
+ISIC_0023337.JPG,datasets/ISIC\Acrochordon\ISIC_0023337.JPG,acrochordon,ISIC
+ISIC_0023338.JPG,datasets/ISIC\Acrochordon\ISIC_0023338.JPG,acrochordon,ISIC
+ISIC_0023339.JPG,datasets/ISIC\Acrochordon\ISIC_0023339.JPG,acrochordon,ISIC
+ISIC_0023340.JPG,datasets/ISIC\Acrochordon\ISIC_0023340.JPG,acrochordon,ISIC
+ISIC_0023341.JPG,datasets/ISIC\Acrochordon\ISIC_0023341.JPG,acrochordon,ISIC
+ISIC_0023352.JPG,datasets/ISIC\Acrochordon\ISIC_0023352.JPG,acrochordon,ISIC
+ISIC_0023391.JPG,datasets/ISIC\Acrochordon\ISIC_0023391.JPG,acrochordon,ISIC
+ISIC_0023392.JPG,datasets/ISIC\Acrochordon\ISIC_0023392.JPG,acrochordon,ISIC
+ISIC_0023400.JPG,datasets/ISIC\Acrochordon\ISIC_0023400.JPG,acrochordon,ISIC
+ISIC_0023401.JPG,datasets/ISIC\Acrochordon\ISIC_0023401.JPG,acrochordon,ISIC
+ISIC_0023402.JPG,datasets/ISIC\Acrochordon\ISIC_0023402.JPG,acrochordon,ISIC
+ISIC_0023403.JPG,datasets/ISIC\Acrochordon\ISIC_0023403.JPG,acrochordon,ISIC
+ISIC_0023404.JPG,datasets/ISIC\Acrochordon\ISIC_0023404.JPG,acrochordon,ISIC
+ISIC_0023406.JPG,datasets/ISIC\Acrochordon\ISIC_0023406.JPG,acrochordon,ISIC
+ISIC_0023407.JPG,datasets/ISIC\Acrochordon\ISIC_0023407.JPG,acrochordon,ISIC
+ISIC_0023408.JPG,datasets/ISIC\Acrochordon\ISIC_0023408.JPG,acrochordon,ISIC
+ISIC_0023409.JPG,datasets/ISIC\Acrochordon\ISIC_0023409.JPG,acrochordon,ISIC
+ISIC_0023410.JPG,datasets/ISIC\Acrochordon\ISIC_0023410.JPG,acrochordon,ISIC
+ISIC_0023411.JPG,datasets/ISIC\Acrochordon\ISIC_0023411.JPG,acrochordon,ISIC
+ISIC_0023412.JPG,datasets/ISIC\Acrochordon\ISIC_0023412.JPG,acrochordon,ISIC
+ISIC_0023413.JPG,datasets/ISIC\Acrochordon\ISIC_0023413.JPG,acrochordon,ISIC
+ISIC_0023414.JPG,datasets/ISIC\Acrochordon\ISIC_0023414.JPG,acrochordon,ISIC
+ISIC_0023415.JPG,datasets/ISIC\Acrochordon\ISIC_0023415.JPG,acrochordon,ISIC
+ISIC_0023417.JPG,datasets/ISIC\Acrochordon\ISIC_0023417.JPG,acrochordon,ISIC
+ISIC_0023418.JPG,datasets/ISIC\Acrochordon\ISIC_0023418.JPG,acrochordon,ISIC
+ISIC_0023419.JPG,datasets/ISIC\Acrochordon\ISIC_0023419.JPG,acrochordon,ISIC
+ISIC_0023420.JPG,datasets/ISIC\Acrochordon\ISIC_0023420.JPG,acrochordon,ISIC
+ISIC_0023421.JPG,datasets/ISIC\Acrochordon\ISIC_0023421.JPG,acrochordon,ISIC
+ISIC_0023422.JPG,datasets/ISIC\Acrochordon\ISIC_0023422.JPG,acrochordon,ISIC
+ISIC_0023423.JPG,datasets/ISIC\Acrochordon\ISIC_0023423.JPG,acrochordon,ISIC
+ISIC_0023424.JPG,datasets/ISIC\Acrochordon\ISIC_0023424.JPG,acrochordon,ISIC
+ISIC_0023425.JPG,datasets/ISIC\Acrochordon\ISIC_0023425.JPG,acrochordon,ISIC
+ISIC_0023426.JPG,datasets/ISIC\Acrochordon\ISIC_0023426.JPG,acrochordon,ISIC
+ISIC_0023428.JPG,datasets/ISIC\Acrochordon\ISIC_0023428.JPG,acrochordon,ISIC
+ISIC_0023429.JPG,datasets/ISIC\Acrochordon\ISIC_0023429.JPG,acrochordon,ISIC
+ISIC_0023430.JPG,datasets/ISIC\Acrochordon\ISIC_0023430.JPG,acrochordon,ISIC
+ISIC_0023434.JPG,datasets/ISIC\Acrochordon\ISIC_0023434.JPG,acrochordon,ISIC
+ISIC_0023435.JPG,datasets/ISIC\Acrochordon\ISIC_0023435.JPG,acrochordon,ISIC
+ISIC_0023436.JPG,datasets/ISIC\Acrochordon\ISIC_0023436.JPG,acrochordon,ISIC
+ISIC_0023437.JPG,datasets/ISIC\Acrochordon\ISIC_0023437.JPG,acrochordon,ISIC
+ISIC_0023439.JPG,datasets/ISIC\Acrochordon\ISIC_0023439.JPG,acrochordon,ISIC
+ISIC_0023440.JPG,datasets/ISIC\Acrochordon\ISIC_0023440.JPG,acrochordon,ISIC
+ISIC_0023441.JPG,datasets/ISIC\Acrochordon\ISIC_0023441.JPG,acrochordon,ISIC
+ISIC_0023442.JPG,datasets/ISIC\Acrochordon\ISIC_0023442.JPG,acrochordon,ISIC
+ISIC_0023443.JPG,datasets/ISIC\Acrochordon\ISIC_0023443.JPG,acrochordon,ISIC
+ISIC_0023444.JPG,datasets/ISIC\Acrochordon\ISIC_0023444.JPG,acrochordon,ISIC
+ISIC_0023445.JPG,datasets/ISIC\Acrochordon\ISIC_0023445.JPG,acrochordon,ISIC
+ISIC_0023446.JPG,datasets/ISIC\Acrochordon\ISIC_0023446.JPG,acrochordon,ISIC
+ISIC_0023447.JPG,datasets/ISIC\Acrochordon\ISIC_0023447.JPG,acrochordon,ISIC
+ISIC_0023448.JPG,datasets/ISIC\Acrochordon\ISIC_0023448.JPG,acrochordon,ISIC
+ISIC_0023450.JPG,datasets/ISIC\Acrochordon\ISIC_0023450.JPG,acrochordon,ISIC
+ISIC_0023451.JPG,datasets/ISIC\Acrochordon\ISIC_0023451.JPG,acrochordon,ISIC
+ISIC_0023452.JPG,datasets/ISIC\Acrochordon\ISIC_0023452.JPG,acrochordon,ISIC
+ISIC_0023453.JPG,datasets/ISIC\Acrochordon\ISIC_0023453.JPG,acrochordon,ISIC
+ISIC_0023454.JPG,datasets/ISIC\Acrochordon\ISIC_0023454.JPG,acrochordon,ISIC
+ISIC_0023455.JPG,datasets/ISIC\Acrochordon\ISIC_0023455.JPG,acrochordon,ISIC
+ISIC_0023456.JPG,datasets/ISIC\Acrochordon\ISIC_0023456.JPG,acrochordon,ISIC
+ISIC_0023544.JPG,datasets/ISIC\Acrochordon\ISIC_0023544.JPG,acrochordon,ISIC
+ISIC_0023546.JPG,datasets/ISIC\Acrochordon\ISIC_0023546.JPG,acrochordon,ISIC
+ISIC_0023576.JPG,datasets/ISIC\Acrochordon\ISIC_0023576.JPG,acrochordon,ISIC
+ISIC_0023592.JPG,datasets/ISIC\Acrochordon\ISIC_0023592.JPG,acrochordon,ISIC
+ISIC_0023593.JPG,datasets/ISIC\Acrochordon\ISIC_0023593.JPG,acrochordon,ISIC
+ISIC_0023598.JPG,datasets/ISIC\Acrochordon\ISIC_0023598.JPG,acrochordon,ISIC
+ISIC_0023599.JPG,datasets/ISIC\Acrochordon\ISIC_0023599.JPG,acrochordon,ISIC
+ISIC_0023600.JPG,datasets/ISIC\Acrochordon\ISIC_0023600.JPG,acrochordon,ISIC
+ISIC_0023601.JPG,datasets/ISIC\Acrochordon\ISIC_0023601.JPG,acrochordon,ISIC
+ISIC_0023603.JPG,datasets/ISIC\Acrochordon\ISIC_0023603.JPG,acrochordon,ISIC
+ISIC_0023614.JPG,datasets/ISIC\Acrochordon\ISIC_0023614.JPG,acrochordon,ISIC
+ISIC_0023615.JPG,datasets/ISIC\Acrochordon\ISIC_0023615.JPG,acrochordon,ISIC
+ISIC_0023616.JPG,datasets/ISIC\Acrochordon\ISIC_0023616.JPG,acrochordon,ISIC
+ISIC_0023659.JPG,datasets/ISIC\Acrochordon\ISIC_0023659.JPG,acrochordon,ISIC
+ISIC_0023660.JPG,datasets/ISIC\Acrochordon\ISIC_0023660.JPG,acrochordon,ISIC
+ISIC_0023661.JPG,datasets/ISIC\Acrochordon\ISIC_0023661.JPG,acrochordon,ISIC
+ISIC_0023662.JPG,datasets/ISIC\Acrochordon\ISIC_0023662.JPG,acrochordon,ISIC
+ISIC_0023663.JPG,datasets/ISIC\Acrochordon\ISIC_0023663.JPG,acrochordon,ISIC
+ISIC_0023665.JPG,datasets/ISIC\Acrochordon\ISIC_0023665.JPG,acrochordon,ISIC
+ISIC_0023666.JPG,datasets/ISIC\Acrochordon\ISIC_0023666.JPG,acrochordon,ISIC
+ISIC_0023667.JPG,datasets/ISIC\Acrochordon\ISIC_0023667.JPG,acrochordon,ISIC
+ISIC_0023668.JPG,datasets/ISIC\Acrochordon\ISIC_0023668.JPG,acrochordon,ISIC
+ISIC_0023725.JPG,datasets/ISIC\Acrochordon\ISIC_0023725.JPG,acrochordon,ISIC
+ISIC_0023726.JPG,datasets/ISIC\Acrochordon\ISIC_0023726.JPG,acrochordon,ISIC
+ISIC_0023727.JPG,datasets/ISIC\Acrochordon\ISIC_0023727.JPG,acrochordon,ISIC
+ISIC_0023730.JPG,datasets/ISIC\Acrochordon\ISIC_0023730.JPG,acrochordon,ISIC
+ISIC_0023732.JPG,datasets/ISIC\Acrochordon\ISIC_0023732.JPG,acrochordon,ISIC
+ISIC_0023733.JPG,datasets/ISIC\Acrochordon\ISIC_0023733.JPG,acrochordon,ISIC
+ISIC_0023734.JPG,datasets/ISIC\Acrochordon\ISIC_0023734.JPG,acrochordon,ISIC
+ISIC_0023741.JPG,datasets/ISIC\Acrochordon\ISIC_0023741.JPG,acrochordon,ISIC
+ISIC_0023742.JPG,datasets/ISIC\Acrochordon\ISIC_0023742.JPG,acrochordon,ISIC
+ISIC_0023743.JPG,datasets/ISIC\Acrochordon\ISIC_0023743.JPG,acrochordon,ISIC
+ISIC_0023748.JPG,datasets/ISIC\Acrochordon\ISIC_0023748.JPG,acrochordon,ISIC
+ISIC_0023749.JPG,datasets/ISIC\Acrochordon\ISIC_0023749.JPG,acrochordon,ISIC
+ISIC_0023750.JPG,datasets/ISIC\Acrochordon\ISIC_0023750.JPG,acrochordon,ISIC
+ISIC_0023754.JPG,datasets/ISIC\Acrochordon\ISIC_0023754.JPG,acrochordon,ISIC
+ISIC_0023756.JPG,datasets/ISIC\Acrochordon\ISIC_0023756.JPG,acrochordon,ISIC
+ISIC_0023757.JPG,datasets/ISIC\Acrochordon\ISIC_0023757.JPG,acrochordon,ISIC
+ISIC_0023819.JPG,datasets/ISIC\Acrochordon\ISIC_0023819.JPG,acrochordon,ISIC
+ISIC_0023820.JPG,datasets/ISIC\Acrochordon\ISIC_0023820.JPG,acrochordon,ISIC
+ISIC_0023822.JPG,datasets/ISIC\Acrochordon\ISIC_0023822.JPG,acrochordon,ISIC
+ISIC_0023943.JPG,datasets/ISIC\Acrochordon\ISIC_0023943.JPG,acrochordon,ISIC
+ISIC_0023944.JPG,datasets/ISIC\Acrochordon\ISIC_0023944.JPG,acrochordon,ISIC
+ISIC_0023945.JPG,datasets/ISIC\Acrochordon\ISIC_0023945.JPG,acrochordon,ISIC
+ISIC_0023956.JPG,datasets/ISIC\Acrochordon\ISIC_0023956.JPG,acrochordon,ISIC
+ISIC_0023958.JPG,datasets/ISIC\Acrochordon\ISIC_0023958.JPG,acrochordon,ISIC
+ISIC_0023959.JPG,datasets/ISIC\Acrochordon\ISIC_0023959.JPG,acrochordon,ISIC
+ISIC_0023960.JPG,datasets/ISIC\Acrochordon\ISIC_0023960.JPG,acrochordon,ISIC
+ISIC_0023961.JPG,datasets/ISIC\Acrochordon\ISIC_0023961.JPG,acrochordon,ISIC
+ISIC_0023962.JPG,datasets/ISIC\Acrochordon\ISIC_0023962.JPG,acrochordon,ISIC
+ISIC_0023963.JPG,datasets/ISIC\Acrochordon\ISIC_0023963.JPG,acrochordon,ISIC
+ISIC_0023964.JPG,datasets/ISIC\Acrochordon\ISIC_0023964.JPG,acrochordon,ISIC
+ISIC_0023968.JPG,datasets/ISIC\Acrochordon\ISIC_0023968.JPG,acrochordon,ISIC
+ISIC_0023969.JPG,datasets/ISIC\Acrochordon\ISIC_0023969.JPG,acrochordon,ISIC
+ISIC_0023970.JPG,datasets/ISIC\Acrochordon\ISIC_0023970.JPG,acrochordon,ISIC
+ISIC_0023975.JPG,datasets/ISIC\Acrochordon\ISIC_0023975.JPG,acrochordon,ISIC
+ISIC_0023983.JPG,datasets/ISIC\Acrochordon\ISIC_0023983.JPG,acrochordon,ISIC
+ISIC_0023994.JPG,datasets/ISIC\Acrochordon\ISIC_0023994.JPG,acrochordon,ISIC
+ISIC_0024022.JPG,datasets/ISIC\Acrochordon\ISIC_0024022.JPG,acrochordon,ISIC
+ISIC_0024023.JPG,datasets/ISIC\Acrochordon\ISIC_0024023.JPG,acrochordon,ISIC
+ISIC_0024024.JPG,datasets/ISIC\Acrochordon\ISIC_0024024.JPG,acrochordon,ISIC
+ISIC_0024045.JPG,datasets/ISIC\Acrochordon\ISIC_0024045.JPG,acrochordon,ISIC
+ISIC_0024046.JPG,datasets/ISIC\Acrochordon\ISIC_0024046.JPG,acrochordon,ISIC
+ISIC_0024047.JPG,datasets/ISIC\Acrochordon\ISIC_0024047.JPG,acrochordon,ISIC
+ISIC_0024088.JPG,datasets/ISIC\Acrochordon\ISIC_0024088.JPG,acrochordon,ISIC
+ISIC_0024089.JPG,datasets/ISIC\Acrochordon\ISIC_0024089.JPG,acrochordon,ISIC
+ISIC_0024090.JPG,datasets/ISIC\Acrochordon\ISIC_0024090.JPG,acrochordon,ISIC
+ISIC_0024133.JPG,datasets/ISIC\Acrochordon\ISIC_0024133.JPG,acrochordon,ISIC
+ISIC_0024142.JPG,datasets/ISIC\Acrochordon\ISIC_0024142.JPG,acrochordon,ISIC
+ISIC_0024152.JPG,datasets/ISIC\Acrochordon\ISIC_0024152.JPG,acrochordon,ISIC
+ISIC_0024166.JPG,datasets/ISIC\Acrochordon\ISIC_0024166.JPG,acrochordon,ISIC
+ISIC_0024167.JPG,datasets/ISIC\Acrochordon\ISIC_0024167.JPG,acrochordon,ISIC
+ISIC_0024169.JPG,datasets/ISIC\Acrochordon\ISIC_0024169.JPG,acrochordon,ISIC
+ISIC_0024170.JPG,datasets/ISIC\Acrochordon\ISIC_0024170.JPG,acrochordon,ISIC
+ISIC_0024171.JPG,datasets/ISIC\Acrochordon\ISIC_0024171.JPG,acrochordon,ISIC
+ISIC_0024172.JPG,datasets/ISIC\Acrochordon\ISIC_0024172.JPG,acrochordon,ISIC
+ISIC_4312375.JPG,datasets/ISIC\Acrochordon\ISIC_4312375.JPG,acrochordon,ISIC
+ISIC_6833519.JPG,datasets/ISIC\Acrochordon\ISIC_6833519.JPG,acrochordon,ISIC
+ISIC_7451283.JPG,datasets/ISIC\Acrochordon\ISIC_7451283.JPG,acrochordon,ISIC
+ISIC_9552204.JPG,datasets/ISIC\Acrochordon\ISIC_9552204.JPG,acrochordon,ISIC
+ISIC_0009876.JPG,datasets/ISIC\Solar lentigo\ISIC_0009876.JPG,solar_lentigo,ISIC
+ISIC_0009926.JPG,datasets/ISIC\Solar lentigo\ISIC_0009926.JPG,solar_lentigo,ISIC
+ISIC_0010076.JPG,datasets/ISIC\Solar lentigo\ISIC_0010076.JPG,solar_lentigo,ISIC
+ISIC_0010096.JPG,datasets/ISIC\Solar lentigo\ISIC_0010096.JPG,solar_lentigo,ISIC
+ISIC_0010214.JPG,datasets/ISIC\Solar lentigo\ISIC_0010214.JPG,solar_lentigo,ISIC
+ISIC_0010243.JPG,datasets/ISIC\Solar lentigo\ISIC_0010243.JPG,solar_lentigo,ISIC
+ISIC_0010250.JPG,datasets/ISIC\Solar lentigo\ISIC_0010250.JPG,solar_lentigo,ISIC
+ISIC_0010292.JPG,datasets/ISIC\Solar lentigo\ISIC_0010292.JPG,solar_lentigo,ISIC
+ISIC_0010301.JPG,datasets/ISIC\Solar lentigo\ISIC_0010301.JPG,solar_lentigo,ISIC
+ISIC_0010303.JPG,datasets/ISIC\Solar lentigo\ISIC_0010303.JPG,solar_lentigo,ISIC
+ISIC_0010324.JPG,datasets/ISIC\Solar lentigo\ISIC_0010324.JPG,solar_lentigo,ISIC
+ISIC_0010328.JPG,datasets/ISIC\Solar lentigo\ISIC_0010328.JPG,solar_lentigo,ISIC
+ISIC_0010345.JPG,datasets/ISIC\Solar lentigo\ISIC_0010345.JPG,solar_lentigo,ISIC
+ISIC_0010353.JPG,datasets/ISIC\Solar lentigo\ISIC_0010353.JPG,solar_lentigo,ISIC
+ISIC_0010373.JPG,datasets/ISIC\Solar lentigo\ISIC_0010373.JPG,solar_lentigo,ISIC
+ISIC_0010403.JPG,datasets/ISIC\Solar lentigo\ISIC_0010403.JPG,solar_lentigo,ISIC
+ISIC_0010404.JPG,datasets/ISIC\Solar lentigo\ISIC_0010404.JPG,solar_lentigo,ISIC
+ISIC_0010421.JPG,datasets/ISIC\Solar lentigo\ISIC_0010421.JPG,solar_lentigo,ISIC
+ISIC_0010541.JPG,datasets/ISIC\Solar lentigo\ISIC_0010541.JPG,solar_lentigo,ISIC
+ISIC_0010577.JPG,datasets/ISIC\Solar lentigo\ISIC_0010577.JPG,solar_lentigo,ISIC
+ISIC_0010706.JPG,datasets/ISIC\Solar lentigo\ISIC_0010706.JPG,solar_lentigo,ISIC
+ISIC_0010720.JPG,datasets/ISIC\Solar lentigo\ISIC_0010720.JPG,solar_lentigo,ISIC
+ISIC_0010743.JPG,datasets/ISIC\Solar lentigo\ISIC_0010743.JPG,solar_lentigo,ISIC
+ISIC_0010915.JPG,datasets/ISIC\Solar lentigo\ISIC_0010915.JPG,solar_lentigo,ISIC
+ISIC_0010933.JPG,datasets/ISIC\Solar lentigo\ISIC_0010933.JPG,solar_lentigo,ISIC
+ISIC_0010992.JPG,datasets/ISIC\Solar lentigo\ISIC_0010992.JPG,solar_lentigo,ISIC
+ISIC_0010997.JPG,datasets/ISIC\Solar lentigo\ISIC_0010997.JPG,solar_lentigo,ISIC
+ISIC_0010999.JPG,datasets/ISIC\Solar lentigo\ISIC_0010999.JPG,solar_lentigo,ISIC
+ISIC_0011006.JPG,datasets/ISIC\Solar lentigo\ISIC_0011006.JPG,solar_lentigo,ISIC
+ISIC_0011041.JPG,datasets/ISIC\Solar lentigo\ISIC_0011041.JPG,solar_lentigo,ISIC
+ISIC_0011113.JPG,datasets/ISIC\Solar lentigo\ISIC_0011113.JPG,solar_lentigo,ISIC
+ISIC_0011134.JPG,datasets/ISIC\Solar lentigo\ISIC_0011134.JPG,solar_lentigo,ISIC
+ISIC_0011152.JPG,datasets/ISIC\Solar lentigo\ISIC_0011152.JPG,solar_lentigo,ISIC
+ISIC_0011172.JPG,datasets/ISIC\Solar lentigo\ISIC_0011172.JPG,solar_lentigo,ISIC
+ISIC_0011192.JPG,datasets/ISIC\Solar lentigo\ISIC_0011192.JPG,solar_lentigo,ISIC
+ISIC_0011201.JPG,datasets/ISIC\Solar lentigo\ISIC_0011201.JPG,solar_lentigo,ISIC
+ISIC_0011216.JPG,datasets/ISIC\Solar lentigo\ISIC_0011216.JPG,solar_lentigo,ISIC
+ISIC_0011231.JPG,datasets/ISIC\Solar lentigo\ISIC_0011231.JPG,solar_lentigo,ISIC
+ISIC_0011265.JPG,datasets/ISIC\Solar lentigo\ISIC_0011265.JPG,solar_lentigo,ISIC
+ISIC_0011272.JPG,datasets/ISIC\Solar lentigo\ISIC_0011272.JPG,solar_lentigo,ISIC
+ISIC_0011299.JPG,datasets/ISIC\Solar lentigo\ISIC_0011299.JPG,solar_lentigo,ISIC
+ISIC_0011376.JPG,datasets/ISIC\Solar lentigo\ISIC_0011376.JPG,solar_lentigo,ISIC
+ISIC_0011377.JPG,datasets/ISIC\Solar lentigo\ISIC_0011377.JPG,solar_lentigo,ISIC
+ISIC_0011380.JPG,datasets/ISIC\Solar lentigo\ISIC_0011380.JPG,solar_lentigo,ISIC
+ISIC_0011407.JPG,datasets/ISIC\Solar lentigo\ISIC_0011407.JPG,solar_lentigo,ISIC
+ISIC_0011408.JPG,datasets/ISIC\Solar lentigo\ISIC_0011408.JPG,solar_lentigo,ISIC
+ISIC_0011595.JPG,datasets/ISIC\Solar lentigo\ISIC_0011595.JPG,solar_lentigo,ISIC
+ISIC_0011639.JPG,datasets/ISIC\Solar lentigo\ISIC_0011639.JPG,solar_lentigo,ISIC
+ISIC_0011640.JPG,datasets/ISIC\Solar lentigo\ISIC_0011640.JPG,solar_lentigo,ISIC
+ISIC_0011641.JPG,datasets/ISIC\Solar lentigo\ISIC_0011641.JPG,solar_lentigo,ISIC
+ISIC_0011678.JPG,datasets/ISIC\Solar lentigo\ISIC_0011678.JPG,solar_lentigo,ISIC
+ISIC_0011708.JPG,datasets/ISIC\Solar lentigo\ISIC_0011708.JPG,solar_lentigo,ISIC
+ISIC_0011737.JPG,datasets/ISIC\Solar lentigo\ISIC_0011737.JPG,solar_lentigo,ISIC
+ISIC_0011831.JPG,datasets/ISIC\Solar lentigo\ISIC_0011831.JPG,solar_lentigo,ISIC
+ISIC_0011965.JPG,datasets/ISIC\Solar lentigo\ISIC_0011965.JPG,solar_lentigo,ISIC
+ISIC_0011990.JPG,datasets/ISIC\Solar lentigo\ISIC_0011990.JPG,solar_lentigo,ISIC
+ISIC_0012008.JPG,datasets/ISIC\Solar lentigo\ISIC_0012008.JPG,solar_lentigo,ISIC
+ISIC_0012129.JPG,datasets/ISIC\Solar lentigo\ISIC_0012129.JPG,solar_lentigo,ISIC
+ISIC_0012244.JPG,datasets/ISIC\Solar lentigo\ISIC_0012244.JPG,solar_lentigo,ISIC
+ISIC_0012385.JPG,datasets/ISIC\Solar lentigo\ISIC_0012385.JPG,solar_lentigo,ISIC
+ISIC_0012431.JPG,datasets/ISIC\Solar lentigo\ISIC_0012431.JPG,solar_lentigo,ISIC
+ISIC_0012436.JPG,datasets/ISIC\Solar lentigo\ISIC_0012436.JPG,solar_lentigo,ISIC
+ISIC_0012686.JPG,datasets/ISIC\Solar lentigo\ISIC_0012686.JPG,solar_lentigo,ISIC
+ISIC_0012812.JPG,datasets/ISIC\Solar lentigo\ISIC_0012812.JPG,solar_lentigo,ISIC
+ISIC_0012832.JPG,datasets/ISIC\Solar lentigo\ISIC_0012832.JPG,solar_lentigo,ISIC
+ISIC_0012936.JPG,datasets/ISIC\Solar lentigo\ISIC_0012936.JPG,solar_lentigo,ISIC
+ISIC_0013017.JPG,datasets/ISIC\Solar lentigo\ISIC_0013017.JPG,solar_lentigo,ISIC
+ISIC_0013018.JPG,datasets/ISIC\Solar lentigo\ISIC_0013018.JPG,solar_lentigo,ISIC
+ISIC_0013061.JPG,datasets/ISIC\Solar lentigo\ISIC_0013061.JPG,solar_lentigo,ISIC
+ISIC_0013125.JPG,datasets/ISIC\Solar lentigo\ISIC_0013125.JPG,solar_lentigo,ISIC
+ISIC_0013289.JPG,datasets/ISIC\Solar lentigo\ISIC_0013289.JPG,solar_lentigo,ISIC
+ISIC_0013352.JPG,datasets/ISIC\Solar lentigo\ISIC_0013352.JPG,solar_lentigo,ISIC
+ISIC_0013535.JPG,datasets/ISIC\Solar lentigo\ISIC_0013535.JPG,solar_lentigo,ISIC
+ISIC_0013582.JPG,datasets/ISIC\Solar lentigo\ISIC_0013582.JPG,solar_lentigo,ISIC
+ISIC_0013681.JPG,datasets/ISIC\Solar lentigo\ISIC_0013681.JPG,solar_lentigo,ISIC
+ISIC_0013883.JPG,datasets/ISIC\Solar lentigo\ISIC_0013883.JPG,solar_lentigo,ISIC
+ISIC_0014057.JPG,datasets/ISIC\Solar lentigo\ISIC_0014057.JPG,solar_lentigo,ISIC
+ISIC_0014109.JPG,datasets/ISIC\Solar lentigo\ISIC_0014109.JPG,solar_lentigo,ISIC
+ISIC_0014262.JPG,datasets/ISIC\Solar lentigo\ISIC_0014262.JPG,solar_lentigo,ISIC
+ISIC_0014283.JPG,datasets/ISIC\Solar lentigo\ISIC_0014283.JPG,solar_lentigo,ISIC
+ISIC_0014297.JPG,datasets/ISIC\Solar lentigo\ISIC_0014297.JPG,solar_lentigo,ISIC
+ISIC_0014300.JPG,datasets/ISIC\Solar lentigo\ISIC_0014300.JPG,solar_lentigo,ISIC
+ISIC_0014510.JPG,datasets/ISIC\Solar lentigo\ISIC_0014510.JPG,solar_lentigo,ISIC
+ISIC_0014668.JPG,datasets/ISIC\Solar lentigo\ISIC_0014668.JPG,solar_lentigo,ISIC
+ISIC_0014717.JPG,datasets/ISIC\Solar lentigo\ISIC_0014717.JPG,solar_lentigo,ISIC
+ISIC_0014776.JPG,datasets/ISIC\Solar lentigo\ISIC_0014776.JPG,solar_lentigo,ISIC
+ISIC_0014816.JPG,datasets/ISIC\Solar lentigo\ISIC_0014816.JPG,solar_lentigo,ISIC
+ISIC_0014817.JPG,datasets/ISIC\Solar lentigo\ISIC_0014817.JPG,solar_lentigo,ISIC
+ISIC_0014841.JPG,datasets/ISIC\Solar lentigo\ISIC_0014841.JPG,solar_lentigo,ISIC
+ISIC_0015066.JPG,datasets/ISIC\Solar lentigo\ISIC_0015066.JPG,solar_lentigo,ISIC
+ISIC_0015187.JPG,datasets/ISIC\Solar lentigo\ISIC_0015187.JPG,solar_lentigo,ISIC
+ISIC_0015221.JPG,datasets/ISIC\Solar lentigo\ISIC_0015221.JPG,solar_lentigo,ISIC
+ISIC_0015222.JPG,datasets/ISIC\Solar lentigo\ISIC_0015222.JPG,solar_lentigo,ISIC
+ISIC_0015269.JPG,datasets/ISIC\Solar lentigo\ISIC_0015269.JPG,solar_lentigo,ISIC
+ISIC_0015392.JPG,datasets/ISIC\Solar lentigo\ISIC_0015392.JPG,solar_lentigo,ISIC
+ISIC_0015393.JPG,datasets/ISIC\Solar lentigo\ISIC_0015393.JPG,solar_lentigo,ISIC
+ISIC_0015396.JPG,datasets/ISIC\Solar lentigo\ISIC_0015396.JPG,solar_lentigo,ISIC
+ISIC_0015414.JPG,datasets/ISIC\Solar lentigo\ISIC_0015414.JPG,solar_lentigo,ISIC
+ISIC_0015426.JPG,datasets/ISIC\Solar lentigo\ISIC_0015426.JPG,solar_lentigo,ISIC
+ISIC_0015542.JPG,datasets/ISIC\Solar lentigo\ISIC_0015542.JPG,solar_lentigo,ISIC
+ISIC_0015543.JPG,datasets/ISIC\Solar lentigo\ISIC_0015543.JPG,solar_lentigo,ISIC
+ISIC_0015597.JPG,datasets/ISIC\Solar lentigo\ISIC_0015597.JPG,solar_lentigo,ISIC
+ISIC_0015598.JPG,datasets/ISIC\Solar lentigo\ISIC_0015598.JPG,solar_lentigo,ISIC
+ISIC_0015599.JPG,datasets/ISIC\Solar lentigo\ISIC_0015599.JPG,solar_lentigo,ISIC
+ISIC_0015612.JPG,datasets/ISIC\Solar lentigo\ISIC_0015612.JPG,solar_lentigo,ISIC
+ISIC_0015618.JPG,datasets/ISIC\Solar lentigo\ISIC_0015618.JPG,solar_lentigo,ISIC
+ISIC_0015624.JPG,datasets/ISIC\Solar lentigo\ISIC_0015624.JPG,solar_lentigo,ISIC
+ISIC_0020995.JPG,datasets/ISIC\Solar lentigo\ISIC_0020995.JPG,solar_lentigo,ISIC
+ISIC_0020996.JPG,datasets/ISIC\Solar lentigo\ISIC_0020996.JPG,solar_lentigo,ISIC
+ISIC_0020997.JPG,datasets/ISIC\Solar lentigo\ISIC_0020997.JPG,solar_lentigo,ISIC
+ISIC_0021135.JPG,datasets/ISIC\Solar lentigo\ISIC_0021135.JPG,solar_lentigo,ISIC
+ISIC_0021137.JPG,datasets/ISIC\Solar lentigo\ISIC_0021137.JPG,solar_lentigo,ISIC
+ISIC_0021138.JPG,datasets/ISIC\Solar lentigo\ISIC_0021138.JPG,solar_lentigo,ISIC
+ISIC_0021197.JPG,datasets/ISIC\Solar lentigo\ISIC_0021197.JPG,solar_lentigo,ISIC
+ISIC_0021198.JPG,datasets/ISIC\Solar lentigo\ISIC_0021198.JPG,solar_lentigo,ISIC
+ISIC_0021199.JPG,datasets/ISIC\Solar lentigo\ISIC_0021199.JPG,solar_lentigo,ISIC
+ISIC_0021257.JPG,datasets/ISIC\Solar lentigo\ISIC_0021257.JPG,solar_lentigo,ISIC
+ISIC_0021258.JPG,datasets/ISIC\Solar lentigo\ISIC_0021258.JPG,solar_lentigo,ISIC
+ISIC_0021259.JPG,datasets/ISIC\Solar lentigo\ISIC_0021259.JPG,solar_lentigo,ISIC
+ISIC_0021412.JPG,datasets/ISIC\Solar lentigo\ISIC_0021412.JPG,solar_lentigo,ISIC
+ISIC_0021413.JPG,datasets/ISIC\Solar lentigo\ISIC_0021413.JPG,solar_lentigo,ISIC
+ISIC_0021415.JPG,datasets/ISIC\Solar lentigo\ISIC_0021415.JPG,solar_lentigo,ISIC
+ISIC_0021507.JPG,datasets/ISIC\Solar lentigo\ISIC_0021507.JPG,solar_lentigo,ISIC
+ISIC_0021508.JPG,datasets/ISIC\Solar lentigo\ISIC_0021508.JPG,solar_lentigo,ISIC
+ISIC_0021509.JPG,datasets/ISIC\Solar lentigo\ISIC_0021509.JPG,solar_lentigo,ISIC
+ISIC_0021511.JPG,datasets/ISIC\Solar lentigo\ISIC_0021511.JPG,solar_lentigo,ISIC
+ISIC_0021512.JPG,datasets/ISIC\Solar lentigo\ISIC_0021512.JPG,solar_lentigo,ISIC
+ISIC_0021513.JPG,datasets/ISIC\Solar lentigo\ISIC_0021513.JPG,solar_lentigo,ISIC
+ISIC_0021514.JPG,datasets/ISIC\Solar lentigo\ISIC_0021514.JPG,solar_lentigo,ISIC
+ISIC_0021515.JPG,datasets/ISIC\Solar lentigo\ISIC_0021515.JPG,solar_lentigo,ISIC
+ISIC_0021516.JPG,datasets/ISIC\Solar lentigo\ISIC_0021516.JPG,solar_lentigo,ISIC
+ISIC_0021520.JPG,datasets/ISIC\Solar lentigo\ISIC_0021520.JPG,solar_lentigo,ISIC
+ISIC_0021522.JPG,datasets/ISIC\Solar lentigo\ISIC_0021522.JPG,solar_lentigo,ISIC
+ISIC_0021523.JPG,datasets/ISIC\Solar lentigo\ISIC_0021523.JPG,solar_lentigo,ISIC
+ISIC_0021721.JPG,datasets/ISIC\Solar lentigo\ISIC_0021721.JPG,solar_lentigo,ISIC
+ISIC_0021722.JPG,datasets/ISIC\Solar lentigo\ISIC_0021722.JPG,solar_lentigo,ISIC
+ISIC_0021723.JPG,datasets/ISIC\Solar lentigo\ISIC_0021723.JPG,solar_lentigo,ISIC
+ISIC_0021724.JPG,datasets/ISIC\Solar lentigo\ISIC_0021724.JPG,solar_lentigo,ISIC
+ISIC_0021726.JPG,datasets/ISIC\Solar lentigo\ISIC_0021726.JPG,solar_lentigo,ISIC
+ISIC_0021727.JPG,datasets/ISIC\Solar lentigo\ISIC_0021727.JPG,solar_lentigo,ISIC
+ISIC_0021806.JPG,datasets/ISIC\Solar lentigo\ISIC_0021806.JPG,solar_lentigo,ISIC
+ISIC_0021808.JPG,datasets/ISIC\Solar lentigo\ISIC_0021808.JPG,solar_lentigo,ISIC
+ISIC_0021857.JPG,datasets/ISIC\Solar lentigo\ISIC_0021857.JPG,solar_lentigo,ISIC
+ISIC_0021858.JPG,datasets/ISIC\Solar lentigo\ISIC_0021858.JPG,solar_lentigo,ISIC
+ISIC_0021859.JPG,datasets/ISIC\Solar lentigo\ISIC_0021859.JPG,solar_lentigo,ISIC
+ISIC_0022023.JPG,datasets/ISIC\Solar lentigo\ISIC_0022023.JPG,solar_lentigo,ISIC
+ISIC_0022387.JPG,datasets/ISIC\Solar lentigo\ISIC_0022387.JPG,solar_lentigo,ISIC
+ISIC_0022388.JPG,datasets/ISIC\Solar lentigo\ISIC_0022388.JPG,solar_lentigo,ISIC
+ISIC_0022389.JPG,datasets/ISIC\Solar lentigo\ISIC_0022389.JPG,solar_lentigo,ISIC
+ISIC_0022390.JPG,datasets/ISIC\Solar lentigo\ISIC_0022390.JPG,solar_lentigo,ISIC
+ISIC_0022391.JPG,datasets/ISIC\Solar lentigo\ISIC_0022391.JPG,solar_lentigo,ISIC
+ISIC_0022392.JPG,datasets/ISIC\Solar lentigo\ISIC_0022392.JPG,solar_lentigo,ISIC
+ISIC_0022409.JPG,datasets/ISIC\Solar lentigo\ISIC_0022409.JPG,solar_lentigo,ISIC
+ISIC_0022410.JPG,datasets/ISIC\Solar lentigo\ISIC_0022410.JPG,solar_lentigo,ISIC
+ISIC_0022411.JPG,datasets/ISIC\Solar lentigo\ISIC_0022411.JPG,solar_lentigo,ISIC
+ISIC_0022412.JPG,datasets/ISIC\Solar lentigo\ISIC_0022412.JPG,solar_lentigo,ISIC
+ISIC_0022413.JPG,datasets/ISIC\Solar lentigo\ISIC_0022413.JPG,solar_lentigo,ISIC
+ISIC_0022414.JPG,datasets/ISIC\Solar lentigo\ISIC_0022414.JPG,solar_lentigo,ISIC
+ISIC_0022464.JPG,datasets/ISIC\Solar lentigo\ISIC_0022464.JPG,solar_lentigo,ISIC
+ISIC_0022465.JPG,datasets/ISIC\Solar lentigo\ISIC_0022465.JPG,solar_lentigo,ISIC
+ISIC_0023021.JPG,datasets/ISIC\Solar lentigo\ISIC_0023021.JPG,solar_lentigo,ISIC
+ISIC_0023022.JPG,datasets/ISIC\Solar lentigo\ISIC_0023022.JPG,solar_lentigo,ISIC
+ISIC_0023023.JPG,datasets/ISIC\Solar lentigo\ISIC_0023023.JPG,solar_lentigo,ISIC
+ISIC_0023025.JPG,datasets/ISIC\Solar lentigo\ISIC_0023025.JPG,solar_lentigo,ISIC
+ISIC_0023026.JPG,datasets/ISIC\Solar lentigo\ISIC_0023026.JPG,solar_lentigo,ISIC
+ISIC_0023826.JPG,datasets/ISIC\Solar lentigo\ISIC_0023826.JPG,solar_lentigo,ISIC
+ISIC_0023827.JPG,datasets/ISIC\Solar lentigo\ISIC_0023827.JPG,solar_lentigo,ISIC
+ISIC_0023828.JPG,datasets/ISIC\Solar lentigo\ISIC_0023828.JPG,solar_lentigo,ISIC
+ISIC_0053484.JPG,datasets/ISIC\Solar lentigo\ISIC_0053484.JPG,solar_lentigo,ISIC
+ISIC_0053635.JPG,datasets/ISIC\Solar lentigo\ISIC_0053635.JPG,solar_lentigo,ISIC
+ISIC_0053849.JPG,datasets/ISIC\Solar lentigo\ISIC_0053849.JPG,solar_lentigo,ISIC
+ISIC_0053865.JPG,datasets/ISIC\Solar lentigo\ISIC_0053865.JPG,solar_lentigo,ISIC
+ISIC_0053889.JPG,datasets/ISIC\Solar lentigo\ISIC_0053889.JPG,solar_lentigo,ISIC
+ISIC_0053968.JPG,datasets/ISIC\Solar lentigo\ISIC_0053968.JPG,solar_lentigo,ISIC
+ISIC_0054047.JPG,datasets/ISIC\Solar lentigo\ISIC_0054047.JPG,solar_lentigo,ISIC
+ISIC_0054234.JPG,datasets/ISIC\Solar lentigo\ISIC_0054234.JPG,solar_lentigo,ISIC
+ISIC_0054237.JPG,datasets/ISIC\Solar lentigo\ISIC_0054237.JPG,solar_lentigo,ISIC
+ISIC_0054300.JPG,datasets/ISIC\Solar lentigo\ISIC_0054300.JPG,solar_lentigo,ISIC
+ISIC_0054368.JPG,datasets/ISIC\Solar lentigo\ISIC_0054368.JPG,solar_lentigo,ISIC
+ISIC_0054461.JPG,datasets/ISIC\Solar lentigo\ISIC_0054461.JPG,solar_lentigo,ISIC
+ISIC_0054804.JPG,datasets/ISIC\Solar lentigo\ISIC_0054804.JPG,solar_lentigo,ISIC
+ISIC_0054907.JPG,datasets/ISIC\Solar lentigo\ISIC_0054907.JPG,solar_lentigo,ISIC
+ISIC_0054911.JPG,datasets/ISIC\Solar lentigo\ISIC_0054911.JPG,solar_lentigo,ISIC
+ISIC_0055036.JPG,datasets/ISIC\Solar lentigo\ISIC_0055036.JPG,solar_lentigo,ISIC
+ISIC_0055100.JPG,datasets/ISIC\Solar lentigo\ISIC_0055100.JPG,solar_lentigo,ISIC
+ISIC_0055256.JPG,datasets/ISIC\Solar lentigo\ISIC_0055256.JPG,solar_lentigo,ISIC
+ISIC_0055569.JPG,datasets/ISIC\Solar lentigo\ISIC_0055569.JPG,solar_lentigo,ISIC
+ISIC_0055583.JPG,datasets/ISIC\Solar lentigo\ISIC_0055583.JPG,solar_lentigo,ISIC
+ISIC_0055602.JPG,datasets/ISIC\Solar lentigo\ISIC_0055602.JPG,solar_lentigo,ISIC
+ISIC_0055972.JPG,datasets/ISIC\Solar lentigo\ISIC_0055972.JPG,solar_lentigo,ISIC
+ISIC_0055973.JPG,datasets/ISIC\Solar lentigo\ISIC_0055973.JPG,solar_lentigo,ISIC
+ISIC_0056179.JPG,datasets/ISIC\Solar lentigo\ISIC_0056179.JPG,solar_lentigo,ISIC
+ISIC_0056523.JPG,datasets/ISIC\Solar lentigo\ISIC_0056523.JPG,solar_lentigo,ISIC
+ISIC_0056636.JPG,datasets/ISIC\Solar lentigo\ISIC_0056636.JPG,solar_lentigo,ISIC
+ISIC_0056715.JPG,datasets/ISIC\Solar lentigo\ISIC_0056715.JPG,solar_lentigo,ISIC
+ISIC_0056768.JPG,datasets/ISIC\Solar lentigo\ISIC_0056768.JPG,solar_lentigo,ISIC
+ISIC_0056888.JPG,datasets/ISIC\Solar lentigo\ISIC_0056888.JPG,solar_lentigo,ISIC
+ISIC_0057063.JPG,datasets/ISIC\Solar lentigo\ISIC_0057063.JPG,solar_lentigo,ISIC
+ISIC_0057068.JPG,datasets/ISIC\Solar lentigo\ISIC_0057068.JPG,solar_lentigo,ISIC
+ISIC_0057210.JPG,datasets/ISIC\Solar lentigo\ISIC_0057210.JPG,solar_lentigo,ISIC
+ISIC_0057250.JPG,datasets/ISIC\Solar lentigo\ISIC_0057250.JPG,solar_lentigo,ISIC
+ISIC_0057293.JPG,datasets/ISIC\Solar lentigo\ISIC_0057293.JPG,solar_lentigo,ISIC
+ISIC_0057298.JPG,datasets/ISIC\Solar lentigo\ISIC_0057298.JPG,solar_lentigo,ISIC
+ISIC_0057326.JPG,datasets/ISIC\Solar lentigo\ISIC_0057326.JPG,solar_lentigo,ISIC
+ISIC_0057368.JPG,datasets/ISIC\Solar lentigo\ISIC_0057368.JPG,solar_lentigo,ISIC
+ISIC_0057576.JPG,datasets/ISIC\Solar lentigo\ISIC_0057576.JPG,solar_lentigo,ISIC
+ISIC_0057646.JPG,datasets/ISIC\Solar lentigo\ISIC_0057646.JPG,solar_lentigo,ISIC
+ISIC_0058056.JPG,datasets/ISIC\Solar lentigo\ISIC_0058056.JPG,solar_lentigo,ISIC
+ISIC_0058101.JPG,datasets/ISIC\Solar lentigo\ISIC_0058101.JPG,solar_lentigo,ISIC
+ISIC_0058179.JPG,datasets/ISIC\Solar lentigo\ISIC_0058179.JPG,solar_lentigo,ISIC
+ISIC_0058195.JPG,datasets/ISIC\Solar lentigo\ISIC_0058195.JPG,solar_lentigo,ISIC
+ISIC_0058219.JPG,datasets/ISIC\Solar lentigo\ISIC_0058219.JPG,solar_lentigo,ISIC
+ISIC_0058230.JPG,datasets/ISIC\Solar lentigo\ISIC_0058230.JPG,solar_lentigo,ISIC
+ISIC_0058265.JPG,datasets/ISIC\Solar lentigo\ISIC_0058265.JPG,solar_lentigo,ISIC
+ISIC_0058269.JPG,datasets/ISIC\Solar lentigo\ISIC_0058269.JPG,solar_lentigo,ISIC
+ISIC_0058293.JPG,datasets/ISIC\Solar lentigo\ISIC_0058293.JPG,solar_lentigo,ISIC
+ISIC_0058449.JPG,datasets/ISIC\Solar lentigo\ISIC_0058449.JPG,solar_lentigo,ISIC
+ISIC_0058684.JPG,datasets/ISIC\Solar lentigo\ISIC_0058684.JPG,solar_lentigo,ISIC
+ISIC_0058785.JPG,datasets/ISIC\Solar lentigo\ISIC_0058785.JPG,solar_lentigo,ISIC
+ISIC_0058821.JPG,datasets/ISIC\Solar lentigo\ISIC_0058821.JPG,solar_lentigo,ISIC
+ISIC_0058872.JPG,datasets/ISIC\Solar lentigo\ISIC_0058872.JPG,solar_lentigo,ISIC
+ISIC_0058873.JPG,datasets/ISIC\Solar lentigo\ISIC_0058873.JPG,solar_lentigo,ISIC
+ISIC_0058932.JPG,datasets/ISIC\Solar lentigo\ISIC_0058932.JPG,solar_lentigo,ISIC
+ISIC_0058974.JPG,datasets/ISIC\Solar lentigo\ISIC_0058974.JPG,solar_lentigo,ISIC
+ISIC_0059022.JPG,datasets/ISIC\Solar lentigo\ISIC_0059022.JPG,solar_lentigo,ISIC
+ISIC_0059186.JPG,datasets/ISIC\Solar lentigo\ISIC_0059186.JPG,solar_lentigo,ISIC
+ISIC_0059191.JPG,datasets/ISIC\Solar lentigo\ISIC_0059191.JPG,solar_lentigo,ISIC
+ISIC_0059333.JPG,datasets/ISIC\Solar lentigo\ISIC_0059333.JPG,solar_lentigo,ISIC
+ISIC_0059564.JPG,datasets/ISIC\Solar lentigo\ISIC_0059564.JPG,solar_lentigo,ISIC
+ISIC_0059616.JPG,datasets/ISIC\Solar lentigo\ISIC_0059616.JPG,solar_lentigo,ISIC
+ISIC_0059678.JPG,datasets/ISIC\Solar lentigo\ISIC_0059678.JPG,solar_lentigo,ISIC
+ISIC_0059706.JPG,datasets/ISIC\Solar lentigo\ISIC_0059706.JPG,solar_lentigo,ISIC
+ISIC_0059863.JPG,datasets/ISIC\Solar lentigo\ISIC_0059863.JPG,solar_lentigo,ISIC
+ISIC_0059970.JPG,datasets/ISIC\Solar lentigo\ISIC_0059970.JPG,solar_lentigo,ISIC
+ISIC_0060204.JPG,datasets/ISIC\Solar lentigo\ISIC_0060204.JPG,solar_lentigo,ISIC
+ISIC_0060523.JPG,datasets/ISIC\Solar lentigo\ISIC_0060523.JPG,solar_lentigo,ISIC
+ISIC_0060579.JPG,datasets/ISIC\Solar lentigo\ISIC_0060579.JPG,solar_lentigo,ISIC
+ISIC_0060600.JPG,datasets/ISIC\Solar lentigo\ISIC_0060600.JPG,solar_lentigo,ISIC
+ISIC_0060704.JPG,datasets/ISIC\Solar lentigo\ISIC_0060704.JPG,solar_lentigo,ISIC
+ISIC_0060833.JPG,datasets/ISIC\Solar lentigo\ISIC_0060833.JPG,solar_lentigo,ISIC
+ISIC_0060879.JPG,datasets/ISIC\Solar lentigo\ISIC_0060879.JPG,solar_lentigo,ISIC
+ISIC_0060920.JPG,datasets/ISIC\Solar lentigo\ISIC_0060920.JPG,solar_lentigo,ISIC
+ISIC_0060933.JPG,datasets/ISIC\Solar lentigo\ISIC_0060933.JPG,solar_lentigo,ISIC
+ISIC_0060966.JPG,datasets/ISIC\Solar lentigo\ISIC_0060966.JPG,solar_lentigo,ISIC
+ISIC_0061149.JPG,datasets/ISIC\Solar lentigo\ISIC_0061149.JPG,solar_lentigo,ISIC
+ISIC_0061235.JPG,datasets/ISIC\Solar lentigo\ISIC_0061235.JPG,solar_lentigo,ISIC
+ISIC_0061321.JPG,datasets/ISIC\Solar lentigo\ISIC_0061321.JPG,solar_lentigo,ISIC
+ISIC_0061338.JPG,datasets/ISIC\Solar lentigo\ISIC_0061338.JPG,solar_lentigo,ISIC
+ISIC_0061405.JPG,datasets/ISIC\Solar lentigo\ISIC_0061405.JPG,solar_lentigo,ISIC
+ISIC_0061476.JPG,datasets/ISIC\Solar lentigo\ISIC_0061476.JPG,solar_lentigo,ISIC
+ISIC_0061550.JPG,datasets/ISIC\Solar lentigo\ISIC_0061550.JPG,solar_lentigo,ISIC
+ISIC_0061610.JPG,datasets/ISIC\Solar lentigo\ISIC_0061610.JPG,solar_lentigo,ISIC
+ISIC_0061640.JPG,datasets/ISIC\Solar lentigo\ISIC_0061640.JPG,solar_lentigo,ISIC
+ISIC_0061646.JPG,datasets/ISIC\Solar lentigo\ISIC_0061646.JPG,solar_lentigo,ISIC
+ISIC_0061689.JPG,datasets/ISIC\Solar lentigo\ISIC_0061689.JPG,solar_lentigo,ISIC
+ISIC_0061725.JPG,datasets/ISIC\Solar lentigo\ISIC_0061725.JPG,solar_lentigo,ISIC
+ISIC_0061757.JPG,datasets/ISIC\Solar lentigo\ISIC_0061757.JPG,solar_lentigo,ISIC
+ISIC_0061785.JPG,datasets/ISIC\Solar lentigo\ISIC_0061785.JPG,solar_lentigo,ISIC
+ISIC_0061789.JPG,datasets/ISIC\Solar lentigo\ISIC_0061789.JPG,solar_lentigo,ISIC
+ISIC_0061924.JPG,datasets/ISIC\Solar lentigo\ISIC_0061924.JPG,solar_lentigo,ISIC
+ISIC_0062247.JPG,datasets/ISIC\Solar lentigo\ISIC_0062247.JPG,solar_lentigo,ISIC
+ISIC_0062361.JPG,datasets/ISIC\Solar lentigo\ISIC_0062361.JPG,solar_lentigo,ISIC
+ISIC_0062368.JPG,datasets/ISIC\Solar lentigo\ISIC_0062368.JPG,solar_lentigo,ISIC
+ISIC_0062411.JPG,datasets/ISIC\Solar lentigo\ISIC_0062411.JPG,solar_lentigo,ISIC
+ISIC_0062421.JPG,datasets/ISIC\Solar lentigo\ISIC_0062421.JPG,solar_lentigo,ISIC
+ISIC_0062424.JPG,datasets/ISIC\Solar lentigo\ISIC_0062424.JPG,solar_lentigo,ISIC
+ISIC_0062561.JPG,datasets/ISIC\Solar lentigo\ISIC_0062561.JPG,solar_lentigo,ISIC
+ISIC_0062587.JPG,datasets/ISIC\Solar lentigo\ISIC_0062587.JPG,solar_lentigo,ISIC
+ISIC_0062590.JPG,datasets/ISIC\Solar lentigo\ISIC_0062590.JPG,solar_lentigo,ISIC
+ISIC_0062672.JPG,datasets/ISIC\Solar lentigo\ISIC_0062672.JPG,solar_lentigo,ISIC
+ISIC_0062699.JPG,datasets/ISIC\Solar lentigo\ISIC_0062699.JPG,solar_lentigo,ISIC
+ISIC_0062754.JPG,datasets/ISIC\Solar lentigo\ISIC_0062754.JPG,solar_lentigo,ISIC
+ISIC_0062968.JPG,datasets/ISIC\Solar lentigo\ISIC_0062968.JPG,solar_lentigo,ISIC
+ISIC_0063075.JPG,datasets/ISIC\Solar lentigo\ISIC_0063075.JPG,solar_lentigo,ISIC
+ISIC_0063076.JPG,datasets/ISIC\Solar lentigo\ISIC_0063076.JPG,solar_lentigo,ISIC
+ISIC_0063201.JPG,datasets/ISIC\Solar lentigo\ISIC_0063201.JPG,solar_lentigo,ISIC
+ISIC_0063398.JPG,datasets/ISIC\Solar lentigo\ISIC_0063398.JPG,solar_lentigo,ISIC
+ISIC_0063510.JPG,datasets/ISIC\Solar lentigo\ISIC_0063510.JPG,solar_lentigo,ISIC
+ISIC_0063542.JPG,datasets/ISIC\Solar lentigo\ISIC_0063542.JPG,solar_lentigo,ISIC
+ISIC_0063635.JPG,datasets/ISIC\Solar lentigo\ISIC_0063635.JPG,solar_lentigo,ISIC
+ISIC_0063718.JPG,datasets/ISIC\Solar lentigo\ISIC_0063718.JPG,solar_lentigo,ISIC
+ISIC_0063729.JPG,datasets/ISIC\Solar lentigo\ISIC_0063729.JPG,solar_lentigo,ISIC
+ISIC_0063783.JPG,datasets/ISIC\Solar lentigo\ISIC_0063783.JPG,solar_lentigo,ISIC
+ISIC_0064025.JPG,datasets/ISIC\Solar lentigo\ISIC_0064025.JPG,solar_lentigo,ISIC
+ISIC_0064228.JPG,datasets/ISIC\Solar lentigo\ISIC_0064228.JPG,solar_lentigo,ISIC
+ISIC_0064264.JPG,datasets/ISIC\Solar lentigo\ISIC_0064264.JPG,solar_lentigo,ISIC
+ISIC_0064445.JPG,datasets/ISIC\Solar lentigo\ISIC_0064445.JPG,solar_lentigo,ISIC
+ISIC_0064518.JPG,datasets/ISIC\Solar lentigo\ISIC_0064518.JPG,solar_lentigo,ISIC
+ISIC_0064793.JPG,datasets/ISIC\Solar lentigo\ISIC_0064793.JPG,solar_lentigo,ISIC
+ISIC_0064942.JPG,datasets/ISIC\Solar lentigo\ISIC_0064942.JPG,solar_lentigo,ISIC
+ISIC_0065232.JPG,datasets/ISIC\Solar lentigo\ISIC_0065232.JPG,solar_lentigo,ISIC
+ISIC_0065514.JPG,datasets/ISIC\Solar lentigo\ISIC_0065514.JPG,solar_lentigo,ISIC
+ISIC_0065554.JPG,datasets/ISIC\Solar lentigo\ISIC_0065554.JPG,solar_lentigo,ISIC
+ISIC_0065744.JPG,datasets/ISIC\Solar lentigo\ISIC_0065744.JPG,solar_lentigo,ISIC
+ISIC_0065865.JPG,datasets/ISIC\Solar lentigo\ISIC_0065865.JPG,solar_lentigo,ISIC
+ISIC_0065909.JPG,datasets/ISIC\Solar lentigo\ISIC_0065909.JPG,solar_lentigo,ISIC
+ISIC_0065935.JPG,datasets/ISIC\Solar lentigo\ISIC_0065935.JPG,solar_lentigo,ISIC
+ISIC_0065964.JPG,datasets/ISIC\Solar lentigo\ISIC_0065964.JPG,solar_lentigo,ISIC
+ISIC_0066072.JPG,datasets/ISIC\Solar lentigo\ISIC_0066072.JPG,solar_lentigo,ISIC
+ISIC_0066089.JPG,datasets/ISIC\Solar lentigo\ISIC_0066089.JPG,solar_lentigo,ISIC
+ISIC_0066256.JPG,datasets/ISIC\Solar lentigo\ISIC_0066256.JPG,solar_lentigo,ISIC
+ISIC_0066313.JPG,datasets/ISIC\Solar lentigo\ISIC_0066313.JPG,solar_lentigo,ISIC
+ISIC_0066385.JPG,datasets/ISIC\Solar lentigo\ISIC_0066385.JPG,solar_lentigo,ISIC
+ISIC_0066706.JPG,datasets/ISIC\Solar lentigo\ISIC_0066706.JPG,solar_lentigo,ISIC
+ISIC_0066731.JPG,datasets/ISIC\Solar lentigo\ISIC_0066731.JPG,solar_lentigo,ISIC
+ISIC_0066764.JPG,datasets/ISIC\Solar lentigo\ISIC_0066764.JPG,solar_lentigo,ISIC
+ISIC_0066946.JPG,datasets/ISIC\Solar lentigo\ISIC_0066946.JPG,solar_lentigo,ISIC
+ISIC_0067035.JPG,datasets/ISIC\Solar lentigo\ISIC_0067035.JPG,solar_lentigo,ISIC
+ISIC_0067039.JPG,datasets/ISIC\Solar lentigo\ISIC_0067039.JPG,solar_lentigo,ISIC
+ISIC_0067065.JPG,datasets/ISIC\Solar lentigo\ISIC_0067065.JPG,solar_lentigo,ISIC
+ISIC_0067273.JPG,datasets/ISIC\Solar lentigo\ISIC_0067273.JPG,solar_lentigo,ISIC
+ISIC_0067408.JPG,datasets/ISIC\Solar lentigo\ISIC_0067408.JPG,solar_lentigo,ISIC
+ISIC_0067501.JPG,datasets/ISIC\Solar lentigo\ISIC_0067501.JPG,solar_lentigo,ISIC
+ISIC_0067546.JPG,datasets/ISIC\Solar lentigo\ISIC_0067546.JPG,solar_lentigo,ISIC
+ISIC_0067557.JPG,datasets/ISIC\Solar lentigo\ISIC_0067557.JPG,solar_lentigo,ISIC
+ISIC_0067664.JPG,datasets/ISIC\Solar lentigo\ISIC_0067664.JPG,solar_lentigo,ISIC
+ISIC_0067739.JPG,datasets/ISIC\Solar lentigo\ISIC_0067739.JPG,solar_lentigo,ISIC
+ISIC_0067856.JPG,datasets/ISIC\Solar lentigo\ISIC_0067856.JPG,solar_lentigo,ISIC
+ISIC_0067962.JPG,datasets/ISIC\Solar lentigo\ISIC_0067962.JPG,solar_lentigo,ISIC
+ISIC_0067992.JPG,datasets/ISIC\Solar lentigo\ISIC_0067992.JPG,solar_lentigo,ISIC
+ISIC_0068216.JPG,datasets/ISIC\Solar lentigo\ISIC_0068216.JPG,solar_lentigo,ISIC
+ISIC_0068366.JPG,datasets/ISIC\Solar lentigo\ISIC_0068366.JPG,solar_lentigo,ISIC
+ISIC_0068467.JPG,datasets/ISIC\Solar lentigo\ISIC_0068467.JPG,solar_lentigo,ISIC
+ISIC_0068504.JPG,datasets/ISIC\Solar lentigo\ISIC_0068504.JPG,solar_lentigo,ISIC
+ISIC_0068575.JPG,datasets/ISIC\Solar lentigo\ISIC_0068575.JPG,solar_lentigo,ISIC
+ISIC_0068596.JPG,datasets/ISIC\Solar lentigo\ISIC_0068596.JPG,solar_lentigo,ISIC
+ISIC_0068691.JPG,datasets/ISIC\Solar lentigo\ISIC_0068691.JPG,solar_lentigo,ISIC
+ISIC_0068733.JPG,datasets/ISIC\Solar lentigo\ISIC_0068733.JPG,solar_lentigo,ISIC
+ISIC_0069016.JPG,datasets/ISIC\Solar lentigo\ISIC_0069016.JPG,solar_lentigo,ISIC
+ISIC_0069057.JPG,datasets/ISIC\Solar lentigo\ISIC_0069057.JPG,solar_lentigo,ISIC
+ISIC_0069284.JPG,datasets/ISIC\Solar lentigo\ISIC_0069284.JPG,solar_lentigo,ISIC
+ISIC_0069307.JPG,datasets/ISIC\Solar lentigo\ISIC_0069307.JPG,solar_lentigo,ISIC
+ISIC_0069327.JPG,datasets/ISIC\Solar lentigo\ISIC_0069327.JPG,solar_lentigo,ISIC
+ISIC_0069333.JPG,datasets/ISIC\Solar lentigo\ISIC_0069333.JPG,solar_lentigo,ISIC
+ISIC_0069406.JPG,datasets/ISIC\Solar lentigo\ISIC_0069406.JPG,solar_lentigo,ISIC
+ISIC_0069425.JPG,datasets/ISIC\Solar lentigo\ISIC_0069425.JPG,solar_lentigo,ISIC
+ISIC_0069496.JPG,datasets/ISIC\Solar lentigo\ISIC_0069496.JPG,solar_lentigo,ISIC
+ISIC_0069605.JPG,datasets/ISIC\Solar lentigo\ISIC_0069605.JPG,solar_lentigo,ISIC
+ISIC_0069663.JPG,datasets/ISIC\Solar lentigo\ISIC_0069663.JPG,solar_lentigo,ISIC
+ISIC_0069790.JPG,datasets/ISIC\Solar lentigo\ISIC_0069790.JPG,solar_lentigo,ISIC
+ISIC_0069849.JPG,datasets/ISIC\Solar lentigo\ISIC_0069849.JPG,solar_lentigo,ISIC
+ISIC_0069853.JPG,datasets/ISIC\Solar lentigo\ISIC_0069853.JPG,solar_lentigo,ISIC
+ISIC_0069879.JPG,datasets/ISIC\Solar lentigo\ISIC_0069879.JPG,solar_lentigo,ISIC
+ISIC_0069965.JPG,datasets/ISIC\Solar lentigo\ISIC_0069965.JPG,solar_lentigo,ISIC
+ISIC_0070040.JPG,datasets/ISIC\Solar lentigo\ISIC_0070040.JPG,solar_lentigo,ISIC
+ISIC_0070187.JPG,datasets/ISIC\Solar lentigo\ISIC_0070187.JPG,solar_lentigo,ISIC
+ISIC_0070238.JPG,datasets/ISIC\Solar lentigo\ISIC_0070238.JPG,solar_lentigo,ISIC
+ISIC_0070261.JPG,datasets/ISIC\Solar lentigo\ISIC_0070261.JPG,solar_lentigo,ISIC
+ISIC_0070467.JPG,datasets/ISIC\Solar lentigo\ISIC_0070467.JPG,solar_lentigo,ISIC
+ISIC_0070512.JPG,datasets/ISIC\Solar lentigo\ISIC_0070512.JPG,solar_lentigo,ISIC
+ISIC_0070622.JPG,datasets/ISIC\Solar lentigo\ISIC_0070622.JPG,solar_lentigo,ISIC
+ISIC_0070917.JPG,datasets/ISIC\Solar lentigo\ISIC_0070917.JPG,solar_lentigo,ISIC
+ISIC_0070963.JPG,datasets/ISIC\Solar lentigo\ISIC_0070963.JPG,solar_lentigo,ISIC
+ISIC_0070980.JPG,datasets/ISIC\Solar lentigo\ISIC_0070980.JPG,solar_lentigo,ISIC
+ISIC_0071054.JPG,datasets/ISIC\Solar lentigo\ISIC_0071054.JPG,solar_lentigo,ISIC
+ISIC_0071087.JPG,datasets/ISIC\Solar lentigo\ISIC_0071087.JPG,solar_lentigo,ISIC
+ISIC_0071104.JPG,datasets/ISIC\Solar lentigo\ISIC_0071104.JPG,solar_lentigo,ISIC
+ISIC_0071211.JPG,datasets/ISIC\Solar lentigo\ISIC_0071211.JPG,solar_lentigo,ISIC
+ISIC_0071317.JPG,datasets/ISIC\Solar lentigo\ISIC_0071317.JPG,solar_lentigo,ISIC
+ISIC_0071329.JPG,datasets/ISIC\Solar lentigo\ISIC_0071329.JPG,solar_lentigo,ISIC
+ISIC_0071380.JPG,datasets/ISIC\Solar lentigo\ISIC_0071380.JPG,solar_lentigo,ISIC
+ISIC_0071399.JPG,datasets/ISIC\Solar lentigo\ISIC_0071399.JPG,solar_lentigo,ISIC
+ISIC_0071511.JPG,datasets/ISIC\Solar lentigo\ISIC_0071511.JPG,solar_lentigo,ISIC
+ISIC_0071615.JPG,datasets/ISIC\Solar lentigo\ISIC_0071615.JPG,solar_lentigo,ISIC
+ISIC_0071753.JPG,datasets/ISIC\Solar lentigo\ISIC_0071753.JPG,solar_lentigo,ISIC
+ISIC_0071847.JPG,datasets/ISIC\Solar lentigo\ISIC_0071847.JPG,solar_lentigo,ISIC
+ISIC_0072057.JPG,datasets/ISIC\Solar lentigo\ISIC_0072057.JPG,solar_lentigo,ISIC
+ISIC_0072075.JPG,datasets/ISIC\Solar lentigo\ISIC_0072075.JPG,solar_lentigo,ISIC
+ISIC_0072098.JPG,datasets/ISIC\Solar lentigo\ISIC_0072098.JPG,solar_lentigo,ISIC
+ISIC_0072436.JPG,datasets/ISIC\Solar lentigo\ISIC_0072436.JPG,solar_lentigo,ISIC
+ISIC_0072752.JPG,datasets/ISIC\Solar lentigo\ISIC_0072752.JPG,solar_lentigo,ISIC
+ISIC_0072782.JPG,datasets/ISIC\Solar lentigo\ISIC_0072782.JPG,solar_lentigo,ISIC
+ISIC_0072815.JPG,datasets/ISIC\Solar lentigo\ISIC_0072815.JPG,solar_lentigo,ISIC
+ISIC_0072901.JPG,datasets/ISIC\Solar lentigo\ISIC_0072901.JPG,solar_lentigo,ISIC
+ISIC_0073039.JPG,datasets/ISIC\Solar lentigo\ISIC_0073039.JPG,solar_lentigo,ISIC
+ISIC_0073070.JPG,datasets/ISIC\Solar lentigo\ISIC_0073070.JPG,solar_lentigo,ISIC
+ISIC_0073108.JPG,datasets/ISIC\Solar lentigo\ISIC_0073108.JPG,solar_lentigo,ISIC
+ISIC_0119296.JPG,datasets/ISIC\Solar lentigo\ISIC_0119296.JPG,solar_lentigo,ISIC
+ISIC_0126191.JPG,datasets/ISIC\Solar lentigo\ISIC_0126191.JPG,solar_lentigo,ISIC
+ISIC_0135990.JPG,datasets/ISIC\Solar lentigo\ISIC_0135990.JPG,solar_lentigo,ISIC
+ISIC_0140720.JPG,datasets/ISIC\Solar lentigo\ISIC_0140720.JPG,solar_lentigo,ISIC
+ISIC_0223461.JPG,datasets/ISIC\Solar lentigo\ISIC_0223461.JPG,solar_lentigo,ISIC
+ISIC_0259780.JPG,datasets/ISIC\Solar lentigo\ISIC_0259780.JPG,solar_lentigo,ISIC
+ISIC_0289271.JPG,datasets/ISIC\Solar lentigo\ISIC_0289271.JPG,solar_lentigo,ISIC
+ISIC_0314083.JPG,datasets/ISIC\Solar lentigo\ISIC_0314083.JPG,solar_lentigo,ISIC
+ISIC_0371997.JPG,datasets/ISIC\Solar lentigo\ISIC_0371997.JPG,solar_lentigo,ISIC
+ISIC_0401647.JPG,datasets/ISIC\Solar lentigo\ISIC_0401647.JPG,solar_lentigo,ISIC
+ISIC_0567265.JPG,datasets/ISIC\Solar lentigo\ISIC_0567265.JPG,solar_lentigo,ISIC
+ISIC_0592761.JPG,datasets/ISIC\Solar lentigo\ISIC_0592761.JPG,solar_lentigo,ISIC
+ISIC_0602893.JPG,datasets/ISIC\Solar lentigo\ISIC_0602893.JPG,solar_lentigo,ISIC
+ISIC_0612638.JPG,datasets/ISIC\Solar lentigo\ISIC_0612638.JPG,solar_lentigo,ISIC
+ISIC_0651512.JPG,datasets/ISIC\Solar lentigo\ISIC_0651512.JPG,solar_lentigo,ISIC
+ISIC_1205301.JPG,datasets/ISIC\Solar lentigo\ISIC_1205301.JPG,solar_lentigo,ISIC
+ISIC_1214018.JPG,datasets/ISIC\Solar lentigo\ISIC_1214018.JPG,solar_lentigo,ISIC
+ISIC_1358441.JPG,datasets/ISIC\Solar lentigo\ISIC_1358441.JPG,solar_lentigo,ISIC
+ISIC_1365352.JPG,datasets/ISIC\Solar lentigo\ISIC_1365352.JPG,solar_lentigo,ISIC
+ISIC_1431969.JPG,datasets/ISIC\Solar lentigo\ISIC_1431969.JPG,solar_lentigo,ISIC
+ISIC_1479692.JPG,datasets/ISIC\Solar lentigo\ISIC_1479692.JPG,solar_lentigo,ISIC
+ISIC_1506953.JPG,datasets/ISIC\Solar lentigo\ISIC_1506953.JPG,solar_lentigo,ISIC
+ISIC_1534969.JPG,datasets/ISIC\Solar lentigo\ISIC_1534969.JPG,solar_lentigo,ISIC
+ISIC_1547095.JPG,datasets/ISIC\Solar lentigo\ISIC_1547095.JPG,solar_lentigo,ISIC
+ISIC_1733131.JPG,datasets/ISIC\Solar lentigo\ISIC_1733131.JPG,solar_lentigo,ISIC
+ISIC_1735322.JPG,datasets/ISIC\Solar lentigo\ISIC_1735322.JPG,solar_lentigo,ISIC
+ISIC_1742207.JPG,datasets/ISIC\Solar lentigo\ISIC_1742207.JPG,solar_lentigo,ISIC
+ISIC_1752997.JPG,datasets/ISIC\Solar lentigo\ISIC_1752997.JPG,solar_lentigo,ISIC
+ISIC_1819418.JPG,datasets/ISIC\Solar lentigo\ISIC_1819418.JPG,solar_lentigo,ISIC
+ISIC_1838042.JPG,datasets/ISIC\Solar lentigo\ISIC_1838042.JPG,solar_lentigo,ISIC
+ISIC_1933101.JPG,datasets/ISIC\Solar lentigo\ISIC_1933101.JPG,solar_lentigo,ISIC
+ISIC_1960009.JPG,datasets/ISIC\Solar lentigo\ISIC_1960009.JPG,solar_lentigo,ISIC
+ISIC_1990155.JPG,datasets/ISIC\Solar lentigo\ISIC_1990155.JPG,solar_lentigo,ISIC
+ISIC_1993128.JPG,datasets/ISIC\Solar lentigo\ISIC_1993128.JPG,solar_lentigo,ISIC
+ISIC_2082962.JPG,datasets/ISIC\Solar lentigo\ISIC_2082962.JPG,solar_lentigo,ISIC
+ISIC_2116449.JPG,datasets/ISIC\Solar lentigo\ISIC_2116449.JPG,solar_lentigo,ISIC
+ISIC_2126277.JPG,datasets/ISIC\Solar lentigo\ISIC_2126277.JPG,solar_lentigo,ISIC
+ISIC_2287405.JPG,datasets/ISIC\Solar lentigo\ISIC_2287405.JPG,solar_lentigo,ISIC
+ISIC_2355590.JPG,datasets/ISIC\Solar lentigo\ISIC_2355590.JPG,solar_lentigo,ISIC
+ISIC_2436560.JPG,datasets/ISIC\Solar lentigo\ISIC_2436560.JPG,solar_lentigo,ISIC
+ISIC_2557960.JPG,datasets/ISIC\Solar lentigo\ISIC_2557960.JPG,solar_lentigo,ISIC
+ISIC_2576220.JPG,datasets/ISIC\Solar lentigo\ISIC_2576220.JPG,solar_lentigo,ISIC
+ISIC_2615058.JPG,datasets/ISIC\Solar lentigo\ISIC_2615058.JPG,solar_lentigo,ISIC
+ISIC_2782072.JPG,datasets/ISIC\Solar lentigo\ISIC_2782072.JPG,solar_lentigo,ISIC
+ISIC_2783936.JPG,datasets/ISIC\Solar lentigo\ISIC_2783936.JPG,solar_lentigo,ISIC
+ISIC_2801456.JPG,datasets/ISIC\Solar lentigo\ISIC_2801456.JPG,solar_lentigo,ISIC
+ISIC_2810420.JPG,datasets/ISIC\Solar lentigo\ISIC_2810420.JPG,solar_lentigo,ISIC
+ISIC_2857760.JPG,datasets/ISIC\Solar lentigo\ISIC_2857760.JPG,solar_lentigo,ISIC
+ISIC_3001197.JPG,datasets/ISIC\Solar lentigo\ISIC_3001197.JPG,solar_lentigo,ISIC
+ISIC_3023694.JPG,datasets/ISIC\Solar lentigo\ISIC_3023694.JPG,solar_lentigo,ISIC
+ISIC_3033120.JPG,datasets/ISIC\Solar lentigo\ISIC_3033120.JPG,solar_lentigo,ISIC
+ISIC_3037941.JPG,datasets/ISIC\Solar lentigo\ISIC_3037941.JPG,solar_lentigo,ISIC
+ISIC_3118406.JPG,datasets/ISIC\Solar lentigo\ISIC_3118406.JPG,solar_lentigo,ISIC
+ISIC_3160599.JPG,datasets/ISIC\Solar lentigo\ISIC_3160599.JPG,solar_lentigo,ISIC
+ISIC_3180213.JPG,datasets/ISIC\Solar lentigo\ISIC_3180213.JPG,solar_lentigo,ISIC
+ISIC_3182500.JPG,datasets/ISIC\Solar lentigo\ISIC_3182500.JPG,solar_lentigo,ISIC
+ISIC_3363819.JPG,datasets/ISIC\Solar lentigo\ISIC_3363819.JPG,solar_lentigo,ISIC
+ISIC_3393031.JPG,datasets/ISIC\Solar lentigo\ISIC_3393031.JPG,solar_lentigo,ISIC
+ISIC_3406437.JPG,datasets/ISIC\Solar lentigo\ISIC_3406437.JPG,solar_lentigo,ISIC
+ISIC_3429725.JPG,datasets/ISIC\Solar lentigo\ISIC_3429725.JPG,solar_lentigo,ISIC
+ISIC_3443621.JPG,datasets/ISIC\Solar lentigo\ISIC_3443621.JPG,solar_lentigo,ISIC
+ISIC_3471297.JPG,datasets/ISIC\Solar lentigo\ISIC_3471297.JPG,solar_lentigo,ISIC
+ISIC_3621643.JPG,datasets/ISIC\Solar lentigo\ISIC_3621643.JPG,solar_lentigo,ISIC
+ISIC_3673376.JPG,datasets/ISIC\Solar lentigo\ISIC_3673376.JPG,solar_lentigo,ISIC
+ISIC_3718172.JPG,datasets/ISIC\Solar lentigo\ISIC_3718172.JPG,solar_lentigo,ISIC
+ISIC_3757004.JPG,datasets/ISIC\Solar lentigo\ISIC_3757004.JPG,solar_lentigo,ISIC
+ISIC_3847611.JPG,datasets/ISIC\Solar lentigo\ISIC_3847611.JPG,solar_lentigo,ISIC
+ISIC_3871225.JPG,datasets/ISIC\Solar lentigo\ISIC_3871225.JPG,solar_lentigo,ISIC
+ISIC_3979501.JPG,datasets/ISIC\Solar lentigo\ISIC_3979501.JPG,solar_lentigo,ISIC
+ISIC_4066892.JPG,datasets/ISIC\Solar lentigo\ISIC_4066892.JPG,solar_lentigo,ISIC
+ISIC_4093917.JPG,datasets/ISIC\Solar lentigo\ISIC_4093917.JPG,solar_lentigo,ISIC
+ISIC_4105940.JPG,datasets/ISIC\Solar lentigo\ISIC_4105940.JPG,solar_lentigo,ISIC
+ISIC_4163590.JPG,datasets/ISIC\Solar lentigo\ISIC_4163590.JPG,solar_lentigo,ISIC
+ISIC_4174867.JPG,datasets/ISIC\Solar lentigo\ISIC_4174867.JPG,solar_lentigo,ISIC
+ISIC_4310717.JPG,datasets/ISIC\Solar lentigo\ISIC_4310717.JPG,solar_lentigo,ISIC
+ISIC_4320764.JPG,datasets/ISIC\Solar lentigo\ISIC_4320764.JPG,solar_lentigo,ISIC
+ISIC_4338709.JPG,datasets/ISIC\Solar lentigo\ISIC_4338709.JPG,solar_lentigo,ISIC
+ISIC_4492754.JPG,datasets/ISIC\Solar lentigo\ISIC_4492754.JPG,solar_lentigo,ISIC
+ISIC_4506056.JPG,datasets/ISIC\Solar lentigo\ISIC_4506056.JPG,solar_lentigo,ISIC
+ISIC_4576334.JPG,datasets/ISIC\Solar lentigo\ISIC_4576334.JPG,solar_lentigo,ISIC
+ISIC_4734240.JPG,datasets/ISIC\Solar lentigo\ISIC_4734240.JPG,solar_lentigo,ISIC
+ISIC_4743199.JPG,datasets/ISIC\Solar lentigo\ISIC_4743199.JPG,solar_lentigo,ISIC
+ISIC_4854546.JPG,datasets/ISIC\Solar lentigo\ISIC_4854546.JPG,solar_lentigo,ISIC
+ISIC_4887403.JPG,datasets/ISIC\Solar lentigo\ISIC_4887403.JPG,solar_lentigo,ISIC
+ISIC_4919062.JPG,datasets/ISIC\Solar lentigo\ISIC_4919062.JPG,solar_lentigo,ISIC
+ISIC_5045552.JPG,datasets/ISIC\Solar lentigo\ISIC_5045552.JPG,solar_lentigo,ISIC
+ISIC_5144315.JPG,datasets/ISIC\Solar lentigo\ISIC_5144315.JPG,solar_lentigo,ISIC
+ISIC_5337158.JPG,datasets/ISIC\Solar lentigo\ISIC_5337158.JPG,solar_lentigo,ISIC
+ISIC_5369138.JPG,datasets/ISIC\Solar lentigo\ISIC_5369138.JPG,solar_lentigo,ISIC
+ISIC_5449421.JPG,datasets/ISIC\Solar lentigo\ISIC_5449421.JPG,solar_lentigo,ISIC
+ISIC_5544398.JPG,datasets/ISIC\Solar lentigo\ISIC_5544398.JPG,solar_lentigo,ISIC
+ISIC_5557949.JPG,datasets/ISIC\Solar lentigo\ISIC_5557949.JPG,solar_lentigo,ISIC
+ISIC_5562836.JPG,datasets/ISIC\Solar lentigo\ISIC_5562836.JPG,solar_lentigo,ISIC
+ISIC_5569369.JPG,datasets/ISIC\Solar lentigo\ISIC_5569369.JPG,solar_lentigo,ISIC
+ISIC_5571430.JPG,datasets/ISIC\Solar lentigo\ISIC_5571430.JPG,solar_lentigo,ISIC
+ISIC_5623138.JPG,datasets/ISIC\Solar lentigo\ISIC_5623138.JPG,solar_lentigo,ISIC
+ISIC_5731511.JPG,datasets/ISIC\Solar lentigo\ISIC_5731511.JPG,solar_lentigo,ISIC
+ISIC_5789867.JPG,datasets/ISIC\Solar lentigo\ISIC_5789867.JPG,solar_lentigo,ISIC
+ISIC_5849266.JPG,datasets/ISIC\Solar lentigo\ISIC_5849266.JPG,solar_lentigo,ISIC
+ISIC_5849354.JPG,datasets/ISIC\Solar lentigo\ISIC_5849354.JPG,solar_lentigo,ISIC
+ISIC_5948139.JPG,datasets/ISIC\Solar lentigo\ISIC_5948139.JPG,solar_lentigo,ISIC
+ISIC_5959935.JPG,datasets/ISIC\Solar lentigo\ISIC_5959935.JPG,solar_lentigo,ISIC
+ISIC_5971635.JPG,datasets/ISIC\Solar lentigo\ISIC_5971635.JPG,solar_lentigo,ISIC
+ISIC_5991850.JPG,datasets/ISIC\Solar lentigo\ISIC_5991850.JPG,solar_lentigo,ISIC
+ISIC_6073897.JPG,datasets/ISIC\Solar lentigo\ISIC_6073897.JPG,solar_lentigo,ISIC
+ISIC_6106060.JPG,datasets/ISIC\Solar lentigo\ISIC_6106060.JPG,solar_lentigo,ISIC
+ISIC_6128404.JPG,datasets/ISIC\Solar lentigo\ISIC_6128404.JPG,solar_lentigo,ISIC
+ISIC_6174918.JPG,datasets/ISIC\Solar lentigo\ISIC_6174918.JPG,solar_lentigo,ISIC
+ISIC_6240570.JPG,datasets/ISIC\Solar lentigo\ISIC_6240570.JPG,solar_lentigo,ISIC
+ISIC_6259135.JPG,datasets/ISIC\Solar lentigo\ISIC_6259135.JPG,solar_lentigo,ISIC
+ISIC_6288741.JPG,datasets/ISIC\Solar lentigo\ISIC_6288741.JPG,solar_lentigo,ISIC
+ISIC_6289062.JPG,datasets/ISIC\Solar lentigo\ISIC_6289062.JPG,solar_lentigo,ISIC
+ISIC_6303895.JPG,datasets/ISIC\Solar lentigo\ISIC_6303895.JPG,solar_lentigo,ISIC
+ISIC_6364763.JPG,datasets/ISIC\Solar lentigo\ISIC_6364763.JPG,solar_lentigo,ISIC
+ISIC_6382790.JPG,datasets/ISIC\Solar lentigo\ISIC_6382790.JPG,solar_lentigo,ISIC
+ISIC_6432255.JPG,datasets/ISIC\Solar lentigo\ISIC_6432255.JPG,solar_lentigo,ISIC
+ISIC_6457212.JPG,datasets/ISIC\Solar lentigo\ISIC_6457212.JPG,solar_lentigo,ISIC
+ISIC_6460536.JPG,datasets/ISIC\Solar lentigo\ISIC_6460536.JPG,solar_lentigo,ISIC
+ISIC_6494694.JPG,datasets/ISIC\Solar lentigo\ISIC_6494694.JPG,solar_lentigo,ISIC
+ISIC_6498094.JPG,datasets/ISIC\Solar lentigo\ISIC_6498094.JPG,solar_lentigo,ISIC
+ISIC_6548523.JPG,datasets/ISIC\Solar lentigo\ISIC_6548523.JPG,solar_lentigo,ISIC
+ISIC_6780662.JPG,datasets/ISIC\Solar lentigo\ISIC_6780662.JPG,solar_lentigo,ISIC
+ISIC_6821074.JPG,datasets/ISIC\Solar lentigo\ISIC_6821074.JPG,solar_lentigo,ISIC
+ISIC_6866262.JPG,datasets/ISIC\Solar lentigo\ISIC_6866262.JPG,solar_lentigo,ISIC
+ISIC_6889402.JPG,datasets/ISIC\Solar lentigo\ISIC_6889402.JPG,solar_lentigo,ISIC
+ISIC_6946258.JPG,datasets/ISIC\Solar lentigo\ISIC_6946258.JPG,solar_lentigo,ISIC
+ISIC_6946803.JPG,datasets/ISIC\Solar lentigo\ISIC_6946803.JPG,solar_lentigo,ISIC
+ISIC_7006530.JPG,datasets/ISIC\Solar lentigo\ISIC_7006530.JPG,solar_lentigo,ISIC
+ISIC_7011923.JPG,datasets/ISIC\Solar lentigo\ISIC_7011923.JPG,solar_lentigo,ISIC
+ISIC_7078944.JPG,datasets/ISIC\Solar lentigo\ISIC_7078944.JPG,solar_lentigo,ISIC
+ISIC_7118325.JPG,datasets/ISIC\Solar lentigo\ISIC_7118325.JPG,solar_lentigo,ISIC
+ISIC_7155969.JPG,datasets/ISIC\Solar lentigo\ISIC_7155969.JPG,solar_lentigo,ISIC
+ISIC_7240363.JPG,datasets/ISIC\Solar lentigo\ISIC_7240363.JPG,solar_lentigo,ISIC
+ISIC_7264353.JPG,datasets/ISIC\Solar lentigo\ISIC_7264353.JPG,solar_lentigo,ISIC
+ISIC_7273804.JPG,datasets/ISIC\Solar lentigo\ISIC_7273804.JPG,solar_lentigo,ISIC
+ISIC_7358293.JPG,datasets/ISIC\Solar lentigo\ISIC_7358293.JPG,solar_lentigo,ISIC
+ISIC_7373609.JPG,datasets/ISIC\Solar lentigo\ISIC_7373609.JPG,solar_lentigo,ISIC
+ISIC_7433711.JPG,datasets/ISIC\Solar lentigo\ISIC_7433711.JPG,solar_lentigo,ISIC
+ISIC_7476070.JPG,datasets/ISIC\Solar lentigo\ISIC_7476070.JPG,solar_lentigo,ISIC
+ISIC_7508477.JPG,datasets/ISIC\Solar lentigo\ISIC_7508477.JPG,solar_lentigo,ISIC
+ISIC_7651745.JPG,datasets/ISIC\Solar lentigo\ISIC_7651745.JPG,solar_lentigo,ISIC
+ISIC_7654194.JPG,datasets/ISIC\Solar lentigo\ISIC_7654194.JPG,solar_lentigo,ISIC
+ISIC_7674295.JPG,datasets/ISIC\Solar lentigo\ISIC_7674295.JPG,solar_lentigo,ISIC
+ISIC_7705774.JPG,datasets/ISIC\Solar lentigo\ISIC_7705774.JPG,solar_lentigo,ISIC
+ISIC_7747824.JPG,datasets/ISIC\Solar lentigo\ISIC_7747824.JPG,solar_lentigo,ISIC
+ISIC_7803822.JPG,datasets/ISIC\Solar lentigo\ISIC_7803822.JPG,solar_lentigo,ISIC
+ISIC_7904757.JPG,datasets/ISIC\Solar lentigo\ISIC_7904757.JPG,solar_lentigo,ISIC
+ISIC_7917871.JPG,datasets/ISIC\Solar lentigo\ISIC_7917871.JPG,solar_lentigo,ISIC
+ISIC_7949933.JPG,datasets/ISIC\Solar lentigo\ISIC_7949933.JPG,solar_lentigo,ISIC
+ISIC_8014228.JPG,datasets/ISIC\Solar lentigo\ISIC_8014228.JPG,solar_lentigo,ISIC
+ISIC_8188974.JPG,datasets/ISIC\Solar lentigo\ISIC_8188974.JPG,solar_lentigo,ISIC
+ISIC_8329541.JPG,datasets/ISIC\Solar lentigo\ISIC_8329541.JPG,solar_lentigo,ISIC
+ISIC_8361472.JPG,datasets/ISIC\Solar lentigo\ISIC_8361472.JPG,solar_lentigo,ISIC
+ISIC_8412624.JPG,datasets/ISIC\Solar lentigo\ISIC_8412624.JPG,solar_lentigo,ISIC
+ISIC_8423078.JPG,datasets/ISIC\Solar lentigo\ISIC_8423078.JPG,solar_lentigo,ISIC
+ISIC_8458339.JPG,datasets/ISIC\Solar lentigo\ISIC_8458339.JPG,solar_lentigo,ISIC
+ISIC_8502689.JPG,datasets/ISIC\Solar lentigo\ISIC_8502689.JPG,solar_lentigo,ISIC
+ISIC_8563029.JPG,datasets/ISIC\Solar lentigo\ISIC_8563029.JPG,solar_lentigo,ISIC
+ISIC_8568000.JPG,datasets/ISIC\Solar lentigo\ISIC_8568000.JPG,solar_lentigo,ISIC
+ISIC_8581475.JPG,datasets/ISIC\Solar lentigo\ISIC_8581475.JPG,solar_lentigo,ISIC
+ISIC_8586456.JPG,datasets/ISIC\Solar lentigo\ISIC_8586456.JPG,solar_lentigo,ISIC
+ISIC_8732565.JPG,datasets/ISIC\Solar lentigo\ISIC_8732565.JPG,solar_lentigo,ISIC
+ISIC_8790255.JPG,datasets/ISIC\Solar lentigo\ISIC_8790255.JPG,solar_lentigo,ISIC
+ISIC_8830487.JPG,datasets/ISIC\Solar lentigo\ISIC_8830487.JPG,solar_lentigo,ISIC
+ISIC_8997516.JPG,datasets/ISIC\Solar lentigo\ISIC_8997516.JPG,solar_lentigo,ISIC
+ISIC_9045599.JPG,datasets/ISIC\Solar lentigo\ISIC_9045599.JPG,solar_lentigo,ISIC
+ISIC_9091604.JPG,datasets/ISIC\Solar lentigo\ISIC_9091604.JPG,solar_lentigo,ISIC
+ISIC_9101387.JPG,datasets/ISIC\Solar lentigo\ISIC_9101387.JPG,solar_lentigo,ISIC
+ISIC_9152603.JPG,datasets/ISIC\Solar lentigo\ISIC_9152603.JPG,solar_lentigo,ISIC
+ISIC_9206499.JPG,datasets/ISIC\Solar lentigo\ISIC_9206499.JPG,solar_lentigo,ISIC
+ISIC_9262654.JPG,datasets/ISIC\Solar lentigo\ISIC_9262654.JPG,solar_lentigo,ISIC
+ISIC_9304776.JPG,datasets/ISIC\Solar lentigo\ISIC_9304776.JPG,solar_lentigo,ISIC
+ISIC_9348198.JPG,datasets/ISIC\Solar lentigo\ISIC_9348198.JPG,solar_lentigo,ISIC
+ISIC_9377882.JPG,datasets/ISIC\Solar lentigo\ISIC_9377882.JPG,solar_lentigo,ISIC
+ISIC_9437700.JPG,datasets/ISIC\Solar lentigo\ISIC_9437700.JPG,solar_lentigo,ISIC
+ISIC_9485600.JPG,datasets/ISIC\Solar lentigo\ISIC_9485600.JPG,solar_lentigo,ISIC
+ISIC_9487340.JPG,datasets/ISIC\Solar lentigo\ISIC_9487340.JPG,solar_lentigo,ISIC
+ISIC_9536802.JPG,datasets/ISIC\Solar lentigo\ISIC_9536802.JPG,solar_lentigo,ISIC
+ISIC_9537942.JPG,datasets/ISIC\Solar lentigo\ISIC_9537942.JPG,solar_lentigo,ISIC
+ISIC_9611124.JPG,datasets/ISIC\Solar lentigo\ISIC_9611124.JPG,solar_lentigo,ISIC
+ISIC_9660623.JPG,datasets/ISIC\Solar lentigo\ISIC_9660623.JPG,solar_lentigo,ISIC
+ISIC_9772863.JPG,datasets/ISIC\Solar lentigo\ISIC_9772863.JPG,solar_lentigo,ISIC
+ISIC_9862922.JPG,datasets/ISIC\Solar lentigo\ISIC_9862922.JPG,solar_lentigo,ISIC
+ISIC_9869653.JPG,datasets/ISIC\Solar lentigo\ISIC_9869653.JPG,solar_lentigo,ISIC
+ISIC_9905625.JPG,datasets/ISIC\Solar lentigo\ISIC_9905625.JPG,solar_lentigo,ISIC
