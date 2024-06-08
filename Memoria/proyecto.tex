@@ -27,7 +27,7 @@
 \addto\shorthandsspanish{\let\esperiod\es@period@code}
 \makeatother
 
-
+\DeclareUnicodeCharacter{200B}{}
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
@@ -241,12 +241,13 @@ Telecomunicación\xspace}
 	
 	\input{capitulos/10_Conclusiones}
 	
+	
 	%\chapter{Conclusiones y Trabajos Futuros}
 	%
 	%
 	\nocite{}
-	\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-	\bibliographystyle{miunsrturl}
+	\bibliography{bibliografia/bibliografia}
+	\bibliographystyle{plain}
 	
 	\appendix
 	%\input{apendices/manual_usuario/manual_usuario}

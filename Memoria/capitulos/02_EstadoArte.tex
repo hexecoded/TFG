@@ -22,48 +22,67 @@ A continuación, evaluaremos algunos de los modelos más conocidos y efectivos d
 
 \subsubsection{Squeeze-Net (2016)}
 
-Squeeze-Net fue una de las primeras arquitecturas cuyo objetivo se centra en la reducción de complejidad de la arquitectura, sin pérdida de capacidad predictiva y evitando, en cierta manera, los métodos de compresión aplicados hasta el momento. En su titular de publicación, se autodefine como ``una red al nivel de AlexNet pero con una quincuagésima parte de los parámetros''.\\
+Squeeze-Net\cite{iandola2016squeezenet} se centra en la reducción de complejidad de la arquitectura, sin pérdida de capacidad predictiva y evitando aplicar técnicas de compresión y cuantización\cite{kuzmin2024fp8} de modelos. Se autodefine como ``una red al nivel de AlexNet\cite{NIPS2012_c399862d} pero con una quincuagésima parte de los parámetros'', haciendo alusión a disponer de una capacidad de cálculo similar a AlexNet, pero recortando en cuanto a número de parámetros necesarios.\\
 
-Aunque su enfoque no fue centrado al uso de dispositivos móviles concretamente, forma parte de la tendencia actual de reducción de coste computacional para simplificar el hardware necesario para su uso. De esta forma, se puede facilitar la implementación de redes convolucionales en sistemas empotrados con escasa capacidad de memoria y cómputo.\\
+Aunque el motivo de su creación no es de forma directa el uso de la arquitectura en dispositivos móviles, ha sido ampliamente utilizada en ellos al formar parte de la tendencia actual de reducción de coste computacional para reducir las necesidades de potencia de cálculo. De esta forma, se puede facilitar la implementación de redes convolucionales en sistemas empotrados con escasa capacidad de memoria y cómputo, haciendo uso de FPGAs \cite{fpga}.\\
 
-Esta arquitectura introduce varias innovaciones que permiten reducir su tamaño, e incluo aumentar levemente el rendimiento obtenido con respecto a Alex-Net. Los tres más destacados son:
+Siguiendo este punto de vista, fue capaz de igualar e incluso superar levemente el rendimiento de AlexNet\cite{NIPS2012_c399862d}, empleando las siguientes técnicas:
 \begin{itemize}
-    \item Uso de módulos \textbf{Fire}. Se trata de un nuevo tipo de estructura convolucional modular que puede ser apilado en capas al estilo de los módulos Inception de Google. Consiste en una unidad modular ajustable en función de 3 parámetros: el número de convoluciones 1x1, y el número filtros 1x1 y 3x3 de ``expasión'' a aplicar. El objetivo de añadir las convoluciones 1x1 es, por un lado, la reducción de dimensionalidad del volumen a convolucionar, y por otro lado, la simplificación en número de parámetros. En arquitecturas de gran profundidad, como VGGNet o ResNet, quedó demostrado que este tipo de convoluciones permitían llegar más allá sin perder información relevante para el aprendizaje.
+    \item Uso de módulos \textbf{Fire}. Se trata de un nuevo tipo de estructura convolucional modular que puede ser apilado en capas al estilo de los módulos Inception \cite{szegedy2014going} de Google. Consiste en una unidad modular ajustable en función de 3 parámetros: el número de convoluciones 1x1, y el número de filtros 1x1 y 3x3 de ``expasión'' a aplicar. El objetivo de añadir las convoluciones 1x1 es, por un lado, la reducción de dimensionalidad del volumen a convolucionar, y por otro lado, la simplificación en número de parámetros. En arquitecturas de gran profundidad, como VGGNet o ResNet, quedó demostrado que este tipo de convoluciones permitían llegar más allá sin perder información relevante para el aprendizaje. \ref{figsqueeze}
     \item Desplazamiento de los métodos de \textbf{reducción} de dimensionalidad hacia las capas más \textbf{profundas} de la arquitectura. En lugar de realizar pooling o aplicar stride a la hora de aplicar el filtro para reducir el volumen de salida en las primeras capas de la red, este tipo de transformaciones se reparten en capas más profundas para evitar que las capas cercanas al Head, de forma que se reduce la pérdida de características si retrasamos el subsampling del filtro.
     \item Eliminación de capas totalmente conectadas. Estas capas son, normalmente, las que mayor complejidad añaden al modelo por su gran cantidad de parámetros. Gracias al uso de Average Pooling en su última capa, podemos tener una red completamente independiente del tamaño de la entrada sin gran cantidad de parámetros ni necesidad de capas adicionales.
 \end{itemize}
 
-Esta red se ha vinculado con gran variedad de uso: detección de objetos en tiempo real, clasificación semántica de objetos, y conducción autónoma. Entre todas sus aplicaciones, podríamos destacar su utilización en imagen médica, concretamente MRI (Resonancias magnéticas). Ha permitido facilitar el diagnóstico de ciertas enfermedades y lesiones cerebrales en un espacio de memoria y recursos contenido.\\
+\begin{figure}[H]
+	\label{figsqueeze}
+	\centering
+	\includegraphics[scale = 0.2]{imagenes/squeezenet.png}
+	\caption{Arquitectura de SqueezeNet}
+\end{figure}
+
+
+Esta red ha sido empleada en multitud de aplicaciones: detección de objetos en tiempo real, clasificación semántica, y modelos preliminares de conducción autónoma. Entre todas sus aplicaciones, podríamos destacar su utilización en imagen médica, concretamente MRI (Resonancias magnéticas). Ha permitido facilitar el diagnóstico de ciertas enfermedades y lesiones cerebrales en un espacio de memoria y recursos contenido.\\
 
 Sin embargo, a pesar de las mejoras recibidas en sus versiones sucesivas, como los módulos Fire de doble nivel para reducir dimensionalidad, o la introducción de más reducciones mediante pooling, sacrifica resultados a nivel de accuracy respecto a la competencia, y no ha sido aplicada de forma firme y exitosa sobre imágenes de enfermedades cutáneas.
 
+
+
 \subsection{MobileNet}
 
-MobileNet es el resultado del proceso de investigación de Google Research acerca de las redes convolucionales para dispositivos móviles. El objetivo de esta vertiente en escontrar un modelo eficiente que pueda ser incluso utilizado en tareas de segmentación en tiempo real, pero reduciendo el número de parámetros del red así como el número de operaciones de producto necesarias.\\
+MobileNet es el fruto del proyecto de investigación de Google Research para la implementación de redes convolucionales en dispositivos móviles. El objetivo era encontrar un modelo eficiente que pueda ser incluso utilizado en tareas de segmentación en tiempo real, pero reduciendo el número de parámetros del red así como el número de operaciones de producto necesarias, para poder ejecutarlas de forma nativa en dispositivos móviles como smartphones y tablets.\\
 
 Esta arquitectura consta de 3 versiones diferentes, siendo cada una más sofisticada que la anterior. Disponemos de MobileNet V1, MobileNet V2 y MobileNetV3.
 
 \subsubsection{MobileNet V1 (2017)}
 
-La versión original de la arquitectura convolucional MobileNet fue publicada en 2017, de la mano de un grupo de investigadores de Google. En esta publicación, se afronta se forma directa el problema de la complejidad de cálculos de las arquitecturas de este tipo en dispositivos móviles, y la necesidad de reducir su complejidad.\\
-El punto clave de esta arquitectura reside en las llamadas "pointwise convolutions". Hacen uso del concepto de separabilidad, el cual fue ampliamente estudiado desde el año 2012 por la literatura para reducir el número de productos realizados en la convolución.\\ 
+La versión original de la arquitectura convolucional MobileNet  \cite{howard2017mobilenets} fue publicada en 2017. En esta publicación, se busca reducir el número de operaciones realizadas para conseguir un menor impacto de las operaciones en punto flotante sobre el rendimiento.\\
+El punto clave de esta arquitectura reside en las llamadas "pointwise convolutions", haciendo uso del concepto de separabilidad, ampliamente estudiado desde el año 2012 por la literatura.
 
 Las nuevas convoluciones descomponibles se pueden separar en dos pasos bien delimitados: la convolución en profundidad y la convolución puntual.
 
 \begin{itemize}
     \item Las convoluciones en profundidad realizan el producto del filtro con el volumen de entrada capa a capa. Es decir, no se tiene en cuenta la dimensionalidad total de la imagen, sino que se realiza por cada nivel de profundidad el mismo producto. Esto reduce considerablemente el número de parámetros, ya que la dimensionalidad del problema es mucho menor.
     \item La segunda fase es la convolución puntual, cuyo objetivo no es más que acumular el producto de todas las capas calculadas independientemente mediante una simple combinación lineal, la cual es de coste computacional muy bajo.
+    
+    $$G_{k,l,m} =  \sum_{i,j}^{} K^{i,j,m} * F_{k+i-1,l+j-1,m}$$
 \end{itemize}
 
 Este producto es calculable eficientemente por las técnica de álgebra lineal GEMM, que permite aplicar propiedades de la suma y la multiplicación para el producto matricial de forma eficiente mediante Tensor cores.\\
 
 En resumen, gracias a la separabilidad convolucional, se adquieren varias ventajas:
 \begin{itemize}
-    \item El número de productos se reduce considerablemente. Como se puede verificar en [], se traduce en una reducción de entre 8 y 9 veces el número de operaciones con respecto a las arquitectura tradicional de convolución
+    \item El número de productos se reduce considerablemente. Como se puede verificar en \cite{howard2017mobilenets} se traduce en una reducción de entre 8 y 9 veces el número de operaciones con respecto a las arquitectura tradicional de convolución
     \item Se reduce el espacio necesario en memoria.
     \item Se puede aprovechar el hardware específico.
     \item No se pierde precisión de cálculo gracias a que la separabilidad de convoluciones no afecta al resultado.
 \end{itemize}
+
+\begin{figure}[H]
+	\label{depthwise}
+	\centering
+	\includegraphics[scale = 0.225]{imagenes/depthwise.png}
+	\caption{Producto depthwise}
+\end{figure}
 
 Adicionalmente, también incorporaron dos hiperparámetros: $\alpha$ y $\rho$. Estos parámetros controlan la anchura y la resolución de entrada, respectivamente.\\
 El hiperparámetro $\alpha$ hace referencia a la anchura de cada capa convolucional que compone la red, adquiriendo un valor de 1 cuando la arquitectura no se ve reducida, y gradualmente podrá ser reducida en el intervalo (0,1]. Así se conseguirán modelos más simples en anchura para dispositivos con menores recursos.\\
@@ -74,16 +93,30 @@ Ambos parámetros sacrificarán bondad y ajuste en los resultados a favor de una
 
 \subsubsection{MobileNet V2 (2018)}
 
-Dos años más tarde de la primera versión, se da a luz a su versión V2. Esta conserva los hiperparámetros  de la versión anterior, así como el producto punto a punto. Sin embargo, añade tres nuevas características, algunas de ellas no triviales y que requieren experimentación:
+Dos años más tarde de la primera versión, se da a luz a su versión V2  \cite{sandler2019mobilenetv2}. Esta conserva los hiperparámetros  de la versión anterior, así como el producto punto a punto. Sin embargo, añade tres nuevas características, algunas de ellas no triviales y que requieren experimentación:
 \begin{itemize}
-    \item Se introduce el concepto de ``residuo invertido''. Ésta mejora reside en la utilización de los bloques residuales, propuesto por la arquitectura de ResNet. Su objetivo es evitar la degradación del gradiente, y que se frene el aprendizaje en modelos de gran profundidad. Normalmente, estas conexiones se realizan entre capas de gran profundidad, siendo las capas intermedias bloques estrechos. Sin embargo, en MobileNet V2, se propone la composición inversa, de forma que sean los bloques intermedios entre los residuales aquellos que poseen una mayor anchura, y así reducir el número de parámetros sin perder expresividad en el modelo.
+    \item Se introduce el concepto de ``residuo invertido''. Ésta mejora reside en la utilización de los bloques residuales, propuesto por la arquitectura de ResNet. Su objetivo es evitar la degradación del gradiente, y que se frene el aprendizaje en modelos de gran profundidad. Normalmente, estas conexiones se realizan entre capas de gran profundidad, siendo las capas intermedias bloques estrechos. Sin embargo, en MobileNet V2, se propone la composición inversa, de forma que sean los bloques intermedios entre los residuales aquellos que poseen una mayor anchura, y así reducir el número de parámetros sin perder expresividad en el modelo \cite{invertedresidualsv2}.
+    \begin{figure}[H]
+    	\label{invert}
+    	\centering
+    	\includegraphics[scale = 0.25]{imagenes/invertedres.png}
+    	\caption{Bloque residual invertido}
+    \end{figure}
+    
      \item En las capas donde el volumen de entrada es estrecho, al hacer uso de bloques residuales invertidos, la eliminación de la no linealidad aportada por ReLu favorece a la conservación de características y permite obtener mejores resultados de accuracy en tareas generales como clasificación en imagenet. Esto se debe a que al realizar los saltos entre bloques ``estrechos'' perdemos rendimiento de la red, y simplemente con eliminar la última transformación no lineal del bloque, contrarrestamos este problema.
     \item ReLu6. Se mantiene una versión modificada de la original función de activación. En lugar de utilizar la tradicional función ReLu entre 0 y 1, se extiende este intervalo hasta 6, permitiendo mantener la precisión en caso de utilizar coma fija, ya que se aseguran 3 dígitos de parte entera, y el resto queda destinado a la mantisa, que se almacena de forma precisa.
 \end{itemize}
 
+    \begin{figure}[H]
+	\label{mv2}
+	\centering
+	\includegraphics[scale = 0.25]{imagenes/mobilenetv2.png}
+	\caption{Arquitectura de MobileNetV2}
+\end{figure}
+
 \subsubsection{MobileNet V3 (2019)}
 
-En su tercera versión, MobileNet incorpora métodos de diseño de arquitectura de redes basado en algoritmos como NetAdapt. Este algoritmo se basa en la transformación de modelos preentrenados para escritorio, y, en base a una serie de requisitos de potencia especificados, adapartar la arquitectura a una plataforma móvil perdiendo las mínimas capacidades posibles de la red original. De esta forma, la versión 3 de MobileNet parte de un modelo de este tipo, el cual ajusta finamente para mejorar latencias y uso de memoria. Entre estas mejoras, podemos encontrar:
+En su tercera versión\cite{howard2019searching}, MobileNet incorpora métodos avanzados de diseños de redes basados en NetAdapt. Este algoritmo se basa en la transformación de modelos preentrenados para escritorio, y, en base a una serie de requisitos de potencia especificados, adapartar la arquitectura a una plataforma móvil perdiendo las mínimas capacidades posibles de la red original.  El modelo de partida empleado fue ajustado con precisión para mejorar latencias y uso de memoria, aplicando los siguientes conceptos:
 
 \begin{itemize}
     \item Se añade la capa Squeeze-and-Excite, dentro de las conexiones residuales. Se trata de un mecanismo surgido en 2018[]. Este estudio afirma que existen filtros de imagen con mayor importancia para el cómputo global que otros, como, por ejemplo, los bordes. Por tanto, les aporta un mayor ``peso'' durante el entrenamiento a dichos filtros haciendo uso de una serie de parámetros adicionales. Éstos añaden una carga computacional muy pequeña, por lo que se trata de una técnica eficaz. Para obtener los parámetros de relevancia, se dispone de dos módulos: squeeze, y excite. El módulo squeeze se encarga de representar cada filtro mediante un valor numérico, obtenido por average pooling de la imagen. Y por otro lado, el módulo excite se encarga de aprender los pesos que dar a cada uno de estos filtros o canales, haciendo uso de un MLP. El resultado final serán los pesos de cada canal en cuanto a su importancia, normalizados entre 0 y 1 por una función sigmoide.
@@ -91,18 +124,25 @@ En su tercera versión, MobileNet incorpora métodos de diseño de arquitectura 
     \item Se incluyeron nuevas capas al inicio y al final de la red de tipo residual invertidas.
 \end{itemize}
 
-Debido a la gran complejidad adquirida por el modelo, debido a los problemas de latencia y rendimiento en dispositivos de menor potencia, se opta por dividir la arquitectura en dos modelos parametrizables: MobileNet Small y Large. Mientras que la versión Large mejora los resultados de la versión 2 aumentando las prestaciones, el modelo Small otorga importancia sobre todo a la eficiencia y el uso de memoria, ya que está destinado a modelos a ejectuar en hardware embebido o dispositivos de poca potencia.
+    \begin{figure}[H]
+	\label{mv2}
+	\centering
+	\includegraphics[scale = 0.85]{imagenes/mobilev3.png}
+	\caption{Arquitectura de MobileNetV3}
+\end{figure}
 
+Debido a la gran complejidad adquirida por el modelo, los problemas de latencia y rendimiento en dispositivos de menor potencia, se opta por dividir la arquitectura en dos modelos parametrizables: MobileNet Small y Large. Mientras que la versión Large mejora los resultados de la versión 2 aumentando las prestaciones, el modelo Small otorga importancia sobre todo a la eficiencia y el uso de memoria, enfocado al hardware embebido o dispositivos de poca potencia.
 
-(https://towardsdatascience.com/mobilenetv2-inverted-residuals-and-linear-bottlenecks-8a4362f4ffd5)
 
 \subsubsection{Aplicaciones en dermatología y cáncer de piel}
 
-MobileNet, concretamente en su segunda versión, ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En [https://arxiv.org/ftp/arxiv/papers/1907/1907.03220.pdf], es utilizado para realizar la clasificación de 7 clases de enfermedades cutáneas extraídas del ISIC archive, un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas.\\
+MobileNet, concretamente en su segunda versión, ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En \cite{Chaturvedi_2020}, es utilizado para realizar la clasificación de 7 enfermedades cutáneas extraídas del Humans against Machine, HAM10000 \cite{ham10000}, que podemos encontrar en ISIC archive \cite{isicarchive}, un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas. \\
 
-También se utilizó en [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9817940/], donde se logra alcanzar el 99\% de accuracy en ISIC, haciendo uso de la versión V3 junto a un algoritmo de Squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. Para ello, hace uso de un filtro black hat, que binariza la imagen y obtiene los píxeles objetivo de eliminar, que son sustituidos por los colores de los píxeles adyacentes. Además de hacer uso de aumento de datos, elige como función de pérdida, se usa Cross entropy loss. Esta combinación consigue uno de los mejores resultados del estado del arte, sin necesidad de sobrecargar computacionalmente al soporte de este modelo, ya que se trata de un sistema empotrado.\\ 
-
+También se utilizó más recientemente para su implementación en dispositivos de IOT, \cite{mnetsqueeze}, donde se logra alcanzar el 99\% de accuracy en un pequeño conjunto extraido de ISIC, haciendo uso de la versión V3 junto a un algoritmo de Squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. \\
+Para ello, hace uso de un filtro black hat, que binariza la imagen y obtiene los píxeles objetivo de eliminar, que son sustituidos por los colores de los píxeles adyacentes, junto al uso del aumento de datos. Sin embargo, no queda especialmente claro la tasa de precisión del modelo para cada una de las enfermedades que se intentan diagnosticar.
 \subsection{Shuffle Net}
+
+\subsection{EfficientNet lite}
 
 \section{Recursos gráficos disponibles}
 

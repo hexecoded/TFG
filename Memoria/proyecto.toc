@@ -8,20 +8,20 @@
 \contentsline {section}{\numberline {2.1}Aprendizaje profundo en dispositivos móviles}{29}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Arquitecturas neuronales de alta eficiencia}{30}{subsection.2.1.1}%
 \contentsline {subsubsection}{\nonumberline Squeeze-Net (2016)}{30}{subsubsection*.9}%
-\contentsline {subsection}{\numberline {2.1.2}MobileNet}{31}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.2}MobileNet}{32}{subsection.2.1.2}%
 \contentsline {subsubsection}{\nonumberline MobileNet V1 (2017)}{32}{subsubsection*.11}%
-\contentsline {subsubsection}{\nonumberline MobileNet V2 (2018)}{33}{subsubsection*.13}%
-\contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{34}{subsubsection*.15}%
-\contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{34}{subsubsection*.17}%
-\contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{35}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{35}{section.2.2}%
-\contentsline {subsubsection}{\nonumberline ISIC Data}{37}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline ASAN Dataset}{40}{subsubsection*.21}%
-\contentsline {subsubsection}{\nonumberline Dermnetz}{42}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline PH2}{43}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{43}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Severance}{45}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Otros datasets}{45}{subsubsection*.31}%
-\contentsline {subsubsection}{\nonumberline Conjunto resultado}{46}{subsubsection*.33}%
-\contentsline {chapter}{Bibliografía}{47}{figure.2.7}%
+\contentsline {subsubsection}{\nonumberline MobileNet V2 (2018)}{34}{subsubsection*.13}%
+\contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{35}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{36}{subsubsection*.17}%
+\contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{37}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}EfficientNet lite}{37}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{37}{section.2.2}%
+\contentsline {subsubsection}{\nonumberline ISIC Data}{39}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline ASAN Dataset}{42}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Dermnetz}{44}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline PH2}{45}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{45}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Severance}{47}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Otros datasets}{47}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Conjunto resultado}{48}{subsubsection*.33}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

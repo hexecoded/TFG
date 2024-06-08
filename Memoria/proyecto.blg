@@ -1,51 +1,52 @@
 This is BibTeX, Version 0.99d (TeX Live 2024/Arch Linux)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
-I couldn't open style file miunsrturl.bst
----line 78 of file proyecto.aux
- : \bibstyle{miunsrturl
- :                     }
-I'm skipping whatever remains of this command
-I found no style file---while reading file proyecto.aux
-You've used 7 entries,
-            0 wiz_defined-function locations,
-            92 strings with 651 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+The style file: plain.bst
+Database file #1: bibliografia/bibliografia.bib
+I was expecting a `,' or a `}'---line 52 of file bibliografia/bibliografia.bib
+ :  doi={:10.3390/cancers15010012}
+ :                                .
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in isicarchive
+You've used 16 entries,
+            2118 wiz_defined-function locations,
+            572 strings with 7047 characters,
+and the built_in function-call counts, 5192 in all, are:
+= -- 443
+> -- 381
+< -- 2
++ -- 152
+- -- 134
+* -- 337
+:= -- 880
+add.period$ -- 43
+call.type$ -- 16
+change.case$ -- 112
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 17
+duplicate$ -- 147
+empty$ -- 369
+format.name$ -- 134
+if$ -- 1068
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 16
+missing$ -- 4
+newline$ -- 77
+num.names$ -- 32
+pop$ -- 181
+preamble$ -- 1
+purify$ -- 97
 quote$ -- 0
-skip$ -- 0
+skip$ -- 143
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 100
+swap$ -- 37
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+type$ -- 62
+warning$ -- 1
+while$ -- 32
+width$ -- 18
+write$ -- 154
+(There was 1 error message)
