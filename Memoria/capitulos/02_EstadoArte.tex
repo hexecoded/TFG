@@ -93,13 +93,13 @@ Ambos parámetros sacrificarán bondad y ajuste en los resultados a favor de una
 
 \subsubsection{MobileNet V2 (2018)}
 
-Dos años más tarde de la primera versión, se da a luz a su versión V2  \cite{sandler2019mobilenetv2}. Esta conserva los hiperparámetros  de la versión anterior, así como el producto punto a punto. Sin embargo, añade tres nuevas características, algunas de ellas no triviales y que requieren experimentación:
+Dos años más tarde de la publicación de MobileNets, da a luz su versión V2  \cite{sandler2019mobilenetv2}. Esta conserva los hiperparámetros  de la versión anterior, así como el producto punto a punto. Sin embargo, añade tres nuevas características, algunas de ellas no triviales y que requieren experimentación:
 \begin{itemize}
     \item Se introduce el concepto de ``residuo invertido''. Ésta mejora reside en la utilización de los bloques residuales, propuesto por la arquitectura de ResNet. Su objetivo es evitar la degradación del gradiente, y que se frene el aprendizaje en modelos de gran profundidad. Normalmente, estas conexiones se realizan entre capas de gran profundidad, siendo las capas intermedias bloques estrechos. Sin embargo, en MobileNet V2, se propone la composición inversa, de forma que sean los bloques intermedios entre los residuales aquellos que poseen una mayor anchura, y así reducir el número de parámetros sin perder expresividad en el modelo \cite{invertedresidualsv2}.
     \begin{figure}[H]
     	\label{invert}
     	\centering
-    	\includegraphics[scale = 0.25]{imagenes/invertedres.png}
+    	\includegraphics[scale = 0.3]{imagenes/invertedres.png}
     	\caption{Bloque residual invertido}
     \end{figure}
     
@@ -119,7 +119,7 @@ Dos años más tarde de la primera versión, se da a luz a su versión V2  \cite
 En su tercera versión\cite{howard2019searching}, MobileNet incorpora métodos avanzados de diseños de redes basados en NetAdapt. Este algoritmo se basa en la transformación de modelos preentrenados para escritorio, y, en base a una serie de requisitos de potencia especificados, adapartar la arquitectura a una plataforma móvil perdiendo las mínimas capacidades posibles de la red original.  El modelo de partida empleado fue ajustado con precisión para mejorar latencias y uso de memoria, aplicando los siguientes conceptos:
 
 \begin{itemize}
-    \item Se añade la capa Squeeze-and-Excite, dentro de las conexiones residuales. Se trata de un mecanismo surgido en 2018[]. Este estudio afirma que existen filtros de imagen con mayor importancia para el cómputo global que otros, como, por ejemplo, los bordes. Por tanto, les aporta un mayor ``peso'' durante el entrenamiento a dichos filtros haciendo uso de una serie de parámetros adicionales. Éstos añaden una carga computacional muy pequeña, por lo que se trata de una técnica eficaz. Para obtener los parámetros de relevancia, se dispone de dos módulos: squeeze, y excite. El módulo squeeze se encarga de representar cada filtro mediante un valor numérico, obtenido por average pooling de la imagen. Y por otro lado, el módulo excite se encarga de aprender los pesos que dar a cada uno de estos filtros o canales, haciendo uso de un MLP. El resultado final serán los pesos de cada canal en cuanto a su importancia, normalizados entre 0 y 1 por una función sigmoide.
+    \item Se añade la capa Squeeze-and-Excite, dentro de las conexiones residuales. Se trata de un mecanismo surgido en 2018 \cite{hu2019squeezeandexcitation}. Este estudio afirma que existen filtros de imagen con mayor importancia para el cómputo global que otros, como, por ejemplo, los bordes. Por tanto, les aporta un mayor ``peso'' durante el entrenamiento a dichos filtros haciendo uso de una serie de parámetros adicionales. Éstos añaden una carga computacional muy pequeña, por lo que se trata de una técnica eficaz. Para obtener los parámetros de relevancia, se dispone de dos módulos: squeeze, y excite. El módulo squeeze se encarga de representar cada filtro mediante un valor numérico, obtenido por average pooling de la imagen. Y por otro lado, el módulo excite se encarga de aprender los pesos que dar a cada uno de estos filtros o canales, haciendo uso de un MLP. El resultado final serán los pesos de cada canal en cuanto a su importancia, normalizados entre 0 y 1 por una función sigmoide.
 
     \item Se incluyeron nuevas capas al inicio y al final de la red de tipo residual invertidas.
 \end{itemize}
@@ -136,11 +136,37 @@ Debido a la gran complejidad adquirida por el modelo, los problemas de latencia 
 
 \subsubsection{Aplicaciones en dermatología y cáncer de piel}
 
-MobileNet, concretamente en su segunda versión, ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En \cite{Chaturvedi_2020}, es utilizado para realizar la clasificación de 7 enfermedades cutáneas extraídas del Humans against Machine, HAM10000 \cite{ham10000}, que podemos encontrar en ISIC archive \cite{isicarchive}, un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas. \\
+MobileNet, concretamente en su segunda versión, ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En \cite{Chaturvedi_2020}, es utilizado para realizar la clasificación de 7 enfermedades cutáneas extraídas del Humans against Machine, HAM10000 \cite{ham10000}, que podemos encontrar en ISIC archive \cite{isicarchive}, un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas. 
 
-También se utilizó más recientemente para su implementación en dispositivos de IOT, \cite{mnetsqueeze}, donde se logra alcanzar el 99\% de accuracy en un pequeño conjunto extraido de ISIC, haciendo uso de la versión V3 junto a un algoritmo de Squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. \\
+También se utilizó más recientemente para su implementación en dispositivos de IOT, \cite{mnetsqueeze}, donde se logra alcanzar el 99\% de accuracy en un pequeño conjunto extraido de ISIC, haciendo uso de la versión V3 junto a un algoritmo de Squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. 
+
 Para ello, hace uso de un filtro black hat, que binariza la imagen y obtiene los píxeles objetivo de eliminar, que son sustituidos por los colores de los píxeles adyacentes, junto al uso del aumento de datos. Sin embargo, no queda especialmente claro la tasa de precisión del modelo para cada una de las enfermedades que se intentan diagnosticar.
+
 \subsection{Shuffle Net}
+
+Shuffle Net \cite{zhang2017shufflenet,shufflenetreview} surge con el objetivo ofrecer un modelo capaz de ofrecer un buen modelo con la mínima pérdida de rendimiento frente a modelos profundos. Es capaz de superar en resultados a la primera versión de MobileNet, logrando un error de aproximadamente tres puntos menos que MobileNet V1. Su mejor rendimiento se debe sobre todo al uso de Channel Shuffle para las convoluciones grupales, y creando una arquitectura basada en módulos shuffle.
+
+La convolución en grupo mediante mezcla de canales (Channel Shuffle) surge tras el estudio del funcionamiento de las convoluciones grupales en 	AlexNet\cite{NIPS2012_c399862d} y ResNext. En ambos modelos, se uitilizan convoluciones grupales, donde cada canal de salida sólo se relaciona con los canales de entrada del que proviene. Esto podría debilitar la relación entre cada canal, y debilitar los resultados; para evitarlo, y no poner en riesgo el rendimiento con demasiadas convoluciones 1x1 para relacionarlos, se hace uso del mezclado de canales; es decir, es como si permitiésemos que cada grupo convolucional pudiera obtener información de otros grupos adyacentes, para así mejorar la relación entre ellos.
+
+Para evitar un sistema complejo a la hora de representar dichas interconexiones, es como surge el channel shuffle \ref{shufflechannels}: se mezclan los canales de forma que los grupos ya no quedan aislados con sus respectivas entradas y salidas.
+
+    \begin{figure}[H]
+	\label{shufflechannels}
+	\centering
+	\includegraphics[scale = 0.2]{imagenes/shufflechannels.png}
+	\caption{Channel Shuffle de ShuffleNet}
+\end{figure}
+
+Esta técnica se aplicará sobre la primera y última convolución 1x1 realizada sobre los bloques residuales de la red, que siguen una estructura parecida a la que adoptaría MobileNetV2 posteriormente. Mediante esta propuesta, podemos además aplicar una mayor capacidad de procesamiento en anchura añadiendo stride, y aplicando average pooling. El resultado, es conseguir modelos más anchos en procesamiento que no impacten negativamente en el rendimiento de los dispositivos con menor capacidad. En la figura \ref{label} , podemos apreciar la arquitectura de la red, cuyos filtros pueden ser escalados mediante el parámetro s, aunque teniendo en cuenta una penalización en la complejidad, equivalente a $s^2$ sobre Shuffle Net base, equivalente a $s=1$
+
+\begin{figure}[H]
+		\label{arquitecturashuffle}
+		\centering
+		\includegraphics[scale = 0.2]{imagenes/arquitecturashuffle.png}
+		\caption{Arquitectura de ShuffleNet}
+	\end{figure}
+
+Sus aplicaciones han sido variadas, pero en lo que respecta a la detección de lesiones cutáneas, la cercana salida de MobileNet V2 y su mejor rendimiento provocó que ShuffleNet quedase relegada a un segundo plano, y no fuese muy utilizada para este fin. Podemos encontrar algunos trabajos \cite{shuffleapp} donde podemos observar una comparativa de este modelo frente a la completitud de los modelos del estado del arte de 2022, y podemos confirmar que  MobileNetV2 es capaz de superar su rendimiento en la mayoría de pruebas, siendo estas comparaciones en cuanto a tiempo de entrenamiento, precisión, accuracy y tamaño del conjunto de entrenamiento. Sólo consigue superar a MobileNetV2 en tiempo de entrenamiento, donde es aproximadamente 900 más rápida, pero ofrece peores resultados en promedio.
 
 \subsection{EfficientNet lite}
 

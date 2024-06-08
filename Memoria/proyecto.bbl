@@ -11,6 +11,12 @@ Saket~S. Chaturvedi, Kajol Gupta, and Prakash~S. Prasad.
   Cancer Classification Using MobileNet}, page 165–176.
 \newblock Springer Singapore, May 2020.
 
+\bibitem{shuffleapp}
+Mohammad Fraiwan and Esraa Faouri.
+\newblock On the automatic detection and classification of skin cancer using
+  deep transfer learning.
+\newblock {\em Sensors}, 22:4963, 06 2022.
+
 \bibitem{eflite}
 Google.
 \newblock {BWorld Robot Control Software}.
@@ -30,6 +36,10 @@ Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
   Tobias Weyand, Marco Andreetto, and Hartwig Adam.
 \newblock Mobilenets: Efficient convolutional neural networks for mobile vision
   applications, 2017.
+
+\bibitem{hu2019squeezeandexcitation}
+Jie Hu, Li~Shen, Samuel Albanie, Gang Sun, and Enhua Wu.
+\newblock Squeeze-and-excitation networks, 2019.
 
 \bibitem{iandola2016squeezenet}
 Forrest~N. Iandola, Song Han, Matthew~W. Moskewicz, Khalid Ashraf, William~J.
@@ -82,6 +92,14 @@ Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
 Mingxing Tan and Quoc~V. Le.
 \newblock Efficientnet: Rethinking model scaling for convolutional neural
   networks, 2020.
+
+\bibitem{shufflenetreview}
+Sik-Ho Tsang.
+\newblock Review: Shufflenet v1 — light weight model.
+\newblock
+  \url{https://towardsdatascience.com/review-shufflenet-v1-light-weight-model-image-classification-5b253dfe982f},
+  2019.
+\newblock [Online; accessed 8-June-2024].
 
 \bibitem{ham10000}
 Philipp Tschandl, Cliff Rosendahl, and Harald Kittler.

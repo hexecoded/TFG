@@ -14,14 +14,14 @@
 \contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{35}{subsubsection*.15}%
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{36}{subsubsection*.17}%
 \contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{37}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}EfficientNet lite}{37}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{37}{section.2.2}%
-\contentsline {subsubsection}{\nonumberline ISIC Data}{39}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline ASAN Dataset}{42}{subsubsection*.21}%
-\contentsline {subsubsection}{\nonumberline Dermnetz}{44}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline PH2}{45}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{45}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Severance}{47}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Otros datasets}{47}{subsubsection*.31}%
-\contentsline {subsubsection}{\nonumberline Conjunto resultado}{48}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {2.1.4}EfficientNet lite}{39}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{39}{section.2.2}%
+\contentsline {subsubsection}{\nonumberline ISIC Data}{41}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline ASAN Dataset}{44}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Dermnetz}{46}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline PH2}{47}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{47}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Severance}{49}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Otros datasets}{49}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Conjunto resultado}{50}{subsubsection*.33}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
