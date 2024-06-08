@@ -19,7 +19,7 @@ Mohammad Fraiwan and Esraa Faouri.
 
 \bibitem{eflite}
 Google.
-\newblock {BWorld Robot Control Software}.
+\newblock Efficientnetlite (mediapipe.
 \newblock
   \url{https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/efficientnetlite?hl=es-419&pli=1},
   2024.
@@ -72,6 +72,22 @@ Paul-Louis Pröve.
   \url{https://towardsdatascience.com/mobilenetv2-inverted-residuals-and-linear-bottlenecks-8a4362f4ffd5},
   2018.
 \newblock [Online; accessed 21-April-2024].
+
+\bibitem{1stISIC}
+Paul-Louis Pröve.
+\newblock Siim-isic melanoma classification, 1st solution.
+\newblock
+  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175412},
+  2020.
+\newblock [Online; accessed 8-June-2024].
+
+\bibitem{2ndISIC}
+Paul-Louis Pröve.
+\newblock Siim-isic melanoma classification, 2nd solution.
+\newblock
+  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175324},
+  2020.
+\newblock [Online; accessed 8-June-2024].
 
 \bibitem{sandler2019mobilenetv2}
 Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh

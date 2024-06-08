@@ -15,13 +15,15 @@
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{36}{subsubsection*.17}%
 \contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{37}{subsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.1.4}EfficientNet lite}{39}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{39}{section.2.2}%
-\contentsline {subsubsection}{\nonumberline ISIC Data}{41}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline ASAN Dataset}{44}{subsubsection*.21}%
-\contentsline {subsubsection}{\nonumberline Dermnetz}{46}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline PH2}{47}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{47}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Severance}{49}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Otros datasets}{49}{subsubsection*.31}%
-\contentsline {subsubsection}{\nonumberline Conjunto resultado}{50}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{40}{subsubsection*.19}%
+\contentsline {subsection}{\numberline {2.1.5}Cuantización de modelos}{41}{subsection.2.1.5}%
+\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{41}{section.2.2}%
+\contentsline {subsubsection}{\nonumberline ISIC Data}{43}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline ASAN Dataset}{46}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Dermnetz}{48}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline PH2}{49}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{49}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Severance}{51}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Otros datasets}{51}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Conjunto resultado}{52}{subsubsection*.35}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -170,6 +170,40 @@ Sus aplicaciones han sido variadas, pero en lo que respecta a la detección de l
 
 \subsection{EfficientNet lite}
 
+EfficientNet \cite{Chaturvedi_2020} es un conjunto de arquitecturas de redes creadas por el departamento de investigación de Google con el fin de conseguir una familia de modelos variada que fuese capaz de adaptarse fácilmente mediante parámetros a diferentes conjuntos de imágenes, y a requisitos de hardware más o menos limitados. 
+
+Parte de que una red convolucional sigue el siguiente esquema:
+$$\mathcal{N}=\odot_{i=1...s} F_i^{L_i}(X_{(H_i, W_i,L_i)})$$
+
+
+Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, y la dimensionalidad de la capa queda representada con ${( W_i,L_i)}$.  Fijando $F_i$, efficient net intenta dar versatilidad a sus modelos variando las dimensiones restantes, Li, Ci, Hi, Wi mediante el uso de 3 constantes de escalabilidad:
+
+\begin{itemize}
+	 \item  Profundidad, Depth (d):  Aumentar la profundidad es la tendencia habitual presente en las redes convolucionales. Pero llegar a un equilibrio es crítico, ya que aumentar demasiado la profundidad sin modificar otros parámetros puede ocasionar pérdidades rendimiento por el desvanecimiento del gradiente  a menor profundidad. 
+	\item Anchura, Width (w): Aumentar la anchura suele ser beneficioso para modelos de pocos recursos donde el aumento de profundidad supone un gran aumento de la carga computacional. Permite conseguir mayor cantidad de características de grado fino, pero si la red es demasiado poco profunda, el modelo careceré de características de alto grado que permitan aprender patrones generales.
+	\item Resolución, (r): al emplear tamaños de entrada mayores, damos opciones a obtener una mayor cantidad de características de grado fino, pero un exceso de resolución puede provocar grandes tiempos de ejecución y puede ser contraproducente, al reducirse la ganancia con tamaños demasiados grandes.
+\end{itemize}
+
+\begin{figure}[H]
+	\label{arquitecturashuffle}
+	\centering
+	\includegraphics[scale = 0.2]{imagenes/efnet_scale.png}
+	\caption{Parámetros de EfficientNet}
+\end{figure}
+
+
+Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una serie de modelos distinto: los conocidos EfficientNetB0 - B7, denotando el valor numérico la profundidad y complejidad del modelo, siendo esta mayor a mayor valor del índice.	 Cada una de ellas fue ajustada utilizando como requisito la potencia medida en TFLOPS para su ejecución, y puede ser posteriormente ajustada con el resto de parámetros libres no fijados a las características del conjunto de entrada.\\
+
+
+\subsubsection{Aplicaciones en dermatología y cáncer de piel}
+
+En el problema que nos concierne, esta arquitectura ha conseguido grandes resultados en el dataset del ISIC abierto al público como competición en la plataforma Kaggle, habiendo sido utilizado como parte de un ensemble de modelos, o bien como modelo único entrenado en el top 3 de ganadores de la competición. En el caso de la segunda mejor solución clasificada \cite{2ndISIC}, se menciona la utilización de EfficientNet-B6, con tamaño de entrada de 512x512, y un tamaño de batch de 64, obteniendo 0.9485 de accuracy como resultado final a la hora de emplear los datasets ISIC 2019 y 2020\\ En la primera solución, es usada en conjunto a Resnet50, y una red especializada en los metadatos de la imagen, y todos los modelos juntos someten su resultado a votación \cite{1stISIC}.
+
+Ambos resultados han sido evaluados con computadores de alta gama, haciendo uso de múltiples tarjetas gráficas para el entreanmiento y la inferencia. Este proceso es demasiado pesado para un dispositivo móvil, por lo que de cara a este trabajo, se buscarán alternativas capaces de ahorrar en espacio y potencia como concepto de cuantización.
+
+ \subsection{Cuantización de modelos}
+
+
 \section{Recursos gráficos disponibles}
 
 La obtención de datos es un proceso fundamental en la resolución de problemas de Machine Learning. Este tipo de problemas requieren un gran número de imágenes que aporten variedad, y permitan construir un modelo general que se capaz de adaptarse a cambios de iluminación, diferentes puntos de vista y composiciones.

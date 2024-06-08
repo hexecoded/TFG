@@ -8,45 +8,45 @@ I was expecting a `,' or a `}'---line 52 of file bibliografia/bibliografia.bib
  :                                .
 I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in isicarchive
-You've used 19 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            587 strings with 7528 characters,
-and the built_in function-call counts, 6025 in all, are:
-= -- 519
-> -- 429
+            595 strings with 7832 characters,
+and the built_in function-call counts, 6459 in all, are:
+= -- 563
+> -- 443
 < -- 2
-+ -- 171
-- -- 150
-* -- 387
-:= -- 1024
-add.period$ -- 52
-call.type$ -- 19
-change.case$ -- 129
++ -- 177
+- -- 154
+* -- 399
+:= -- 1098
+add.period$ -- 60
+call.type$ -- 21
+change.case$ -- 137
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 172
-empty$ -- 436
-format.name$ -- 150
-if$ -- 1240
+cite$ -- 22
+duplicate$ -- 186
+empty$ -- 480
+format.name$ -- 154
+if$ -- 1336
 int.to.chr$ -- 0
-int.to.str$ -- 19
+int.to.str$ -- 21
 missing$ -- 5
-newline$ -- 92
-num.names$ -- 38
-pop$ -- 205
+newline$ -- 104
+num.names$ -- 42
+pop$ -- 221
 preamble$ -- 1
-purify$ -- 111
+purify$ -- 117
 quote$ -- 0
-skip$ -- 165
+skip$ -- 177
 stack$ -- 0
-substring$ -- 127
-swap$ -- 40
+substring$ -- 137
+swap$ -- 42
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 74
+type$ -- 82
 warning$ -- 1
-while$ -- 39
-width$ -- 21
-write$ -- 185
+while$ -- 43
+width$ -- 23
+write$ -- 209
 (There was 1 error message)
