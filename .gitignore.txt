@@ -1,4 +1,7 @@
 data/
-**/*.zip
+**.zip
+**.tar
 .idea
-**/cropped
+**cropped
+**.pt*
+**/*.pt*

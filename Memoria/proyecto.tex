@@ -1,0 +1,260 @@
+\documentclass[fontsize=11pt, paper=a4, twoside=true, BCOR=5mm, DIV=10]{scrbook}
+
+% -------------------------------------------------------------------
+% PAQUETES Y OPCIONES
+% -------------------------------------------------------------------
+\RequirePackage[utf8]{inputenc} 
+\RequirePackage[english, spanish, es-nodecimaldot, es-noindentfirst, es-tabla]{babel}
+
+\usepackage{listings}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\usepackage[chapter]{algorithm}
+\RequirePackage{verbatim}
+%\RequirePackage[Glenn]{fncychap}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+%\usepackage{doxygen/doxygen}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{colortbl,longtable}
+\usepackage[stable]{footmisc}
+\usepackage{index}
+
+
+\newcolumntype{.}{D{.}{\esperiod}{-1}}
+\makeatletter
+\addto\shorthandsspanish{\let\esperiod\es@period@code}
+\makeatother
+
+
+
+\usepackage[pdfborder={000}]{hyperref} %referencia
+
+% -------------------------------------------------------------------
+% INFORMACIÓN DEL TFG Y EL AUTOR
+% -------------------------------------------------------------------
+\newcommand{\myTitle}{Título del proyecto\xspace}
+\newcommand{\myDegree}{Grado en Ingeniería informática}
+\newcommand{\myName}{Cristhian Moya Mota (alumno)\xspace}
+\newcommand{\myProf}{Diego Jesús García Gil (tutor1)\xspace}
+\newcommand{\myOtherProf}{Julián Luengo Martín (tutor2)\xspace}
+%\newcommand{\mySupervisor}{Put name here\xspace}
+\newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
+Telecomunicación\xspace}
+\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de
+Telecomunicación\xspace}
+\newcommand{\myDepartment}{Departamento de ...\xspace}
+\newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
+\newcommand{\myLocation}{Granada\xspace}
+\newcommand{\myTime}{\today\xspace}
+\newcommand{\myVersion}{Version 0.1\xspace}
+
+
+% -------------------------------------------------------------------
+% ESTILOS DE LA CLASE KOMA
+% -------------------------------------------------------------------
+% Selecciona el tipo de fuente para los títulos (capítulo, sección, subsección) del documento.
+\setkomafont{disposition}{\sffamily\bfseries}
+
+% Cambia el ancho de la cita. Al inicio de un capítulo podemos usar el comando \dictum[autor]{cita} para añadir una cita famosa de un autor.
+\renewcommand{\dictumwidth}{0.45\textwidth} 
+
+\recalctypearea % Necesario tras definir la tipografía a usar.
+
+\hypersetup{
+	    pdfauthor = {\myName (email (en) ugr (punto) es)},
+		% hidelinks,            % Enlaces sin color ni borde. El borde no se imprime
+		linkbordercolor=0.8 0 0,
+		citebordercolor=0 0.8 0,
+		citebordercolor=0 0.8 0,
+		colorlinks = true,            % Color en texto de los enlaces. Comentar esta línea o cambiar `true` por `false` para imprimir el documento.
+		linkcolor = [rgb]{0.5, 0, 0}, % Color de los enlaces internos
+		urlcolor = [rgb]{0, 0, 0.5},  % Color de los hipervínculos
+		citecolor = [rgb]{0, 0.5, 0}, % Color de las referencias bibliográficas
+		pdfsubject={Trabajo de fin de Grado},%
+		pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
+		pdfcreator={pdfLaTeX}%
+	}
+
+
+% Normal font: 			URW Palladio typeface. 
+% Sans-serif font: 	Gill Sans (paquete cabin)
+% Monospace font: 	Inconsolata
+\RequirePackage[T1]{fontenc}
+\RequirePackage[sc, osf]{mathpazo} \linespread{1.05}         
+\IfFileExists{cabin.sty}{
+	\RequirePackage[scaled=.95,type1]{cabin} 
+} %else
+{
+	% Si cabin da ERROR usar el siguiente comando en su lugar
+	\renewcommand{\sfdefault}{iwona} 
+}
+
+%\hyphenation{}
+
+
+%\makeindex
+%\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
+% \makeglossary
+
+% Definición de comandos que me son tiles:
+%\renewcommand{\indexname}{Índice alfabético}
+%\renewcommand{\glossaryname}{Glosario}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\fancyhead[RO,LE]{\textbf{\thepage}}
+\renewcommand{\chaptermark}[1]{\markboth{\textbf{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}}
+
+\setlength{\headheight}{1.5\headheight}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%Definimos los tipos teorema, ejemplo y definición podremos usar estos tipos
+%simplemente poniendo \begin{teorema} \end{teorema} ...
+%\newtheorem{teorema}{Teorema}[chapter]
+%\newtheorem{ejemplo}{Ejemplo}[chapter]
+%\newtheorem{definicion}{Definición}[chapter]
+
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray30}{gray}{.94}
+
+\lstset{ frame=Ltb,
+     framerule=0.5pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.1cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\scriptsize\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=6pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+ 
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{CodigoC}
+   {
+	basicstyle=\scriptsize,
+	frame=single,
+	language=C,
+	numbers=left
+   }
+\lstdefinestyle{CodigoC++}
+   {
+	basicstyle=\small,
+	frame=single,
+	backgroundcolor=\color{gray30},
+	language=C++,
+	numbers=left
+   }
+
+ 
+\lstdefinestyle{Consola}
+   {basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray30},
+    frame=single,
+    numbers=none
+   }
+
+
+\newcommand{\bigrule}{\titlerule[0.5mm]}
+
+
+%Para conseguir que en las páginas en blanco no ponga cabecerass
+\makeatletter
+\def\clearpage{%
+  \ifvmode
+    \ifnum \@dbltopnum =\m@ne
+      \ifdim \pagetotal <\topskip
+        \hbox{}
+      \fi
+    \fi
+  \fi
+  \newpage
+  \thispagestyle{empty}
+  \write\m@ne{}
+  \vbox{}
+  \penalty -\@Mi
+}
+\makeatother
+
+% -------------------------------------------------------------------
+% DESARROLLO DE LOS CAPÍTULOS DEL TRABAJO
+% -------------------------------------------------------------------
+
+\begin{document}
+	% Plantilla portada UGR
+	\input{portada/portada}
+	
+	% Plantilla prefacio UGR
+	\input{prefacios/prefacio}
+	
+	% Índice de contenidos
+	\newpage
+	\tableofcontents
+	
+	% Índice de imágenes y tablas
+	\newpage
+	\listoffigures
+	
+	% Si hay suficientes se incluirá dicho índice
+	\listoftables 
+	\newpage
+	
+	\input{capitulos/01_Introduccion}
+	
+	\input{capitulos/02_EstadoArte}
+	
+	\input{capitulos/03_PreprocesadoDatos}
+	
+	\input{capitulos/04_AnalisisTecnicas}
+	
+	\input{capitulos/05_ExtraccionCaracteristicas}
+	
+	\input{capitulos/06_Deeplearning}
+	
+    \input{capitulos/07_Diseno}
+	
+	\input{capitulos/08_Implementación}
+	
+	\input{capitulos/09_Pruebas}
+	
+	\input{capitulos/10_Conclusiones}
+	
+	%\chapter{Conclusiones y Trabajos Futuros}
+	%
+	%
+	\nocite{}
+	\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
+	\bibliographystyle{miunsrturl}
+	
+	%\appendix
+	%\input{apendices/manual_usuario/manual_usuario}
+	%%\input{apendices/paper/paper}
+	%\input{glosario/entradas_glosario}
+	% \addcontentsline{toc}{chapter}{Glosario}
+%	 \printglossary
+	%\chapter*{}
+	\thispagestyle{empty}
+
+\end{document}

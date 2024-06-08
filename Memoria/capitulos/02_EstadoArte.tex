@@ -1,0 +1,292 @@
+\chapter{Estado del arte}
+
+En este apartado, evaluaremos los modelos usados para la clasificación de tumores y lesiones cutáneas en la literatura, para así comprender las ventajas que ofrece cada modelo, y los puntos en contra, y obtener una referencia de la tendencia general.
+
+\section{Aprendizaje profundo en dispositivos móviles}
+
+Una de las tendencias actuales en auge consiste en la integración de modelos de aprendizaje en aplicaciones de uso diario para mejorar la predictibilidad de ciertos fenómenos, o bien adecuarse a los hábitos y la vida diaria del usuario. Esto requiere una buena capacidad de cómputo en los dispositivos móviles, cuya principal limitación son las restricciones de espacio y consumo. Por este motivo, existen numerosas vertientes de investigación para conseguir arquitecturas convolucionales preentrenadas, a semejanza de arquitecturas como ResNet o VGGNet, pero con un menor número de parámetros para reducir la cantidad de operaciones aritméticas necesarias para el aprendizaje y la inferencia de los resultados.\\
+
+\subsection{Recursos gráficos disponibles}
+
+La obtención de datos es un proceso fundamental en la resolución de problemas de Machine Learning. Este tipo de problemas requieren un gran número de imágenes que aporten variedad, y permitan construir un modelo general que se capaz de adaptarse a cambios de iluminación, diferentes puntos de vista y composiciones.
+
+Es clave, por tanto, disponer de diferentes tipos de lesiones, tanto benignas como malignas, así como diferentes tonos de piel. La inexistencia de un tipo de piel en el conjunto de entrenamiento, o la inexistencia de un tipo de lesión podrían provocar resultados sesgados indeseados durante la predicción de la imagen tomada.
+
+Podemos encontrar en la red varios datasets de acceso público que permiten su utilización de forma abierta con fines académicos. Dada a la gran cantidad de publicaciones disponibles, resulta complejo averiguar si los datos a los cuales hace referencia se encuentran disponibles públicamente, si son de acceso restringido, o bien, ya no se encuentran disponibles debido a cambios en su política o la falta de mantenimiento.
+
+Debido a que el estudio de la evolución y el diagnóstico del cáncer de piel de forma temprana es un tema en auge, existen gran cantidad de publicaciones especializadas únicamente en el análisis de los conjuntos de datos públicamente accesibles, como es el caso de la lista propuesta por M. Goyal et Al. [16], o el reciente estudio realizado por Sana Nazari y Rafael García (2023)[30].
+Basados en su modelo de estudio y las referencias recomendadas por sus artículos, se ha elaborado el siguiente plan de búsqueda para saber qué tipo de datos utilizar y cuáles descartar:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.75]{imagenes/DiagramaBusqueda.png}
+	\caption{Proceso de búsqueda seguido}
+\end{figure}
+
+Siguiendo dicho procedimiento, se han encontrado 6 datasets diferentes, cuyo origen son instituciones públicas que han cedido datos con fines académicos y de investigación.\\
+
+Un factor determinante para la elección de estos conjuntos es la diversidad. Es indispensable, para este proyecto, encontrar datos lo suficientemente variados como para distinguir lesiones cancerígenas y no cancerígenas, y disponer de diferentes tonos de piel para entrenar. Aunque los tonos de piel más oscuras sufren lesiones de tipo cancerígeno en menor proporción gracias a su protección natural, también pueden sufrir este tipo de patologías, y es clave ser capaces de detectarlas en cualquier posible paciente.
+
+\subsubsection{ISIC Data}
+El repositorio ISIC (International Skin Imaging Collaboration [1]), contiene imágenes demoscópicas de lesiones principalmente cancerosas.  Existe una gran cantidad de publicaciones acerca de este conjunto de datos, debido a su utilización anual durante los años 2016-2020 para la realización de un reto virtual de Machine Learning descrito en [1]. El objetivo, consiste en identificar los melanomas frente a lesiones no cancerosas (ISIC Challenge-2020[2]) o bien, identificar diferentes subtipos de lesiones cancerosas frente a lesiones benignas (ISIC Challenge 2019, [3]). \\
+
+En el estado del arte, destacan las soluciones que hacen uso de métodos de DeepLearning, como el planteado por Ian Pan [4], finalista de la competición para el año 2020. El ganador de la competición del año 2020, cuyo análisis podemos encontrar en [5], realiza por su parte un enfoque híbrido entre el uso de DeepLearning para la clasificación de los datos de tipo imagen, y clasificación mediante Machine Learning para los metadatos, y así obtener un resultado más preciso. \\
+
+Debido a que cada uno de estos subconjuntos de datos anuales podían ser pequeños, normalmente se recurría a la reutilización de los conjuntos anteriores para enriquecer el conjunto de entrenamiento.  Este método es bastante recomendable, ya que, a mayor conjunto de entrenamiento, más cercanos se encontrarán los parámetros de interés del problema general a solucionar. Sin embargo, hay que realizar dicha fusión con especial cuidado, ya que existen volúmenes de datos considerables que se repitieron en las competiciones de cada año para aumentar el tamaño del dataset, y si se realizase una simple concatenación de los datos, estaríamos desperdiciando esfuerzo computacional en clasificar imágenes redundantes (comportamiento para nada deseable al trabajar sobre entornos móviles de menor potencia.).\\
+
+Un análisis extenso de los datos asociados a cada Challenge podemos encontrarlo en [6]. En él, se recogen otros modelos del estado del arte utilizables para este fin, así como una forma de tratar los datos duplicados. Los datos pueden ser separados en los siguientes subconjuntos:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		\textbf{Challenge Dataset Year} & \textbf{Train} & \textbf{Test} & \textbf{Total} & \textbf{Tipo de problema } \\ \hline
+		ISIC 2016 & 900 & 379 & 1279 & Clas. binaria  \\ \hline
+		ISIC 2017 & 2000 & 600 & 2600 & Clas. Multiclase  \\ \hline
+		ISIC 2018 & 10015 & 1512 & 11527 & Clas. Multiclase  \\ \hline
+		ISIC 2019 & 25331 & 8238 & 33569 & Clas. Multiclase  \\ \hline
+		ISIC 2020 & 33126 & 10982 & 44108 & Clas. Binaria  \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{itemize}
+	
+	\item ISIC 2016 [7]:  Es el dataset de menor tamaño de todos los propuestos. Hace distinción únicamente de los casos malignos y benignos. Contiene imágenes dermoscópicas anotadas con información acerca de la localización de la mancha, y la edad del paciente. Contiene información adicional para la segmentación de la mancha pigmentada de interés (máscaras).
+	\item ISIC 2017 [8] Es un conjunto de mayor tamaño al anterior, y hace alusión a 4 clases diferentes: melanomas, nevus, y seborrheic keratosis. Contiene también información acerca de la edad del paciente, y otros metadatos de interés. La escasa cantidad de datos provoca que normalmente en la literatura este dataset se utilice también como clasificación binaria entre nevus y keratosis, u otros enfoques similares. 
+	\item ISIC 2018 [9]. Este dataset contiene un número de imágenes considerables, siendo un total de 10015 imágenes para entrenamiento, y 1512 para test. En este caso, se realiza subclasificación de tipos, a través de las clases melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma y lesiones vasculares. Es de especial interés destacar que este dataset proviene, a su vez, de HAM10000 (Human against machine, [11] )  y MSK Dataset [12]. El challenge original comprendía, de nuevo, la clasificación de los diferentes tipos realizando previamente una discriminación de la mancha en cuestión mediante segmentación. Existen gran cantidad de publicaciones que tratan este conjunto de datos, como [13], donde se emplea este dataset para demostrar mejores resultados al emplear transformaciones polares de la imagen y aumentar la invarianza.
+	
+	\item ISIC 2019 [2].  Se trata del mayor conjunto de datos para clasificación multiclase propuesto por ISIC [1]. Se trata del mismo dataset que el año 2018 [9], con la adición de BCN\_20000 Dataset [14], cuyos datos provienen del Hospital Clínic de Barcelona [14]. Las clases a clasificar se amplían hasta 9, encontrando subtipos de melanomas en el conjunto.
+	\item ISIC 2020 [3]. El último dataset propuesto públicamente, contiene únicamente datos binarios acordes a melanomas y no malignos. 
+\end{itemize}
+
+Todos estos datos pueden ser acoplados entre sí para dar un dataset global de ISIC [6], donde obtendríamos las siguientes clases: 
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Clase} & \textbf{2017} & \textbf{2018} & \textbf{2019} & \textbf{2020} \\ \hline
+		\textbf{Melanoma} & 374 & 1113 & 4522 & 584 \\ \hline
+		\textbf{Atypical melanocytic proliferation} & - & - & - & 1 \\ \hline
+		\textbf{Cafe-au-lait macule} & - & - & - & 1 \\ \hline
+		\textbf{Lentigo NOS} & - & - & - & 44 \\ \hline
+		\textbf{Lichenoid keratosis} & - & - & - & 37 \\ \hline
+		\textbf{Nevus} & - & - & - & 5193 \\ \hline
+		\textbf{Seborrheic keratosis} & 254 & - & - & 135 \\ \hline
+		\textbf{Solar lentigo} & - & - & - & 7 \\ \hline
+		\textbf{Melanocytic nevus} & - & 6705 & 12.875 & - \\ \hline
+		\textbf{Basal cell carcinoma} & - & 514 & 3323 & - \\ \hline
+		\textbf{Actinic keratosis} & - & 327 & 867 & - \\ \hline
+		\textbf{Benign keratosis} & - & 1099 & 2624 & - \\ \hline
+		\textbf{Dermatofibroma} & - & 115 & 239 & - \\ \hline
+		\textbf{Vascular lesion} & - & 142 & 253 & - \\ \hline
+		\textbf{Squamous cell carcinoma} & - & - & 628 & - \\ \hline
+		\textbf{Other / Unknown} & 1372 & - & - & 27.124 \\ \hline
+		\textbf{Total} & 2000 & 10.015 & 25.331 & 33.126 \\ \hline
+	\end{tabular}
+\end{table}
+
+Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repetidas, debido a que durante cada edición de ISIC, un número considerable de imágenes han sido incluidos en varios años. Este procedimiento engloba:
+
+\begin{enumerate}
+	
+	
+	\item Eliminar las imágenes idénticas por hash. Todas las imágenes de ISIC están numeradas de forma única para facilitar la identificación de cada una de ellas. Si unimos todos los datatesets, y tomamos las repeticiones, podemos remover:
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\textbf{} & \textbf{2016} & \textbf{2017} & \textbf{2018} & \textbf{2019} & \textbf{2020} \\ \hline
+			\textbf{Train} & 291 & 1283 & 0 & 0 & 0 \\ \hline
+			\textbf{Test} & 95 & 594 & 0 & 0 & 0 \\ \hline
+		\end{tabular}
+		\caption{Número de imágenes duplicadas recogidas por [6]}
+	\end{table}
+	
+	
+	\item 	Eliminación del ISIC 2018. Como éste se encuentra contenido en la composición para el año 2019, puede prescindirse totalmente de él a favor de la versión de 2019.
+	\item 	Eliminación de imágenes “downsampled” del conjunto. En los años 2019 y 2020, se añadieron imágenes de challenges anteriores con una reducción en resolución. Para ahorar en espacio y tiempo de cómputo, pueden eliminarse las imágenes reducidas para quedarnos con una única copia de mayor calidad de la lesión, y luego realizarles manualmente un reescalado en caso de que sea necesario.
+	
+	Atendiendo de nuevo a los resultados propuestos por [6], obtenemos el siguiente conjunto: 
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Year} & \textbf{Task No.} & \textbf{Images Removed} & \textbf{Images Remaining} \\ \hline
+			\textbf{2016} & 3 & 826 & 74 \\ \hline
+			\textbf{2017} & 3 & 801 & 1199 \\ \hline
+			\textbf{2018} & 3 & 10,015 & 0 \\ \hline
+			\textbf{2019} & 1 & 2235 & 23,096 \\ \hline
+			\textbf{2020} & - & 433 & 32,693 \\ \hline
+			\textbf{Total} & - & 14,310 & 57,0621 \\ \hline
+		\end{tabular}
+		\caption{Tabla de imágenes únicas extraída de [6]. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}
+	\end{table}
+	
+\end{enumerate}
+
+Obtendríamos un total de 57000 imágenes, los cuales podrían clasificarse, con sus respectivas clases extraídas de los metadatos. Componen, en resumen, un conjunto de datos robusto que puede formar parte del dataset de entrenamiento de este trabajo.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.5]{imagenes/Ejemplo2020.png}
+	\caption{Ejemplo de imágenes de ISIC 2017 [23]}
+	\label{fig:enter-label}
+\end{figure}
+
+\subsubsection{ASAN Dataset}
+
+ASAN (Seung Seog Han 2018)[15][18][19] es un conjunto de datos de origen surcoreano compuesto por lesiones malignas y benignas de la piel. Nos permite obtener un mayor grado de variedad de las imágenes, ya que el repositorio ISIC se centra sobre todo en lesiones de piel de población europea. 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Tipo de lesión} & \textbf{Número de ejemplares} \\ \hline
+		{Actinic keratoses and intraepithelial carcinoma (AKIEC)} & 651 \\ \hline
+		{Basal Cell Carcinoma (BCC)} & 1082 \\ \hline
+		{Dermatofibroma (DF)} & 1247 \\ \hline
+		{Hereditary angioedema (HAO)} & 2715 \\ \hline
+		{Intraepithelial Carcinoma (IC)} & 918 \\ \hline
+		{Lentigo (LEN)} & 1193 \\ \hline
+		{Melanoma (ML)} & 599 \\ \hline
+		{Nevus (NV)} & 2706 \\ \hline
+		{Pyogenic Granuloma (PG)}  & 375 \\ \hline
+		{Squamous Cell Carcinoma (SCC)} & 1231 \\ \hline
+		{Seborrhoeic Keratosis (SK)}  & 1423 \\ \hline
+		{Wart} & 2985 \\ \hline
+		\textbf{Total} & \textbf{17125} \\ \hline
+	\end{tabular}
+	\caption{Distribución de clases de ASAN dataset}
+\end{table}
+
+Tal y como se describe en [17] (M Goyal 2019), este dataset tiene 12 tipos de enfermedades, sumando un total de 17125 imágenes clínicas. Estas imágenes están compuestas en su mayoría por imágenes en miniatura, pero existe un repositorio con imágenes de mayor tamaño, donde sería necesario realizar tareas de segmentación- Sin embargo, dichas imágenes son de acceso restringido, y se requieren permisos especiales del hospital para acceder a ellos. Por ese motivo, tendremos únicamente en cuenta loas 17125 miniaturas.
+
+Adicionalmente, podemos encontrar también imágenes proporcionadas por Hallym, un dataset complementario de 125 imágenes pertenecientes a lesiones de tipo melanoma cancerosas.
+
+Las clases más destacadas de este dataset en su conjunto son la presencia de lesiones benignas de la piel, detalle que no encontramos en ISIC, y que permiten así contrastar información de la piel con lesiones benignas con la piel cancerosa. Podemos encontrar 4 clases benignas: lentigos (manchas solares fruto del envejecimiento y la exposición prolongada al sol), nevus (lunares comunes), verrugas y granulomas benignos. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.6]{imagenes/ASAN.png}
+	\caption{Ejemplo de lunares beningnos en ASAN (Nevus)}
+\end{figure}
+
+Los resultados han sido confirmados por expertos dermatólogos y los resultados verificados en su mayoría mediante biopsia, por lo que las etiquetas asociadas a cada lesión están completamente verificadas.\\
+
+El formato de las imágenes es una disposición matricial de las miniaturas, donde cada fichero que contiene las subimágenes representa en su conjunto una clase. Por desgracia, no se aporta otro tipo de información adicional más allá de la etiqueta por motivos de privacidad.
+
+\subsubsection{Dermnetz}
+
+Podemos encontrar extraer este dataset de un atlas online de enfermedades cutáneas recogidas de pacientes alrededor de todo el mundo. Contiene tanto lesiones benignas como malignas, existiendo además manchas y lesiones vinculadas a enfermedades infecciosas y hongos. 
+
+Existen gran cantidad de herramientas para realizar esta extracción de datos, como la que podemos encontrar en [21]. En total, se pueden obtener hasta 23000 imágenes, existiendo un total de 23 clases no balanceadas. Podemos encontrar lesiones de tipo alérgico, así como acné, dermatitis severa o celulitis.
+
+Carece de metadatos asociados, ya que dicha información es de carácter reservado por su mantenedor.  El dataset no se encuentra listo para usar de forma inmediata, ya que desde 2019, las imágenes deben ser extraídas de la propia web, pues dispone un índice donde se pueden acceder a las enfermedades de interés. El fichero contenedor del dataset fue retirado en 2019 del libre acceso, junto a sus metadatos. Es necesario solicitar su acceso y aportar una cantidad económica.
+
+
+\subsubsection{ PH2}
+El conjunto de datos PH2 [22] es un conjunto de 200 imágenes obtenidas gracias al hospital Pedro Hispano de Portugal. Está compuesto por imágenes de alta resolución que contienen 3 posibles casos de lesiones:
+\begin{itemize}
+	\item Lunar común (Common Nevus), 80 ejemplares
+	\item Lunar atípico (Atypical Nevus), 80 ejemplares
+	\item Melanomas, 40 ejemplares.
+\end{itemize}
+
+Además de las 200 imágenes, podemos encontrar metadatos asociados a cada una de ellas, como el color, su extensión, textura, forma del borde, localización, entre otros.
+Su acceso es libre para fines académicos desde su página oficial [22], que contiene las imágenes en formato jpg, y varios ficheros .csv con la información de la imagen y su clasificación.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.6]{imagenes/PH2.png}
+	\caption{Nevus maligno y benigno en PH2}
+\end{figure}
+
+\subsubsection{PAD-UFES 20}
+
+PAD-UFES-20 [25] se trata de un conjunto de datos recopilado de diferentes poblaciones, que contiene diagnósticos para 1.641 lesiones cutáneas únicas recopiladas, comprendiendo un total de 2.298 imágenes.\\
+
+Entre sus clases, podemos encontrar tres enfermedades y tres cánceres de piel.  Todos estos datos han sido recogidos y verificados mediante biopsia en un 100\% de los casos cancerosos, por lo que su diagnóstico está totalmente verificado.\\
+
+Podemos encontrar, además del diagnóstico, metadatos acerca de:
+\begin{itemize}
+	\item ID de paciente
+	\item ID de lesión, 
+	\item ID de imagen
+	\item Si la lesión benigna fue o no probada por biopsia.
+	\item Información del paciente: fumador o no, localización de la lesión, edad, exposición a químicos, historial cancerígeno, etc.
+\end{itemize}
+Los datos han sido recogidos mediante teléfonos móviles en formato PNG, siendo las imágenes validadas por el Hospital Pathological Anatomy Unit of the University Hospital Cassiano Antȳnio Moraes (HUCAM) de la Federal University of Espírito Santo (Brasil). 
+En su publicación original [25], podemos encontrar un resumen de su contenido de forma más específica:
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Diagnostico} & \textbf{Ejemplares} & \textbf{\% biopsied} \\ \hline
+		Actinic Keratosis (ACK) & 730 & 24.4\% \\ \hline
+		Basal Cell Carcinoma of skin (BCC) & 845 & 100\% \\ \hline
+		Malignant Melanoma (MEL) & 52 & 100\% \\ \hline
+		Melanocytic Nevus of Skin (NEV) & 244 & 24.6\% \\ \hline
+		Squamous Cell Carcinoma (SCC) & 192 & 100\% \\ \hline
+		\textbf{Total} & \textbf{2298} & \textbf{58.4\%} \\ \hline
+	\end{tabular}
+	\caption{Tabla de casos diagnosticados en PAD-UFES20}
+\end{table}
+
+Donde podemos apreciar que todos los casos de enfermedades cancerígenas han sido probados mediante biopsia, y el cáncer de célula basal se trata del tipo de enfermedad más frecuente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.45]{imagenes/PAD-UFES.png}
+	\caption{Batch de ejemplo de PAD-UFES 20 [25]}
+\end{figure}
+
+\subsubsection{Severance}
+Se trata de un conjunto de imágenes de lesiones cutáneas [24] recopiladas de pacientes de Corea del Sur. Recibe dicho nombre a que los datos recopilados cuentan con la colaboración del Hospital Severance, en el mismo país. \\
+
+En su variante A, que es la única disponible públicamente, podemos encontrar el diagnóstico y otra información asociada sobre 10426 imágenes, cuya valoración se encuentra entre las 38 posibles clases que contiene este conjunto de datos. \\
+
+Seleccionando las 6 clases más comunes contenidas en este dataset, encontraremos que comprenden aproximadamente el 75\% del conjunto. Está compuesto por actinickeratosis (22.5\%), angiofibromas (14.4\%), angiokeratomas(13.8\%), cáncer de tipo basal cell (8.1\%), Becker nevus (7.5\%), bluenevus (6.2\%), y la enfermedad de Bowen (carcinomas)(6.1\%).
+
+El interés en este dataset se debe a que algunas de estas clases mayoritarias, como los nevus azules y de Becker, son condiciones benignas que suelen ser retirados únicamente con fines estéticos, permitiendo complementar con el resto de los diagnósticos negativos. Este tipo de lunares son los más complejos de diagnosticar, debido a sus colores similares a un melanoma, y suelen requerir una biopsia, por lo que su diagnóstico suele alargarse.
+
+Las imágenes se encuentran en formato matriz, por lo que es necesario proceder a su separación previo a su utilización con fines de Deep Learning: 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.5]{imagenes/Severance.png}
+	\caption{Imágenes de ejemplo provenientes del dataset Severance   }
+\end{figure}
+
+\subsubsection{Otros datasets}
+Existen otros datasets ampliamente referenciados que son de acceso público. Sin embargo, en los últimos años, éstos han sido retirados y han quedado inaccesibles. Es el caso de DermQuest, un atlas virtual que contenía lesiones cutáneas y otras patologías. Ese dataset fue contenido posteriormente por Derm101, pero ambas versiones fueron retiradas para su descarga. Alternativamente, podemos encontrar algunas de sus imágenes en los datasets SD-198 y SD-260 [26][29], pero únicamente permanece en activo el primero de ellos, bajo solicitud. En total, SD-198 contiene más de 6500 imágenes, mientras que SD-260 alcanzaba las 20000 imágenes.
+
+En el estado del arte actual, podemos encontrar otros datasets ampliamente utilizados, como el caso de DermIS [27], un atlas online de patologías de la piel. También existen publicaciones reciente sobre nuevos conjuntos de datos utilizados de uso restringido, que permiten observar que la tendencia de investigación de este campo sigue en alza; es el caso del estudio propuesto por Papadakis et Al (2021) [28], que recoge datos sobre pacientes con melanoma de grado 3 para estudiar su evolución durante un período de 3 años, para estimar su crecimiento y potencial grosor del tumor.
+
+Debido a las restricciones de acceso, ninguno de estos datasets será empleado como parte del entrenamiento del modelo diseñado para este estudio.
+
+\subsubsection{Conjunto resultado}
+Una vez examinados todos los conjuntos mencionados anteriormente, podemos llevar a cabo la unión de todos los datos en un único subconjunto. Esto nos permitirá conseguir un dataset completo y variado con diferentes tipos de piel y diferentes lesiones que nos permitirán identificar multitud de tipos de patologías, siendo posible ajustar el grado de granularidad en función de la agrupación o no de posibles subclases.
+
+Inicialmente, el conjunto de datos construido contendrá todos los subtipos de lesiones cutáneas vistos, pero dispondrán de una segunda etiqueta que indicará si se trata de un caso canceroso o no, atendiendo a su subclase que lo etiqueta. Si agrupamos por lesiones benignas, cancerosas, y potencialmente cancerosas, obtenemos:
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.65]{imagenes/datasetfinal.png}
+	\caption{Distribución de clases}
+\end{figure}
+
+Se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Si atendemos a clasificar las subclases de cada tipo de patología, encontramos 52 posibles etiquetas.
+
+
+
+%\section{Procesado de imágenes cutáneas}
+%\subsection{Técnicas de reducción de ruido}
+%\subsection{Normalización}
+%\subsection{Extracción de características}
+
+

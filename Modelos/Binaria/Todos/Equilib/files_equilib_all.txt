@@ -1,0 +1,10 @@
+files_equilib_all.txt
+models
+perdidas50_freeze_album.png
+perdidas50_unfreeze_album.png
+resnet50_album.py
+skin-rn50-album.pt
+skin-rn50android460.ptl
+slurm-46544.out
+tfg-resnet50_512.sh
+trainSet.csv
