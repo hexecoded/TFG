@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  8 JUN 2024 13:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  8 JUN 2024 14:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -886,14 +886,6 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 11.
 Package tocbasic Info: Using my definition of `\numberline' on input line 16.
 Package tocbasic Info: Using my definition of `\numberline' on input line 17.
 Package tocbasic Info: Using my definition of `\numberline' on input line 26.
-Package tocbasic Info: Using my definition of `\numberline' on input line 27.
-Package tocbasic Info: Using my definition of `\numberline' on input line 28.
-Package tocbasic Info: Using my definition of `\numberline' on input line 29.
-Package tocbasic Info: Using my definition of `\numberline' on input line 30.
-Package tocbasic Info: Using my definition of `\numberline' on input line 31.
-Package tocbasic Info: Using my definition of `\numberline' on input line 32.
-Package tocbasic Info: Using my definition of `\numberline' on input line 33.
-Package tocbasic Info: Using my definition of `\numberline' on input line 34.
 )
 \tf@toc=\write4
 \openout4 = `proyecto.toc'.
@@ -1020,7 +1012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
 ]
 chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
@@ -1034,103 +1026,124 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-LaTeX Font Info:    Font shape `T1/Cabin-TLF/b/n' aliased to
-(Font)              `T1/Cabin-TLF/bold/n' on input line 15.
-LaTeX Font Info:    Font shape `T1/Cabin-TLF/bold/n' will be
-(Font)              scaled to size 11.39996pt on input line 15.
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
+LaTeX Font Info:    Font shape `T1/Cabin-TLF/b/n' aliased to
+(Font)              `T1/Cabin-TLF/bold/n' on input line 17.
+LaTeX Font Info:    Font shape `T1/Cabin-TLF/bold/n' will be
+(Font)              scaled to size 11.39996pt on input line 17.
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+LaTeX Warning: Citation `iandola2016squeezenet' on page 30 undefined on input l
+ine 21.
+
+
+LaTeX Warning: Citation `howard2017mobilenets' on page 30 undefined on input li
+ne 21.
+
+
+LaTeX Warning: Citation `sandler2019mobilenetv2' on page 30 undefined on input 
+line 21.
+
+
+LaTeX Warning: Citation `howard2019searching' on page 30 undefined on input lin
+e 21.
+
+
+LaTeX Warning: Citation `zhang2017shufflenet' on page 30 undefined on input lin
+e 21.
+
+
+LaTeX Warning: Citation `tan2020efficientnet' on page 30 undefined on input lin
+e 21.
+
+
+LaTeX Warning: Citation `eflite' on page 30 undefined on input line 21.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--46
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-[32] [33]
-Overfull \hbox (38.86732pt too wide) in paragraph at lines 93--94
+[33]
+Overfull \hbox (38.86732pt too wide) in paragraph at lines 97--98
 []\T1/pplj/m/n/10.95 (https://towardsdatascience.com/mobilenetv2-inverted-resid
 uals-and-linear-bottlenecks-
  []
 
 
-Overfull \hbox (126.8504pt too wide) in paragraph at lines 97--98
+Overfull \hbox (126.8504pt too wide) in paragraph at lines 101--102
 \T1/pplj/m/n/10.95 pa-ra el diag-nós-ti-co de en-fer-me-da-des de la piel. En [
 https://arxiv.org/ftp/arxiv/papers/1907/1907.03220.pdf],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-
-Overfull \hbox (13.64954pt too wide) in paragraph at lines 99--100
+[34]
+Overfull \hbox (13.64954pt too wide) in paragraph at lines 103--104
 []\T1/pplj/m/n/10.95 También se uti-li-zó en [https://www.ncbi.nlm.nih.gov/pmc/
 articles/PMC9817940/],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
-[34]
-<imagenes/DiagramaBusqueda.png, id=238, 274.626pt x 456.0237pt>
+<imagenes/DiagramaBusqueda.png, id=222, 274.626pt x 456.0237pt>
 File: imagenes/DiagramaBusqueda.png Graphic file (type png)
 <use imagenes/DiagramaBusqueda.png>
-Package pdftex.def Info: imagenes/DiagramaBusqueda.png  used on input line 116.
+Package pdftex.def Info: imagenes/DiagramaBusqueda.png  used on input line 120.
 
 (pdftex.def)             Requested size: 205.96898pt x 342.01694pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [35]
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [36 <./imagenes/DiagramaBusqueda.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
@@ -1139,18 +1152,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36 <./imagenes/DiagramaBusqueda.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
 [37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [38]
 [39]
-<imagenes/Ejemplo2020.png, id=266, 575.90157pt x 207.02344pt>
+<imagenes/Ejemplo2020.png, id=250, 575.90157pt x 207.02344pt>
 File: imagenes/Ejemplo2020.png Graphic file (type png)
 <use imagenes/Ejemplo2020.png>
-Package pdftex.def Info: imagenes/Ejemplo2020.png  used on input line 228.
+Package pdftex.def Info: imagenes/Ejemplo2020.png  used on input line 232.
 (pdftex.def)             Requested size: 287.95007pt x 103.51146pt.
 
-Overfull \hbox (5.95581pt too wide) in paragraph at lines 239--256
+Overfull \hbox (5.95581pt too wide) in paragraph at lines 243--260
  [][] 
  []
 
@@ -1158,48 +1184,48 @@ Overfull \hbox (5.95581pt too wide) in paragraph at lines 239--256
 Underfull \vbox (badness 3792) has occurred while \output is active []
 
  [40 <./imagenes/Ejemplo2020.png>]
-Overfull \hbox (9.28047pt too wide) in paragraph at lines 261--262
+Overfull \hbox (9.28047pt too wide) in paragraph at lines 265--266
 []\T1/pplj/m/n/10.95 Adicionalmente, po-de-mos en-con-trar tam-bién imá-ge-nes 
 pro-por-cio-na-das por Hallym,
  []
 
-<imagenes/ASAN.png, id=274, 399.74344pt x 345.54094pt>
+<imagenes/ASAN.png, id=258, 399.74344pt x 345.54094pt>
 File: imagenes/ASAN.png Graphic file (type png)
 <use imagenes/ASAN.png>
-Package pdftex.def Info: imagenes/ASAN.png  used on input line 267.
+Package pdftex.def Info: imagenes/ASAN.png  used on input line 271.
 (pdftex.def)             Requested size: 239.8479pt x 207.32616pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [41]
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
 [42 <./imagenes/ASAN.png>]
-<imagenes/PH2.png, id=287, 438.8897pt x 155.07938pt>
+<imagenes/PH2.png, id=270, 438.8897pt x 155.07938pt>
 File: imagenes/PH2.png Graphic file (type png)
 <use imagenes/PH2.png>
-Package pdftex.def Info: imagenes/PH2.png  used on input line 297.
+Package pdftex.def Info: imagenes/PH2.png  used on input line 301.
 (pdftex.def)             Requested size: 263.33585pt x 93.04832pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 
  []
 
 [43 <./imagenes/PH2.png>]
-<imagenes/PAD-UFES.png, id=298, 444.91219pt x 356.0803pt>
+<imagenes/PAD-UFES.png, id=282, 444.91219pt x 356.0803pt>
 File: imagenes/PAD-UFES.png Graphic file (type png)
 <use imagenes/PAD-UFES.png>
-Package pdftex.def Info: imagenes/PAD-UFES.png  used on input line 337.
+Package pdftex.def Info: imagenes/PAD-UFES.png  used on input line 341.
 (pdftex.def)             Requested size: 200.20862pt x 160.23465pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
@@ -1207,20 +1233,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 342--343
 Underfull \vbox (badness 1694) has occurred while \output is active []
 
  [44 <./imagenes/PAD-UFES.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
  []
 
-<imagenes/Severance.png, id=304, 508.14844pt x 254.45062pt>
+<imagenes/Severance.png, id=288, 508.14844pt x 254.45062pt>
 File: imagenes/Severance.png Graphic file (type png)
 <use imagenes/Severance.png>
-Package pdftex.def Info: imagenes/Severance.png  used on input line 354.
+Package pdftex.def Info: imagenes/Severance.png  used on input line 358.
 (pdftex.def)             Requested size: 254.0736pt x 127.22499pt.
 [45 <./imagenes/Severance.png>]
-<imagenes/datasetfinal.png, id=314, 427.269pt x 249.441pt>
+<imagenes/datasetfinal.png, id=298, 427.269pt x 249.441pt>
 File: imagenes/datasetfinal.png Graphic file (type png)
 <use imagenes/datasetfinal.png>
-Package pdftex.def Info: imagenes/datasetfinal.png  used on input line 373.
+Package pdftex.def Info: imagenes/datasetfinal.png  used on input line 377.
 (pdftex.def)             Requested size: 277.72156pt x 162.1347pt.
  [46 <./imagenes/datasetfinal.png>])
 (./capitulos/03_PreprocesadoDatos.tex) (./capitulos/04_AnalisisTecnicas.tex)
@@ -1235,59 +1261,31 @@ LaTeX Info: Redefining \% on input line 13.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18487 strings out of 476014
- 321203 string characters out of 5792005
+ 18479 strings out of 476014
+ 321130 string characters out of 5792005
  1945187 words of memory out of 5000000
  40137 multiletter control sequences out of 15000+600000
  653872 words of font info for 95 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  108i,12n,107p,10903b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{chapter.10} has been referenced but does not exist,
- replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.9} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.8} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.7} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.6} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.5} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter.3} has been referenced but does not exist, 
-replaced by a fixed one
-
-</usr/share/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></usr/share/t
-exmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/type1
-/public/mathpazo/fplmri.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrc
-8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/t
-exmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-dist/fonts/typ
-e1/urw/palatino/uplr8a.pfb>
-Output written on proyecto.pdf (47 pages, 2352819 bytes).
+</usr/share/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></usr/share
+/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/mathpazo/fplmri.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fpl
+rc8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share
+/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-dist/fonts/t
+ype1/urw/palatino/uplr8a.pfb>
+Output written on proyecto.pdf (47 pages, 2352760 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 114 named destinations out of 1000 (max. 500000)
+ 406 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 106 named destinations out of 1000 (max. 500000)
  147 words of extra memory for PDF output out of 10000 (max. 10000000)
 

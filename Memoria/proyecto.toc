@@ -4,17 +4,17 @@
 \contentsline {section}{\numberline {1.2}El cáncer de piel}{25}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Dificultades del diagnóstico}{26}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Relevancia y objetivos del proyecto}{27}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Estado del arte}{29}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Tendencias y Estado del arte}{29}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Aprendizaje profundo en dispositivos móviles}{29}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Arquitecturas de redes convolucionales}{29}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.1}Arquitecturas neuronales de alta eficiencia}{30}{subsection.2.1.1}%
 \contentsline {subsubsection}{\nonumberline Squeeze-Net (2016)}{30}{subsubsection*.9}%
 \contentsline {subsection}{\numberline {2.1.2}MobileNet}{31}{subsection.2.1.2}%
-\contentsline {subsubsection}{\nonumberline MobileNet V1 (2017)}{31}{subsubsection*.11}%
-\contentsline {subsubsection}{\nonumberline MobileNet V2 (2018)}{32}{subsubsection*.13}%
-\contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{33}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline MobileNet V1 (2017)}{32}{subsubsection*.11}%
+\contentsline {subsubsection}{\nonumberline MobileNet V2 (2018)}{33}{subsubsection*.13}%
+\contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{34}{subsubsection*.15}%
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{34}{subsubsection*.17}%
-\contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{34}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{34}{section.2.2}%
+\contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{35}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}Recursos gráficos disponibles}{35}{section.2.2}%
 \contentsline {subsubsection}{\nonumberline ISIC Data}{37}{subsubsection*.19}%
 \contentsline {subsubsection}{\nonumberline ASAN Dataset}{40}{subsubsection*.21}%
 \contentsline {subsubsection}{\nonumberline Dermnetz}{42}{subsubsection*.23}%

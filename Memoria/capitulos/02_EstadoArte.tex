@@ -1,20 +1,24 @@
-\chapter{Estado del arte}
+\chapter{Tendencias y Estado del arte}
 
-En este apartado, evaluaremos los modelos usados para la clasificación de tumores y lesiones cutáneas en la literatura, para así comprender las ventajas que ofrece cada modelo, y los puntos en contra, y obtener una referencia de la tendencia general.
+Antes de adentrarnos en el análisis del problema, debemos de tener en cuenta de que este problema es una temática en constante evolución, y por tanto, podemos encontrar diferentes conceptos y procedimientos seguidos en la literatura que pueden servirnos de inspiración para abordar el problema sin cometer los errores ya cometidos en el pasado, y ser capaces de encontrar un nuevo enfoque que nos ofrezca ventajas.\\
+
+Generalmente, este problema ha sido abordado empleando hardware de computador de escritorio, por lo que la mayoría de modelos se centran en el aprovechamiento de los recursos hardware alojados en un servidor para realizar la clasificación y evaluación de las imágenes potencialmente cancerosas tomadas. Por tanto, nos adentraremos en sus conceptos, pero teniendo en cuenta que el proyecto propuesto hará uso de dispositivos móviles durante el tiempo de inferencia.
 
 \section{Aprendizaje profundo en dispositivos móviles}
 
-Con la creciente tendencia de la potencia de cálculo en los dispositivos actuales, prácticamente todos los aparatos electrónicos que nos rodean han crecido en cuanto a potencia y complejidad de cálculo. Uno de ellos, los teléfonos móviles, son con diferencia el dispositivo más extendido, y una herramienta potencial para utilizar en tareas diarias.\\
+Con la creciente tendencia de la potencia de cálculo en los dispositivos actuales, prácticamente todos los aparatos electrónicos que nos rodean han crecido en cuanto a potencia y complejidad de cálculo. Los smartphones son precisamente uno de ellos, y nos acompañan cada día, por lo que es el dispositivo ideal para tareas de uso cotidiano y portabilidad.\\
 
-Éstos, basados en arquitectura ARM, se basan en la idea de ofrecer el máximo rendimiento posible dentro de unos consumos contenidos, para evitar problemas de autonomía o de temperatura, por lo que el entrenamiento de una red relativamente pequeña de menos de 10 millones de parámetros podría ser una tarea compleja. Sin embargo, en el caso de la inferencia, estos pueden llegar a ser muy rápidos, y podemos aprovechar la capacidad que ofrecen para procesar nuestro entorno en base a modelos preentrenados.\\
+Estos dispositivos, a diferencia de los computadores tradicionales, normalmente basado en la arquitectura x86 o AMD64, se basan en ARM, siguiendo como concepto de diseño ofrecer el máximo rendimiento posible dentro de unos consumos contenidos,mejorando el ahorro de energía y la pérdida de la misma mediante calor. El entrenamiento de modelos que encontramos habitualmente en la literatura, como ResNet, Inception o similares, es prácticamente inviable de forma nativa.\\
 
-Esta tarea ya se realiza a través de herramientas como Google Lens, u otro tipo de aplicaciones que incorporan capacidades de visión por computador, como Google Maps, y se trata de un campo en auge. Su aprovechamiento, como ya mencionamos en la introducción, podría facilitarnos la inferencia del problema que nos concierne, evitando la necesidad de enviar los datos a un servidor externo, y que estos regresen de vuelta.\\
+Sin embargo, en lo que respecta a la inferencia, éstos son capaces de ofrecer muy buenos resultados, gracias a la incorporación de hardware dedicado capaz de ofrecer estas características. Como prueba, podemos observar infinidad de aplicaciones que hace uso de ello, como Google Lens, que si bien se ayuda del uso de servidores de búsqueda especializados, es capaz de realizar procedimientos locales en los dispositivos de gama alta. \\
 
-En este punto, estudiaremos algunos modelos comúnmente usados, y algunas aplicaciones concretas aplicadas en medicina y el cáncer de piel.
+El objetivo del proyecto es aprovechar dicho vacío en la existencia de apliaciones de inferencia local para ofrecer una app que no necesite de conexión de red permanente para ofrecer resultados acerca de las manchas de piel identificadas.
 
-\subsection{Arquitecturas de redes convolucionales}
+\subsection{Arquitecturas neuronales de alta eficiencia}
 
-A lo largo de las última década, se han desarrollado numerosos modelos de red para smartphones, inicialmente como versiones ``recortadas'' de los modelos tradicionales de computador, y posteriormente, éstas se crearon específicamente con ese propósito, limitando el número de parámetros y capas.
+Aprovechando el auge de los smartphones, grandes empresas, como Google y Meta, centran sus esfuerzos en la creación de arquitecturas basadas en redes convolucionales capaces en realizar detección de imágenes en tiempo real, para la clasificación de distintos objetos que podemos encontrar en nuestra vida cotidiana, y servir así como una herramienta de apoyo para diferentes necesidades. Sin embargo, esto es una tarea completa, ya que suelen carecer de complejas operaciones, o sacrificar en profundidad para lograr un rendimiento aceptable de unas decenas de milisegundos por inferencia.\\
+
+A continuación, evaluaremos algunos de los modelos más conocidos y efectivos de propósito general, como SqueezeNet\cite{iandola2016squeezenet}, MobileNet \cite{howard2017mobilenets}\cite{sandler2019mobilenetv2}\cite{howard2019searching}, ShuffleNet \cite{zhang2017shufflenet} y  EfficientNet Lite \cite{tan2020efficientnet}\cite{eflite}.
 
 \subsubsection{Squeeze-Net (2016)}
 
@@ -375,8 +379,6 @@ Inicialmente, el conjunto de datos construido contendrá todos los subtipos de l
 \end{figure}
 
 Se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Si atendemos a clasificar las subclases de cada tipo de patología, encontramos 52 posibles etiquetas.
-
-
 
 %\section{Procesado de imágenes cutáneas}
 %\subsection{Técnicas de reducción de ruido}
