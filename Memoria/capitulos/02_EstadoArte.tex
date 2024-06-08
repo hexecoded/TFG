@@ -14,13 +14,11 @@ Sin embargo, en lo que respecta a la inferencia, éstos son capaces de ofrecer m
 
 El objetivo del proyecto es aprovechar dicho vacío en la existencia de apliaciones de inferencia local para ofrecer una app que no necesite de conexión de red permanente para ofrecer resultados acerca de las manchas de piel identificadas.
 
-\subsection{Arquitecturas neuronales de alta eficiencia}
-
 Aprovechando el auge de los smartphones, grandes empresas, como Google y Meta, centran sus esfuerzos en la creación de arquitecturas basadas en redes convolucionales capaces en realizar detección de imágenes en tiempo real, para la clasificación de distintos objetos que podemos encontrar en nuestra vida cotidiana, y servir así como una herramienta de apoyo para diferentes necesidades. Sin embargo, esto es una tarea completa, ya que suelen carecer de complejas operaciones, o sacrificar en profundidad para lograr un rendimiento aceptable de unas decenas de milisegundos por inferencia.\\
 
-A continuación, evaluaremos algunos de los modelos más conocidos y efectivos de propósito general, como SqueezeNet\cite{iandola2016squeezenet}, MobileNet \cite{howard2017mobilenets}\cite{sandler2019mobilenetv2}\cite{howard2019searching}, ShuffleNet \cite{zhang2017shufflenet} y  EfficientNet Lite \cite{tan2020efficientnet}\cite{eflite}.
+A continuación, evaluaremos algunos de los modelos más conocidos y efectivos de propósito general, como SqueezeNet\cite{iandola2016squeezenet}, MobileNet \cite{howard2017mobilenets}\cite{sandler2019mobilenetv2}\cite{howard2019searching}, ShuffleNet \cite{zhang2017shufflenet} y  EfficientNet\cite{tan2020efficientnet}\cite{eflite}.
 
-\subsubsection{Squeeze-Net (2016)}
+\subsection{Squeeze-Net (2016)}
 
 Squeeze-Net\cite{iandola2016squeezenet} se centra en la reducción de complejidad de la arquitectura, sin pérdida de capacidad predictiva y evitando aplicar técnicas de compresión y cuantización\cite{kuzmin2024fp8} de modelos. Se autodefine como ``una red al nivel de AlexNet\cite{NIPS2012_c399862d} pero con una quincuagésima parte de los parámetros'', haciendo alusión a disponer de una capacidad de cálculo similar a AlexNet, pero recortando en cuanto a número de parámetros necesarios.\\
 
@@ -168,7 +166,7 @@ Esta técnica se aplicará sobre la primera y última convolución 1x1 realizada
 
 Sus aplicaciones han sido variadas, pero en lo que respecta a la detección de lesiones cutáneas, la cercana salida de MobileNet V2 y su mejor rendimiento provocó que ShuffleNet quedase relegada a un segundo plano, y no fuese muy utilizada para este fin. Podemos encontrar algunos trabajos \cite{shuffleapp} donde podemos observar una comparativa de este modelo frente a la completitud de los modelos del estado del arte de 2022, y podemos confirmar que  MobileNetV2 es capaz de superar su rendimiento en la mayoría de pruebas, siendo estas comparaciones en cuanto a tiempo de entrenamiento, precisión, accuracy y tamaño del conjunto de entrenamiento. Sólo consigue superar a MobileNetV2 en tiempo de entrenamiento, donde es aproximadamente 900 más rápida, pero ofrece peores resultados en promedio.
 
-\subsection{EfficientNet lite}
+\subsection{EfficientNet}
 
 EfficientNet \cite{Chaturvedi_2020} es un conjunto de arquitecturas de redes creadas por el departamento de investigación de Google con el fin de conseguir una familia de modelos variada que fuese capaz de adaptarse fácilmente mediante parámetros a diferentes conjuntos de imágenes, y a requisitos de hardware más o menos limitados. 
 
@@ -192,7 +190,9 @@ Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, 
 \end{figure}
 
 
-Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una serie de modelos distinto: los conocidos EfficientNetB0 - B7, denotando el valor numérico la profundidad y complejidad del modelo, siendo esta mayor a mayor valor del índice.	 Cada una de ellas fue ajustada utilizando como requisito la potencia medida en TFLOPS para su ejecución, y puede ser posteriormente ajustada con el resto de parámetros libres no fijados a las características del conjunto de entrada.\\
+Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una serie de modelos distinto: los conocidos EfficientNetB0 - B7, denotando el valor numérico la profundidad y complejidad del modelo, siendo esta mayor a mayor valor del índice.	 Cada una de ellas fue ajustada utilizando como requisito la potencia medida en TFLOPS para su ejecución, y puede ser posteriormente ajustada con el resto de parámetros libres no fijados a las características del conjunto de entrada.
+
+En smartphones de alta gama, los modelos B0 a B4 pueden ser ejecutados con un rendimiento aceptable para aquellas aplicaciones que no requieran un alto tiempo de respuesta, pero si necesitan dar al usuario una respuesta aceptable. Para modelos de mayor complejidad computacional, se usan las variantes lite, que estudiaremos más adelante.
 
 
 \subsubsection{Aplicaciones en dermatología y cáncer de piel}
@@ -201,9 +201,21 @@ En el problema que nos concierne, esta arquitectura ha conseguido grandes result
 
 Ambos resultados han sido evaluados con computadores de alta gama, haciendo uso de múltiples tarjetas gráficas para el entreanmiento y la inferencia. Este proceso es demasiado pesado para un dispositivo móvil, por lo que de cara a este trabajo, se buscarán alternativas capaces de ahorrar en espacio y potencia como concepto de cuantización.
 
- \subsection{Cuantización de modelos}
+ \section{Cuantización de modelos}
 
+Las arquitecturas y soluciones propuestas por la literatura que han sido analizadas en los apartados anteriores proponen métodos que ofrecen buenos resultados. Sin embargo, existe un problema: todas ellas han sido entrenadas con un computador cuya capacidad de cálculo supera incluso las características de un ordenador doméstico promedio, como en \cite{2ndISIC}, donde se emplean 4  GPU Nvidia Quadro RTX 6000 24GB. Aunque su utilización engloba sobre todo el proceso de entrenamiento, la inferencia de estos modelos también sigue siendo extremadamente costosa para un dispositivo móvil, y este proceso también es realizado a través del computador.
 
+Esto resume a que el teléfono simplemente adquiere el papel de cliente dentro de una arquitectura cliente-servidor, donde el dispositivo host de todo el procesamiento de la imagen y de su clasificación es un ordenador de gran potencia de cálculo, y el teléfono movil únicamente debe compartir con este la imagen que desea examinar. Pero esto supone una gran desventaja: en ausencia de conexión de red, o interrupción del servicio por parte del servidor, el usuario no sería capaz de emplear la aplicacion para el diagnóstico. La dificultad e interés de este proyecto se ve reforzado por este argumento, y resulta entonces de aún más interés la posibilidad de realizar la inferencia en el teléfono, a pesar de que el entrenamiento sea realizado en un ordenador.
+
+Existe una técnica que nos permitirá obtener un modelo optimizado a partir de un modelo entrenado de forma tradicional: la cuantización.
+
+\subsection{Características}
+
+La cuantización de modelos se centra en la simplificación y optimización de un modelo preentrenado por un computador, reduciendo algunas de sus características buscando un impacto mínimo sobre los resultados obtenidos, pero reduciendo de forma considerable el tiempo de inferencia. Aunque existen mecanismo de poda, el método que evaluaremos será la quantización de modelos basada en la reducción de la precisión numérica, es decir, una disminución de la precisión en la numeración de coma flotante.
+
+Este concepto ya fue brevemente mencionado durante el desglose de características de MobileNet V3 \cite{howard2019searching}. En la arquitectura AMD64, los número de coma flotante empleados tienen una precisión de 32 bits. Por tanto, al realizar operaciones de cualquier tipo, todas las posiciones del número han de ser actualizadas al valor resultado. El tiempo empleado en realizar dicha operación en cada dígito de este número puede parecer despreciable, pero, cuando el número de operaciones alcanza los miles de millones, supone una diferencia significativa en el rendimiento. 
+
+En dispositivos de baja potencia, esta precisión suele verse reducida a 8 bits, de forma que reducimos la longitud del máximo número almacenable en 4 veces menos, y reducimos también así el número de operaciones, cuyo operador predominante suele ser el producto. \textbf{CONTINUAR}
 \section{Recursos gráficos disponibles}
 
 La obtención de datos es un proceso fundamental en la resolución de problemas de Machine Learning. Este tipo de problemas requieren un gran número de imágenes que aporten variedad, y permitan construir un modelo general que se capaz de adaptarse a cambios de iluminación, diferentes puntos de vista y composiciones.
