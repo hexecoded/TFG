@@ -89,6 +89,14 @@ Paul-Louis Pröve.
   2020.
 \newblock [Online; accessed 8-June-2024].
 
+\bibitem{eflite2}
+Google Renjie~Liu.
+\newblock Higher accuracy on vision models with efficientnet-lite.
+\newblock
+  \url{https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html},
+  2020.
+\newblock [Online; accessed 18-April-2024].
+
 \bibitem{sandler2019mobilenetv2}
 Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
   Chen.

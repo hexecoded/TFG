@@ -17,13 +17,15 @@
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{40}{subsubsection*.17}%
 \contentsline {section}{\numberline {2.2}Cuantización de modelos}{41}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Características}{41}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Recursos gráficos disponibles}{42}{section.2.3}%
-\contentsline {subsubsection}{\nonumberline ISIC Data}{44}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline ASAN Dataset}{47}{subsubsection*.21}%
-\contentsline {subsubsection}{\nonumberline Dermnetz}{49}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline PH2}{50}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{50}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Severance}{52}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Otros datasets}{52}{subsubsection*.31}%
-\contentsline {subsubsection}{\nonumberline Conjunto resultado}{53}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {2.2.2}Modelos cuantizados}{43}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Conclusión de los modelos cuantizados}{44}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Recursos gráficos disponibles}{45}{section.2.3}%
+\contentsline {subsubsection}{\nonumberline ISIC Data}{47}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline ASAN Dataset}{50}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Dermnetz}{52}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline PH2}{53}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{53}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Severance}{55}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Otros datasets}{55}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Conjunto resultado}{56}{subsubsection*.33}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
