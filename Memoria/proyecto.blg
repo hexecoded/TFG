@@ -6,45 +6,45 @@ Database file #1: bibliografia/bibliografia.bib
 Warning--I didn't find a database entry for ""
 Warning--to sort, need author or key in isicarchive
 Warning--empty journal in Han2017
-You've used 33 entries,
+You've used 34 entries,
             2118 wiz_defined-function locations,
-            663 strings with 11272 characters,
-and the built_in function-call counts, 11665 in all, are:
-= -- 1003
-> -- 897
+            668 strings with 11419 characters,
+and the built_in function-call counts, 11882 in all, are:
+= -- 1025
+> -- 904
 < -- 2
-+ -- 358
-- -- 322
-* -- 859
-:= -- 2029
-add.period$ -- 94
-call.type$ -- 33
-change.case$ -- 257
++ -- 361
+- -- 324
+* -- 865
+:= -- 2066
+add.period$ -- 98
+call.type$ -- 34
+change.case$ -- 261
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 299
-empty$ -- 759
-format.name$ -- 322
-if$ -- 2328
+cite$ -- 36
+duplicate$ -- 306
+empty$ -- 781
+format.name$ -- 324
+if$ -- 2376
 int.to.chr$ -- 0
-int.to.str$ -- 33
+int.to.str$ -- 34
 missing$ -- 13
-newline$ -- 162
-num.names$ -- 66
-pop$ -- 348
+newline$ -- 168
+num.names$ -- 68
+pop$ -- 356
 preamble$ -- 1
-purify$ -- 225
+purify$ -- 228
 quote$ -- 0
-skip$ -- 266
+skip$ -- 272
 stack$ -- 0
-substring$ -- 328
-swap$ -- 53
+substring$ -- 333
+swap$ -- 54
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 130
+type$ -- 134
 warning$ -- 2
-while$ -- 73
-width$ -- 35
-write$ -- 331
+while$ -- 75
+width$ -- 36
+write$ -- 343
 (There were 3 warnings)

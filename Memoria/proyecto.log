@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  9 JUN 2024 19:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.30)  10 JUN 2024 00:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1221,78 +1221,70 @@ Overfull \hbox (5.95581pt too wide) in paragraph at lines 421--438
  [][] 
  []
 
-
-Overfull \hbox (9.28047pt too wide) in paragraph at lines 443--444
-[]\T1/pplj/m/n/10.95 Adicionalmente, po-de-mos en-con-trar tam-bién imá-ge-nes 
-pro-por-cio-na-das por Hallym,
- []
-
 [52]
-<imagenes/ASAN.png, id=473, 399.74344pt x 345.54094pt>
-File: imagenes/ASAN.png Graphic file (type png)
-<use imagenes/ASAN.png>
-Package pdftex.def Info: imagenes/ASAN.png  used on input line 449.
-(pdftex.def)             Requested size: 239.8479pt x 207.32616pt.
+<imagenes/results_asan.png, id=479, 736.7525pt x 614.295pt>
+File: imagenes/results_asan.png Graphic file (type png)
+<use imagenes/results_asan.png>
+Package pdftex.def Info: imagenes/results_asan.png  used on input line 461.
+(pdftex.def)             Requested size: 294.69577pt x 245.71364pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 453--454
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
-
-[53 <./imagenes/ASAN.png>]
-<imagenes/PH2.png, id=481, 438.8897pt x 155.07938pt>
+ [53]
+[54 <./imagenes/results_asan.png>]
+<imagenes/PH2.png, id=492, 438.8897pt x 155.07938pt>
 File: imagenes/PH2.png Graphic file (type png)
 <use imagenes/PH2.png>
-Package pdftex.def Info: imagenes/PH2.png  used on input line 479.
+Package pdftex.def Info: imagenes/PH2.png  used on input line 491.
 (pdftex.def)             Requested size: 263.33585pt x 93.04832pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--486
+Underfull \hbox (badness 10000) in paragraph at lines 497--498
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+[55 <./imagenes/PH2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
-[54 <./imagenes/PH2.png>]
-<imagenes/PAD-UFES.png, id=491, 444.91219pt x 356.0803pt>
+<imagenes/PAD-UFES.png, id=502, 444.91219pt x 356.0803pt>
 File: imagenes/PAD-UFES.png Graphic file (type png)
 <use imagenes/PAD-UFES.png>
-Package pdftex.def Info: imagenes/PAD-UFES.png  used on input line 519.
+Package pdftex.def Info: imagenes/PAD-UFES.png  used on input line 531.
 (pdftex.def)             Requested size: 200.20862pt x 160.23465pt.
-
-Underfull \vbox (badness 7308) has occurred while \output is active []
-
- [55]
-Underfull \hbox (badness 10000) in paragraph at lines 524--525
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 536--537
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--527
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 
  []
 
-<imagenes/Severance.png, id=497, 508.14844pt x 254.45062pt>
+<imagenes/Severance.png, id=509, 508.14844pt x 254.45062pt>
 File: imagenes/Severance.png Graphic file (type png)
 <use imagenes/Severance.png>
-Package pdftex.def Info: imagenes/Severance.png  used on input line 536.
+Package pdftex.def Info: imagenes/Severance.png  used on input line 548.
 (pdftex.def)             Requested size: 254.0736pt x 127.22499pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [56 <./imagenes/PAD-UFES.png>] [57 <./imagenes/Severance.png>]
-<imagenes/datasetfinal.png, id=514, 427.269pt x 249.441pt>
+ [57 <./imagenes/PAD-UFES.png>] [58 <./imagenes/Severance.png>]
+<imagenes/datasetfinal.png, id=526, 427.269pt x 249.441pt>
 File: imagenes/datasetfinal.png Graphic file (type png)
 <use imagenes/datasetfinal.png>
-Package pdftex.def Info: imagenes/datasetfinal.png  used on input line 555.
+Package pdftex.def Info: imagenes/datasetfinal.png  used on input line 567.
 (pdftex.def)             Requested size: 277.72156pt x 162.1347pt.
 )
 (./capitulos/03_PreprocesadoDatos.tex) (./capitulos/04_AnalisisTecnicas.tex)
 (./capitulos/05_ExtraccionCaracteristicas.tex) (./capitulos/06_Deeplearning.tex
 ) (./capitulos/07_Diseno.tex) (./capitulos/08_ImplementaciÃ³n.tex)
 (./capitulos/09_Pruebas.tex) (./capitulos/10_Conclusiones.tex) (./proyecto.bbl
-[58 <./imagenes/datasetfinal.png>]
+[59 <./imagenes/datasetfinal.png>] [60
+
+
+]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
 .
 
@@ -1322,10 +1314,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--62
 fficientnetlite ? hl =
  []
 
-[59
-
-
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [60]
+[61{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [62]
 Underfull \hbox (badness 4096) in paragraph at lines 144--150
 []\T1/pplj/m/n/10.95 Ian Pan.  Siim-isic me-la-no-ma clas-si-fi-ca-tion, 2nd so
 -lu-tion.  [][]$\T1/cmtt/m/n/10.95 https :
@@ -1373,23 +1362,23 @@ et-[]lite . html$[][]\T1/pplj/m/n/10.95 , 2020.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--205
+Underfull \hbox (badness 10000) in paragraph at lines 205--211
 []\T1/pplj/m/n/10.95 Sik-Ho Tsang.  Re-view: Shuf-fle-net v1 ^^V light
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--205
+Underfull \hbox (badness 10000) in paragraph at lines 205--211
 \T1/pplj/m/n/10.95 weight mo-del.  [][]$\T1/cmtt/m/n/10.95 https : / / towardsd
 atascience . com /
  []
 
 
-Overfull \hbox (35.21915pt too wide) in paragraph at lines 199--205
+Overfull \hbox (35.21915pt too wide) in paragraph at lines 205--211
 \T1/cmtt/m/n/10.95 review-[]shufflenet-[]v1-[]light-[]weight-[]model-[]image-[]
 classification-[]5b253dfe982f$[][]\T1/pplj/m/n/10.95 ,
  []
 
-[61]) [62] (./proyecto.aux
+[63]) [64] (./proyecto.aux
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 )
@@ -1408,10 +1397,10 @@ Package rerunfilecheck Info: File `proyecto.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18739 strings out of 476014
- 326322 string characters out of 5792005
+ 18744 strings out of 476014
+ 326440 string characters out of 5792005
  1946187 words of memory out of 5000000
- 40304 multiletter control sequences out of 15000+600000
+ 40306 multiletter control sequences out of 15000+600000
  661389 words of font info for 117 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  108i,12n,107p,10903b,637s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1426,10 +1415,10 @@ c/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb
 /texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/up
 lri8a.pfb>
-Output written on proyecto.pdf (62 pages, 3697719 bytes).
+Output written on proyecto.pdf (64 pages, 3331569 bytes).
 PDF statistics:
- 714 PDF objects out of 1000 (max. 8388607)
- 578 compressed objects within 6 object streams
- 172 named destinations out of 1000 (max. 500000)
+ 729 PDF objects out of 1000 (max. 8388607)
+ 591 compressed objects within 6 object streams
+ 175 named destinations out of 1000 (max. 500000)
  245 words of extra memory for PDF output out of 10000 (max. 10000000)
 

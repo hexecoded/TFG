@@ -195,6 +195,12 @@ Mingxing Tan and Quoc~V. Le.
 \newblock Efficientnet: Rethinking model scaling for convolutional neural
   networks, 2020.
 
+\bibitem{githubdermnet}
+Dhiraj~Jaiswal Tiancheng~Xu.
+\newblock Dermnet-images-crawler.
+\newblock \url{https://github.com/tcxxxx/DermNet-images-crawler}, 2020.
+\newblock [Online; accessed 19-Feb-2024].
+
 \bibitem{shufflenetreview}
 Sik-Ho Tsang.
 \newblock Review: Shufflenet v1 — light weight model.
