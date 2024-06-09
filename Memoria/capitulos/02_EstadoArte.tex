@@ -265,21 +265,22 @@ Como aspecto negativo, aunque la varianza de los resultados pueda verse paliada 
 Dado a los buenos resultados en general, la cuantización será la senda seguida por este TFG a la hora de optimizar los modelos de escritorio en post entrenamiento.
 
 
+\newpage
+\section{Conjuntos de datos disponibles}
 
-\section{Recursos gráficos disponibles}
+La obtención de datos para el proceso de aprendizaje automático es una fase crucial para la obtención de un modelo correctamente entrenado y que proporcione resultados de calidad. Esta fase es un factor común en todos los problemas de aprendizaje, ya que a mayor diversidad y cantidad de datos, más cercana será la muestra de la que disponemos y, por ende, más cercanos serán los resultados al diagnóstico real. Múltiples puntos de vista, tonos de iluminación, y otro tiempo de variantes pueden ser  beneficiosas.
 
-La obtención de datos es un proceso fundamental en la resolución de problemas de Machine Learning. Este tipo de problemas requieren un gran número de imágenes que aporten variedad, y permitan construir un modelo general que se capaz de adaptarse a cambios de iluminación, diferentes puntos de vista y composiciones.
+Para el diagnóstico del cáncer de piel, este proceso es igualmente importante. La piel es el órgano más extenso del cuerpo humano, y debido a que es el área de mayor esposición diaria a los elementos, presenta una gran variedad en cuanto pigmentación, porosidad, y otros elementos influyentes como el envejecimiento o el daño provocado sobre ella. Esto provoca que el diagnóstico de las lesione sea complejo, pues existen tanto lesiones benignas como malignas de gran similaridad. Además, cada localización geográfica del mundo posee diferentes tonos de piel., claros y más oscuros. La inexistencia de un tipo de piel o de lesión en el conjunto de entrenamiento podrían provocar resultados sesgados indeseados durante la predicción de la imagen tomada.
 
-Es clave, por tanto, disponer de diferentes tipos de lesiones, tanto benignas como malignas, así como diferentes tonos de piel. La inexistencia de un tipo de piel en el conjunto de entrenamiento, o la inexistencia de un tipo de lesión podrían provocar resultados sesgados indeseados durante la predicción de la imagen tomada.
+En la red, podemos encontrar varios reposotorios de imágenes cutáneas de acceso público,  que permiten su utilización de forma abierta con fines académicos para el desarollo de modelos de inteligencia artificial. Sin embargo, no todos ellos son indicados para su uso, ya que el control realizado sobre el diagnóstico y la certeza de los mismos puede ser verificada en mayor o menor medida, y necesitamos que estos sean los más fiables posibles. Es crítico desarrollar un plan de búsqueda que nos facilite la decisión de tomar o desechar un conjunto de datos que encontremos.
 
-Podemos encontrar en la red varios datasets de acceso público que permiten su utilización de forma abierta con fines académicos. Dada a la gran cantidad de publicaciones disponibles, resulta complejo averiguar si los datos a los cuales hace referencia se encuentran disponibles públicamente, si son de acceso restringido, o bien, ya no se encuentran disponibles debido a cambios en su política o la falta de mantenimiento.
+Para facilitar este proceso, podemos apoyarnos en diferentes artículos recientes donde se analizan los conjuntos de datos públicamente accesibles en la actualidad, y conocer la calidad de la imagen, el porcentaje de fiabilidad del etiquetado y el balance de clases. Destacamos el estudio realizado por M. Goyal et Al.  \cite{goyal2020artificial}, o el reciente artículo de  Sana Nazari y Rafael García \cite{life13112123}, donde se analiza la disponibilidad de los datasets a fecha de 2023.
 
-Debido a que el estudio de la evolución y el diagnóstico del cáncer de piel de forma temprana es un tema en auge, existen gran cantidad de publicaciones especializadas únicamente en el análisis de los conjuntos de datos públicamente accesibles, como es el caso de la lista propuesta por M. Goyal et Al. [16], o el reciente estudio realizado por Sana Nazari y Rafael García (2023)[30].
-Basados en su modelo de estudio y las referencias recomendadas por sus artículos, se ha elaborado el siguiente plan de búsqueda para saber qué tipo de datos utilizar y cuáles descartar:
+Basado en sus estudios y recomendaciones acerca de los conjuntos de datos disponibles, he elaborado un diagrama de flujo a seguir para evaluar qué conjuntos decartar y cuales anotar para su uso en el entrenamiento:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.75]{imagenes/DiagramaBusqueda.png}
+	\includegraphics[scale=0.7]{imagenes/DiagramaBusqueda.png}
 	\caption{Proceso de búsqueda seguido}
 \end{figure}
 
@@ -287,15 +288,22 @@ Siguiendo dicho procedimiento, se han encontrado 6 datasets diferentes, cuyo ori
 
 Un factor determinante para la elección de estos conjuntos es la diversidad. Es indispensable, para este proyecto, encontrar datos lo suficientemente variados como para distinguir lesiones cancerígenas y no cancerígenas, y disponer de diferentes tonos de piel para entrenar. Aunque los tonos de piel más oscuras sufren lesiones de tipo cancerígeno en menor proporción gracias a su protección natural, también pueden sufrir este tipo de patologías, y es clave ser capaces de detectarlas en cualquier posible paciente.
 
-\subsubsection{ISIC Data}
-El repositorio ISIC (International Skin Imaging Collaboration [1]), contiene imágenes demoscópicas de lesiones principalmente cancerosas.  Existe una gran cantidad de publicaciones acerca de este conjunto de datos, debido a su utilización anual durante los años 2016-2020 para la realización de un reto virtual de Machine Learning descrito en [1]. El objetivo, consiste en identificar los melanomas frente a lesiones no cancerosas (ISIC Challenge-2020[2]) o bien, identificar diferentes subtipos de lesiones cancerosas frente a lesiones benignas (ISIC Challenge 2019, [3]). \\
+\subsection{International Skin Imaging Collaboration​ (ISIC)}
+El repositorio ISIC (International Skin Imaging Collaboration \cite{isicarchive}), es un repositorio en línea sin ánimo de lucro que recoge datos procedentes de diferentes instituciones públicas para elaborar un atlas online donde obtener datos para mejorar el diagnóstico de enfermedades cutánea y ofrecer un conjunto de imágenes accesible para la Inteligencia aritificial.
 
-En el estado del arte, destacan las soluciones que hacen uso de métodos de DeepLearning, como el planteado por Ian Pan [4], finalista de la competición para el año 2020. El ganador de la competición del año 2020, cuyo análisis podemos encontrar en [5], realiza por su parte un enfoque híbrido entre el uso de DeepLearning para la clasificación de los datos de tipo imagen, y clasificación mediante Machine Learning para los metadatos, y así obtener un resultado más preciso. \\
+Dispone de un buscador de imágenes en el que se pueden filtrar las enfermedades de las que se deseen obtener imágenes o metadatos para su estudio. En su mayoría, las imágenes que podemos encontrar son de enfermedades benignas, pero la web hace especial énfasis en disponer de imágenes demoscópicas de lesiones principalmente cancerosas.  En la literatura, se trata de uno de los conjuntos de datos más citados, debido a su utilización anual durante los años 2016-2020 para la realización de un reto virtual de Machine Learning descrito. 
 
-Debido a que cada uno de estos subconjuntos de datos anuales podían ser pequeños, normalmente se recurría a la reutilización de los conjuntos anteriores para enriquecer el conjunto de entrenamiento.  Este método es bastante recomendable, ya que, a mayor conjunto de entrenamiento, más cercanos se encontrarán los parámetros de interés del problema general a solucionar. Sin embargo, hay que realizar dicha fusión con especial cuidado, ya que existen volúmenes de datos considerables que se repitieron en las competiciones de cada año para aumentar el tamaño del dataset, y si se realizase una simple concatenación de los datos, estaríamos desperdiciando esfuerzo computacional en clasificar imágenes redundantes (comportamiento para nada deseable al trabajar sobre entornos móviles de menor potencia.).\\
+El objetivo era modificada cada año, pero este oscilaba entre la identificación de melanomas frente a lesiones no cancerosas, como se propone en el ISIC Challenge-2020 \cite{Rotemberg_2021}, o bien, identificar diferentes subtipos de lesiones cancerosas frente a lesiones benignas en la competición ISIC Challenge 2019, \cite{ham10000,codella2018skin,combalia2019bcn20000}, cuyo propósitos se acerca más al objetivo de este trabajo.
 
-Un análisis extenso de los datos asociados a cada Challenge podemos encontrarlo en [6]. En él, se recogen otros modelos del estado del arte utilizables para este fin, así como una forma de tratar los datos duplicados. Los datos pueden ser separados en los siguientes subconjuntos:
+En el estado del arte, destacan las soluciones que hacen uso de métodos de Deep Learning, como el planteado por Ian Pan \cite{2ndISIC}] o el ya analizado anteriormente ganador del año 2020 \cite{1stISIC}, que realiza un enfoque híbrido por votación entre modelos que hacen uso de redes convolucionales para la clasificación de los datos de tipo imagen, y clasificación mediante Machine Learning para los metadatos.
 
+Debido a que cada uno de estos subconjuntos de datos anuales eran escasos para modelos profundos, normalmente se ha recurrido a la reutilización de los conjuntos anteriores para enriquecer el conjunto de entrenamiento.  Se trata de una técnica que permite obtener buenos resultados ya que, a mayor conjunto de entrenamiento, más cercana será la muestra a la población real.  Hay que prestar especial atención a la repetición de datos, ya que la aparición duplicada de imágenes podría provocar un sobreaprendizaje sobre dicho ejemplar, además de posibles fugas de información entre entrenamiento, validación y test, al poder existir imágenes exactamante iguales entre ellos.
+
+\subsubsection{Fusión y deduplicado}
+
+Podemos encontrar una análisis del procedimiento de unión de los subconjuntos en  \cite{CASSIDY2022102305}. En este artículo, se realiza una análisis exhaustivo de los datos disponibles, cubriendo aspectos como métodos de deduplicado de imágenes, y una clasificación de posibles modelos a aplicar.
+
+Si desglosamos el conjunto de datasets disponibles, nos encontramos con 5 conjuntos:
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|l|l|l|}
@@ -311,15 +319,15 @@ Un análisis extenso de los datos asociados a cada Challenge podemos encontrarlo
 
 \begin{itemize}
 	
-	\item ISIC 2016 [7]:  Es el dataset de menor tamaño de todos los propuestos. Hace distinción únicamente de los casos malignos y benignos. Contiene imágenes dermoscópicas anotadas con información acerca de la localización de la mancha, y la edad del paciente. Contiene información adicional para la segmentación de la mancha pigmentada de interés (máscaras).
-	\item ISIC 2017 [8] Es un conjunto de mayor tamaño al anterior, y hace alusión a 4 clases diferentes: melanomas, nevus, y seborrheic keratosis. Contiene también información acerca de la edad del paciente, y otros metadatos de interés. La escasa cantidad de datos provoca que normalmente en la literatura este dataset se utilice también como clasificación binaria entre nevus y keratosis, u otros enfoques similares. 
-	\item ISIC 2018 [9]. Este dataset contiene un número de imágenes considerables, siendo un total de 10015 imágenes para entrenamiento, y 1512 para test. En este caso, se realiza subclasificación de tipos, a través de las clases melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma y lesiones vasculares. Es de especial interés destacar que este dataset proviene, a su vez, de HAM10000 (Human against machine, [11] )  y MSK Dataset [12]. El challenge original comprendía, de nuevo, la clasificación de los diferentes tipos realizando previamente una discriminación de la mancha en cuestión mediante segmentación. Existen gran cantidad de publicaciones que tratan este conjunto de datos, como [13], donde se emplea este dataset para demostrar mejores resultados al emplear transformaciones polares de la imagen y aumentar la invarianza.
+	\item ISIC 2016 \cite{gutman2016skin}:  Es el dataset de menor tamaño de todos los propuestos. Hace distinción únicamente de los casos malignos y benignos. Contiene imágenes dermoscópicas anotadas con información acerca de la localización de la mancha, y la edad del paciente. Contiene información adicional para la segmentación de la mancha pigmentada de interés (máscaras).
+	\item ISIC 2017 \cite{codella2018skin} Es un conjunto de mayor tamaño al anterior, y hace alusión a 4 clases diferentes: melanomas, nevus, y seborheic keratosis. Contiene también información acerca de la edad del paciente, y otros metadatos de interés. La escasa cantidad de datos provoca que normalmente se recurra a aislar distintas clases del conjunto entre sí, y realizar comparaciones de tipo binario entre cada par de clases.
+	\item ISIC 2018 \cite{ham10000,codella2018skin,combalia2019bcn20000}. Este dataset contiene un número de imágenes considerable, siendo un total de 10015 imágenes para entrenamiento, y 1512 para test. En este caso, se realiza subclasificación de tipos, a través de las clases melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma y lesiones vasculares. Es de especial interés destacar que este dataset proviene, a su vez, de HAM10000 (Human against machine, \cite{ham10000} )  y MSK Dataset. El challenge original comprendía, de nuevo, la clasificación de los diferentes tipos realizando previamente una discriminación de la mancha en cuestión mediante segmentación. Existen gran cantidad de publicaciones que tratan este conjunto de datos, como \cite{benvcevic2021training}, donde se emplea este dataset para demostrar mejores resultados al emplear transformaciones polares de la imagen y aumentar la invarianza.
 	
-	\item ISIC 2019 [2].  Se trata del mayor conjunto de datos para clasificación multiclase propuesto por ISIC [1]. Se trata del mismo dataset que el año 2018 [9], con la adición de BCN\_20000 Dataset [14], cuyos datos provienen del Hospital Clínic de Barcelona [14]. Las clases a clasificar se amplían hasta 9, encontrando subtipos de melanomas en el conjunto.
-	\item ISIC 2020 [3]. El último dataset propuesto públicamente, contiene únicamente datos binarios acordes a melanomas y no malignos. 
+	\item ISIC 2019 \cite{ham10000,codella2018skin,combalia2019bcn20000}.  Se trata del mayor conjunto de datos para clasificación multiclase propuesto por ISIC. Este conjunto es la unión del empleado para el año 2018, con la adición de BCN\_20000 Dataset \cite{combalia2019bcn20000}, cuyos datos provienen del Hospital Clínic de Barcelona. Las clases a clasificar se amplían hasta 9, encontrando dos subtipos de melanomas en el conjuto: aquellos que muestran sangrado, frente a los que no.
+	\item ISIC 2020 \cite{Rotemberg_2021}. El último dataset propuesto públicamente, contiene únicamente datos binarios acordes a melanomas y lesiones no malignas. Esta construido principalmente de los datasets mencionados anteriormente.
 \end{itemize}
 
-Todos estos datos pueden ser acoplados entre sí para dar un dataset global de ISIC [6], donde obtendríamos las siguientes clases: 
+Todos estos datos pueden ser acoplados entre sí para dar un dataset global de ISIC\cite{CASSIDY2022102305}, donde obtendríamos las siguientes clases: 
 
 
 \begin{table}[H]
@@ -362,7 +370,7 @@ Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repet
 			\textbf{Train} & 291 & 1283 & 0 & 0 & 0 \\ \hline
 			\textbf{Test} & 95 & 594 & 0 & 0 & 0 \\ \hline
 		\end{tabular}
-		\caption{Número de imágenes duplicadas recogidas por [6]}
+		\caption{Número de imágenes duplicadas encontradas \cite{CASSIDY2022102305}}
 	\end{table}
 	
 	
@@ -383,7 +391,7 @@ Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repet
 			\textbf{2020} & - & 433 & 32,693 \\ \hline
 			\textbf{Total} & - & 14,310 & 57,0621 \\ \hline
 		\end{tabular}
-		\caption{Tabla de imágenes únicas extraída de [6]. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}
+		\caption{Tabla de imágenes únicas extraída de \cite{CASSIDY2022102305}. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}
 	\end{table}
 	
 \end{enumerate}
@@ -392,13 +400,21 @@ Obtendríamos un total de 57000 imágenes, los cuales podrían clasificarse, con
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.5]{imagenes/Ejemplo2020.png}
-	\caption{Ejemplo de imágenes de ISIC 2017 [23]}
+	\caption{Ejemplo de imágenes de ISIC 2017}
 	\label{fig:enter-label}
 \end{figure}
 
-\subsubsection{ASAN Dataset}
+\subsubsection{Uso de la galería de ISIC}
 
-ASAN (Seung Seog Han 2018)[15][18][19] es un conjunto de datos de origen surcoreano compuesto por lesiones malignas y benignas de la piel. Nos permite obtener un mayor grado de variedad de las imágenes, ya que el repositorio ISIC se centra sobre todo en lesiones de piel de población europea. 
+Como ya se mencionó anteriormente, el repositorio de ISIC contiene una galería donde encontrar imágenes y metadatos de diferentes enfermedades diagnosticadas por especialistas dermatólogos, y verificadas en gran cantidad de casos por biopsia. Este conjunto de datos, en la actualidad, puede ser más atractivo que la fusión de los  5 datasets descritos anteriormente, ya que desde el año 2020, no les ofrece ninguna mejora o procesado.
+
+En total, podemos encontrar casi 80000 imágenes disponibles, siendo un total de 53781 imágenes correctamente etiquetadas y revisadas. Aunque se trata de unas 3500 imágenes menos que las competiciones en conjunto, la variedad de enfermedades e imágenes es mayor, ya que no se trata de las mismas imágenes empleadas en las competiciopnes, y no han sufrido ningún tipo de preprocesado o selección manual que pudiese alterar los resultados finales de forma positiva.
+
+Por esta serie de argumentos, este conjuntos de imágenes será el empleado para realizar el diagnóstico de las enfermedades mediante la app móvil.
+
+\subsection{ASAN Dataset}
+
+ASAN (Seung Seog Han 2018) \cite{Han2017,HAN20181529,HAN20189} es un conjunto de datos de origen surcoreano compuesto por lesiones malignas y benignas de la piel. Nos permite obtener un mayor grado de variedad de las imágenes, ya que el repositorio ISIC se centra sobre todo en lesiones de piel de población europea. 
 
 \begin{table}[H]
 	\centering

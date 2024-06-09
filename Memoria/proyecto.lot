@@ -1,8 +1,8 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Número de imágenes duplicadas recogidas por [6]}}{49}{table.2.1}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Tabla de imágenes únicas extraída de [6]. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}}{50}{table.2.2}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Distribución de clases de ASAN dataset}}{51}{table.2.3}%
-\contentsline {table}{\numberline {2.4}{\ignorespaces Tabla de casos diagnosticados en PAD-UFES20}}{54}{table.2.4}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Número de imágenes duplicadas encontradas \cite {CASSIDY2022102305}}}{50}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Tabla de imágenes únicas extraída de \cite {CASSIDY2022102305}. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}}{51}{table.2.2}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Distribución de clases de ASAN dataset}}{52}{table.2.3}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Tabla de casos diagnosticados en PAD-UFES20}}{55}{table.2.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

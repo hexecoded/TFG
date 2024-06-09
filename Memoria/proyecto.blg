@@ -3,51 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
-I was expecting a `,' or a `}'---line 52 of file bibliografia/bibliografia.bib
- :  doi={:10.3390/cancers15010012}
- :                                .
-I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for ""
 Warning--to sort, need author or key in isicarchive
-You've used 22 entries,
+Warning--empty journal in Han2017
+You've used 33 entries,
             2118 wiz_defined-function locations,
-            599 strings with 8014 characters,
-and the built_in function-call counts, 6676 in all, are:
-= -- 585
-> -- 450
+            663 strings with 11272 characters,
+and the built_in function-call counts, 11665 in all, are:
+= -- 1003
+> -- 897
 < -- 2
-+ -- 180
-- -- 156
-* -- 405
-:= -- 1135
-add.period$ -- 64
-call.type$ -- 22
-change.case$ -- 141
++ -- 358
+- -- 322
+* -- 859
+:= -- 2029
+add.period$ -- 94
+call.type$ -- 33
+change.case$ -- 257
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 193
-empty$ -- 502
-format.name$ -- 156
-if$ -- 1384
+cite$ -- 35
+duplicate$ -- 299
+empty$ -- 759
+format.name$ -- 322
+if$ -- 2328
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 5
-newline$ -- 110
-num.names$ -- 44
-pop$ -- 229
+int.to.str$ -- 33
+missing$ -- 13
+newline$ -- 162
+num.names$ -- 66
+pop$ -- 348
 preamble$ -- 1
-purify$ -- 120
+purify$ -- 225
 quote$ -- 0
-skip$ -- 183
+skip$ -- 266
 stack$ -- 0
-substring$ -- 142
-swap$ -- 43
+substring$ -- 328
+swap$ -- 53
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 86
-warning$ -- 1
-while$ -- 45
-width$ -- 24
-write$ -- 221
-(There was 1 error message)
+type$ -- 130
+warning$ -- 2
+while$ -- 73
+width$ -- 35
+write$ -- 331
+(There were 3 warnings)

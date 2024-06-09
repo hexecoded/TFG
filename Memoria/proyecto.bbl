@@ -5,11 +5,46 @@ The international skin imaging collaboration.
 \newblock \url{https://www.isic-archive.com}, 2023.
 \newblock [Online; accessed 20-September-2023].
 
+\bibitem{benvcevic2021training}
+Marin Ben{\v{c}}evi{\'c}, Irena Gali{\'c}, Marija Habijan, and Danilo Babin.
+\newblock Training on polar image transformations improves biomedical image
+  segmentation.
+\newblock {\em IEEE access}, 9:133365--133375, 2021.
+
+\bibitem{CASSIDY2022102305}
+Bill Cassidy, Connah Kendrick, Andrzej Brodzicki, Joanna Jaworek-Korjakowska,
+  and Moi~Hoon Yap.
+\newblock Analysis of the isic image datasets: Usage, benchmarks and
+  recommendations.
+\newblock {\em Medical Image Analysis}, 75:102305, 2022.
+
 \bibitem{Chaturvedi_2020}
 Saket~S. Chaturvedi, Kajol Gupta, and Prakash~S. Prasad.
 \newblock {\em Skin Lesion Analyser: An Efficient Seven-Way Multi-class Skin
   Cancer Classification Using MobileNet}, page 165–176.
 \newblock Springer Singapore, May 2020.
+
+\bibitem{codella2018skin}
+Noel C.~F. Codella, David Gutman, M.~Emre Celebi, Brian Helba, Michael~A.
+  Marchetti, Stephen~W. Dusza, Aadi Kalloo, Konstantinos Liopyris, Nabin
+  Mishra, Harald Kittler, and Allan Halpern.
+\newblock Skin lesion analysis toward melanoma detection: A challenge at the
+  2017 international symposium on biomedical imaging (isbi), hosted by the
+  international skin imaging collaboration (isic), 2018.
+
+\bibitem{combalia2019bcn20000}
+Marc Combalia, Noel C.~F. Codella, Veronica Rotemberg, Brian Helba, Veronica
+  Vilaplana, Ofer Reiter, Cristina Carrera, Alicia Barreiro, Allan~C. Halpern,
+  Susana Puig, and Josep Malvehy.
+\newblock Bcn20000: Dermoscopic lesions in the wild, 2019.
+
+\bibitem{1stISIC}
+All data~are Ext.
+\newblock Siim-isic melanoma classification, 1st solution.
+\newblock
+  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175412},
+  2020.
+\newblock [Online; accessed 8-June-2024].
 
 \bibitem{shuffleapp}
 Mohammad Fraiwan and Esraa Faouri.
@@ -24,6 +59,40 @@ Google.
   \url{https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/efficientnetlite?hl=es-419&pli=1},
   2024.
 \newblock [Online; accessed 18-April-2024].
+
+\bibitem{goyal2020artificial}
+Manu Goyal, Thomas Knackstedt, Shaofeng Yan, and Saeed Hassanpour.
+\newblock Artificial intelligence-based image classification methods for
+  diagnosis of skin cancer: Challenges and opportunities.
+\newblock {\em Computers in biology and medicine}, 127:104065, 2020.
+
+\bibitem{gutman2016skin}
+David Gutman, Noel C.~F. Codella, Emre Celebi, Brian Helba, Michael Marchetti,
+  Nabin Mishra, and Allan Halpern.
+\newblock Skin lesion analysis toward melanoma detection: A challenge at the
+  international symposium on biomedical imaging (isbi) 2016, hosted by the
+  international skin imaging collaboration (isic), 2016.
+
+\bibitem{HAN20189}
+Seung Han, Gyeong Park, Woohyung Lim, Myoung Kim, Jung-Im Na, Ilwoo Park, and
+  Sung Chang.
+\newblock Deep neural networks show an equivalent and often superior
+  performance to dermatologists in onychomycosis diagnosis: Automatic
+  construction of onychomycosis datasets by region-based convolutional deep
+  neural network.
+\newblock {\em PLOS ONE}, 13:e0191493, 01 2018.
+
+\bibitem{Han2017}
+Seung~Seog Han.
+\newblock {Asan and Hallym Dataset (Thumbnails)}.
+\newblock 9 2017.
+
+\bibitem{HAN20181529}
+Seung~Seog Han, Myoung~Shin Kim, Woohyung Lim, Gyeong~Hun Park, Ilwoo Park, and
+  Sung~Eun Chang.
+\newblock Classification of the clinical images for benign and malignant
+  cutaneous tumors using a deep learning algorithm.
+\newblock {\em Journal of Investigative Dermatology}, 138(7):1529--1538, 2018.
 
 \bibitem{howard2019searching}
 Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo~Chen, Mingxing
@@ -65,6 +134,20 @@ Samyukta~Lanka. Megha~Arora.
 \newblock \url{https://lankas.github.io/15-618Project/}, 2024.
 \newblock [Online; accessed 21-April-2024].
 
+\bibitem{life13112123}
+Sana Nazari and Rafael Garcia.
+\newblock Automatic skin cancer detection using clinical images: A
+  comprehensive review.
+\newblock {\em Life}, 13(11), 2023.
+
+\bibitem{2ndISIC}
+Ian Pan.
+\newblock Siim-isic melanoma classification, 2nd solution.
+\newblock
+  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175324},
+  2020.
+\newblock [Online; accessed 8-June-2024].
+
 \bibitem{invertedresidualsv2}
 Paul-Louis Pröve.
 \newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
@@ -73,22 +156,6 @@ Paul-Louis Pröve.
   2018.
 \newblock [Online; accessed 21-April-2024].
 
-\bibitem{1stISIC}
-Paul-Louis Pröve.
-\newblock Siim-isic melanoma classification, 1st solution.
-\newblock
-  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175412},
-  2020.
-\newblock [Online; accessed 8-June-2024].
-
-\bibitem{2ndISIC}
-Paul-Louis Pröve.
-\newblock Siim-isic melanoma classification, 2nd solution.
-\newblock
-  \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175324},
-  2020.
-\newblock [Online; accessed 8-June-2024].
-
 \bibitem{eflite2}
 Google Renjie~Liu.
 \newblock Higher accuracy on vision models with efficientnet-lite.
@@ -96,6 +163,17 @@ Google Renjie~Liu.
   \url{https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html},
   2020.
 \newblock [Online; accessed 18-April-2024].
+
+\bibitem{Rotemberg_2021}
+Veronica Rotemberg, Nicholas Kurtansky, Brigid Betz-Stablein, Liam Caffery,
+  Emmanouil Chousakos, Noel Codella, Marc Combalia, Stephen Dusza, Pascale
+  Guitera, David Gutman, Allan Halpern, Brian Helba, Harald Kittler, Kivanc
+  Kose, Steve Langer, Konstantinos Lioprys, Josep Malvehy, Shenara Musthaq,
+  Jabpani Nanda, Ofer Reiter, George Shih, Alexander Stratigos, Philipp
+  Tschandl, Jochen Weber, and H.~Peter Soyer.
+\newblock A patient-centric dataset of images and metadata for identifying
+  melanomas using clinical context.
+\newblock {\em Scientific Data}, 8(1), January 2021.
 
 \bibitem{sandler2019mobilenetv2}
 Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
