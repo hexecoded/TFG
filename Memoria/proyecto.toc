@@ -31,4 +31,6 @@
 \contentsline {subsection}{\numberline {2.3.7}Otros datasets}{60}{subsection.2.3.7}%
 \contentsline {section}{\numberline {2.4}Conjunto de datos resultado}{61}{section.2.4}%
 \contentsline {chapter}{\numberline {3}Preprocesado de datos}{63}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{64}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{66}{subsection.3.1.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
