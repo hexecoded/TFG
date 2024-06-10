@@ -291,7 +291,7 @@ Como preprocesado de las imágenes, al disponer de ellas correctamente clasifica
  
  La dificultad de este preprocesado radica precisamente en la existencia de los cuadrados blancos, ya que la lectura del texto escrito en ellos es prácticamente imposible. La baja resolución, unido a la existencia de etiquetas cuyo nombre se encuentra dividido en varias líneas, provoca que algoritmos de reconocimiento de texto como Pytesseract \cite {pytesseract} no fuesen capaces de detectar las etiquetas adecuadamente.
  
- Por este motivo, fue necesario identificar manualmente cuántos casos de cada enfermedad existían por matriz de imágenes, y realizar un recuento para saber cuándo aplicar una etiqueta u otra. Conociendo que las etiquetas asignadas aparecían por orden alfabético, el proceso a seguir se resumió en aumentar un contador cada vez que aparecía una imagen en blanco durante el recorrido de las imágenes, y aumentar el contador hasta llegar al valor total de ejemplares de esa clase; en ese momento, se procede a contar los valores de la siguiente. Con este procedimiento, nos queda el algoritmo \ref{cortarseverance}
+ Por este motivo, fue necesario identificar manualmente cuántos casos de cada enfermedad existían por matriz de imágenes, y realizar un recuento para saber cuándo aplicar una etiqueta u otra. Conociendo que las etiquetas asignadas aparecían por orden alfabético, el proceso a seguir se resumió en aumentar un contador cada vez que aparecía una imagen en blanco durante el recorrido de las imágenes, y aumentar el contador hasta llegar al valor total de ejemplares de esa clase; en ese momento, se procede a contar los valores de la siguiente. Con este procedimiento, nos queda el algoritmo 3.5(\ref{fig:cortarseverance})
   
 La ventaja respecto a ASAN reside en que los espacios en blanco entre imágenes tienen el mismo grosor, y fue posible de separar en submatrices sin necesidad de utilizar ténicas de visión, que ralentizan el proceso extracción. Cada imagen es etiquetada siguiendo el formato establecido  y siendo añadida a una nueva carpeta, desde la cual se referenciarán mediante el fichero preprocessedData.csv. 
 
@@ -301,7 +301,7 @@ Aumentar de forma desmesurada este valor también puede tener consecuencias nega
 
 
  \begin{algorithm}[!ht]
-	\label{cortarseverance}
+	\label{fig:cortarseverance}
 	\caption{Recorte de las imágenes de Severance mediante OpenCV}
 	\begin{algorithmic}
 		\Procedure{recortarImagenesSEVERANCE}{path}
