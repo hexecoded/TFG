@@ -83,12 +83,84 @@ Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre tod
 
 Estas clases se almacenan en ficheros zip cada una, así que tras ser descargadas, deben ser extraídas y añadidas al fichero csv que definimos anteriormente. Al tratarase del primer subconjunto que se añadirá, será la parte del código encargada de crear el fichero y establecer las columnas mencionadas. Además, se realizará la transformación de las etiquetas, dispuestas en el formato de la enumeración anterior, a notación snake case. Numerando el proceso, se ha creado un script de python que realiza las siguientes tareas:
 
+ 
+ \begin{algorithm}[H]
+ 	\label{extract}
+ 	\caption{Algoritmo de descompresión de fotografías por carpetas}
+ 	\begin{algorithmic}[1]
+ 		
+ 		\Procedure{extractISIC}{path}
+ 		\Comment{Obtener una lista de todos los archivos ZIP}
+ 		 		\State archivosZip : list of strings
+ 		 		
+ 		\ForAll{file in path where file.name endswith('zip')}
+ 			\State archivosZip.add(file)
+ 		\EndFor
+
+		\Comment{Iterar sobre cada archivo ZIP}
+			\ForAll{archivo in archivosZip}
+			\State var rutaArchivoZip  $\gets$ join(path, archivo)
+			\State var carpetaSalida = path.splitext(rutaArchivoZip).get(0) \Comment{ Eliminar la extensión}
+		
+			\If {not exists(carpetaSalida)}
+				\State makedir(carpetaSalida) 
+
+			\Comment{  Extraer el contenido del archivo ZIP en la carpeta de salida}
+			\State \Call{openZipFile}{rutaArchivoZip} as zipRef
+			\State zipRef.extractall(carpetaSalida)
+			 \EndIf
+		\EndFor
+ 		\EndProcedure
+ 		
+ 	\end{algorithmic}
+ \end{algorithm}
+ 
+ 
+
+
 \begin{enumerate}
-	\item Extraer las imágenes mediante uzip en una carpeta con el mismo nombre de la clase a la que pertenecen+
+	\item Extraer las imágenes mediante uzip en una carpeta con el mismo nombre de la clase a la que pertenecen \ref{extract}
 	\item Crear un fichero .csv, denominado preprocessedData.csv, donde se alojarán las 5 columnas: images, dir, label, dataset, bin.
 	\item Recorrer cada carpeta creada, y añadir los 4 primeros campos
 	\item Una vez añadidas todas las imágenes, se renombran las etiquetas a camel case mediante las funciones upper(), lower() y replace() de la clase string de python.
 \end{enumerate}
+
+\begin{algorithm}[H]
+		 \label{isiccrear}
+		\caption{Algoritmo de creación del csv}
+		\begin{algorithmic}[1]
+			
+		\Procedure{crear\_csv}{path, clases, nombre\_dataset}
+		\Comment {Inicializa una lista vacía para almacenar la información de los archivos}
+		 \State var info\_archivos : list of strings
+		 \State i  $\gets$ 0
+		
+		 \For{nombre\_carpeta in dir(path)}
+			\State ruta\_carpeta $\gets$join(path, nombre\_carpeta)
+			
+			\If{path.isdir(ruta\_carpeta)}
+		
+				\Comment {Itera sobre cada archivo en la carpeta}
+				\For{nombre\_archivo in listdir(ruta\_carpeta)}
+						  \State ruta\_archivo $\gets$ join(ruta\_carpeta, nombre\_archivo)
+					\If {isfile(ruta\_archivo) and nombre\_archivo.ends() != "jpg"}
+						\State var info\_archivos.add(nombre\_archivo, ruta\_archivo, clases[i], nombre\_dataset)
+					\EndIf
+					\State i = i + 1
+				\EndFor
+		 	\EndIf
+		\EndFor		
+		
+	
+		\State ruta\_archivo\_csv $\gets$ 'preprocessedData.csv'	\Comment{ Define la ruta del CSV}
+		
+		\State open(ruta\_archivo\_csv) as archivo\_csv
+		 \State archivo\_csv.writerow(["image", "dir", "class", "dataset"])  
+		 \Comment{Escribe la cabecera}
+		 
+		 \EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 
 Para facilitar el procesado, el rellenado de los datos se realiza sobre una estructura tabular de pandas, para así transformar la columna label fácilmente.
 En cuanto a la quinta columna, la clase binaria, dicha tarea se realizará cuando todos los datasets estén añadidos al .csv, de forma que el recorrido de los datos sólo se realice una vez, cuando tengamos disponible todas las clases. 
@@ -112,6 +184,54 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 	\item Se recortan los bordes de dicha imagen y se almacena el resultado en disco, en una carpeta que posee el mismo nombre que la imagen de la que fue extraída.
 	\item Se repite el paso 3-6 para cada imagen de la matriz, pasando a abrir la siguiente matriz hasta que no quede ninguna por recortar.
 \end{enumerate}
+
+\begin{algorithm}
+		\label{cortarasan}
+		\caption{Recorte de las imágenes de ASAN mediante OpenCV}
+		\begin{algorithmic}
+			\Procedure{recortarImagenesASAN}{path, i, title="ASAN"}
+			\State var files : list of strings
+			
+			 \For {f in pathlib.Path().iterdir()}
+			 	 \If {f is\_file()]}
+			 	 	\State files.add(f)
+			 	 \EndIf
+			 \EndFor
+			 	 
+			\State var names : list of strings
+			\State diss\_class : list of strings
+			
+			\For {f in files}
+				   \State name $\gets$ str(f)[str(f).rfind('\#') + 1:-4]
+				   \If {f.ends = 'png' and not exists(path)}
+						\State {makedir(name)}
+						\State var image = cv2.imread(str(f), cv2.IMREAD\_UNCHANGED): image
+						\State var gray = cv2.cvtColor(image, cv2.COLOR\_BGR2GRAY) : image
+			
+						\State var kernel = cv2.getStructuringElement(cv2.MORP H\_RECT, (5, 5))
+						\State var gradient = cv2.morphologyEx(gray, cv2.MORPH\_GRADIENT, kernel)
+			
+						\State var contours $\gets$ cv2.findContours(gradient, cv2.RETR\_EXTERNAL, cv2.CHAIN\_APPROX\_SIMPLE)
+			
+						\ForAll{cnt in contours}
+								\State	x, y, w, h  $\gets$ cv2.boundingRect(cnt)
+								\State var box\_image = image[y: y + h, x: x + w] : image
+				
+								 \Comment{Recorta la imagen para eliminar el borde} 
+								\State var img\_sin\_borde = box\_image[grosor\_borde:-grosor\_borde, grosor\_borde:-grosor\_borde]
+								\State cv2.imwrite(f"{name}/{title}\_{i}.png", img\_sin\_borde)
+					
+								\State names.append(f"{title}\_{i}.png")
+								\State diss\_class.add(name)
+								
+								\State i = i + 1
+						 \EndFor
+				\EndIf	 
+	\EndFor
+				
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 Una vez finalizado el proceso, el proceso a aplicar es similar a ISIC; pero, en este caso, en lugar de simplemente convertir a camelcase, debemos de cambiar los nombres por completo para no usar el formato por abreviaturas original, y poder hacer merge de las clases de este dataset con ISIC que sean de la misma enfermedad. Para ello, simplemente se crea un diccionario clave-valor, donde la clave es el nombre que deseamos cambiar, y el valor, el nuevo nombre. Mediante pandas, el proceso de sustitución se puede hacer de forma inmediata mediante la función replace.
 
@@ -140,6 +260,8 @@ Este dataset recoge imágenes provenientes del Servicio de Dermatología del Hos
 
 Los datos se organizan en directorios de carpetas de varios niveles,  pudiendo encontrar en su interior la imagen dermoscópica, la plantilla de segmentación y regiones de interés de la imagen destacadas mediante una plantilla binaria. Para este trabajo, sólo se utilizarán las imágenes correspondientes al directorio de datos dermoscópicos, ya que con debido a la cercanía de la lensión, la imagen contiene en su mayoría solo información útil.
 
+ \textbf{INSERTAR PSEUDO} 
+
 Como preprocesado de las imágenes, al disponer de ellas correctamente clasificadas en carpetas y con un fichero de metadatos bastante completo, el único procedimiento necesario sería la adición al fichero preprocessedData.csv, realizando las conversión a camel case de las labels.
 
  \subsection{Severance}
@@ -157,3 +279,14 @@ Como preprocesado de las imágenes, al disponer de ellas correctamente clasifica
  Cada imagen es etiquetada siguiendo el formato establecido  y siendo añadida a una nueva carpeta, desde la cual se referenciarán mediante el fichero preprocessedData.csv. 
  
  \section{Etiquetado binario}
+ 
+ Tras la homogeneización de los datos de todos los conjuntos, debemos realizar el etiquetado binario de las imágenes. En lugar de realizar este proceso durante la adaptación de los datos, se decidido realizar este procedimiento una vez el fichero csv estuviese completamente convertido, de forma que el recorrido de los datos es mucho más sencillo al ser completamente lineal. Para ello, simplemente se ha creado una nueva columna mediante el uso de pandas que recibe como parámetro una diccionario con las etiquetas totales del dataset, 54.  Este diccionario, realizado manualmente, contiene un 0 en aquellas clases correspondientes a lesiones benignas de la piel, mientras que el 1 quedo reservado para aquellas lesiones malignas que son cancerosas.
+ 
+ Gracias a la función replace el proceso consiste ;
+ 
+ \begin{enumerate}
+ 	\item Clonar la columna target, que contiene las etiquetas multiclase
+ 	\item Aplicar la función replace() de pandas, que recibe como argumento el diccionario confeccionado para la sustitución.
+\end{enumerate}
+
+De esta forma, obtenemos la quinta columna, y podemos dar por finalizado la primera fase del preprocesado de datos.
