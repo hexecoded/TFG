@@ -14,8 +14,9 @@
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Proceso de búsqueda seguido}}{47}{figure.2.11}%
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Ejemplo de imágenes de ISIC 2017}}{51}{figure.2.12}%
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Ejemplo de lunares beningnos en ASAN (Nevus)}}{54}{figure.2.13}%
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Nevus maligno y benigno en PH2}}{55}{figure.2.14}%
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Batch de ejemplo de PAD-UFES 20 [25]}}{57}{figure.2.15}%
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Imágenes de ejemplo provenientes del dataset Severance }}{58}{figure.2.16}%
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Distribución de clases}}{59}{figure.2.17}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Nevus maligno y benigno en PH2}}{56}{figure.2.14}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Batch de ejemplo de PAD-UFES 20 \cite {PACHECO2020106221}}}{58}{figure.2.15}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Imágenes de ejemplo provenientes del dataset Severance }}{59}{figure.2.16}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Distribución de clases}}{63}{figure.3.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

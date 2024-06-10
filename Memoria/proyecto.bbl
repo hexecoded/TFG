@@ -1,5 +1,20 @@
 \begin{thebibliography}{10}
 
+\bibitem{dermis}
+Dermatology information system.
+\newblock \url{https://www.dermis.net/dermisroot/en/home/index.htm}.
+\newblock [Online; accessed 21-Feb-2024].
+
+\bibitem{ph2data}
+Ph2.
+\newblock \url{https://www.fc.up.pt/addi/ph2%20database.html}, 2012.
+\newblock [Online; accessed 19-Feb-2024].
+
+\bibitem{dermnetz}
+Dermnet: all about skin.
+\newblock \url{https://dermnetnz.org/dermatology-image-dataset}, 2020.
+\newblock [Online; accessed 19-Feb-2024].
+
 \bibitem{isicarchive}
 The international skin imaging collaboration.
 \newblock \url{https://www.isic-archive.com}, 2023.
@@ -52,6 +67,13 @@ Mohammad Fraiwan and Esraa Faouri.
   deep transfer learning.
 \newblock {\em Sensors}, 22:4963, 06 2022.
 
+\bibitem{GIOTIS20156578}
+Ioannis Giotis, Nynke Molders, Sander Land, Michael Biehl, Marcel~F. Jonkman,
+  and Nicolai Petkov.
+\newblock Med-node: A computer-assisted melanoma diagnosis system using
+  non-dermoscopic images.
+\newblock {\em Expert Systems with Applications}, 42(19):6578--6585, 2015.
+
 \bibitem{eflite}
 Google.
 \newblock Efficientnetlite (mediapipe.
@@ -72,6 +94,12 @@ David Gutman, Noel C.~F. Codella, Emre Celebi, Brian Helba, Michael Marchetti,
 \newblock Skin lesion analysis toward melanoma detection: A challenge at the
   international symposium on biomedical imaging (isbi) 2016, hosted by the
   international skin imaging collaboration (isic), 2016.
+
+\bibitem{severance}
+Seung Han, Ik~Moon, Jung-Im Na, Myoung Kim, Gyeong Park, Seonghwan Kim, Kiwon
+  Kim, Ju~Lee, and Sung Chang.
+\newblock Retrospective assessment of deep neural networks for skin tumor
+  diagnosis, 12 2019.
 
 \bibitem{HAN20189}
 Seung Han, Gyeong Park, Woohyung Lim, Myoung Kim, Jung-Im Na, Ilwoo Park, and
@@ -134,11 +162,30 @@ Samyukta~Lanka. Megha~Arora.
 \newblock \url{https://lankas.github.io/15-618Project/}, 2024.
 \newblock [Online; accessed 21-April-2024].
 
+\bibitem{ph2}
+Teresa Mendonça, Pedro Ferreira, Jorge Marques, André Marçal, and Jorge
+  Rozeira.
+\newblock Ph2 - a dermoscopic image database for research and benchmarking.
+\newblock {\em Conference proceedings : ... Annual International Conference of
+  the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in
+  Medicine and Biology Society. Conference}, 2013:5437--5440, 07 2013.
+
 \bibitem{life13112123}
 Sana Nazari and Rafael Garcia.
 \newblock Automatic skin cancer detection using clinical images: A
   comprehensive review.
 \newblock {\em Life}, 13(11), 2023.
+
+\bibitem{PACHECO2020106221}
+Andre~G.C. Pacheco, Gustavo~R. Lima, Amanda~S. Salomão, Breno Krohling,
+  Igor~P. Biral, Gabriel~G. {de Angelo}, Fábio~C.R. {Alves Jr}, José~G.M.
+  Esgario, Alana~C. Simora, Pedro~B.C. Castro, Felipe~B. Rodrigues,
+  Patricia~H.L. Frasson, Renato~A. Krohling, Helder Knidel, Maria~C.S. Santos,
+  Rachel~B. {do Espírito Santo}, Telma~L.S.G. Macedo, Tania~R.P. Canuto, and
+  Luíz~F.S. {de Barros}.
+\newblock Pad-ufes-20: A skin lesion dataset composed of patient data and
+  clinical images collected from smartphones.
+\newblock {\em Data in Brief}, 32:106221, 2020.
 
 \bibitem{2ndISIC}
 Ian Pan.
@@ -184,6 +231,14 @@ Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
 Rupali Kiran et~al. Shinde.
 \newblock Squeeze-mnet: Precise skin cancer detection model for low computing
   iot devices using transfer learning, 2022.
+
+\bibitem{10.1007/978-3-319-46466-4_13}
+Xiaoxiao Sun, Jufeng Yang, Ming Sun, and Kai Wang.
+\newblock A benchmark for automatic visual classification of clinical skin
+  disease images.
+\newblock In Bastian Leibe, Jiri Matas, Nicu Sebe, and Max Welling, editors,
+  {\em Computer Vision -- ECCV 2016}, pages 206--222, Cham, 2016. Springer
+  International Publishing.
 
 \bibitem{szegedy2014going}
 Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir

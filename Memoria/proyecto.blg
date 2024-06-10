@@ -3,48 +3,53 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
+Warning--entry type for "severance" isn't style-file defined
+--line 340 of file bibliografia/bibliografia.bib
 Warning--I didn't find a database entry for ""
 Warning--to sort, need author or key in isicarchive
+Warning--to sort, need author or key in dermnetz
+Warning--to sort, need author or key in ph2data
+Warning--to sort, need author or key in dermis
 Warning--empty journal in Han2017
-You've used 34 entries,
+You've used 42 entries,
             2118 wiz_defined-function locations,
-            668 strings with 11419 characters,
-and the built_in function-call counts, 11882 in all, are:
-= -- 1025
-> -- 904
-< -- 2
-+ -- 361
-- -- 324
-* -- 865
-:= -- 2066
-add.period$ -- 98
-call.type$ -- 34
-change.case$ -- 261
+            713 strings with 13427 characters,
+and the built_in function-call counts, 15171 in all, are:
+= -- 1316
+> -- 1151
+< -- 3
++ -- 460
+- -- 414
+* -- 1141
+:= -- 2607
+add.period$ -- 122
+call.type$ -- 42
+change.case$ -- 328
 chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 306
-empty$ -- 781
-format.name$ -- 324
-if$ -- 2376
+cite$ -- 47
+duplicate$ -- 390
+empty$ -- 994
+format.name$ -- 414
+if$ -- 3046
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 13
-newline$ -- 168
-num.names$ -- 68
-pop$ -- 356
+int.to.str$ -- 42
+missing$ -- 17
+newline$ -- 207
+num.names$ -- 80
+pop$ -- 441
 preamble$ -- 1
-purify$ -- 228
+purify$ -- 287
 quote$ -- 0
-skip$ -- 272
+skip$ -- 336
 stack$ -- 0
-substring$ -- 333
-swap$ -- 54
-text.length$ -- 2
+substring$ -- 478
+swap$ -- 71
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 134
-warning$ -- 2
-while$ -- 75
-width$ -- 36
-write$ -- 343
-(There were 3 warnings)
+type$ -- 166
+warning$ -- 5
+while$ -- 92
+width$ -- 44
+write$ -- 426
+(There were 7 warnings)

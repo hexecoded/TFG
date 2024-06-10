@@ -24,10 +24,11 @@
 \contentsline {subsubsection}{\nonumberline Fusión y deduplicado}{48}{subsubsection*.19}%
 \contentsline {subsubsection}{\nonumberline Uso de la galería de ISIC}{51}{subsubsection*.21}%
 \contentsline {subsection}{\numberline {2.3.2}ASAN Dataset}{52}{subsection.2.3.2}%
-\contentsline {subsubsection}{\nonumberline Dermnetz}{54}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline PH2}{55}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline PAD-UFES 20}{56}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Severance}{57}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Otros datasets}{58}{subsubsection*.31}%
-\contentsline {subsubsection}{\nonumberline Conjunto resultado}{58}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {2.3.3}Dermnet}{54}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}PH2}{55}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}PAD-UFES 20}{56}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Severance}{58}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Otros datasets}{60}{subsection.2.3.7}%
+\contentsline {section}{\numberline {2.4}Conjunto de datos resultado}{61}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Preprocesado de datos}{63}{chapter.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

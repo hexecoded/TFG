@@ -464,9 +464,9 @@ Encontramos, por tanto, una mayoría de imágenes benignas sobre malignas, lo cu
 
 Los resultados han sido confirmados por expertos dermatólogos y verificados en su mayoría mediante biopsia, por lo que las etiquetas asociadas a cada lesión están completamente verificadas. Como aspecto negativo, de cara al proyecto que se desarrolla en este documento, estos resultados distan bastante de lo que se puede conseguir con un smartphone, ya que, ResNet153 es uno de los modelos más profundos existentes en la literatura, y requieren grandes cantidades de memoria de gráficos. Además, sólo se dispone de las miniaturas, por lo que no será posible obtener características de grado fino aunque se aumente en profundidad o anchura el modelo. En preprocesado de datos, veremos algunas formas de evitar que se produzca esta penalización mediante la aplicación de mejora de imágenes con GANs.
 
-\subsubsection{Dermnetz}
+\subsection{Dermnet}
 
-DermNetz es un portal online que ofrece imágenes en alta resolución sobre lesiones cutáneas, tanto cancerígenas como benignas, para el uso como material docente para la formación de dermatólogos, y tiene a disposición un conjunto de imágenes complementado por datos en formato tabular, especialmente preparado para su uso en Inteligencia artificial.
+DermNet \cite{dermnetz} es un portal online que ofrece imágenes en alta resolución sobre lesiones cutáneas, tanto cancerígenas como benignas, para el uso como material docente para la formación de dermatólogos, y tiene a disposición un conjunto de imágenes complementado por datos en formato tabular, especialmente preparado para su uso en Inteligencia artificial.
 
 Podemos encontrar enfermedades cutáneas recogidas de pacientes alrededor de todo el mundo, sin limitarse únicamente manchas  y lesiones parecidas a tumores cancerosos, y ofreciendo también heridas vinculadas a enfermedades infecciosas y hongos.  E incluso lesiones de tipo alérgico, así como acné, dermatitis severa o celulitis.
 
@@ -475,39 +475,55 @@ Estos datos se encuentran alojados de en una web que podemos visitar sin restric
 Debido a la escasez de presupuesto, se descarta la opción de emplear este conjunto de datos, pero en la literatura podemos encontrar algunas menciones que datan del período anterior a 2020, momento en el cual parte de estos datos se ofrecía de forma abierta bajo otro portal de nombre similar, DermNet.
 
 
-\subsubsection{ PH2}
-El conjunto de datos PH2 [22] es un conjunto de 200 imágenes obtenidas gracias al hospital Pedro Hispano de Portugal. Está compuesto por imágenes de alta resolución que contienen 3 posibles casos de lesiones:
+\subsection{ PH2}
+El conjunto de datos PH2 \cite{ph2} es un conjunto de 200 imágenes obtenidas gracias al hospital Pedro Hispano de Portugal. Está compuesto por 200 imágenes de alta resolución que contienen 3 posibles casos de lesiones:
 \begin{itemize}
 	\item Lunar común (Common Nevus), 80 ejemplares
 	\item Lunar atípico (Atypical Nevus), 80 ejemplares
 	\item Melanomas, 40 ejemplares.
 \end{itemize}
 
-Además de las 200 imágenes, podemos encontrar metadatos asociados a cada una de ellas, como el color, su extensión, textura, forma del borde, localización, entre otros.
-Su acceso es libre para fines académicos desde su página oficial [22], que contiene las imágenes en formato jpg, y varios ficheros .csv con la información de la imagen y su clasificación.
+Dichas imágenes fueron captadas bajo las mismas condiciones, haciendo uso de un  sistema de análisis `Tuebinger Mole Analyzer'', capaz de realkizar una magnificación de 20 veces mayor al tamaño original. Su resolución es de  768x560 pixels, haciendo uso de los 3 habituales canales RGB a 8 bit sde profundidad cada uno. Se trata de unas imágenes de buena calidad, que llevan su correspondiente información asociada en forma de metadatos. Estos describen el color, la extensión de las manchas, la textura, la forma del borde, la localización, y otro tipo de características, como el tipo de piel.
 
+De acuerdo a los requisitos especificados en su web, \cite{ph2data}, podemos acceder a los datos  y sus metadatos asociados de forma totalmente abierta y sin restricciones siempre que su uso se limite fines académicos y personales, como es este caso.
 \begin{figure}[H]
 	\centering
+	\label {ph2}
 	\includegraphics[scale = 0.6]{imagenes/PH2.png}
 	\caption{Nevus maligno y benigno en PH2}
 \end{figure}
 
-\subsubsection{PAD-UFES 20}
+En la figura \ref{ph2} podemos encontrar una muestra de estas imágenes, concretamente un lunar común (nevus) y un lunar de tipo cancerígeno.
 
-PAD-UFES-20 [25] se trata de un conjunto de datos recopilado de diferentes poblaciones, que contiene diagnósticos para 1.641 lesiones cutáneas únicas recopiladas, comprendiendo un total de 2.298 imágenes.\\
+\subsection{PAD-UFES 20}
+A patient may have one or more skin lesions and a skin lesion may have one or more images. In total, there are 1373 patients, 1641 skin lesions, and 2298 images present in the dataset. 
+PAD-UFES-20 \cite{PACHECO2020106221} se trata de un conjunto de imágenes disponible públicamente acerca de lesiones cutáneas benignas y malignas. Concretamente, dispone de imágenesde 1.641 lesiones cutáneas únicas recopiladas, procedenetes de 1373 pacientes. Tal y como se especifica en su publicación \cite{PACHECO2020106221}, cada paciente perteneciente al dataset puede ofrecer imágenes de piel sana, una lesión, o varias de ellas. Por tanto, el conteo final de imágenes asciende a un total de 2.298 ejemplares.
 
-Entre sus clases, podemos encontrar tres enfermedades y tres cánceres de piel.  Todos estos datos han sido recogidos y verificados mediante biopsia en un 100\% de los casos cancerosos, por lo que su diagnóstico está totalmente verificado.\\
+Las imágenes a analizar han sido extraídas en sus totalidad de dispositivos móviles, los cuales se conectaban a un servidor al cual enviaban la imagen para su posterior diagnóstico y validación mediante biopsia en caso de sospecha de caso positivo de cáncer. Todas ellas fueron almacenadas de forma directa, sin aplicar ningún tipo de ecualización o filtro, ya que el formato de guardado escogido es PNG, caracterizado por ser un formato sin pérdidas.
 
-Podemos encontrar, además del diagnóstico, metadatos acerca de:
+Entre sus clases, podemos encontrar, de forma equilibrada tres enfermedades benignas de la piel y tres tipos de cánceres de piel:
+
+\begin{itemize}
+	\item Queratosis actínica: manchas escamosas y oscurecidas en la piel debido a la exposición solar. Benignas de naturaleza.
+	\item Cáncer de células basales: tumores generalmente aislados que surgen en las capas profundas de la piel
+	\item Melanoma: tumores y manchas cancerosas de color oscuro, en algunos casos acompañadas de necrosis de tejidos, y altamente mortal
+	\item Nevus: lunares comunes
+	\item Queratosis seborreica: enfermedad benigna, que forma manchas protuberantes de color oscuro no contagiosas.
+	\item Cáncel de células escamosas: cancer con baja tasa de mortalidad, que surge en la capa intermedia de la piel, y cuyo crecimiento puede tener graves riesgos para la salid.
+	\end{itemize}
+
+ Todos estos datos fueron revisados por dermatólogos expertos, quie aportaron metadatos muy detallados acerca del historial del paciente, gracias a la asociación con la Unidad Patológica de Anatomía del Hospital universitario Cassiano Antȳnio Moraes (HUCAM) , perteneciente a la Universidad Federal de Espírito Santo, en Brasil. EDe entre los metadatos ofrecidos, podemos destacar:
+
 \begin{itemize}
 	\item ID de paciente
-	\item ID de lesión, 
+	\item ID de lesión,
 	\item ID de imagen
 	\item Si la lesión benigna fue o no probada por biopsia.
+	\item Enfermedad diagnosticada
 	\item Información del paciente: fumador o no, localización de la lesión, edad, exposición a químicos, historial cancerígeno, etc.
 \end{itemize}
-Los datos han sido recogidos mediante teléfonos móviles en formato PNG, siendo las imágenes validadas por el Hospital Pathological Anatomy Unit of the University Hospital Cassiano Antȳnio Moraes (HUCAM) de la Federal University of Espírito Santo (Brasil). 
-En su publicación original [25], podemos encontrar un resumen de su contenido de forma más específica:
+
+En su publicación original\cite{PACHECO2020106221}, podemos encontrar un resumen de su contenido de forma más específica:
 
 \begin{table}[!ht]
 	\centering
@@ -519,29 +535,34 @@ En su publicación original [25], podemos encontrar un resumen de su contenido d
 		Malignant Melanoma (MEL) & 52 & 100\% \\ \hline
 		Melanocytic Nevus of Skin (NEV) & 244 & 24.6\% \\ \hline
 		Squamous Cell Carcinoma (SCC) & 192 & 100\% \\ \hline
+		Seborrheic Keratosis (SEK)	&235	&6.4 \% \\ \hline
 		\textbf{Total} & \textbf{2298} & \textbf{58.4\%} \\ \hline
 	\end{tabular}
 	\caption{Tabla de casos diagnosticados en PAD-UFES20}
 \end{table}
 
 Donde podemos apreciar que todos los casos de enfermedades cancerígenas han sido probados mediante biopsia, y el cáncer de célula basal se trata del tipo de enfermedad más frecuente.
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 0.45]{imagenes/PAD-UFES.png}
-	\caption{Batch de ejemplo de PAD-UFES 20 [25]}
+	\includegraphics[scale = 0.5]{imagenes/PAD-UFES.png}
+	\caption{Batch de ejemplo de PAD-UFES 20 \cite{PACHECO2020106221}}
 \end{figure}
 
-\subsubsection{Severance}
-Se trata de un conjunto de imágenes de lesiones cutáneas [24] recopiladas de pacientes de Corea del Sur. Recibe dicho nombre a que los datos recopilados cuentan con la colaboración del Hospital Severance, en el mismo país. \\
+La gran ventaja de este dataset es que sus imágenes han sido recopiladas mediante smartphones, por lo que las condiciones de recopilación han sido prácticamente idénticas a las que se recibirán por el modelo entrenado para este trabajo. Esto nos aporta como beneficio un conjunto de entrenamiento mucho más cercano a la población real a la que será destinada el modelo.
 
-En su variante A, que es la única disponible públicamente, podemos encontrar el diagnóstico y otra información asociada sobre 10426 imágenes, cuya valoración se encuentra entre las 38 posibles clases que contiene este conjunto de datos. \\
+\subsection{Severance}
 
-Seleccionando las 6 clases más comunes contenidas en este dataset, encontraremos que comprenden aproximadamente el 75\% del conjunto. Está compuesto por actinickeratosis (22.5\%), angiofibromas (14.4\%), angiokeratomas(13.8\%), cáncer de tipo basal cell (8.1\%), Becker nevus (7.5\%), bluenevus (6.2\%), y la enfermedad de Bowen (carcinomas)(6.1\%).
+Severance es otro conjunto de lesiones cutáneas que podemos encontrar para su libre acceso de forma digital \cite{severance}. Se trata de un conjunto de imágenes de lesiones cutáneas recopiladas de pacientes de Corea del Sur por el hospital Severance.  Los datos recopilados pertenecen a los casos diagnosticados por dermatólogs entre enero de 2008 y marzo de 2019, teniendo en cuenta el historial médido de cada uno de los pacientes y asegurando un grado alto de confianza en el diagnóstico.
 
-El interés en este dataset se debe a que algunas de estas clases mayoritarias, como los nevus azules y de Becker, son condiciones benignas que suelen ser retirados únicamente con fines estéticos, permitiendo complementar con el resto de los diagnósticos negativos. Este tipo de lunares son los más complejos de diagnosticar, debido a sus colores similares a un melanoma, y suelen requerir una biopsia, por lo que su diagnóstico suele alargarse.
+La población de este muestreo se centra sobre pacientes mayores a 19 añaos, que fueron diagnosticados con lesiones provenientes de tumores. Se excluyó de este estudio a todas aquellas lesiones de dificil acceso, como las lesiones intraoculares, postoperatorias, o causas por medios externos, como láseres o costuras operatorias. Además, algunos pacientes tenían diferentes lesiones en zonas próximas, por lo que se tomaron las imágenes de forma que el diagnóstico para cada una de ellas fuera individual, y no se pudieran producir incongruencias entre los expertos en el diagnóstico. 
 
-Las imágenes se encuentran en formato matriz, por lo que es necesario proceder a su separación previo a su utilización con fines de Deep Learning: 
+En total, se dispone de 40331 imágenes clínicas, que provienen de 10426 pacientes distintos que participaron en la cesión de datos. Al igual que ASAN, este dataset posee distintas versiones publicadas en la red, siendo accesible únicamente su partición A, y podemos encontrar 38 tipos de diagnósticos distintos de los 43 disponibles en total,  los cuales no siguen una distribución equilibrada.
+
+Realizando un test estadistico previo, es posible verificar que las 6 clases más comunes contenidas en este dataset componen el 75\% del conjunto total. Está compuesto por queratosis actínica (22.5\%), angiofibromas (14.4\%), angiokeratomas(13.8\%), cáncer células basales (8.1\%), lunares de Becker (7.5\%), bluenevus (6.2\%), y la enfermedad de Bowen (carcinomas)(6.1\%).
+
+El interés en este dataset se debe a que algunas de estas clases mayoritarias, como los nevus azules y los lunares de Becker, son condiciones benignas que suelen ser retirados únicamente con fines estéticos, permitiendo complementar con el resto de los diagnósticos negativos. Este tipo de lunares son los más complejos de diagnosticar, debido a sus colores similares a un melanoma, y suelen requerir una biopsia, por lo que su diagnóstico suele alargarse.
+
+Las imágenes publicadas son miniaturas recogidas en forma de matriz, presentando un formato similar a las encontradas en ASAN. La diferencia, en este caso, es que disponemos de los metadatos asociados a cada imagen, y el proceso de separación de miniaturas se ve simplificado. A continuación, podemos ver un ejemplo de las imágenes contenidas en el dataset:
 
 \begin{figure}[H]
 	\centering
@@ -549,30 +570,24 @@ Las imágenes se encuentran en formato matriz, por lo que es necesario proceder 
 	\caption{Imágenes de ejemplo provenientes del dataset Severance   }
 \end{figure}
 
-\subsubsection{Otros datasets}
-Existen otros datasets ampliamente referenciados que son de acceso público. Sin embargo, en los últimos años, éstos han sido retirados y han quedado inaccesibles. Es el caso de DermQuest, un atlas virtual que contenía lesiones cutáneas y otras patologías. Ese dataset fue contenido posteriormente por Derm101, pero ambas versiones fueron retiradas para su descarga. Alternativamente, podemos encontrar algunas de sus imágenes en los datasets SD-198 y SD-260 [26][29], pero únicamente permanece en activo el primero de ellos, bajo solicitud. En total, SD-198 contiene más de 6500 imágenes, mientras que SD-260 alcanzaba las 20000 imágenes.
+Donde podemos apreciar el formato matricial, y la toma de imágenes desde diferentes puntos de vista para portar una mayor variabilidad al modelo. Es posible separar cada una de estas imágenes logrando un conjunto de aproximadamente 10400 fotografías a 98 x 98 píxeles en formato jpeg, debido a la compresión con pérdidas aplicada para almacenarlas.
 
-En el estado del arte actual, podemos encontrar otros datasets ampliamente utilizados, como el caso de DermIS [27], un atlas online de patologías de la piel. También existen publicaciones reciente sobre nuevos conjuntos de datos utilizados de uso restringido, que permiten observar que la tendencia de investigación de este campo sigue en alza; es el caso del estudio propuesto por Papadakis et Al (2021) [28], que recoge datos sobre pacientes con melanoma de grado 3 para estudiar su evolución durante un período de 3 años, para estimar su crecimiento y potencial grosor del tumor.
+En cuanto a los resultados obtenidos en tareas de aprendizaje, de nuevo encontramos que se han utilizado grandes modelos para realizar el aprendizaje, siendo en este caso utilizado los modelos VGG16 y ResNext50, y siendo el resultado de accuracy top1 un 53.0\%,  dada a la complejidad del problema al utilizar clases infrarepresentadas.
 
-Debido a las restricciones de acceso, ninguno de estos datasets será empleado como parte del entrenamiento del modelo diseñado para este estudio.
+\subsection{Otros datasets}
 
-\subsubsection{Conjunto resultado}
-Una vez examinados todos los conjuntos mencionados anteriormente, podemos llevar a cabo la unión de todos los datos en un único subconjunto. Esto nos permitirá conseguir un dataset completo y variado con diferentes tipos de piel y diferentes lesiones que nos permitirán identificar multitud de tipos de patologías, siendo posible ajustar el grado de granularidad en función de la agrupación o no de posibles subclases.
+En los puntos anteriores, se han descritos los datasets disponibles con mayores referencias y mayor peso dentro del espacio de investigación cubierto por el campo de investigación acerca del cáncer de piel. Pero, existe una serie de bases de datos con grandes cantidades de datos que fueron retiradas de su acceso público, o simplemente, fueron eliminadas debido a limitaciones legales por licencias. A continuación, se destacan algunas de ellas que tuvieron un gran impacto en la literatura de los años 2015 y 2020:
 
-Inicialmente, el conjunto de datos construido contendrá todos los subtipos de lesiones cutáneas vistos, pero dispondrán de una segunda etiqueta que indicará si se trata de un caso canceroso o no, atendiendo a su subclase que lo etiqueta. Si agrupamos por lesiones benignas, cancerosas, y potencialmente cancerosas, obtenemos:
+\begin{itemize}
+	\item \textbf{DermQuest}. Se trataba de un atlas virtual que contenía información detallada acerca de lesiones cutáneas, con el fin de servir como atlas de estudio para dermatólogos en formación. Esta información, a pesar de ser principamente académica, podía ser recopilada por técnicas de minería de datos.  Posteriormente, este conjunto de datos fue dado de baja, pero reapareció como un subconjunto del repositorio Derm101. Sin embargo, desapareció de forma definitiva en el año 2019, por lo que no es posible encontrar estos datos para uso.
+	
+	\item \textbf{SD-198 y SD-260}  \cite{10.1007/978-3-319-46466-4_13} son dos datasets de origen chino que recopilan fotografías y metadatos acerca de  98 y 260 imágenes respectivamente, asegurándo al menos un total de 50 imágenes como mínimo por patología. Ambos datasets se pueden ver referenciados en mutitud de papers como \cite{goyal2020artificial}. Habitualmente, el más usado de ambas variantes era SD-198. Existen datasets con mayor y menor cantidad de clases, pero son subconjuntos de estos, ya que los datasets se organizaban en niveles de carpetas, donde cada nivel descendido aportaba un mayor nivel de granularidad en el diagnóstico. En la actualidad, sólo el subconjunto 198 permanece en línea, pero bajo solicitud. Contiene 6,584 imágenes, que fueron capturadas para historias clínicas mediante smartphones. Sin embargo, debido a las dificultades del idioma, y la dificultad de contacto con el autor original, se prescindirá de este dataset para el estudio del problema.
+	\item \textbf{DermIS} \cite {dermis} es un atlas online creado con fines académicos. Aunque no dispone de metainformación asociada, podría emplearse para el  problema que se trata en este trabajo. Pero, debido a la incorporación de otras enfermedades que no vinculan con el dominio del problema, se descarta su utilización.
+	\item Mednode \cite{GIOTIS20156578} contiene 70 melanomas and 100 nevus provenientes del  Departamento de dermatologia de la universidad University Medical Center Groningen (UMCG) , cuyo objetivo es la creación de una aplicación de diagnóstico de enfermedades cutáneas no desmocópicas que faciliten la decisión a los dermatólogos. Debido a su pequeño tamaño, y a que este aporta datos acerca de clases ya mayoritarias en otros datasets, se propone su no utilización para el experimento.
+\end{itemize}
 
+Además de estos datasets no disponibles en la actualidad, existen publicaciones recientes sobre nuevos conjuntos de datos utilizados de uso interno para dicha investigación, fortaleciendo así la visión de que la inteligencia artificial aplicada a la dermatología es un campo de interés y competitividad. No es posible acceder a este tipo de conjuntos debido a su gran valor competitivo dentro de la industria  de las aplicaciones de asistencia al diagnóstico dermatológico.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale = 0.65]{imagenes/datasetfinal.png}
-	\caption{Distribución de clases}
-\end{figure}
+\section{Conjunto de datos resultado}
 
-Se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Si atendemos a clasificar las subclases de cada tipo de patología, encontramos 52 posibles etiquetas.
-
-%\section{Procesado de imágenes cutáneas}
-%\subsection{Técnicas de reducción de ruido}
-%\subsection{Normalización}
-%\subsection{Extracción de características}
-
-
+Una vez examinado el estado del arte del aprendizaje en dispositivos móviles, sus modelos de optimización, y los conjuntos de datos disponibles, podemos comenzar la fase de preprocesado de datos. En total, se dispone de los 5 datasets mencionados en apartados anteriores, prescindiendo de aquellos que ya no se encuentran disponibles. En el siguiente apartado, se describe con detalle el proceso seguido a la hora de unir las imágenes y metadatos de cada uno de ellos en una base de datos conjunta.
