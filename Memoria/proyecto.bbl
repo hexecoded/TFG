@@ -122,6 +122,10 @@ Seung~Seog Han, Myoung~Shin Kim, Woohyung Lim, Gyeong~Hun Park, Ilwoo Park, and
   cutaneous tumors using a deep learning algorithm.
 \newblock {\em Journal of Investigative Dermatology}, 138(7):1529--1538, 2018.
 
+\bibitem{pytesseract}
+Samuel Hoffstaetter.
+\newblock Python tesseract.
+
 \bibitem{howard2019searching}
 Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo~Chen, Mingxing
   Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc~V. Le, and

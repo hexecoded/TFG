@@ -3,53 +3,58 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
+I was expecting a `,' or a `}'---line 287 of file bibliografia/bibliografia.bib
+ :  
+ :  howpublished = "\url{https://github.com/h/pytesseractm}",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--entry type for "severance" isn't style-file defined
---line 340 of file bibliografia/bibliografia.bib
+--line 347 of file bibliografia/bibliografia.bib
 Warning--I didn't find a database entry for ""
 Warning--to sort, need author or key in isicarchive
 Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
 Warning--to sort, need author or key in dermis
 Warning--empty journal in Han2017
-You've used 42 entries,
+You've used 43 entries,
             2118 wiz_defined-function locations,
-            713 strings with 13427 characters,
-and the built_in function-call counts, 15171 in all, are:
-= -- 1316
-> -- 1151
+            716 strings with 13473 characters,
+and the built_in function-call counts, 15364 in all, are:
+= -- 1332
+> -- 1158
 < -- 3
-+ -- 460
-- -- 414
-* -- 1141
-:= -- 2607
-add.period$ -- 122
-call.type$ -- 42
-change.case$ -- 328
++ -- 463
+- -- 416
+* -- 1146
+:= -- 2638
+add.period$ -- 124
+call.type$ -- 43
+change.case$ -- 332
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 390
-empty$ -- 994
-format.name$ -- 414
-if$ -- 3046
+cite$ -- 48
+duplicate$ -- 397
+empty$ -- 1016
+format.name$ -- 416
+if$ -- 3088
 int.to.chr$ -- 0
-int.to.str$ -- 42
+int.to.str$ -- 43
 missing$ -- 17
-newline$ -- 207
-num.names$ -- 80
-pop$ -- 441
+newline$ -- 211
+num.names$ -- 82
+pop$ -- 449
 preamble$ -- 1
-purify$ -- 287
+purify$ -- 290
 quote$ -- 0
-skip$ -- 336
+skip$ -- 346
 stack$ -- 0
-substring$ -- 478
-swap$ -- 71
+substring$ -- 483
+swap$ -- 72
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 166
+type$ -- 170
 warning$ -- 5
-while$ -- 92
-width$ -- 44
-write$ -- 426
-(There were 7 warnings)
+while$ -- 94
+width$ -- 45
+write$ -- 433
+(There was 1 error message)
