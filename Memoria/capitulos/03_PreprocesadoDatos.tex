@@ -185,11 +185,11 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 	\item Se repite el paso 3-6 para cada imagen de la matriz, pasando a abrir la siguiente matriz hasta que no quede ninguna por recortar.
 \end{enumerate}
 
-\begin{algorithm}
+\begin{algorithm}[H]
 		\label{cortarasan}
 		\caption{Recorte de las imágenes de ASAN mediante OpenCV}
 		\begin{algorithmic}
-			\Procedure{recortarImagenesASAN}{path, i, title="ASAN"}
+			\Procedure{recortarImagenesASAN}{path, i, title='ASAN'}
 			\State var files : list of strings
 			
 			 \For {f in pathlib.Path().iterdir()}
@@ -199,9 +199,10 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 			 \EndFor
 			 	 
 			\State var names : list of strings
-			\State diss\_class : list of strings
+			\State var  diss\_class : list of strings
+			 \State var i $\gets 0$
 			
-			\For {f in files}
+			\ForEach {f in files}
 				   \State name $\gets$ str(f)[str(f).rfind('\#') + 1:-4]
 				   \If {f.ends = 'png' and not exists(path)}
 						\State {makedir(name)}
@@ -213,7 +214,7 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 			
 						\State var contours $\gets$ cv2.findContours(gradient, cv2.RETR\_EXTERNAL, cv2.CHAIN\_APPROX\_SIMPLE)
 			
-						\ForAll{cnt in contours}
+						\ForEach{cnt in contours}
 								\State	x, y, w, h  $\gets$ cv2.boundingRect(cnt)
 								\State var box\_image = image[y: y + h, x: x + w] : image
 				
@@ -252,6 +253,28 @@ La estructura de presentación de los datos es más sencilla que ASAN, pues las 
 	         
 \end{itemize}
 
+
+
+\begin{algorithm}
+	\label{cortarpadufes}
+	\caption{Formato de las imágenes de PAD UFES}
+	\begin{algorithmic}
+		\State  var PAD\_UFES\_PATH : directory of PAD UFES 20 dataset
+		\State dict $\gets$ \{'BCC': 'basal\_cell\_carcinoma', 'SEK': 'seborreic\_keratosis', 'SCC': 'squamous\_cell\_carcinoma', 'NEV': 'nevus',
+			'ACK': 'actinic\_keratosis', 'MEL': 'melanoma'\}
+		\Procedure{preparar\_padufes}{}
+		\State df\_pad\_ufes $\gets$ file.read()
+		\State  df\_pad\_ufes['diagnostic'] $\gets$ df\_pad\_ufes['diagnostic'].replace(dict)
+		
+		\ForEach{img in df\_pad\_ufes}
+			\State df\_pad\_ufes['im\_dir'] $\gets$  PAD\_UFES\_PATH + '/images/ + img
+		   \State df\_pad\_ufes['dataset'] = 'PAD\_UFES'
+	
+	\EndFor		
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
 De esta forma, podemos simplemente hacer fusión de las nuevas filas con el fichero anterior en modo de apertura ``append''.
 
 \subsection{PH2}
@@ -260,9 +283,7 @@ Este dataset recoge imágenes provenientes del Servicio de Dermatología del Hos
 
 Los datos se organizan en directorios de carpetas de varios niveles,  pudiendo encontrar en su interior la imagen dermoscópica, la plantilla de segmentación y regiones de interés de la imagen destacadas mediante una plantilla binaria. Para este trabajo, sólo se utilizarán las imágenes correspondientes al directorio de datos dermoscópicos, ya que con debido a la cercanía de la lensión, la imagen contiene en su mayoría solo información útil.
 
- \textbf{INSERTAR PSEUDO} 
-
-Como preprocesado de las imágenes, al disponer de ellas correctamente clasificadas en carpetas y con un fichero de metadatos bastante completo, el único procedimiento necesario sería la adición al fichero preprocessedData.csv, realizando las conversión a camel case de las labels.
+Como preprocesado de las imágenes, al disponer de ellas correctamente clasificadas en carpetas y con un fichero de metadatos bastante completo, el único procedimiento necesario sería la adición al fichero preprocessedData.csv, realizando las conversión a camel case de las labels. El método a emplear es equivalante al utilizado en PAD UFES \ref{cortarpadufes}.
 
  \subsection{Severance}
  
@@ -270,13 +291,78 @@ Como preprocesado de las imágenes, al disponer de ellas correctamente clasifica
  
  La dificultad de este preprocesado radica precisamente en la existencia de los cuadrados blancos, ya que la lectura del texto escrito en ellos es prácticamente imposible. La baja resolución, unido a la existencia de etiquetas cuyo nombre se encuentra dividido en varias líneas, provoca que algoritmos de reconocimiento de texto como Pytesseract \cite {pytesseract} no fuesen capaces de detectar las etiquetas adecuadamente.
  
- Por este motivo, fue necesario identificar manualmente cuántos casos de cada enfermedad existían por matriz de imágenes, y realizar un recuento para saber cuándo aplicar una etiqueta u otra. Conociendo que las etiquetas asignadas aparecían por orden alfabético, el proceso a seguir se resumió en aumentar un contador cada vez que aparecía una imagen en blanco durante el recorrido de las imágenes, y aumentar el contador hasta llegar al valor total de ejemplares de esa clase; en ese momento, se procede a contar los valores de la siguiente. Con este procedimiento, nos queda el siguiente código:
- 
- \textbf{INSERTAR PSEUDO} 
- 
- Donde la ventaja respecto a ASAN reside en que los espacios en blanco entre imágenes tienen el mismo grosor, y fue posible de separar en submatrices sin necesidad de utilizar ténicas de visión, que ralentizan el proceso extracción.
- 
- Cada imagen es etiquetada siguiendo el formato establecido  y siendo añadida a una nueva carpeta, desde la cual se referenciarán mediante el fichero preprocessedData.csv. 
+ Por este motivo, fue necesario identificar manualmente cuántos casos de cada enfermedad existían por matriz de imágenes, y realizar un recuento para saber cuándo aplicar una etiqueta u otra. Conociendo que las etiquetas asignadas aparecían por orden alfabético, el proceso a seguir se resumió en aumentar un contador cada vez que aparecía una imagen en blanco durante el recorrido de las imágenes, y aumentar el contador hasta llegar al valor total de ejemplares de esa clase; en ese momento, se procede a contar los valores de la siguiente. Con este procedimiento, nos queda el algoritmo \ref{cortarseverance}
+  
+La ventaja respecto a ASAN reside en que los espacios en blanco entre imágenes tienen el mismo grosor, y fue posible de separar en submatrices sin necesidad de utilizar ténicas de visión, que ralentizan el proceso extracción. Cada imagen es etiquetada siguiendo el formato establecido  y siendo añadida a una nueva carpeta, desde la cual se referenciarán mediante el fichero preprocessedData.csv. 
+
+Como dificultades a destacar durante el desarrollo de este procedimiento, comentar que la detección de la imagen en blanco que separa las etiquetas entre clases no es trivial. El método elegido para distinguirla es emplear un  umbral de número de píxeles con valor de escala de grises blanco, es decir, 255. El valor de dicho umbral se calculó de forma experimental , ya que si el valor era demasiado bajo, pieles sanas o de color claro también cumplían la restricción. El cambio de etiquetado no se produce si el número de píxeles totales de la imagen encontrada no supera un valor x de miles de píxeles. De forma experimental, el valor 20.000 fue el que mejor resultados aportó, funcionando en todos los casos.
+
+Aumentar de forma desmesurada este valor también puede tener consecuencias negativas, ya que el nombre de la etiqueta se encuentra escrita en la parte inferior de estas imágenes y aportan píxeles de color negro que no cumplirían la condición.
+
+
+ \begin{algorithm}[!ht]
+	\label{cortarseverance}
+	\caption{Recorte de las imágenes de Severance mediante OpenCV}
+	\begin{algorithmic}
+		\Procedure{recortarImagenesSEVERANCE}{path}
+		
+		\State  df\_sev $\gets$ read('SeveranceA.xls')
+		\If {not os.path.exists('thumbnails')}
+		\State makedir('thumbnails')
+		\EndIf
+		
+		\State var files : list of strings
+		
+		\For {f in pathlib.Path().iterdir()}
+		\If {f is\_file()]}
+		\State files.add(f)
+		\EndIf
+		\EndFor
+		
+		\State var names : list of strings
+		\State diss\_class : list of strings
+		\State j $\gets 0$
+		
+		\For {f in files}
+		\If {f.ends = 'jpg'}
+		\State name $\gets$ f.name[0:-4]
+		\State {makedir(name)}
+		\State var image = cv2.imread(name, cv2.IMREAD\_UNCHANGED): image
+		\State var image\_split = $\begin{matrix}
+			[ image_1 image_2, \ldots, image_8 ] \end{matrix}^T$	\Comment{División por filas}
+		
+		
+		\State var i $\gets$ 0
+		
+		\ForEach{im  in image\_split}
+		\Comment{Recorta la imagen en columnas}
+		\State image\_split\_col = np.split(im[:, 2:-3], 15, axis=1)
+		\ForEach {imcol in image\_split\_col}
+		\State img\_sin\_borde$\gets$ imcol[grosor\_borde:-grosor\_borde, grosor\_borde:-grosor\_borde]
+		\If {np.count\_nonzero(imcol == 255) > 20000)}  \Comment{Si es imagen de separador con nombre}
+		\State j $\gets j + 1$  \Comment {Cambiamos de etiqueta al siguiente paciente}
+		\State continue
+		\Else
+		\State actual  $\gets$ df\_sev.get(j)
+		
+		\State	actual.add('{name}\_{i}.png')
+		\State	trainProcessed.add(actual)
+		\Comment{Guardamos la imagen y añadimos su nombre}
+		\EndIf
+		\State cv2.imwrite(f'thumbnails/{name}\_{i}.png', img\_sin\_borde)
+		\State names.append(f"{name}\_{i}.png")
+		\State i $\gets i + 1 $
+		
+		\State diss\_class.add(name)
+		\EndFor
+		
+		\EndFor
+		\EndIf	 
+		\EndFor
+		\State trainProcessedDF.write("severanceTrainingSet\_thumbnails.csv") \Comment{Guardado en disco}
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
  
  \section{Etiquetado binario}
  
