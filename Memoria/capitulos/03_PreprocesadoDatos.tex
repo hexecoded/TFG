@@ -58,7 +58,79 @@ Una vez establecido el formato común, podemos pasar al análisis y adaptación 
 
 \subsection{ISIC Dataset}
 
+El dataset ISIC es el mayoritario de la lista, ya que posee casi 60.000 imágenes de alta resolución, del total de casi 108.000 imágenes de las que disponemos. Para su descarga, se han empleado la galería de la web oficial \cite{isicarchive}, donde podemos filtrar cómodamente las enfermedades que queremos descargar. Como criterio de descarga, se han tenido en cuenta únicamente aquellas fotografías correctamente diagnosticadas, ya que existe un total de 27896 imágenesno etiquetadas dentro del repositiorio, las cuales descartaremos. El problema se centrará en resolver un problema de aprendizaje supervisado, por lo que las imágenes no etiquetadas suponen una complejidad adicional y un ruido para el modelo.
 
+Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre todo por cuestiones numéricas; existen nuevas clases, con escasas cantidades de datos, las cuales poseen menos de 10 imágenes, cantidad insuficiente a la hora de clasificar frente a clases como lunares comunes, que tienen en total 32697 ejemplares. De esta forma, nos queda el siguiente conjunto de clases:
+\begin{itemize}
+	\item Nevus
+	\item Seborreic keratosis            
+	 \item Actinic keratosis            
+	\item Pigmented benign keratosis         
+	\item Solar lentigo                           
+	\item Dermatofibroma                          
+	\item Vascular lesion                         
+	\item LIchenoid keratosis                     
+	\item Acrochordon                             
+	\item Lentigo NOS                             
+	\item Atypical melanocytic proliferation       
+	\item Aimp                                     
+	\item 	Wart                                     
+	\item Angioma                                  
+	\item Lentigo simplex                          
+	\item 	Neurofibroma                             
+	 \item 	Scar 
+\end{itemize}
 
+Estas clases se almacenan en ficheros zip cada una, así que tras ser descargadas, deben ser extraídas y añadidas al fichero csv que definimos anteriormente. Al tratarase del primer subconjunto que se añadirá, será la parte del código encargada de crear el fichero y establecer las columnas mencionadas. Además, se realizará la transformación de las etiquetas, dispuestas en el formato de la enumeración anterior, a notación snake case. Numerando el proceso, se ha creado un script de python que realiza las siguientes tareas:
 
+\begin{enumerate}
+	\item Extraer las imágenes mediante uzip en una carpeta con el mismo nombre de la clase a la que pertenecen+
+	\item Crear un fichero .csv, denominado preprocessedData.csv, donde se alojarán las 5 columnas: images, dir, label, dataset, bin.
+	\item Recorrer cada carpeta creada, y añadir los 4 primeros campos
+	\item Una vez añadidas todas las imágenes, se renombran las etiquetas a camel case mediante las funciones upper(), lower() y replace() de la clase string de python.
+\end{enumerate}
+
+Para facilitar el procesado, el rellenado de los datos se realiza sobre una estructura tabular de pandas, para así transformar la columna label fácilmente.
+En cuanto a la quinta columna, la clase binaria, dicha tarea se realizará cuando todos los datasets estén añadidos al .csv, de forma que el recorrido de los datos sólo se realice una vez, cuando tengamos disponible todas las clases. 
+
+En cuanto al estudio estadístico de los datos, este se realizará una vez dividido los datos en los conjuntos de entrenamiento y test, definido en entradas posteriores.
+
+\subsection{ASAN}
+
+ASAN es uno de los dos datasets cuyo formato de entrega de los datos consistía en una matriz de imágenes en un canvas de gran resolución. En el caso de este dataset, tenemos un total de 32 imágenes de este tipo, cuya etiqueta se encuentra escrita en el nombre del fichero.
+El procesado de este dataset será más complejo que el anterior, ya que debemos recortar cada una de las imágenes, evitando que queden bordes blancos que puedan perturbar la predicción, y sesgar el aprendizaje.
+
+Podríamos idear una solución codificada de forma estricta en la cual la imagen se subdivida en n filas y m columnas para extraer las fotografías; sin embargo, cada uno de los canvas del datasets tiene un número filas y columnas concreto que dificultaría esta tarea de forma automática. En su lugar, se ha medido mediante una herramienta de recorte fotográfico el tamaño de una de las miniaturas, siendo este de 98 píxeles, y será el valor que utilizaremos a la hora de realizar el recortado.
+
+No se debe pasar por alto que las imágenes se encuentran separadas vertical y horizontalmente por espacios en blanco, cuyo grosor es de 8 píxeles entre imagen, y 12 en los bordes exteriores. El proceso que debemos seguir para extraer las miniaturas es:
+
+\begin{enumerate}
+	\item Eliminar 4 píxeles en blanco de los extremos para que todas las bandas blancas queden del mismo grosor
+	\item Hallar el numero de imágenes por fila y columana teniendo en cuenta el tamaño de miniatura y el borde.
+	\item Recortar la imagen usando el método findContours() de openCV. Este método binaria la imagen transformándola a blanco y negro, y trazado con técnicas de detección de puntos de interés en imágenes los bordes de cada una de las miniaturas, y devolviendo las coordenadas de sus equinas en un vector multidimensional. 
+	\item Para cada imagen, obtenemos la esquina superior izquierda de la imagen, y mediante el ancho y alto de la imagen, recortamos dicha sección de la imagen y se almacena en una nueva variable.
+	\item Se recortan los bordes de dicha imagen y se almacena el resultado en disco, en una carpeta que posee el mismo nombre que la imagen de la que fue extraída.
+	\item Se repite el paso 3-6 para cada imagen de la matriz, pasando a abrir la siguiente matriz hasta que no quede ninguna por recortar.
+\end{enumerate}
+
+Una vez finalizado el proceso, el proceso a aplicar es similar a ISIC; pero, en este caso, en lugar de simplemente convertir a camelcase, debemos de cambiar los nombres por completo para no usar el formato por abreviaturas original, y poder hacer merge de las clases de este dataset con ISIC que sean de la misma enfermedad. Para ello, simplemente se crea un diccionario clave-valor, donde la clave es el nombre que deseamos cambiar, y el valor, el nuevo nombre. Mediante pandas, el proceso de sustitución se puede hacer de forma inmediata mediante la función replace.
+
+Es importante destacar que el dataset Hallym, también será incluido en el conjunto final, siendo el procedimiento de preprocesado a aplicar exactamente el mismo al descrito en este punto.
+
+\subsection{PAD UFES 20}
+
+PAD UFES 20, como ya describimos en el apartado de Estado del arte, se trata de un dataset diseñado para el entramiento de sistemas de asistencia en diagnóstico computado, donde el experto dermatólogo puede utilizarlo como un medio de apoyo. Contiene 6 enfermedades distintas, siendo 3 cancerosas (células basales, células escamosas o melanoma maligno) y 3 benignas (actinic keratosis, nevus, keratosis seborreica).
+
+La estructura de presentación de los datos es más sencilla que ASAN, pues las imágenes son individuales, y cuentan con un fichero .csv donde se describen las etiquetas y otros metadatos asociados a las imágenes. La única modificación necesaria es actualizar el path de cada imagen y la nomenclatura del diagnóstico de la enfermedad, teniendo en cuenta que debemos de tranformar de abreveviatura a camel case:
+\begin{itemize}
+	\item NEV $\rightarrow$ nevus
+	\item SEK  $\rightarrow$ seborreic\_keratosis 
+	\item ACK $\rightarrow$ actinic\_keratosis  
+	\item BCC $\rightarrow$  basal\_cell\_carcinoma           
+	\item SCC $\rightarrow$ squamous\_cell\_carcinoma
+	\item MEL $\rightarrow$ melanoma
+	         
+\end{itemize}
+
+De esta forma, podemos simplemente hacer fusión de las nuevas filas con el fichero anterior en modo de apertura ``append''.
 
