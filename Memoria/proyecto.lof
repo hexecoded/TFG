@@ -20,4 +20,6 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Formato del fichero csv normalizado}}{65}{figure.3.1}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Distribución de clases}}{75}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Arquitectura de ESRGAN. Fuente: \cite {wang2018esrgan}}}{82}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Imagen original (izquierda) vs aumentada (derecha)}}{84}{figure.3.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

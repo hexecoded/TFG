@@ -382,7 +382,7 @@ Con este paso, finalizamos la uniformización de los datos en lo que corresponde
 
 \section{Particionado de los datos}
 
-En este punto, estudiaremos la importancia de un correcto particionado de los datos para el entrenamiento del modelo y su posterior verificación de rendimiento. Se estudiará la importancia de disponer de un estimador insesgado del modelo entrenado, y las decisiones tomadas para el problema que nos concierne.
+En este punto, estudiaremos la importancia de un correcto particionado de los datos para el entrenamiento del modelo y su posterior verificación de rendimiento. Se estudiará la importancia de disponer de un estimador insesgado del modelo entrenado, y las decisiones tomadas para el problema que nos concierne en lo que respecta a la calidad de imagen. Para su mejora en calidad, emplearemos GANs con las imágenes de inferior resolución.
 
 \subsection{Importancia de la separación train-test}
 En las tareas de aprendizaje de Machine learning y Deep learning, el objetivo es disponer del mayor número de datos posible, por lo que la opción de privar al proceso de entrenamiento de un subconjunto de ellos, o incluso proceder a su eliminación, puede ser una decisión demasiado drástica que ha de tomarse con fundamento.\\
@@ -474,3 +474,120 @@ donde $e_n = E_{val}(g^-_n) = e(g_n^-(x_n),y_n)$, tal y como se ha explicado. Pe
 Un caso menos costoso computacionalmente es $V$ Cross-Validation, donde dividimos todo el conjunto de datos en V subconjuntos, 5 o 10 habitualmente, llamados \textbf{folds}. En este proyecto, donde disponemos de un conjunto considerable de valores, no he considerado conveniente realizar el proceso de Validación cruzada (CV), ya que este consistiría en disponer de varios conjuntos de validación distintos, y entrenar el modelo para cada uno de los conjuntos de datos restantes no pertenecientes a validación. Debido a que los tiempos de entrenamientos de redes convolucionales pueden superar los días y semanas de duración, no permitiría tener en cuenta otros aspectos claves del proyecto más allá del ajuste de parámetros.\\
 
 Los valores escogidos para esta partición será un \textbf{70\% de entrenamiento, y 30\% de validación}.
+
+\section{Uso de GANs de super resolución}
+
+Las imágenes procedentes de los datasets seleccionados poseen una buena resolución, siendo esta, en media, prácticamente equivalente a lo que se conoce como alta resolución en aprendizaje profundo (1024 x 1024). Sin embargo, aquellas imágenes pertenecientes a los datasets Severance y ASAN, que fueron almacenadas en forma de matriz de imágenes, poseen una calidad muy pobre, de apenas 98x98 píxeles, como ya destacamos durante su preprocesado. En caso de que estos datasets aporten clases completamente nuevas respecto a los 3 conjuntos restantes, la red podría clasificarlas erróneamente basándose únicamente en la resolución.\\
+
+Un simple reescalado solo provocaría altas frecuencias en la imagen que colaborarían en la aportación de ruido al modelo. Hacen falta técnicas más avanzadas, que permitan hacer crecer el tamaño de la imagen sin interferir en su estructura conjunta. Una de estas alternativas, es el uso de redes generativas adversarias (GANs).
+
+\subsection{Justificación de uso}
+
+Las redes generativas adversarias (GANs)  \cite{goodfellow2014generative} son una arquitectura de aprendizaje profundo de tipo generativo, cuyo objetivo suele ser la generación de imágenes sintéticas capaces de imitar con un alto grado de confianza un conjunto de imágenes concreto dado como entrenamiento, estudiando su distribución y siendo capaces de generar imágenes capaces de hacerse pasar por las originales.
+
+Se trata de una arquitectura surgida en 2014 del grupo de investigación de Ian Goodfellow \cite{goodfellow2014generative}, cuya arquitectura consiste en el uso de dos redes profundas: la red generadora, y de discriminatoria.
+
+ \begin{itemize}
+ 	\item La de red generadora genera imñagenes que intentan asemejarse a las proporcionadas como entrenamiento, de forma que estas se hagan pasar por las originales.
+ 	\item La red discriminativa, infiere si la imagen recibida como entrada es o no verídica, y le transmite dicho valor de confianza a la red generadora, para que ésta sea capaz de ajustarse para mejorar el resultado.
+ 	\end{itemize}
+ 	
+ Este tipo de arquitectura, basada en la colaboración entre las dos redes, tiene cierta similitud con el aprendizaje con refuerzo, ya que los ajustes a realizar sobre el modelo generador, depende con fuerza del feedback recibido por la función de pérdida de la red discriminativa.\\
+ 
+ Se trata de un proceso comúnmente vinculado al aprendizaje no supervisado, en el que el interés reside en la generación de imágenes sintéticas para fines como el entrenamiento de otros modelos profundos con clases infrarrepresentadas. La GAN puede encargarse de aumentar el tamaño sintéticamente de aquellas clases infrarrepresentadas para mejorar la calidad del aprendizaje y que este se realice de forma equilibrada. Por tanto, puede considerarse como una técnica de aumento de datos.
+
+Sin embargo, esta no se trata de la única aplicación. El problema al que nos enferentamos, donde requerimos un aumento de la resolución para la mejora de calidad de la imagen, también es una tarea realizable y demostrada por la literatura en la que las GANs logran buenos resultados. Al expandir una imagen de tamaño, requerimos ``rellenar'' aquellos píxeles intermedios faltantes al redimensionar la imagen. Ésta tarea es bastante similar a la realizada pora una GAN tradicional, con la diferencia de que sólo debemos generar los píxeles intermedios, y de forma que éstos se adapten al entorno del resto de la imagen.  ESRGAN\cite{wang2018esrgan} logra este efecto.\\
+
+Esta red ha demostrado cuantiosos éxistos en la literatura al ser utilizada como forma de reescalado de datos, debido a sus mejoras propuestas frente a las GANs tradicionales. Una de las claves reside en la función de pérdida; en lugar de discriminar si la imagen es adecuada o no, se ha empleado un "grado de percepción" (Perceptual Loss) de la imagen, donde se discrimina la calidad de la imagen generada en una escala. \\
+
+\begin{figure}[H]
+	\centering
+	\label {fig:esrgan}
+	\includegraphics[scale = 0.2]{imagenes/esrgan.png}
+	\caption{Arquitectura de ESRGAN. Fuente: \cite{wang2018esrgan}}
+\end{figure}
+
+
+Además, incorpora a la arquitectura las conexiones residuales al estilo de ResNet, con la diferencia de que todos los niveles de un bloque están conectados a todas las siguientes una conexión residual, arquitectura la cual han denominado Residual-in-Residual. Esto les ha permitido evitar la decaída de gradiente, y además, prescindir de la capa de Batch Normalization, que introducía artefactos en el resultado final.
+
+Considero este modelo el adecuado para el problema debido a sus buenos resultados ya logrado en modelos de la literatura \cite{healthcare10071183}, donde la aplicación de ESRGAN ofrece mejoras en el resultado del modelo evaluado, siendo este resultado evaluado con distintas arquitecturas y modelos de redes convolucionales del estado del arte.
+
+Gracias a este modelo, el aumento de resolución podrá darse para equiparar la calidad de las imágenes recopiladas.
+
+\subsection{Proceso de mejora}
+
+La aplicación del proceso de mejora de las imágenes se llevará a cabo únicamente sobre el conjunto de entrenamiento, para así evitar la contaminación del conjunto de test. Podemos encontrar el modelo de ESRGAN ya preentrenado en su repositorio de Github \cite{gitesrgan}.
+
+Dentro del software incorporado para su uso, podemos encontrar el modelo preentrenado para una multiplicación de la resolución a 4 veces mayor. Este será el modelo con aquellos subconjuntos de menor resolución, para así aumentar la resolución de 98x98 a 392x392 píxeles. El procedimiento a seguir ha sido el siguiente:
+
+\begin{enumerate}
+	\item Listar las imágenes de entrenamiento pertenecientes a los subconjuntos ASAN y Severance
+	\item Aplicar el aumento de resolución, generando las nuevas imágenes en una carpeta nueva
+	\item Sustituir las imagenes originales por las aumentadas, conservando las imágenes fuente en un directorio de respaldo.
+\end{enumerate}
+
+De forma organizada, nos queda resumido en  el siguiente pseudocódigo:
+
+\begin{algorithm}[H]
+	\label{fig:escalar}
+	\caption{ Aumento de resolución para ASAN y Severance}
+	\begin{algorithmic}
+		\Procedure{reescalar\_img}{path\_orig, nombre\_carp}
+		\If{not exists(nombre\_carp)}
+				\Comment{Renombrar la carpeta a ``nombre\_lr''}
+				\State \Call {rename}{path\_orig, nombre\_carp}
+				
+				\State \Call{mkdir}{path\_orig}
+				\Comment{ Creamos carpeta con el nombre original }
+				\State \Call {read\_images}{path\_orig + "\_lr", path\_orig}
+		\EndIf
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}
+
+Donde la función 'read\_images' \ref{fig:readimg} es la engarda de recorrer la carpeta, tomar las imágenes y generar su imagen aumentada por super resolución:
+
+\begin{algorithm}[H]
+	\label{fig:readimg}
+	\caption{ Aumento de resolución para ASAN y Severance}
+	\begin{algorithmic}
+		\Procedure{read\_images}{path\_orig, nombre\_carp}
+		
+		\State var im\_path += ``/*''
+		\State var model\_path = 'ESRGAN/models/RRDB\_ESRGAN\_x4.pth':path
+		\State \Call {load\_model}{model\_pat}
+		
+		\State var idx $\gets$ 0
+		\ForEach {path in im\_path}
+			\State idx $\gets idx +1$
+			\State var base\_dir= osp.splitext(osp.basename(path))[0] :path
+
+			\State var img = \Call{imread}{path, format = IMREAD\_COLOR}
+			\State img = $\matrix     {img} * 1.0 / 255$ \Comment{Normalización antes de aumentar}
+			\State img = $img^T.squeeze()$	\Comment{Formato de entrada del modelo }
+			\State img\_LR = img.unsqueeze(0).to(GPU)
+		
+			\State output $\gets model.predict(img\_LR)$
+			\State output $\gets$  output,squeeze()
+				
+			\State output = model(img\_LR).data.squeeze().float().clamp\_(0, 1)
+			\State img = $\matrix     {img}^T * 255$ \Comment{Deshacemos cambios}
+			 \State Call {imwrite}{f'{im\_out}/' + 'png'.format(base), output)}	\Comment{Guardo en disco}
+		\EndFor
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}
+
+De esta forma, conseguimos reescalar cada una de las imágenes sin necesidad de modificar el archivo .csv previamente guardado para entrenamiento y test. Los resultados son bastante notables, ya que al aumentar la resolución a una 4 veces mayor, pueden apreciarse detalles con mayor claridad:
+	
+l\begin{figure}[H]
+		\centering
+		\subfigure[Original]{\includegraphics[width=0.3\textwidth]{imagenes/194_13_orig.jpg}} 
+		\subfigure[Reescalada]{\includegraphics[width=0.3\textwidth]{imagenes/SEV_194_13.png}} 
+	\caption{Imagen original (izquierda) vs aumentada (derecha)}
+
+\end{figure}
+
+Como inconvenientes, destacar la gran necesidad de espacio en disco, ya que las imágenes al ser reescaladas y almacenadas en formato sin pérdidas (PNG), han multiplicado el tamaño del dataset completo de entrenamiento en casi 6 veces. Adicionalmente, se han requierido una hora y doce minutos para el reescalado de las imágenes, haciendo uso de una GPU Nvidia Geforce RTX 3080. 
