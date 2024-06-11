@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  11 JUN 2024 17:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  11 JUN 2024 20:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1399,14 +1399,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
-[77] [78]) (./capitulos/04_AnalisisTecnicas.tex)
+[77] [78] [79]
+Underfull \hbox (badness 10000) in paragraph at lines 465--467
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
+
+ []
+
+) (./capitulos/04_AnalisisTecnicas.tex)
 (./capitulos/05_ExtraccionCaracteristicas.tex) (./capitulos/06_Deeplearning.tex
 ) (./capitulos/07_Diseno.tex) (./capitulos/08_Implementación.tex)
 (./capitulos/09_Pruebas.tex) (./capitulos/10_Conclusiones.tex) (./proyecto.bbl
-[79] [80
-
-
-]
+[80]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
 .
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -1429,7 +1441,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--68
 ma-[]classification /
  []
 
-[81{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+[81
+
+
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Underfull \hbox (badness 3460) in paragraph at lines 83--89
 []\T1/pplj/m/n/10.95 Google.  Ef-fi-cient-netli-te (me-dia-pi-pe.  [][]$\T1/cmt
 t/m/n/10.95 https : / / console . cloud . google .
@@ -1543,7 +1558,7 @@ e/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fo
 nts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palati
 no/uplbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr
 /share/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on proyecto.pdf (85 pages, 3448560 bytes).
+Output written on proyecto.pdf (85 pages, 3453417 bytes).
 PDF statistics:
  984 PDF objects out of 1000 (max. 8388607)
  815 compressed objects within 9 object streams

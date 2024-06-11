@@ -453,3 +453,24 @@ El resultado es el siguiente:
 De esta forma, seguimos manteniendo la proporción a nivel de conjunto global, y de subdataset. En caso de necesitar entrenar únicamente con uno de los subconjuntos añadidos, podemos filtrar el cojunto de tuplas por aquellos cuya clase sea igual a la buscada.
 
 \subsection{Particionado de validación}
+
+Una vez separado nuestro conjunto de test, únicamente trabajaremos con el resto de valores, que componen el conjunto de entrenamiento. Con ellos, realizaremos el estudio estadístico, ya descrito parcialmente en el punto anterior, y todo el procedimiento de preprocesado de imágenes y ajuste del modelo.
+
+Durante las fases de ajuste del modelo elegido en nuestras hipótesis, necesitaremos estudiar qué parámetros favorecen mejores resultados, así como el tipo de regularización a emplear y el coeficiente $\lambda$ de participación de este.
+
+Una forma de realizar esta práctica consiste en el uso del subconjunto de validación. Este concepto se asemeja al concepto del conjunto de test, con la diferencia de que se utiliza como estimador insesgado para evaluar los parámetros relevantes de cada algoritmo, o los modelos a comparar. Estimamos el error out-sample de forma directa mediante el error obtenido $E_{val}$. Lo conseguimos al evaluar el modelo sin tener en cuenta los K valores extraídos para la validación, utilizándolo como estimador, $E_{val}$.
+
+$$E_{out}(g) \approx E_{out}(g^-) \approx E_{val}(g^-)$$
+
+Siendo $E_{out}(g)$ el error final cuando se utiliza todo el conjunto de datos $\mathcal D$.
+La parte izquierda de la ecuación funciona mejor cuanto más pequeña sea k, mientras que por la derecha, un mayor valor de k permitirá una mejor estimación a traves de $E_{val}$.\\
+
+El caso ideal sería, para acercanos lo máximo posible entre $E_{out}(g)$ y $ E_{out}(g^-)$ es elegir k lo más pequeño posible, cuyo caso extremo es k=1. De esta forma estaríamos haciendo \textbf{leave one out}, método el cual evalua todo el conjunto como entrenamiento, reservando solo un único valor para validación. La combinación de este proceso aplicado a todos los elementos nos permitirá conseguir el error de valicación cruzada, dado por:
+
+$$E_{cv} = \frac{1}{N}\sum^{N}_{n=1} e_n$$
+
+donde $e_n = E_{val}(g^-_n) = e(g_n^-(x_n),y_n)$, tal y como se ha explicado. Pero es muy costoso computacionalmente, sobre todo ante casos como este, donde el conjunto de entrenamiento contiene alrededor de 60000 valores. Es por ello que simplificaremos este enfoque al conjunto de validación único.\\
+
+Un caso menos costoso computacionalmente es $V$ Cross-Validation, donde dividimos todo el conjunto de datos en V subconjuntos, 5 o 10 habitualmente, llamados \textbf{folds}. En este proyecto, donde disponemos de un conjunto considerable de valores, no he considerado conveniente realizar el proceso de Validación cruzada (CV), ya que este consistiría en disponer de varios conjuntos de validación distintos, y entrenar el modelo para cada uno de los conjuntos de datos restantes no pertenecientes a validación. Debido a que los tiempos de entrenamientos de redes convolucionales pueden superar los días y semanas de duración, no permitiría tener en cuenta otros aspectos claves del proyecto más allá del ajuste de parámetros.\\
+
+Los valores escogidos para esta partición será un \textbf{70\% de entrenamiento, y 30\% de validación}.
