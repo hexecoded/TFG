@@ -43,5 +43,5 @@
 \contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{79}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{81}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{81}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Proceso de mejora}{83}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{83}{subsection.3.3.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
