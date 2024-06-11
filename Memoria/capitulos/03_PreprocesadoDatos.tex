@@ -3,23 +3,13 @@
 
 Una vez examinados todos los conjuntos mencionados anteriormente, podemos llevar a cabo la unión de todos los datos en un único subconjunto. Esto nos permitirá conseguir un dataset completo y variado con diferentes tipos de piel y diferentes lesiones que nos permitirán identificar multitud de tipos de patologías, siendo posible ajustar el grado de granularidad en función de la agrupación o no de posibles subclases.
 
-Inicialmente, el conjunto de datos construido contendrá todos los subtipos de lesiones cutáneas vistos, pero dispondrán de una segunda etiqueta que indicará si se trata de un caso canceroso o no, atendiendo a su subclase que lo etiqueta. Si agrupamos por lesiones benignas, cancerosas, y potencialmente cancerosas, podemos obtener el siguiente diagrama de sectores de la figura \ref{tartabinaria}, donde se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Si atendemos a clasificar las subclases de cada tipo de patología, encontramos 52 posibles etiquetas, las cuales iremos examinando a medida que se preprocese cada uno de los subconjuntos.
-
-
-\begin{figure}[H]
-	\centering
-	\label {tartabinaria}
-	\includegraphics[scale = 0.7]{imagenes/datasetfinal.png}
-	\caption{Distribución de clases}
-\end{figure}
+Inicialmente, el conjunto de datos construido contendrá todos los subtipos de lesiones cutáneas vistos, pero dispondrán de una segunda etiqueta que indicará si se trata de un caso canceroso o no, atendiendo a la enfermedad que lo etiqueta. En total, tenemos como subclases 52 posibles etiquetas, las cuales iremos examinando a medida que se preprocese cada uno de los subconjuntos.
 
 En el caso de las lesiones potencialmente cancerosas, como se trata de condiciones de la piel no cancerosas con posible evolución a cancerosas, se tendrán en cuenta como imágenes benignas, ya que la condición de malignidad sólo podría aparecer en el futuro, el cual sigue siendo desconocido.
 
-El preprocesado de datos es una fase indispensable para el correcto aprendizaje de los algoritmos de deep learning. Se ha demostrado empíricamente que una correcta preparación y normalización de los datos permiten hallar soluciones más cercanas a la optima que con datos no procesados.
+Este proceso es una fase muy delicada del entrenamiento, ya que se ha demostrado empíricamente que una correcta preparación y normalización de los datos permiten hallar soluciones más cercanas a la optima que con datos no procesados. Es importante tener en cuenta que no existe una metodología de preprocesado única, y que es necesario adaptarse al tipo de dato que estamos tratando. Para este proyecto, además, existe una dificultad adicional, y es la existencia de diferentes procedencias para los datos, pues en total se dispone de 5 datasets distintos, cada uno recopilado con diferentes metodologías e instrumentación. Por tanto, será clave adaptarse a cada uno de los destinos, y realizar la partición final de forma estratificada para evitar sesgos que perturben el resutado.
 
-Es importante tener en cuenta que no existe una metodología de preprocesado única, y que es necesario adaptarse al tipo de dato que estamos tratando. Para este proyecto, además, existe una dificultad adicional, y es la existencia de diferentes procedencias para los datos, pues en total se dispone de 5 datasets distintos, cada uno recopilado con diferentes metodologías e instrumentación. Por tanto, será clave adaptarse a cada uno de los destinos, y realizar la partición final de forma estratificada para evitar sesgos que perturben el resutado.
-
-a continuación, se describe la estrategia seguida para el procesado global de los datos, y los ajustes necesarios para cada uno de los conjuntos empleados.
+A continuación, se describe la estrategia seguida para el procesado global de los datos, y los ajustes necesarios para cada uno de los conjuntos empleados.
 
 \section{Estrategia de preprocesado para la fusión}
 
@@ -234,7 +224,7 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 \end{algorithmic}
 \end{algorithm}
 
-Una vez finalizado el proceso, el proceso a aplicar es similar a ISIC; pero, en este caso, en lugar de simplemente convertir a camelcase, debemos de cambiar los nombres por completo para no usar el formato por abreviaturas original, y poder hacer merge de las clases de este dataset con ISIC que sean de la misma enfermedad. Para ello, simplemente se crea un diccionario clave-valor, donde la clave es el nombre que deseamos cambiar, y el valor, el nuevo nombre. Mediante pandas, el proceso de sustitución se puede hacer de forma inmediata mediante la función replace.
+Una vez finalizado el proceso, el proceso a aplicar es similar a ISIC; pero, en este caso, en lugar de simplemente convertir a camelcase, debemos de cambiar los nombres por completo para no usar el formato por abreviaturas original, y poder hacer merge de las clases de este dataset con ISIC que sean de la misma enfermedad. Para ello, simplemente se crea un diccionario clave-valor, donde la clave es el nombre que deseamos cambiar, y el valor, el nuevo nombre. Mediante pandas \cite{reback2020pandas}, el proceso de sustitución se puede hacer de forma inmediata mediante la función replace.
 
 Es importante destacar que el dataset Hallym, también será incluido en el conjunto final, siendo el procedimiento de preprocesado a aplicar exactamente el mismo al descrito en este punto.
 
@@ -300,7 +290,7 @@ Como dificultades a destacar durante el desarrollo de este procedimiento, coment
 Aumentar de forma desmesurada este valor también puede tener consecuencias negativas, ya que el nombre de la etiqueta se encuentra escrita en la parte inferior de estas imágenes y aportan píxeles de color negro que no cumplirían la condición.
 
 
- \begin{algorithm}[!ht]
+ \begin{algorithm}[H]
 	\label{fig:cortarseverance}
 	\caption{Recorte de las imágenes de Severance mediante OpenCV}
 	\begin{algorithmic}
@@ -364,15 +354,102 @@ Aumentar de forma desmesurada este valor también puede tener consecuencias nega
 	\end{algorithmic}
 \end{algorithm}
  
- \section{Etiquetado binario}
+ \subsection{Etiquetado binario}
  
- Tras la homogeneización de los datos de todos los conjuntos, debemos realizar el etiquetado binario de las imágenes. En lugar de realizar este proceso durante la adaptación de los datos, se decidido realizar este procedimiento una vez el fichero csv estuviese completamente convertido, de forma que el recorrido de los datos es mucho más sencillo al ser completamente lineal. Para ello, simplemente se ha creado una nueva columna mediante el uso de pandas que recibe como parámetro una diccionario con las etiquetas totales del dataset, 54.  Este diccionario, realizado manualmente, contiene un 0 en aquellas clases correspondientes a lesiones benignas de la piel, mientras que el 1 quedo reservado para aquellas lesiones malignas que son cancerosas.
- 
- Gracias a la función replace el proceso consiste ;
+Una vez disponemos de todas las imágenes correctamente etiquetadas y redireccionadas desde el fichero preprocessedData.csv, podemos continuar con el etiquetado binario de las enfermedades. Para disponer también de los datos de malignidad de las enfermedades, se ha realizado manualmente una distinción de las distintas enfermedades entre benignas y malignas. Debido a la minoría de imágenes por defecto, para reducir el tamaño del diccionario de enfermedades, por defecto se establecieron todas las etiquetas por defecto a 0, y aquellas pertenecientes al subconjunto de malignas, a 1, siguiendo el siguiente procedimiento:
  
  \begin{enumerate}
- 	\item Clonar la columna target, que contiene las etiquetas multiclase
- 	\item Aplicar la función replace() de pandas, que recibe como argumento el diccionario confeccionado para la sustitución.
+ 	\item Crear una nueva columna, de nombre ``bin'', que contendrá 0 como valor de inicialización.
+ 	\item Construir un diccionario o lista con aquellas enfermedades que son malignas.
+ 	\item Se recorre la columna target para comparar la enfermedad del ejemplar con la lista de enfermedades malignas. En caso de ubicarse en ella, se cambia el valor de ``bin'' por un 1.i
 \end{enumerate}
 
-De esta forma, obtenemos la quinta columna, y podemos dar por finalizado la primera fase del preprocesado de datos.
+De esta forma, obtenemos la quinta columna, expresada con ceros y unos. Dependiendo de la función de pérdida y el framework posteriormente utilizado, estas etiquetas tendrán que ser categóricas, pero dicho paso puede realizarse de forma inmediante con un casting de tipos, o bien, un el uso de la función replace de python ya mostrada en la fase de homogeneización de los datos.
+
+
+
+\begin{figure}[H]
+	\centering
+	\label {tartabinaria}
+	\includegraphics[scale = 0.7]{imagenes/datasetfinal.png}
+	\caption{Distribución de clases}
+\end{figure}
+
+Si agrupamos por lesiones benignas, cancerosas, y potencialmente cancerosas, podemos obtener el siguiente diagrama de sectores de la figura \ref{tartabinaria}, donde se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Las lesiones potenciales, como ya se comentó, pasan a formar parte de las lesiones benignas debido a que en el momento de la captura, continúan siendo benignas.
+
+Con este paso, finalizamos la uniformización de los datos en lo que corresponde al formato del etiquetado y gestión de directorios. A continuación, se realizarán las fases de partición de los datos, y de preprocesado de la imagen en sí, empleando como referencia el estudio realizado en el estado del arte.
+
+
+\section{Particionado de los datos}
+
+En este punto, estudiaremos la importancia de un correcto particionado de los datos para el entrenamiento del modelo y su posterior verificación de rendimiento. Se estudiará la importancia de disponer de un estimador insesgado del modelo entrenado, y las decisiones tomadas para el problema que nos concierne.
+
+\subsection{Importancia de la separación train-test}
+En las tareas de aprendizaje de Machine learning y Deep learning, el objetivo es disponer del mayor número de datos posible, por lo que la opción de privar al proceso de entrenamiento de un subconjunto de ellos, o incluso proceder a su eliminación, puede ser una decisión demasiado drástica que ha de tomarse con fundamento.\\
+
+Sin embargo, cuando realizamos un modelo de aprendizaje, realmente estamos creando una hipótesis, un modelo que construimos y queremos hacer que se acerque lo máximo posible a la expresión que define la población real del problema. Pero, para poder estimar la bondad de nuestro ajuste de forma fiable, necesitamos algún estimador no sesgado que nos indique la calidad del modelo, que nos permita saber el error que comete nuestra hipótesis con respecto a la distribución de la población real, al que denominaremos como error fuera de la muestra, abreviado como $E_{out}$.  Esto se debe a que, para construir este modelo aproximado, estamos empleando una muestra de la población, la cual es continuamente iterada para ir ajustando los filtros aplicados sobre el conjunto y que permite inferior de sus características extraídas las etiqueta de cada una de las imágenes.\\
+
+Podemos conseguir un estimador insesgado separando un conjunto de datos del total, y obteniendo un conjunto de test, el cual no se ha visto involucrado en ninguna fase del proceso de aprendizaje. La hipótesis final, a la que llamaremos $g$, es evaluada en este subdataset, y el resultado será un buen estimador del $E_{out}$. A este error podemos llamarlo $E_{test}$. Al seleccionarlo como estimador de $E_{out}$, estamos afirmando de alguna manera de que éste se tratará de un estimador que generaliza muy bien el error out-of-sample.\\
+
+Este conjunto recibirá un número efectivo de hipótesis $|\mathcal H|= 1$, es decir, únicamente es evaluado con la hipótesis final de nuestro modelo (su ajuste paramétrico final). Esta hipótesis se elige sin conocer el comportamiento de los datos que el conjunto de test contiene, ya que si la estimación de $g$ se ve afectada de alguna forma por los ejemplares ya utilizados en el entrenamiento, no conseguiremos un estimador insesgado, y la ecuación de Hoeffding, no será aplicable. Dicha ecuación enuncia, que para muestras idénticamente distribuidas, e independientes entre sí, se cumple la siguiente desigualdad \cite{Mostafa2012}:
+
+$$P(\mathcal{D}: | E_{out}(h) E_{in}(h) |  > \epsilon \leq 2e^{-2\epsilon^2	N}$$
+
+Donde, para cualquier valor de $\epsilon$:
+\begin{itemize}
+	\item $\mathcal{D}$ es el nombre que recibe el conjunto de entrenamiento.
+	\item $ E_{out}$ es el error out-of-sample, error teórico con respecto a distribución real de los datos.
+	\item  $E_{in}$ es el error in-sample, es decir, el error cometido durante el proceso de entrenamiento entre las etiquetas inferidas, y su valor real, también conocido como y verdadero.
+	\item $N$ es el tamaño de la muestra de datos disponible.
+\end{itemize}
+
+Es decir, se cumple que $E_{out}$ se convierte en un estimador muy cercano al valor real del modelo. Dichas restricciones de independencia y pertenencia a la misma distribución son claves,
+ motivo por el cual la eliminación de imágenes duplicadas fue clave (ya que cualquier contaminación entre el conjunto de entrenamiento y aprendizaje puede crear sesgos al alza en los resultados). \\
+
+El valor del entrenamiento $E_{in}$ sí que sería un estimador sesgado de forma optimista, pues el modelo ha adaptado los filtros para ser capaz de inferior el mayor número posible de etiquetas correctas del conjunto de entrenamiento.. Pero esto no ha ocurrido con test, por lo que podemos dar como resultado un estimador fiable y robusto de cómo se comportará nuestro modelo con otros elementos de la población real.\\
+
+Cuanto mayor es el tamaño del conjunto, más cercano será el valor del error de nuestra partición de test, $E_{test}$, con respecto a $E_{out}$. Pero, cuantos menos datos para entrenar dispongamos, menos se parecerá la estimación al comportamiento real de la población, y a $f$. Tenemos que conseguir un equilibrio entre ambos tamaños para aprovechar la mayor cantidad de datos posibles, pero disponiendo de un $E_{test}$ fiable. Normalmente, los valores recomendados suelen ser entre un 10\%-30\% de porcentaje de los datos dedicados al conjunto de test, quedando entre un 70-90\% de datos de entrenamiento. Para este problema, la separación entrenamiento-test elegida ha sido 60-40, respectivamente, que a priori, puede ser muy elevada y salir de la recomendación empírica, pero debido a la existencia de grandes desiquilibrios y una cantidad de datos más que suficiente, de aproximadamente 110.000 ejemplares, podemos obtener de esta forma un estimador muy fiable.\\
+
+A continuación, se realizará todo el proceso de separación de datos, entre entrenamiento y test en proporción 60-40. Aunque, idealmente, este proceso de hace de forma completamente aleatoria y sin intervención, he optado por realizar la separación de forma estratificada. Esto hace referencia al mecanismo de separación de los datos teniendo en cuenta el conteo de cada una de las clases. Lo que he realizado ha sido, en primer lugar organizar los datos por sus respectivas clases, dentro de cada dataset, de forma que se tienen dos vectores cuyo contenido son las tuplas de cada clase por separado. 
+
+Pero este aspecto no solo se da a nivel de subdataset, sino también a nivel del dataset global; es importante tomar una cantidad proporcional de cada clase para evitar que el algoritmo sesgue sus resultados al encontrar patrones comunes propios de cada subconjunto, y este no sea capaz de aprender la visión general de los elementos que definen a un tipo de lesión concreto. Por tanto, definiré un ``doble nivel de estratificación'', donde:
+
+\begin{enumerate}
+	\item A nivel de cada subdataset, extraer mediante partición estratificada un porcentaje de entrenamiento, y otro de test en proporción 60-40 a la hora entrenar.
+	\item Volver a unir las clases de entrenamiento de cada dataset, y test de cada dataset, en los dos ficheros que comprenderán las imágenes asociadas al conjunto de entrenamiento y al conjunto de test.
+\end {enumerate}
+
+De esta forma, podemos conseguir proporcionalidad entre dataset y entre clases entre train y test, y hacer que la distribución de las imágenes sea prácticamente la misma. Aunque normalmente se suele realizar la separación de forma completamente aleatoria, en clasificación podría darse el caso extremo en el que una clase completa no aparezca en el conjunto de entrenamiento, y nuestro modelo obtenga pésimos resultados de $E_{test}$.  Si bien la probabilidad es muy baja, matemáticamente puede ocurrir, y considero que no afecta negativamente al análisis haber realizado la partición de forma proporcional a cada clase y dataset.
+
+Comentando en detalle la implementación realizada, es de interés destacar el empleo de la función train-test split de SKlearn \cite{scikit-learn}. Se trata de una función que realiza de forma bastante simplificada el proceso de partición estratificada. En este caso, además, se verificará la existencia de clase con menos de 16 ejemplares de imagen presentes para confirmar que no se han filtrado clases minoritarias las cuales son imposibles de clasificar con el modelo actual.
+
+El resultado es el siguiente:
+
+ \begin{algorithm}[H]
+	\label{fig:separar}
+	\caption{ Separación de las filas según el valor de la columna ``column''}
+	\begin{algorithmic}
+		\State MIN\_COUNT = 16
+		\Procedure{separar\_subdata}{dataframe, column}
+		\State var separated $\gets$ dataframe $\matrix{[c_1, c_2, \cdots, c_n]} / c_{i _j}= column$ y $separated[k] \cap separated[l] = {0}$ para $k\neq l$
+		\State var trainData, testData: list of tuples
+		\State lista\_elementos: array of tuples
+		
+		\ForEach{ data\_part, contenido in separated}
+			\State lista\_elementos = lista\_elementos $\cup$ contenido
+			\If { lista\_elementos["class"].map(counts) > MIN\_COUNT}
+				\State var train, test = \Call{train\_test\_split}{subdata, test\_size=0.4,seed=19, shuffle=True, stratify=subdata['class']}
+				\State  trainData = trainData $\cup$ train
+				\State  testData = testData $\cup$ test
+			\EndIf
+		\EndFor \\
+	\Return lista\_elementos
+		
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}
+
+De esta forma, seguimos manteniendo la proporción a nivel de conjunto global, y de subdataset. En caso de necesitar entrenar únicamente con uno de los subconjuntos añadidos, podemos filtrar el cojunto de tuplas por aquellos cuya clase sea igual a la buscada.
+
+\subsection{Particionado de validación}

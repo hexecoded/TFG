@@ -20,6 +20,11 @@ The international skin imaging collaboration.
 \newblock \url{https://www.isic-archive.com}, 2023.
 \newblock [Online; accessed 20-September-2023].
 
+\bibitem{Mostafa2012}
+Yaser~S. Abu-Mostafa, Malik Magdon-Ismail, and Hsuan-Tien Lin.
+\newblock {\em Learning From Data}.
+\newblock AMLBook, 2012.
+
 \bibitem{benvcevic2021training}
 Marin Ben{\v{c}}evi{\'c}, Irena Gali{\'c}, Marija Habijan, and Danilo Babin.
 \newblock Training on polar image transformations improves biomedical image
@@ -198,6 +203,17 @@ Ian Pan.
   \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175324},
   2020.
 \newblock [Online; accessed 8-June-2024].
+
+\bibitem{reback2020pandas}
+The pandas~development team.
+\newblock pandas-dev/pandas: Pandas, February 2020.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
 
 \bibitem{invertedresidualsv2}
 Paul-Louis Pröve.
