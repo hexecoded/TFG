@@ -177,6 +177,11 @@ Andrey Kuzmin, Mart~Van Baalen, Yuwei Ren, Markus Nagel, Jorn Peters, and
   Tijmen Blankevoort.
 \newblock Fp8 quantization: The power of the exponent, 2024.
 
+\bibitem{LLAMASVELASCO201212}
+M.~Llamas-Velasco and B.E. Paredes.
+\newblock La biopsia cutánea: bases fundamentales. parte i.
+\newblock {\em Actas Dermo-Sifiliográficas}, 103(1):12--20, 2012.
+
 \bibitem{fpga}
 Samyukta~Lanka. Megha~Arora.
 \newblock Accelerating squeezenet on fpga.
