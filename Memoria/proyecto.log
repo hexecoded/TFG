@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  12 JUN 2024 19:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  12 JUN 2024 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -971,6 +971,10 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 53.
 Package tocbasic Info: Using my definition of `\numberline' on input line 54.
 Package tocbasic Info: Using my definition of `\numberline' on input line 55.
 Package tocbasic Info: Using my definition of `\numberline' on input line 56.
+Package tocbasic Info: Using my definition of `\numberline' on input line 57.
+Package tocbasic Info: Using my definition of `\numberline' on input line 58.
+Package tocbasic Info: Using my definition of `\numberline' on input line 59.
+Package tocbasic Info: Using my definition of `\numberline' on input line 62.
 )
 \tf@toc=\write4
 \openout4 = `proyecto.toc'.
@@ -998,6 +1002,7 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 21.
 Package tocbasic Info: Using my definition of `\numberline' on input line 22.
 Package tocbasic Info: Using my definition of `\numberline' on input line 23.
 Package tocbasic Info: Using my definition of `\numberline' on input line 24.
+Package tocbasic Info: Using my definition of `\numberline' on input line 27.
 )
 \tf@lof=\write5
 \openout5 = `proyecto.lof'.
@@ -1018,6 +1023,7 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 7.
 Package tocbasic Info: Using my definition of `\numberline' on input line 10.
 Package tocbasic Info: Using my definition of `\numberline' on input line 11.
 Package tocbasic Info: Using my definition of `\numberline' on input line 14.
+Package tocbasic Info: Using my definition of `\numberline' on input line 16.
 )
 \tf@lot=\write6
 \openout6 = `proyecto.lot'.
@@ -1158,7 +1164,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
  []
 
 [30]
-<imagenes/squeezenet.png, id=339, 1544.77126pt x 1117.17375pt>
+<imagenes/squeezenet.png, id=351, 1544.77126pt x 1117.17375pt>
 File: imagenes/squeezenet.png Graphic file (type png)
 <use imagenes/squeezenet.png>
 Package pdftex.def Info: imagenes/squeezenet.png  used on input line 37.
@@ -1178,7 +1184,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
-<imagenes/depthwise.png, id=354, 913.4125pt x 1149.29375pt>
+<imagenes/depthwise.png, id=366, 913.4125pt x 1149.29375pt>
 File: imagenes/depthwise.png Graphic file (type png)
 <use imagenes/depthwise.png>
 Package pdftex.def Info: imagenes/depthwise.png  used on input line 82.
@@ -1193,25 +1199,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
-<imagenes/invertedres.png, id=367, 978.65625pt x 333.245pt>
+<imagenes/invertedres.png, id=379, 978.65625pt x 333.245pt>
 File: imagenes/invertedres.png Graphic file (type png)
 <use imagenes/invertedres.png>
 Package pdftex.def Info: imagenes/invertedres.png  used on input line 101.
 (pdftex.def)             Requested size: 293.59914pt x 99.97426pt.
 [34 <./imagenes/invertedres.png>]
-<imagenes/mobilenetv2.png, id=376, 777.90625pt x 587.19376pt>
+<imagenes/mobilenetv2.png, id=388, 777.90625pt x 587.19376pt>
 File: imagenes/mobilenetv2.png Graphic file (type png)
 <use imagenes/mobilenetv2.png>
 Package pdftex.def Info: imagenes/mobilenetv2.png  used on input line 112.
 (pdftex.def)             Requested size: 194.47607pt x 146.79808pt.
  [35 <./imagenes/mobilenetv2.png>]
-<imagenes/mobilev3.png, id=387, 443.256pt x 236.8047pt>
+<imagenes/mobilev3.png, id=399, 443.256pt x 236.8047pt>
 File: imagenes/mobilev3.png Graphic file (type png)
 <use imagenes/mobilev3.png>
 Package pdftex.def Info: imagenes/mobilev3.png  used on input line 129.
 (pdftex.def)             Requested size: 376.76938pt x 201.28493pt.
  [36 <./imagenes/mobilev3.png>]
-<imagenes/shufflechannels.png, id=407, 2066.72125pt x 789.95125pt>
+<imagenes/shufflechannels.png, id=419, 2066.72125pt x 789.95125pt>
 File: imagenes/shufflechannels.png Graphic file (type png)
 <use imagenes/shufflechannels.png>
 Package pdftex.def Info: imagenes/shufflechannels.png  used on input line 155.
@@ -1228,14 +1234,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Warning: Reference `label' on page 38 undefined on input line 159.
 
-<imagenes/arquitecturashuffle.png, id=414, 1939.245pt x 844.15375pt>
+<imagenes/arquitecturashuffle.png, id=426, 1939.245pt x 844.15375pt>
 File: imagenes/arquitecturashuffle.png Graphic file (type png)
 <use imagenes/arquitecturashuffle.png>
 Package pdftex.def Info: imagenes/arquitecturashuffle.png  used on input line 1
 64.
 (pdftex.def)             Requested size: 387.84213pt x 168.82776pt.
 [38 <./imagenes/shufflechannels.png> <./imagenes/arquitecturashuffle.png>]
-<imagenes/efnet_scale.png, id=423, 1982.40625pt x 839.135pt>
+<imagenes/efnet_scale.png, id=435, 1982.40625pt x 839.135pt>
 File: imagenes/efnet_scale.png Graphic file (type png)
 <use imagenes/efnet_scale.png>
 Package pdftex.def Info: imagenes/efnet_scale.png  used on input line 190.
@@ -1248,7 +1254,7 @@ LaTeX Font Info:    Trying to load font information for U+fplmbb on input line
 (/usr/share/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 ) [42]
-<imagenes/eflite.png, id=455, 780.9175pt x 837.1275pt>
+<imagenes/eflite.png, id=467, 780.9175pt x 837.1275pt>
 File: imagenes/eflite.png Graphic file (type png)
 <use imagenes/eflite.png>
 Package pdftex.def Info: imagenes/eflite.png  used on input line 246.
@@ -1258,7 +1264,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [43]
 [44 <./imagenes/eflite.png>]
-<imagenes/gananciacuant.png, id=469, 714.67pt x 205.76875pt>
+<imagenes/gananciacuant.png, id=482, 714.67pt x 205.76875pt>
 File: imagenes/gananciacuant.png Graphic file (type png)
 <use imagenes/gananciacuant.png>
 Package pdftex.def Info: imagenes/gananciacuant.png  used on input line 261.
@@ -1268,7 +1274,7 @@ Package pdftex.def Info: imagenes/gananciacuant.png  used on input line 261.
 LaTeX Warning: Citation `' on page 45 undefined on input line 265.
 
 [45 <./imagenes/gananciacuant.png>]
-<imagenes/DiagramaBusqueda.png, id=478, 274.626pt x 456.0237pt>
+<imagenes/DiagramaBusqueda.png, id=490, 274.626pt x 456.0237pt>
 File: imagenes/DiagramaBusqueda.png Graphic file (type png)
 <use imagenes/DiagramaBusqueda.png>
 Package pdftex.def Info: imagenes/DiagramaBusqueda.png  used on input line 285.
@@ -1287,7 +1293,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [48]
 [49] [50]
-<imagenes/Ejemplo2020.png, id=538, 575.90157pt x 207.02344pt>
+<imagenes/Ejemplo2020.png, id=550, 575.90157pt x 207.02344pt>
 File: imagenes/Ejemplo2020.png Graphic file (type png)
 <use imagenes/Ejemplo2020.png>
 Package pdftex.def Info: imagenes/Ejemplo2020.png  used on input line 404.
@@ -1298,7 +1304,7 @@ Overfull \hbox (5.95581pt too wide) in paragraph at lines 423--440
  []
 
 [52]
-<imagenes/results_asan.png, id=562, 736.7525pt x 614.295pt>
+<imagenes/results_asan.png, id=574, 736.7525pt x 614.295pt>
 File: imagenes/results_asan.png Graphic file (type png)
 <use imagenes/results_asan.png>
 Package pdftex.def Info: imagenes/results_asan.png  used on input line 463.
@@ -1308,7 +1314,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [53]
 [54 <./imagenes/results_asan.png>]
-<imagenes/PH2.png, id=577, 438.8897pt x 155.07938pt>
+<imagenes/PH2.png, id=589, 438.8897pt x 155.07938pt>
 File: imagenes/PH2.png Graphic file (type png)
 <use imagenes/PH2.png>
 Package pdftex.def Info: imagenes/PH2.png  used on input line 494.
@@ -1318,7 +1324,7 @@ Underfull \vbox (badness 2680) has occurred while \output is active []
 
  [55]
 [56 <./imagenes/PH2.png>]
-<imagenes/PAD-UFES.png, id=595, 444.91219pt x 356.0803pt>
+<imagenes/PAD-UFES.png, id=608, 444.91219pt x 356.0803pt>
 File: imagenes/PAD-UFES.png Graphic file (type png)
 <use imagenes/PAD-UFES.png>
 Package pdftex.def Info: imagenes/PAD-UFES.png  used on input line 549.
@@ -1329,7 +1335,7 @@ Overfull \hbox (12.88289pt too wide) in paragraph at lines 563--564
 bro-mas (14.4$ $%), angiokeratomas(13.8$ $%),
  []
 
-<imagenes/Severance.png, id=610, 508.14844pt x 254.45062pt>
+<imagenes/Severance.png, id=622, 508.14844pt x 254.45062pt>
 File: imagenes/Severance.png Graphic file (type png)
 <use imagenes/Severance.png>
 Package pdftex.def Info: imagenes/Severance.png  used on input line 571.
@@ -1349,7 +1355,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
  []
 
 [64]
-<imagenes/formatocsv.png, id=644, 757.83125pt x 259.97125pt>
+<imagenes/formatocsv.png, id=656, 757.83125pt x 259.97125pt>
 File: imagenes/formatocsv.png Graphic file (type png)
 <use imagenes/formatocsv.png>
 Package pdftex.def Info: imagenes/formatocsv.png  used on input line 43.
@@ -1402,7 +1408,7 @@ Overfull \vbox (94.68408pt too high) has occurred while \output is active []
 
 
 [74]
-<imagenes/datasetfinal.png, id=712, 427.269pt x 249.441pt>
+<imagenes/datasetfinal.png, id=724, 427.269pt x 249.441pt>
 File: imagenes/datasetfinal.png Graphic file (type png)
 <use imagenes/datasetfinal.png>
 Package pdftex.def Info: imagenes/datasetfinal.png  used on input line 374.
@@ -1475,7 +1481,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 501--502
 
  []
 
-<imagenes/esrgan.png, id=759, 1957.3125pt x 386.44376pt>
+<imagenes/esrgan.png, id=771, 1957.3125pt x 386.44376pt>
 File: imagenes/esrgan.png Graphic file (type png)
 <use imagenes/esrgan.png>
 Package pdftex.def Info: imagenes/esrgan.png  used on input line 506.
@@ -1487,12 +1493,12 @@ Underfull \vbox (badness 2285) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [83]
-<imagenes/194_13_orig.jpg, id=780, 73.77562pt x 73.77562pt>
+<imagenes/194_13_orig.jpg, id=792, 73.77562pt x 73.77562pt>
 File: imagenes/194_13_orig.jpg Graphic file (type jpg)
 <use imagenes/194_13_orig.jpg>
 Package pdftex.def Info: imagenes/194_13_orig.jpg  used on input line 587.
 (pdftex.def)             Requested size: 122.49037pt x 122.49335pt.
-<imagenes/SEV_194_13.png, id=781, 357.335pt x 357.335pt>
+<imagenes/SEV_194_13.png, id=793, 357.335pt x 357.335pt>
 File: imagenes/SEV_194_13.png Graphic file (type png)
 <use imagenes/SEV_194_13.png>
 Package pdftex.def Info: imagenes/SEV_194_13.png  used on input line 588.
@@ -1544,9 +1550,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
-[93]) (./capitulos/05_Diseno.tex) (./capitulos/06_Implementación.tex)
-(./capitulos/07_Pruebas.tex) (./capitulos/08_Conclusiones.tex) (./proyecto.bbl
-[94]
+[93]) (./capitulos/05_Aprendizaje.tex [94]
+chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Overfull \hbox (30.19438pt too wide) in paragraph at lines 12--13
+[]\T1/pplj/m/n/10.95 Accuracy ba-lan-cea-do: com-bi-na sen-si-ti-vity (TP/(TP+F
+N)) y spe-ci-fi-city (TN/(TN+FP)).
+ []
+
+[95
+
+
+]
+<imagenes/desequilibriototal.png, id=868, 703.62875pt x 511.9125pt>
+File: imagenes/desequilibriototal.png Graphic file (type png)
+<use imagenes/desequilibriototal.png>
+Package pdftex.def Info: imagenes/desequilibriototal.png  used on input line 30
+.
+(pdftex.def)             Requested size: 281.4465pt x 204.76137pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+[96 <./imagenes/desequilibriototal.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+[97] [98]
+
+LaTeX Warning: Reference `particiones' on page 99 undefined on input line 92.
+
+
+LaTeX Warning: Reference `etiquetadobinario' on page 99 undefined on input line
+ 93.
+
+[99]) (./capitulos/06_Diseno.tex) (./capitulos/07_Implementación.tex)
+(./capitulos/08_Pruebas.tex) (./capitulos/09_Conclusiones.tex) (./proyecto.bbl
+[100]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
 .
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -1569,7 +1621,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--74
 ma-[]classification /
  []
 
-[95
+[101
 
 
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
@@ -1584,7 +1636,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--100
 fficientnetlite ? hl =
  []
 
-[96] [97]
+[102] [103]
 Underfull \hbox (badness 4096) in paragraph at lines 243--249
 []\T1/pplj/m/n/10.95 Ian Pan.  Siim-isic me-la-no-ma clas-si-fi-ca-tion, 2nd so
 -lu-tion.  [][]$\T1/cmtt/m/n/10.95 https :
@@ -1631,7 +1683,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 279--285
 et-[]lite . html$[][]\T1/pplj/m/n/10.95 , 2020.
  []
 
-[98]
+[104]
 Underfull \hbox (badness 10000) in paragraph at lines 332--338
 []\T1/pplj/m/n/10.95 Sik-Ho Tsang.  Re-view: Shuf-fle-net v1 ^^V light
  []
@@ -1660,7 +1712,7 @@ Underfull \hbox (badness 1424) in paragraph at lines 352--356
 hao Dong,
  []
 
-[99]) [100] (./proyecto.aux
+[105]) [106] (./proyecto.aux
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 )
@@ -1679,10 +1731,10 @@ Package rerunfilecheck Info: File `proyecto.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 19686 strings out of 476014
- 340222 string characters out of 5792005
+ 19729 strings out of 476014
+ 341069 string characters out of 5792005
  1946187 words of memory out of 5000000
- 41126 multiletter control sequences out of 15000+600000
+ 41148 multiletter control sequences out of 15000+600000
  665118 words of font info for 122 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  108i,12n,107p,10903b,844s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1699,10 +1751,10 @@ onts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/urw/
 palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb
 ></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-d
 ist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on proyecto.pdf (100 pages, 3764431 bytes).
+Output written on proyecto.pdf (106 pages, 3800664 bytes).
 PDF statistics:
- 1193 PDF objects out of 1200 (max. 8388607)
- 998 compressed objects within 10 object streams
- 286 named destinations out of 1000 (max. 500000)
- 505 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1256 PDF objects out of 1440 (max. 8388607)
+ 1052 compressed objects within 11 object streams
+ 304 named destinations out of 1000 (max. 500000)
+ 542 words of extra memory for PDF output out of 10000 (max. 10000000)
 
