@@ -1,1 +1,146 @@
 \chapter{Deep learning: modelos de aprendizaje}
+
+Una vez disponemos de los datos correctamente preprocesados, podemos pasar a la fase de construcción del modelo. En este proyecto, se usará la cuantización de modelos tras el entrenamiento (Post Training Quantization), por lo que el diseño del modelo , su arquitectura y su forma de entrenamiento se realizan de la forma habitual, con la particularidad del proceso posterior. Sin embargo, existe una serie de factores a tener en cuenta durante la creación del modelo:
+
+\begin{itemize}
+	\item La memoria y potencia del dispositivo móvil son limitadas. Aunque la cuantización consigue reducir el tiempo de inferencia y el espacio ocupado por el modelo, la complejidad del mismo sigue siendo proporcional, por lo que un modelo excesivamente profundo o pesado a nivel espacial puede suponer un problema.
+	\item La resolución de las imágenes de entrada es variable, ya que depende del terminal en el que se ejecute y su cámara. Es posible que se requiera un reescalado de la entrada (resize) o la posibilidad de disponer de un tamaño de entrada sin fijar. Esto es posible mediante la no utilización de capas totalmente conectadas, o de pooling.
+\end{itemize}
+
+En los siguientes apartados, entraremos en detalle en cada uno de estos aspectos, y describiremos los modelos a probar: MobileNet, y las familias de redes EfficientNet y ResNet.
+
+\section{Conceptos previos}
+
+Habitualmente, para el estudio y creación de modelos cuya información de entrada son imágenes, se hace uso de redes convolucionales. Estas redes, a diferencia de las redes neuronales habituales, donde tenemos una serie de neuronas conectadas entre sí formando distintas capas,  tenemos un conjunto de capas de procesado local, que permiten aplicar transformaciones sobre las imágenes para simplificar su estructura y destacar elementos característicos que permitan obtener características útiles y distintivas para realizar clasificación de la información que muestran.
+
+Los pesos que se aprenden son, precisamente, los coeficientes y parámetros de transformaciones (convoluciones) a realizar sobre la imagen , con la peculiaridad de que estos se aprenden automáticamente dentro de la red, y no es necesario de especificarlos manualmente. La propia red, en base a su función de pérdida, intentará maximizar los resultados entre el valor predicho y real, y encontrará los parámetros más adecuados. Únicamente, debemos indificar las capas que compondrán la red, y la dimensionalidad de entrada y salida para que sean correctamente interconectables.
+
+Por tanto, el nombre convolucional proviene de la capacidad de aprender los valores para los filtros que queremos aplicar para destacar propiedades. Para una convolución, exiten las siguientes modificaciones y variantes:
+
+\begin{itemize}
+
+	\item  Padding. Consiste en el relleno de bordes auxiliares en la imagen para obtener una imagen resultante con la misma dimensionalidad que la entrada de una capa. Habitualmente, dicho relleno se realiza con ceros (zero-padding).
+	\item  Stride. Indica el desplazamiento que realiza el filtro sobre la imagen. por defecto, dicho valor es 1, por lo que la imagen se recorre píxel a píxel. Pero puede ser aumentado para reducir la dimensionalidad del problema.
+	\item Dilation: espacio entre los valores con los que opera el kernel. Por defecto, su valor es 1, es decir, los kernels operan con los valores adyacentes al píxel sobre el que se trabaja, pero puede ser una distancia mayor. Por ejemplo, con padding de 2, el área de influencia de los píxeles del entorno alejados dos píxeles de su centro adquieren mayor presencia en el resultado de la convolución.
+
+\end{itemize}
+
+
+
+Habitualmente, encontramos en ellas dos tipos de capas para el aprendizaje de pesos. Se encuentran en la mayoría de modelos del estado del arte:
+
+\begin{itemize}
+	\item Capa totalmente conectada. Son las capas hasta ahora vistas en Aprendizaje automático, donde cada neurona de un nivel está conectada a todas las del siguiente. Son costosas computacionalmente, y requieren un formato de entrada concreto, especificando de antemano su tamaño de entrada. En este problema, las imágenes tomadas con el teléfono movil pueden variar en tamaño, debido al recorte de las imágenes o a la calidad variable de la cámara que la capta. Supone un problema, el cual que podemos solucionar mediante una capa previa de Average Pooling: es una operación convolucional capaz de reducir la dimensionalidad de la imagen de entrada, aprendiendo de la información resumida para extrear de características. Es una de las capas que habitualmente se usa cuando tomamos modelos ya entrenados sobre un tamaño de entrada distinto al que requerimos usar.
+	\item Capa convolucional. Son el resultado de un dot-product sobre una región concreta del volumen de entrada, operando a nivel local. Gracias a la localidad, no es necesario que cada neurona está conectada a todas del siguiente nivel, por lo que se produce un ahorro computacional considerable. En resumen: se trata de una matriz filtro que se desplaza a lo largo y alto de la imagen, realizando una operación de producto.
+\end{itemize}
+
+En las redes neuronales, nos interesa procesar los datos con capas convolucionales que estimen los parámetros para las traformaciones adecuadas de la imagen, mientras que las capas fully-connected serán más útiles en capas finales, ya que al estar conectadas totalmente, tienen acceso a todos los valores de entrada, y permitirán obtener de forma condensada los resultados para la clasificación de las imágenes. Es recomendable el uso esta capa cuando la imagen es suficientemente reducida por las convoluciones.\\
+
+El proceso de entrenamiento de estas redes es generalmente costoso, debido al entrenamiento de una gran cantidad de parámetros, que habitualmente superan los varios millones. Normalmente, los modelos convolucionales empleados para la resolución de problemas suelen ser preentrenados, modelos ya configurados entrenados con millones de datos durante períodos de tiempo prolongados, de forma que adquieren capacidades generales de filtro para un espectro muy amplio de imágenes.\\
+
+Cuando se requiere su aplicación para una tarea específica, que en este caso se trata de la piel, basta con realizar un ajuste de los parámetros mediante el entrenamiento del modelo durante una serie de epocas reducidas: a esto se le conoce como transfer learning, y será la técnica que aplicaremos para la creación de los modelos mediante MobileNet, EfficientNet y Resnet.
+
+\section{Modelos preentrenados escogidos}
+
+A cotinuación, se detallan lar arquitecturas seleccionadas para el entrenamiento del modelo, teniendo en cuenta aquellos modelos del estado del arte que no fueron existosos. Los 3 modelos serán sometidos a procesos de entrenamiento similares, de forma que el de mejor desempeño de los 3 muestre será el elegido para ser parte de la aplicación móvil.\\
+
+Al tratarse de modelos ya entrenados con un dataset de gran tamaño, es necesario adaptar su salida para que ésta se adecúe a nuestras necesidades; dicha información la veremos posteriormente, ya que la capa de adaptación será muy similar para los 3 modelos seleccionados.
+
+\subsection{ResNet 50}
+
+La familia de redes preentrenadas Resnet \cite{he2015deep} es bastante amplia. Dispone de sus versiones 18, 34, 50, 101 y 153. Cada una de estas redes hace uso de la misma configuración de capas, pero replicando esta con mayor o menor profundidad. Para nuestro problema, las versiones de 18 y 153 quedan descartadas, ya que 18 unidades de profundidad son insuficientes para la complejidad y variedad de nuestro problema. No serían capas suficientes para extraer todas las características necesarias del entrenamiento.
+
+En cuanto a Resnet153, su excesiva profunidad requiere grandes cantidades de datos para ajustar las capas más profunda de la red, ya que tras cada capa supera, el gradiente que regula la optimización del modelo hacia el óptimo decae, y provoca que los ajuste de las últimas capas sean mínimos. A este fenómemo se le llama desfallecimiento de gradientes, y es un suceso bastante común en redes profundas como esta.
+
+A pesar de que Resnet se caracteriza por la aplicación de conexiones residuales, que permiten interconectar distintas capas distanciadas entre sí sin necesidad de transcurrir sobre las unidades intermedias, la cantidad de datos requerida, y el tiempo de inferencia necesario para el modelo en un dispositivo móvil son excesivos.\\
+
+En la literatura, se encuentran algunos casos de utilización de esta arquitectura, pero no se tienen datos de la aplicación de este modelo sobre teléfonos móviles mediante cuantización. Teniendo en cuenta este factor, considero este modelo como parte de los candidatos.
+
+
+\begin{table}[H]
+	\centering
+	\label{fig:tablaresnet}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Model} & \textbf{ Input} & \textbf {Size (model)} & \textbf{Size (feat.)} & \textbf{Est. FLOPS} \\ \hline
+		resnet18 & 224 x 224 & 45 MB & 23 MB & 2 GFLOPs  \\ \hline
+		resnet34 & 224 x 224 & 83 MB & 35 MB & 4 GFLOPs   \\ \hline
+		resnet-50 & 224 x 224 & 98 MB & 103 MB & 4 GFLOPs   \\ \hline
+		resnet-101 & 224 x 224 & 170 MB & 155 MB & 8 GFLOPs  \\ \hline
+		resnet-152 & 224 x 224 & 230 MB & 219 MB & 11 GFLOPs   \\ \hline
+	\end{tabular}
+	\caption{Rendimiento de ResNet en \textbf{Imagenet} \cite{resnetspecs}}
+\end{table}
+
+Concretamente, se procede a escoger la versión ResNet50 del modelo, cuya característica clave es ser el punto de equilibrio entre modelos de pequeño y gran tamaño por sus requisitos de memoria y tiempo de inferencia. Podemos apreciar estos valores en la tabla \ref{fig:tablaresnet}
+
+
+
+\subsection{MobileNet V2}
+
+Mobile Net es una red convolucional especializada en su uso directo en dispositivos móviles. Este modelo ya fue descrito en su totalidad en el capítulo \ref{cap:mobile}. Entre sus modelos preentrenados que podemos encontrar, debemos destacar la existencia de los modelos V1 y V2:
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\textbf{Model} & \textbf{Input} & \textbf{Size (model)} & \textbf{Est. FLOPS}  \\ \hline
+		MobileNet-V1 & 224 x 224 & 16.9 MB & 0.569 GFLOPs \\ \hline
+		MobileNet-V2 & 224 x 224 & 14.0 MB & 0.3 GFLOPs	  \\ \hline
+	\end{tabular}
+		\caption{Rendimiento de MobileNet en \textbf{Imagenet} \cite{mobilespecs}}
+\end{table}
+
+Ambos modelos son bastante ligeros, por lo que no requieren cuantización para obtener buen rendimiento. En este caso, se elige la versión V2, debido a su mejor eficiencia computacional sin pérdida de resultados. En cuanto ala profundidad y ancho de la red, parámetros clave, se utilizan profunidad = 1 y anchura = 1, es decir, no se realizará ninguna reducción sobre el modelo, de forma que pueda tener profundidad suficiente para aprender todas las clases del conjunto de entrenamiento. Se descarta el uso del modelo V3 por su especialización en segmentación, ya que el problema que estamos tratando es clasificación.\\
+
+Sin embargo, tal y como veremos en el estudio de resultados posteriomente, los resultados ofrecidos no estarán finalmente a la altura de la aplicación.
+
+
+\subsection{EfficientNet B5}
+
+EfficientNet, modelo descrito en el capítulo ref{efnetcap},  se trata de otro conjunto de arquitectura de red cuyo funcionamiento en problemas de clasificación de enfermedades cutáneas es positivo, tal y como demuestran los resultados ganadores de la competición de ISIC Challenge \cite{1stISIC, 2ndISIC}.
+
+Como ya detallamos anteriormente, estos modelos son demasiado costosos para entrenar y ejecutar en sus versiones de gran tamaño, como las utilizadas en dichas soluciones. En este caso, emplearé de nuevo el modelo intermedio, EfficientNet B5, el cual logra un equilibrio suficiente entre tamaño y calidad del resultado. Además, por limitación del hardware disponible, no es posible utilizar sus variantes superiores, ya que ni el entrenamiento e inferencia de los mismos es posible.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Model} & \textbf{\# of Parameters} & \textbf{Est. FLOPs} \\ \hline
+		EfficientNet-B0 & 5.3M & 0.39B \\ \hline
+		EfficientNet-B1 & 7.8M & 0.70B \\ \hline
+		EfficientNet-B2 & 9.2M & 1.0B \\ \hline
+		EfficientNet-B3 & 12M & 1.8B \\ \hline
+		EfficientNet-B4 & 19M & 4.2B \\ \hline
+		EfficientNet-B5 & 30M & 9.9B \\ \hline
+		EfficientNet-B6 & 43M & 19B \\ \hline
+		EfficientNet-B7 & 66M & 37B \\ \hline
+	\end{tabular}
+	\caption{Tamaño de las versiones de Efficient Net \cite{tan2020efficientnet}}
+\end{table}
+
+El tamaño del model final no es calculable debido a la amplia variedad de parámetros a configurar en cuanto a su arquitectura. En el caso de la competición antes mencionada, este rondaba entre 300 y 400MB para la versión B7, motivo por el cual se ha decidido seleccionar la versión B5, y obtener un tamaño estimado de 150-200MB.
+
+\section{Función de pérdida}
+
+El modelo a entrenar requiere el uso de una función que nos permita transformar la salida paramétrica del modelo, en un valor numérico legible, que nos permita conocer su progreso en el entrenamiento.  Es decir, nos interesaría saber tanto el error $E_{in}$ como $E_{val}$, como un valor de pérdida, que queremos minimizar para ajustarnos lo máximo posible a la distribución real. Mientras que la probabilidad de pertenencia a cada clase nos la ofrece la función Softamax, la función de pérdida puede ser elegida entre varias alternativas. Comúnmente se utiliza CrossEntropy loss, pero para este problema, utilizaré también FocalLoss, especializada en el ajuste de modelos con clases desbalanceadas, como es nuestro caso.
+
+\subsection{Cross entropy}
+
+La entropía cruzada es una función de pérdida utilizada comúnmente en problemas de clasificación. Su imagen se utiliza como valor a minimizar, y representa la calidad de ajuste del modelo.
+
+Se apoya en las salidas de la función softmax. Conocemos que Softmax proporciona como salida, en un problema de clasificación, la probabilidad de que el ejemplar que estamos clasificando pertenezca a una clase concreta. La entropía cruzada se basa en calcular la distancia existente entre las salidas probabilísticas de la función softmax, y el valor real de su etiqueta. Se calcula cuánto divergen los valores entre sí de los valores predichos contra los valores reales.
+
+Como su resultado es nuestra representación del error, queremos que sea lo más pequeño posible. Por eso, se intenta minimizar esta función para obtener mejores resultados.
+
+Su expresión analítica es la siguiente:
+
+$$H(P,Q)= -\sum_{x \in X}p(x)log(q(x))$$
+
+Donde p es el valor real, y q es el valor estimado por nuestro modelo para cada ejemplo del conjunto X de entrenamiento.
+
+Esta función es adecuada para la mayoría de casos, aunque funciona con mejor resultado en clases con paridad numérica de ejemplares. Para paliar esto, emplearemos oversampling (generación de ejemplares sintéticos)
+
+\subsection{Focal Loss}
+
+\section{Framework de trabajo: Pytorch y Fastai}

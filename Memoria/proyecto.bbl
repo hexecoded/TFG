@@ -25,6 +25,12 @@ Yaser~S. Abu-Mostafa, Malik Magdon-Ismail, and Hsuan-Tien Lin.
 \newblock {\em Learning From Data}.
 \newblock AMLBook, 2012.
 
+\bibitem{resnetspecs}
+Samuel Albanie.
+\newblock Image classification architectures.
+\newblock \url{https://github.com/albanie/convnet-burden}, 2019.
+\newblock [Online; accessed 8-June-2024].
+
 \bibitem{benvcevic2021training}
 Marin Ben{\v{c}}evi{\'c}, Irena Gali{\'c}, Marija Habijan, and Danilo Babin.
 \newblock Training on polar image transformations improves biomedical image
@@ -139,6 +145,10 @@ Seung~Seog Han, Myoung~Shin Kim, Woohyung Lim, Gyeong~Hun Park, Ilwoo Park, and
   cutaneous tumors using a deep learning algorithm.
 \newblock {\em Journal of Investigative Dermatology}, 138(7):1529--1538, 2018.
 
+\bibitem{he2015deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition, 2015.
+
 \bibitem{pytesseract}
 Samuel Hoffstaetter.
 \newblock Python tesseract.
@@ -201,6 +211,13 @@ Sana Nazari and Rafael Garcia.
 \newblock Automatic skin cancer detection using clinical images: A
   comprehensive review.
 \newblock {\em Life}, 13(11), 2023.
+
+\bibitem{mobilespecs}
+Neuralscope.
+\newblock Mobilenets architectures benchmark.
+\newblock
+  \url{https://neuralscope.org/mobile/index.php?route=product/benchmark}, 2019.
+\newblock [Online; accessed 8-June-2024].
 
 \bibitem{PACHECO2020106221}
 Andre~G.C. Pacheco, Gustavo~R. Lima, Amanda~S. Salomão, Breno Krohling,

@@ -45,4 +45,13 @@
 \contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{81}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{83}{subsection.3.3.2}%
 \contentsline {chapter}{\numberline {4}Deep learning: modelos de aprendizaje}{87}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conceptos previos}{87}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{89}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}ResNet 50}{89}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{90}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{91}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Función de pérdida}{92}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cross entropy}{92}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Focal Loss}{93}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Framework de trabajo: Pytorch y Fastai}{93}{section.4.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

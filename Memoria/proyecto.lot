@@ -7,4 +7,9 @@
 \contentsline {table}{\numberline {2.4}{\ignorespaces Tabla de casos diagnosticados en PAD-UFES20}}{57}{table.2.4}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Rendimiento de ResNet en \textbf {Imagenet} \cite {resnetspecs}}}{90}{table.4.1}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Rendimiento de MobileNet en \textbf {Imagenet} \cite {mobilespecs}}}{91}{table.4.2}%
+\contentsline {subtable}{\numberline {(a)}{\ignorespaces {Original}}}{91}{table.4.2}%
+\contentsline {subtable}{\numberline {(b)}{\ignorespaces {Reescalada}}}{91}{table.4.2}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Tamaño de las versiones de Efficient Net \cite {tan2020efficientnet}}}{91}{table.4.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
