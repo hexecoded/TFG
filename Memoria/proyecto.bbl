@@ -165,6 +165,11 @@ Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
 \newblock Mobilenets: Efficient convolutional neural networks for mobile vision
   applications, 2017.
 
+\bibitem{howard2018fastai}
+Jeremy Howard et~al.
+\newblock fastai.
+\newblock \url{https://github.com/fastai/fastai}, 2018.
+
 \bibitem{hu2019squeezeandexcitation}
 Jie Hu, Li~Shen, Samuel Albanie, Gang Sun, and Enhua Wu.
 \newblock Squeeze-and-excitation networks, 2019.
@@ -186,6 +191,10 @@ Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
 Andrey Kuzmin, Mart~Van Baalen, Yuwei Ren, Markus Nagel, Jorn Peters, and
   Tijmen Blankevoort.
 \newblock Fp8 quantization: The power of the exponent, 2024.
+
+\bibitem{lin2018focal}
+Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár.
+\newblock Focal loss for dense object detection, 2018.
 
 \bibitem{LLAMASVELASCO201212}
 M.~Llamas-Velasco and B.E. Paredes.
@@ -241,6 +250,15 @@ Ian Pan.
 \bibitem{reback2020pandas}
 The pandas~development team.
 \newblock pandas-dev/pandas: Pandas, February 2020.
+
+\bibitem{paszke2019pytorch}
+Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+  Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban
+  Desmaison, Andreas Köpf, Edward Yang, Zach DeVito, Martin Raison, Alykhan
+  Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu~Fang, Junjie Bai, and Soumith
+  Chintala.
+\newblock Pytorch: An imperative style, high-performance deep learning library,
+  2019.
 
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
