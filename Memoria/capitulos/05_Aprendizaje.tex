@@ -37,10 +37,10 @@ Se puede observar la alta disparidad existente entre ambas, siendo 35664 casos b
 
 La ténica de downsampling de la clase mayoritaria queda descartada, debido a que dentro de esa clase, podemos encontrar etiquetas de segundo nivel asociadas a las enfermedades que se pueden diagnosticar. Como algunas de estas clases son muy escasas en número, si realizamos downsampling de forma aleatoria sin ningún tipo de restriccióin, podría darse el caso límite en la que una clase completa desapareciese del cojunto. Y esto conllevaría a la obtención de errores al evaluación de test, pues tendríamos una clase presente en test no estudiada en entrenamiento, que sólo provocaría un aumento de las métricas de error. \\
 
-El uso de la función de pérdida FocalLoss podría ayudar a paliar este efecto. Sin embargo, debido al desajuste 79-21 del que disponemos, y la gran variedad de imágenes, se trata de una solución demasiado arriesgada. Para comprobarlo, se sometíó a evaluación con los valores por defecto recomendados de Resnet50. A priori, los resultados podrían parecer correctos en validación:
+El uso de la función de pérdida FocalLoss podría ayudar a paliar este efecto. Sin embargo, debido al desajuste 79-21 del que disponemos, y la gran variedad de imágenes, se trata de una solución demasiado arriesgada. Para comprobarlo, se sometíó a evaluación con los valores por defecto recomendados de Resnet50. A priori, los resultados podrían parecer correctos en validación \ref{tab:resultsfl}; sin embargo, observamos que la clase minoritaria, la maligna, obtiene resultados que no están a la altura de la clase mayoritaria. Observamos un valor 0.41 en recall, valor preocupante frente al 0.95 de la clase benigna. Al existir un recall bajo, quiere decir que esta clase no se está detectando adecuadamente como maligna, y casi el 60\% de sus casos son calificados como benignos. Esto es un grave problema, ya que los casos malignos son los que más riesgo conllevan para la salud. Por tanto, se descarta también esta estrategia.
 
 
-\begin{table}[h!]
+\begin{table}[!ht]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
@@ -55,9 +55,8 @@ El uso de la función de pérdida FocalLoss podría ayudar a paliar este efecto.
 		\hline
 	\end{tabular}
 	\caption{Informe de clasificación}
+	\label{tab:resultsfl}
 \end{table}
-
-Sin embargo, observamos que la clase minoritaria, la maligna, obtiene resultados que no están a la altura de la clase mayoritaria. Observamos un valor 0.41 en recall, valor preocupante frente al 0.95 de la clase benigna. Al existir un recall bajo, quiere decir que esta clase no se está detectando adecuadamente como maligna, y casi el 60\% de sus casos son calificados como benignos. Esto es un grave problema, ya que los casos malignos son los que más riesgo conllevan para la salud. Por tanto, se descarta también esta estrategia.
 
 \subsubsection{Propuesta: oversampling}
 
@@ -89,11 +88,43 @@ FastAI ofrece el tipo de objeto Datablock para la creación de una estructura qu
 \begin{itemize}
 	\item blocks. Nos permite establecer el formato de entrada de datos, y la salida que queremos obtener de los mismos. En problemas de clasificación, habitualmente, tendremos como entrada un bloque de imágenes, y como salida, queremos obtener un conjunto de categorías asociados al bloque.
 	\item get\_items. Establece la fuente de la cual obtener los datos para la construcción del DataBlock. Se trata de una función preconfigurada para la lectura de datos dado un repositorio o dirección de disco. En nuestro caso, como las imágenes no contienen información compleja, como plantillas de segmentación, se importan directamente de esta forma.
-	\item splitter. Permite especificar divisiones de los datos. Habitualmente, se utiliza la función RandomSplitter, que nos permite separar los datos en entrenamiento y validación. Como parámetros de entrada, recibe el porcentaje de datos para validación que queremos obtener, y opcionalmente una semilla, por si deseamos repetibilidad de los experimentos. Como en este caso, queremos que el conjunto de entrenamiento sea el conjunto sobremuestreado, y validación, sea la carpeta valid, se ha creado una función que indica 1 si la imagen pertenece a la carpeta valid, y 0, si se encuentra en train. \ref{particiones}
-	\item get\_y. Parámetro al cual se asocian las etiquetas de los elementos de entrada. Puede recibir una función o bien una lista con las etiquetas asociadas a los elementos del dataset. FastAI toma las etiquetas por defecto del nombre de carpeta, por lo que tendremos que especificarle una función que tome la etiqueta del dataset. Ésta ha de ser una cadena, por lo que se ha decidido transformar el cero y el uno por "Benign" y "Malignant", respectivamente \ref{etiquetadobinario}.
+	\item splitter. Permite especificar divisiones de los datos. Habitualmente, se utiliza la función RandomSplitter, que nos permite separar los datos en entrenamiento y validación. Como parámetros de entrada, recibe el porcentaje de datos para validación que queremos obtener, y opcionalmente una semilla, por si deseamos repetibilidad de los experimentos. Como en este caso, queremos que el conjunto de entrenamiento sea el conjunto sobremuestreado, y validación, sea la carpeta valid, se ha creado una función que indica 1 si la imagen pertenece a la carpeta valid, y 0, si se encuentra en train. \ref{fig:particiones}
+	\item get\_y. Parámetro al cual se asocian las etiquetas de los elementos de entrada. Puede recibir una función o bien una lista con las etiquetas asociadas a los elementos del dataset. FastAI toma las etiquetas por defecto del nombre de carpeta, por lo que tendremos que especificarle una función que tome la etiqueta del dataset \ref{fig:etiquetadobinario}.
 	\item item\_tfms. Establece modificaciones sobre las imágenes de forma previa a la ejecución del modelo. En este caso, como ya hemos realizado oversampling, no realizaremos ninguna otra modificación sobre las imágenes para no transformar en exceso los datos.
 	\item batch\_tfms. Permite realizar transformaciones a nivel de batch. Permite aplicar operaciones como la normalización de las imágenes. Este procedimiento favorece la convergencia del modelo, aunque el cálculo de la media y desviación típica es costoso. En su lugar, utilizaré la normalización que provee ImageNet, donde ya se incluyen los valores estadísticos de media y desviación para los datos en la variable *image\_stats provenientes de decenas de millones de imágenes.
 	
 \end{itemize}
 
 
+ \begin{algorithm}[H]
+	\caption{Función para la distinción de entrenamiento y validación}
+	\label{fig:particiones}
+	\begin{algorithmic}[1]
+		
+		\Procedure{ val\_splitter}{fname}
+		\Comment{Comprueba si la carpeta contenedora es validiación}
+		\State var pertenece: boolean = False
+		\If{Path(fname).parent.name = valid}
+			\State pertenece = True
+		\EndIf \\
+		\Return pertenece
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+\begin{algorithm}[H]
+	\caption{Función para la consulta de etiquetas}
+	\label{fig:etiquetadobinario}
+	\begin{algorithmic}[1]
+		
+		\Procedure{ binary\_label}{fname, df\_data: Dataframe}
+		\State coincidence = $df\_data[i]$ where $df\_data[i] = fname, i \in Integer$
+		\State var label = coincidence.label\\
+		\Return label
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}

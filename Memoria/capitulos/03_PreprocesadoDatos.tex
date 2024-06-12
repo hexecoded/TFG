@@ -39,9 +39,9 @@ De esta forma, se obtiene un fichero .csv donde encontrar los valores necesarios
 
 \begin{figure}[H]
 	\centering
-	\label {formatocsv}
 	\includegraphics[scale = 0.55]{imagenes/formatocsv.png}
 	\caption{Formato del fichero csv normalizado}
+	\label {formatocsv}
 \end{figure}
 
 Una vez establecido el formato común, podemos pasar al análisis y adaptación propia de cada conjunto.
@@ -116,8 +116,8 @@ Estas clases se almacenan en ficheros zip cada una, así que tras ser descargada
 \end{enumerate}
 
 \begin{algorithm}[H]
-		 \label{isiccrear}
 		\caption{Algoritmo de creación del csv}
+		\label{isiccrear}
 		\begin{algorithmic}[1]
 			
 		\Procedure{crear\_csv}{path, clases, nombre\_dataset}
@@ -176,8 +176,9 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 \end{enumerate}
 
 \begin{algorithm}[H]
-		\label{cortarasan}
+
 		\caption{Recorte de las imágenes de ASAN mediante OpenCV}
+		\label{cortarasan}
 		\begin{algorithmic}
 			\Procedure{recortarImagenesASAN}{path, i, title='ASAN'}
 			\State var files : list of strings
@@ -246,8 +247,9 @@ La estructura de presentación de los datos es más sencilla que ASAN, pues las 
 
 
 \begin{algorithm}
-	\label{cortarpadufes}
+
 	\caption{Formato de las imágenes de PAD UFES}
+	\label{cortarpadufes}
 	\begin{algorithmic}
 		\State  var PAD\_UFES\_PATH : directory of PAD UFES 20 dataset
 		\State dict $\gets$ \{'BCC': 'basal\_cell\_carcinoma', 'SEK': 'seborreic\_keratosis', 'SCC': 'squamous\_cell\_carcinoma', 'NEV': 'nevus',
@@ -370,9 +372,9 @@ De esta forma, obtenemos la quinta columna, expresada con ceros y unos. Dependie
 
 \begin{figure}[H]
 	\centering
-	\label {tartabinaria}
 	\includegraphics[scale = 0.7]{imagenes/datasetfinal.png}
 	\caption{Distribución de clases}
+		\label {tartabinaria}
 \end{figure}
 
 Si agrupamos por lesiones benignas, cancerosas, y potencialmente cancerosas, podemos obtener el siguiente diagrama de sectores de la figura \ref{tartabinaria}, donde se puede observar cómo la mayoría de imágenes disponibles engloban problemas de piel no cancerosos, mientras que el segundo tipo más común de lesión si es la cancerosa. Las lesiones potenciales, como ya se comentó, pasan a formar parte de las lesiones benignas debido a que en el momento de la captura, continúan siendo benignas.
@@ -421,13 +423,11 @@ Pero este aspecto no solo se da a nivel de subdataset, sino también a nivel del
 
 De esta forma, podemos conseguir proporcionalidad entre dataset y entre clases entre train y test, y hacer que la distribución de las imágenes sea prácticamente la misma. Aunque normalmente se suele realizar la separación de forma completamente aleatoria, en clasificación podría darse el caso extremo en el que una clase completa no aparezca en el conjunto de entrenamiento, y nuestro modelo obtenga pésimos resultados de $E_{test}$.  Si bien la probabilidad es muy baja, matemáticamente puede ocurrir, y considero que no afecta negativamente al análisis haber realizado la partición de forma proporcional a cada clase y dataset.
 
-Comentando en detalle la implementación realizada, es de interés destacar el empleo de la función train-test split de SKlearn \cite{scikit-learn}. Se trata de una función que realiza de forma bastante simplificada el proceso de partición estratificada. En este caso, además, se verificará la existencia de clase con menos de 16 ejemplares de imagen presentes para confirmar que no se han filtrado clases minoritarias las cuales son imposibles de clasificar con el modelo actual.
-
-El resultado es el siguiente:
+Comentando en detalle la implementación realizada, es de interés destacar el empleo de la función train-test split de SKlearn \cite{scikit-learn}. Se trata de una función que realiza de forma bastante simplificada el proceso de partición estratificada. En este caso, además, se verificará la existencia de clase con menos de 16 ejemplares de imagen presentes para confirmar que no se han filtrado clases minoritarias las cuales son imposibles de clasificar con el modelo actual. El resultado es el código de la figura \ref{fig:separar}
 
  \begin{algorithm}[H]
-	\label{fig:separar}
 	\caption{ Separación de las filas según el valor de la columna ``column''}
+		\label{fig:separar}
 	\begin{algorithmic}
 		\State MIN\_COUNT = 16
 		\Procedure{separar\_subdata}{dataframe, column}
@@ -546,11 +546,11 @@ De forma organizada, nos queda resumido en  el siguiente pseudocódigo:
 	\end{algorithmic}
 \end{algorithm}
 
-Donde la función 'read\_images' \ref{fig:readimg} es la engarda de recorrer la carpeta, tomar las imágenes y generar su imagen aumentada por super resolución:
+Donde la función 'read\_images' \ref{fig:readimg} es la encargada de recorrer la carpeta, tomar las imágenes y generar su imagen aumentada por super resolución:
 
 \begin{algorithm}[H]
-	\label{fig:readimg}
 	\caption{ Aumento de resolución para ASAN y Severance}
+		\label{fig:readimg}
 	\begin{algorithmic}
 		\Procedure{read\_images}{path\_orig, nombre\_carp}
 		
@@ -580,13 +580,14 @@ Donde la función 'read\_images' \ref{fig:readimg} es la engarda de recorrer la 
 	\end{algorithmic}
 \end{algorithm}
 
-De esta forma, conseguimos reescalar cada una de las imágenes sin necesidad de modificar el archivo .csv previamente guardado para entrenamiento y test. Los resultados son bastante notables, ya que al aumentar la resolución a una 4 veces mayor, pueden apreciarse detalles con mayor claridad:
+De esta forma, conseguimos reescalar cada una de las imágenes sin necesidad de modificar el archivo .csv previamente guardado para entrenamiento y test. Los resultados son bastante notables, ya que al aumentar la resolución a una 4 veces mayor, pueden apreciarse detalles con mayor claridad \ref{fig:calidad}. 
 	
 l\begin{figure}[H]
 		\centering
 		\subfigure[Original]{\includegraphics[width=0.3\textwidth]{imagenes/194_13_orig.jpg}} 
 		\subfigure[Reescalada]{\includegraphics[width=0.3\textwidth]{imagenes/SEV_194_13.png}} 
 	\caption{Imagen original (izquierda) vs aumentada (derecha)}
+	\label{fig:calidad}
 
 \end{figure}
 

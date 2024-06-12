@@ -25,6 +25,14 @@ Yaser~S. Abu-Mostafa, Malik Magdon-Ismail, and Hsuan-Tien Lin.
 \newblock {\em Learning From Data}.
 \newblock AMLBook, 2012.
 
+\bibitem{efliteworse}
+Vardan Agarwal.
+\newblock Bye-bye mobilenet. hello efficientnet!
+\newblock
+  \url{https://towardsdatascience.com/bye-bye-mobilenet-hello-efficientnet-9b8ec2cc1a9c},
+  2020.
+\newblock [Online; accessed 10-April-2024].
+
 \bibitem{resnetspecs}
 Samuel Albanie.
 \newblock Image classification architectures.

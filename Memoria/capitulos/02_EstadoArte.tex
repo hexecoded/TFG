@@ -150,19 +150,21 @@ La convolución en grupo mediante mezcla de canales (Channel Shuffle) surge tras
 Para evitar un sistema complejo a la hora de representar dichas interconexiones, es como surge el channel shuffle \ref{shufflechannels}: se mezclan los canales de forma que los grupos ya no quedan aislados con sus respectivas entradas y salidas.
 
     \begin{figure}[H]
-	\label{shufflechannels}
+
 	\centering
 	\includegraphics[scale = 0.2]{imagenes/shufflechannels.png}
 	\caption{Channel Shuffle de ShuffleNet}
+	\label{shufflechannels}
 \end{figure}
 
-Esta técnica se aplicará sobre la primera y última convolución 1x1 realizada sobre los bloques residuales de la red, que siguen una estructura parecida a la que adoptaría MobileNetV2 posteriormente. Mediante esta propuesta, podemos además aplicar una mayor capacidad de procesamiento en anchura añadiendo stride, y aplicando average pooling. El resultado, es conseguir modelos más anchos en procesamiento que no impacten negativamente en el rendimiento de los dispositivos con menor capacidad. En la figura \ref{label} , podemos apreciar la arquitectura de la red, cuyos filtros pueden ser escalados mediante el parámetro s, aunque teniendo en cuenta una penalización en la complejidad, equivalente a $s^2$ sobre Shuffle Net base, equivalente a $s=1$
+Esta técnica se aplicará sobre la primera y última convolución 1x1 realizada sobre los bloques residuales de la red, que siguen una estructura parecida a la que adoptaría MobileNetV2 posteriormente. Mediante esta propuesta, podemos además aplicar una mayor capacidad de procesamiento en anchura añadiendo stride, y aplicando average pooling. El resultado, es conseguir modelos más anchos en procesamiento que no impacten negativamente en el rendimiento de los dispositivos con menor capacidad. En la figura \ref{arquitecturashuffle} , podemos apreciar la arquitectura de la red, cuyos filtros pueden ser escalados mediante el parámetro s, aunque teniendo en cuenta una penalización en la complejidad, equivalente a $s^2$ sobre Shuffle Net base, equivalente a $s=1$
 
 \begin{figure}[H]
-		\label{arquitecturashuffle}
+
 		\centering
 		\includegraphics[scale = 0.2]{imagenes/arquitecturashuffle.png}
 		\caption{Arquitectura de ShuffleNet}
+		\label{arquitecturashuffle}
 	\end{figure}
 
 Sus aplicaciones han sido variadas, pero en lo que respecta a la detección de lesiones cutáneas, la cercana salida de MobileNet V2 y su mejor rendimiento provocó que ShuffleNet quedase relegada a un segundo plano, y no fuese muy utilizada para este fin. Podemos encontrar algunos trabajos \cite{shuffleapp} donde podemos observar una comparativa de este modelo frente a la completitud de los modelos del estado del arte de 2022, y podemos confirmar que  MobileNetV2 es capaz de superar su rendimiento en la mayoría de pruebas, siendo estas comparaciones en cuanto a tiempo de entrenamiento, precisión, accuracy y tamaño del conjunto de entrenamiento. Sólo consigue superar a MobileNetV2 en tiempo de entrenamiento, donde es aproximadamente 900 más rápida, pero ofrece peores resultados en promedio.
@@ -176,7 +178,7 @@ Parte de que una red convolucional sigue el siguiente esquema:
 $$\mathcal{N}=\odot_{i=1...s} F_i^{L_i}(X_{(H_i, W_i,L_i)})$$
 
 
-Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, y la dimensionalidad de la capa queda representada con ${( W_i,L_i)}$.  Fijando $F_i$, efficient net intenta dar versatilidad a sus modelos variando las dimensiones restantes, Li, Ci, Hi, Wi mediante el uso de 3 constantes de escalabilidad:
+Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, y la dimensionalidad de la capa queda representada con ${( W_i,L_i)}$.  Fijando $F_i$, efficient net intenta dar versatilidad a sus modelos variando las dimensiones restantes, Li, Ci, Hi, Wi mediante el uso de 3 constantes de escalabilidad \ref{fig:paramsefnet}:
 
 \begin{itemize}
 	 \item  Profundidad, Depth (d):  Aumentar la profundidad es la tendencia habitual presente en las redes convolucionales. Pero llegar a un equilibrio es crítico, ya que aumentar demasiado la profundidad sin modificar otros parámetros puede ocasionar pérdidades rendimiento por el desvanecimiento del gradiente  a menor profundidad. 
@@ -185,10 +187,10 @@ Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, 
 \end{itemize}
 
 \begin{figure}[H]
-	\label{arquitecturashuffle}
 	\centering
 	\includegraphics[scale = 0.2]{imagenes/efnet_scale.png}
 	\caption{Parámetros de EfficientNet}
+	\label{fig:paramsefnet}
 \end{figure}
 
 
@@ -241,10 +243,11 @@ El framwork de TensorFlow lite contiene dos de los modelos más utilizados en la
 \end{itemize}
 
 \begin{figure}[H]
-	\label{eflite}
+
 	\centering
 	\includegraphics[scale = 0.325]{imagenes/eflite.png}
 	\caption{Optimización de EfficientNet Lite}
+		\label{eflite}
 \end{figure}
 
 Este procedimiento variable, con múltiples posibles combinaciones, se realiza debido a la gran variedad del mercado actual. Existe una gran diversidad de  dispositivos: conviven dispositivos de bajo consumo con escasa potencia gráfica, así como terminales especializados con unidades de TPU para acelerar el cálculo neuronal. Y, de esta forma, con optimizaciones modulares, podemos priorizar la eficiencia en dispositivos con poca capacidad de cálculo , y aumentar la precisión en aquellos que pueden ejecutarlos. En el dispositivo de ejemplo, un Google Pixel 4, se consigue un tiempo medio de inferencia de 30 ms, una mejora de casi el 60\% sobre ResNet50.
@@ -256,13 +259,14 @@ A la vista de los resultados, los modelos cuantizados pueden suponer una ventaja
 Como puntos en contra, debemos tener en cuenta que la penalización obtenida al entrenar este tipo de modelos no es siempre la misma; dependiendo del problema a clasificar, y del modelo seleccionado, la penalización de la cuantización puede ser o no más marcada; para ello, es necesario obtener empiricamente resultados que nos permitan conocer el tipo adecuado para nuestro problema. Este conflicto para encontrar el equilibrio ya fue detectado por los desarrolladores de Google en EfficientNet Lite \cite{eflite,eflite2}, donde inicialmente, sus pruebas en ImageNet arrojaron resultados pésimos al obtener un 46\% de accuracy en clasificación TOP1 a diferencia del 75.1\% obtenido con FP32. Pero, tras ajustar el rango de amplitud de los enteros utilizados para cuantización, se consiguió una ganancia de 1.85x sobre el modelo original con tan solo un 0.7\% de pérdida en los resultados.
 
 \begin{figure}[H]
-	\label{gananciacuant}
+
 	\centering
 	\includegraphics[scale = 0.35]{imagenes/gananciacuant.png}
 	\caption{Ganancia de la cuantización en EfficientNet}
+	\label{gananciacuant}
 \end{figure}
 
-Como aspecto negativo, aunque la varianza de los resultados pueda verse paliada mediante la selección de la cuantización más adecuada, aún existen riesgos de resultados inesperados. Con este mismo modelo, por ejemplo, se han alcanzado resultados inesperados, como que los modelos de menor tamaño (B0,B1,B2) poseen un mejor desempeño que B3 y B4 en datasets de propósito general, como podemos observar en el artículo de Agarwal  \cite{}, pero esto puede deberse por la necesidad de una mayor cantidad de datos para realizar el entrenamiento.
+Como aspecto negativo, aunque la varianza de los resultados pueda verse paliada mediante la selección de la cuantización más adecuada, aún existen riesgos de resultados inesperados. Con este mismo modelo, por ejemplo, se han alcanzado resultados inesperados, como que los modelos de menor tamaño (B0,B1,B2) poseen un mejor desempeño que B3 y B4 en datasets de propósito general, como podemos observar en el artículo de Agarwal  \cite{efliteworse}, pero esto puede deberse por la necesidad de una mayor cantidad de datos para realizar el entrenamiento.
 
 Dado a los buenos resultados en general, la cuantización será la senda seguida por este TFG a la hora de optimizar los modelos de escritorio en post entrenamiento.
 

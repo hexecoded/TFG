@@ -12,51 +12,50 @@ I was expecting a `,' or a `}'---line 449 of file bibliografia/bibliografia.bib
 I'm skipping whatever remains of this entry
 Warning--entry type for "severance" isn't style-file defined
 --line 509 of file bibliografia/bibliografia.bib
-Warning--I didn't find a database entry for ""
 Warning--to sort, need author or key in isicarchive
 Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
 Warning--to sort, need author or key in dermis
 Warning--empty journal in Han2017
-You've used 57 entries,
+You've used 58 entries,
             2118 wiz_defined-function locations,
-            775 strings with 15898 characters,
-and the built_in function-call counts, 20472 in all, are:
-= -- 1760
-> -- 1591
+            780 strings with 16079 characters,
+and the built_in function-call counts, 20689 in all, are:
+= -- 1782
+> -- 1598
 < -- 3
-+ -- 635
-- -- 574
-* -- 1534
-:= -- 3540
-add.period$ -- 163
-call.type$ -- 57
-change.case$ -- 451
++ -- 638
+- -- 576
+* -- 1540
+:= -- 3577
+add.period$ -- 167
+call.type$ -- 58
+change.case$ -- 455
 chr.to.int$ -- 0
-cite$ -- 62
-duplicate$ -- 511
-empty$ -- 1329
-format.name$ -- 574
-if$ -- 4090
+cite$ -- 63
+duplicate$ -- 518
+empty$ -- 1351
+format.name$ -- 576
+if$ -- 4138
 int.to.chr$ -- 0
-int.to.str$ -- 57
+int.to.str$ -- 58
 missing$ -- 22
-newline$ -- 278
-num.names$ -- 110
-pop$ -- 615
+newline$ -- 284
+num.names$ -- 112
+pop$ -- 623
 preamble$ -- 1
-purify$ -- 396
+purify$ -- 399
 quote$ -- 0
-skip$ -- 449
+skip$ -- 455
 stack$ -- 0
-substring$ -- 599
-swap$ -- 86
+substring$ -- 604
+swap$ -- 87
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 224
+type$ -- 228
 warning$ -- 5
-while$ -- 125
-width$ -- 59
-write$ -- 569
+while$ -- 127
+width$ -- 60
+write$ -- 581
 (There was 1 error message)
