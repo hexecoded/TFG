@@ -61,4 +61,5 @@
 \contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{97}{subsubsection*.25}%
 \contentsline {subsection}{\numberline {5.1.2}Construcción del modelo}{99}{subsection.5.1.2}%
 \contentsline {subsubsection}{\nonumberline Creación del datablock}{99}{subsubsection*.27}%
+\contentsline {subsection}{\numberline {5.1.3}Creación del modelo. Transfer learning}{101}{subsection.5.1.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

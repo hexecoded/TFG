@@ -209,6 +209,10 @@ M.~Llamas-Velasco and B.E. Paredes.
 \newblock La biopsia cutánea: bases fundamentales. parte i.
 \newblock {\em Actas Dermo-Sifiliográficas}, 103(1):12--20, 2012.
 
+\bibitem{masters2018revisiting}
+Dominic Masters and Carlo Luschi.
+\newblock Revisiting small batch training for deep neural networks, 2018.
+
 \bibitem{fpga}
 Samyukta~Lanka. Megha~Arora.
 \newblock Accelerating squeezenet on fpga.

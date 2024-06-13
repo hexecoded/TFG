@@ -113,8 +113,6 @@ FastAI ofrece el tipo de objeto Datablock para la creación de una estructura qu
 	\end{algorithmic}
 \end{algorithm}
 
-
-
 \begin{algorithm}[H]
 	\caption{Función para la consulta de etiquetas}
 	\label{fig:etiquetadobinario}
@@ -128,3 +126,49 @@ FastAI ofrece el tipo de objeto Datablock para la creación de una estructura qu
 		
 	\end{algorithmic}
 \end{algorithm}
+
+Una vez definido, podremos instanciar el datablock, configurando uno de los parámetros más críticos del entrenamiento: el tamaño de batch.
+
+Cuando entrenamos una red, estamos ajustando una serie de pesos según recorremos los datos. Éstos, por tanto, pueden actualizarse en diferentes momentos: tras procesar cada imagen, tras procesarlas todas, y antes de volver a empezar, o cada n imágenes. A dicho tamaño n, se le conoce como tamaño de batch: es el tamaño del conjunto de imágenes que han de procesarse para realizar una actualización de pesos del modelo. 
+
+Este número es un hiperparámetro clave, ya que tiene relación directa con la convergencia: a mayor tamaño, mayor velocidad de convergencia, pero menor precisión; y el caso inverso ocurre con el caso extremo, si, por ejemplo, actualizamos con cada ejemplar procesado. En la literatura, existen gran cantidad de estudios acerca de este valor, y establecen el valor adecuado en un intervalo $[2, 32]$,  compuesto únicamente por las potencias de 2   \cite{masters2018revisiting}. Debido a limitaciones de memoria, y la demostración de su optimalidad, emplearé tamaño 32 para los 3 modelos, aunque otros tamaños, como 64 o 128, también son viables.
+
+A partir de ahora, denominaremos época al proceso de recorrer cada uno de los batches del datablock.
+
+\subsection{Creación del modelo. Transfer learning}
+
+Con los datos correctamente definidos, podemos construir el modelo propiamente dicho para el entrenamiento. En Fastai, la construcción de modelos puede hacerse de forma modular, mediante la especificación de las capas que componen la red, ya que la librería dispone de los módulos ya configurados a excepción de los canales de entrada y salida. A pesar de ello, la creación de un modelo desde cero es muy costoso computacionalmente, ya que se parte el entrenamiento de valores aleatorios. Por este motivo, normalmente se tiende a emplear modelos preentrenados, y adaptar su salida mediante el uso de transfer learning.
+
+El transfer-learning es una métodología que permite utilizar complejas redes convolucionadas preeentrenadas con datasets de gran tamaño que son adaptadas para utilizarse con otros datasets diferentes y obtener buenos resultados, sin necesidad de realizar un entrenamiento desde cero del modelo.\\
+
+De forma intuitiva, el proceso a seguir es el siguiente: partimos de las capas ocultas ya entrenadas del modelo, y sustituimos su cabecera por una nueva que se adapte a nuestro problema. Por cabecera(head), entendemos la parte final de la red, punto en el cual se elabora la salida final que la red pasa a la función SoftMax para obtener las probabilidades de pertenencia a cada clase de la imagen de entrada. Como la red fue entrenada para otro dataset, es probable que el número de clases de salidas sea diferente, y por eso, debemos de sustituirla por una nueva que se adapte a las necesidades de nuestro problema.\\
+
+Una vez sustituida el head de la red, debemos de entrenar la nueva cabecera para que sus pesos se adapten a los datos de entrada y ofrezcan buenas métricas. Pero no nos interesa modificar el resto de capas ocultas, ya que fueron entrenadas previamente y tienen valores de W adecuados. Realizaremos un "congelado" de estas capas, para únicamente entrenar la nueva adición.
+
+Posteriormente, para afinar el comportamiento de la red completa, ``descongelaremos'' la red para hacer un entrenamiento breve a la red completa, durante un número pequeño de épocas. Así, obtemos un modelo final adaptado a nuestro problema.\\
+
+En esta primera fase, debemo ofrecer una salida binaria, que nos ofrezca una respuesta de 0 (benigno) y 1 (maligno). Para conseguirlo, recurriremos a retirar la capa predefinida con la que viene nuestro modelo, y para todos ellos, emplearemos la misma cabecera, la cual es creada de forma automática por fastai tras especificar el número de salidas.
+
+\begin{table}[H]
+	\centering
+	\caption{Cabecera para trasfer-learning binario}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Capa} & \textbf{Tam. Entrada} & \textbf{Tam. Salida} \\ \hline
+		Average pooling & n x n & 32 x 2048 \\ \hline
+		Flatten & 32 x 2048 & 4096 \\ \hline
+		Fully connected & 4096 & 512 \\ \hline
+		Fully connected & 512 & 32 x 2048 \\ \hline
+		Fully connected & 32 & 2 \\ \hline
+		Softmax & - & - \\ \hline
+	\end{tabular}
+	\label{header}
+\end{table}
+
+Dicha cabecera, observable en la figura \ref{header}, recibe como tamaño de entrada n x n, siendo n el tamaño de la salida de la última capa de la red preentrenada que estemos utilizado. Mediante una oporación de average pooling, podemos convertir dicha entrada a un tamaño de salida concreto, el cual nos permitirá tener a partir de este punto una red totalmente conectada la cual no requiere ser modificada aunque modifiquemos el tamaño de entrada de la red por imágenes de mayor o menor resolución. \\
+
+La configuración escogida tras el flattening de la imagen, que consiste en vectorizar su contenido, es una tradicional triple capa de redes totalmente conectadas: la estructura tradicional de una red neuronal donde cada neurona se encuentra conectada a las siguientes. Dicha estructura de entradas y salida sigue forma de ``embudo'', en el que el tamaño de la capa final coincide con el  número de salidas, en este caso, dos clases.
+
+Para instanciar el modelo ya configurado, se hace uso de la clase vision\_learner, la cual recibe como entreada el modelo, expresado como cadena, un vector con los nombres de las métricas, el datablock de entrenamiento y validación creado anteriormente, y las funciones de callback. Estas últimas son funciones que serán ejecutadas cada vez que se complete una época de nuestro modelo. Como entrada, he decidido añadir un callback de salvado, que guarde el modelo tras cada época finalizada, y un monitor de Early stoping.
+
+Resumiendo, early stopping es un mecanismo de parada automática del entrenamiento, el cual, especificando una paciencia, en época, si no se cumple una condición, se detiene el modelo; en este problema, he decidido que el monitor de parada supervise el error de pérdida en validación, para así evitar el sobreaprendizaje de la red: la memorización completa del conjunto de entrenamiento, conllevando el riesgo de pérdida de generalidad.
