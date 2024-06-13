@@ -316,6 +316,11 @@ Rupali Kiran et~al. Shinde.
 \newblock Squeeze-mnet: Precise skin cancer detection model for low computing
   iot devices using transfer learning, 2022.
 
+\bibitem{smith2018disciplined}
+Leslie~N. Smith.
+\newblock A disciplined approach to neural network hyper-parameters: Part 1 --
+  learning rate, batch size, momentum, and weight decay, 2018.
+
 \bibitem{10.1007/978-3-319-46466-4_13}
 Xiaoxiao Sun, Jufeng Yang, Ming Sun, and Kai Wang.
 \newblock A benchmark for automatic visual classification of clinical skin

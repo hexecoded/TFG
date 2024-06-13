@@ -4,58 +4,58 @@ The top-level auxiliary file: proyecto.aux
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
 Warning--entry type for "reback2020pandas" isn't style-file defined
---line 428 of file bibliografia/bibliografia.bib
-I was expecting a `,' or a `}'---line 457 of file bibliografia/bibliografia.bib
+--line 437 of file bibliografia/bibliografia.bib
+I was expecting a `,' or a `}'---line 466 of file bibliografia/bibliografia.bib
  :  
  :  howpublished = "\url{https://github.com/h/pytesseractm}",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--entry type for "severance" isn't style-file defined
---line 517 of file bibliografia/bibliografia.bib
+--line 526 of file bibliografia/bibliografia.bib
 Warning--to sort, need author or key in isicarchive
 Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
 Warning--to sort, need author or key in dermis
 Warning--empty journal in Han2017
-You've used 59 entries,
+You've used 60 entries,
             2118 wiz_defined-function locations,
-            783 strings with 16188 characters,
-and the built_in function-call counts, 20922 in all, are:
-= -- 1802
-> -- 1611
+            786 strings with 16345 characters,
+and the built_in function-call counts, 21121 in all, are:
+= -- 1819
+> -- 1618
 < -- 3
-+ -- 643
-- -- 580
-* -- 1550
-:= -- 3615
-add.period$ -- 169
-call.type$ -- 59
-change.case$ -- 460
++ -- 647
+- -- 582
+* -- 1556
+:= -- 3647
+add.period$ -- 171
+call.type$ -- 60
+change.case$ -- 464
 chr.to.int$ -- 0
-cite$ -- 64
-duplicate$ -- 525
-empty$ -- 1373
-format.name$ -- 580
-if$ -- 4188
+cite$ -- 65
+duplicate$ -- 532
+empty$ -- 1395
+format.name$ -- 582
+if$ -- 4231
 int.to.chr$ -- 0
-int.to.str$ -- 59
+int.to.str$ -- 60
 missing$ -- 22
-newline$ -- 288
-num.names$ -- 114
-pop$ -- 633
+newline$ -- 292
+num.names$ -- 116
+pop$ -- 642
 preamble$ -- 1
-purify$ -- 403
+purify$ -- 406
 quote$ -- 0
-skip$ -- 464
+skip$ -- 472
 stack$ -- 0
-substring$ -- 609
-swap$ -- 88
+substring$ -- 615
+swap$ -- 89
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 232
+type$ -- 236
 warning$ -- 5
-while$ -- 129
-width$ -- 61
-write$ -- 589
+while$ -- 131
+width$ -- 62
+write$ -- 597
 (There was 1 error message)
