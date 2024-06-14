@@ -421,7 +421,7 @@ Pero este aspecto no solo se da a nivel de subdataset, sino también a nivel del
 	\item Volver a unir las clases de entrenamiento de cada dataset, y test de cada dataset, en los dos ficheros que comprenderán las imágenes asociadas al conjunto de entrenamiento y al conjunto de test.
 \end {enumerate}
 
-De esta forma, podemos conseguir proporcionalidad entre dataset y entre clases entre train y test, y hacer que la distribución de las imágenes sea prácticamente la misma. Aunque normalmente se suele realizar la separación de forma completamente aleatoria, en clasificación podría darse el caso extremo en el que una clase completa no aparezca en el conjunto de entrenamiento, y nuestro modelo obtenga pésimos resultados de $E_{test}$.  Si bien la probabilidad es muy baja, matemáticamente puede ocurrir, y considero que no afecta negativamente al análisis haber realizado la partición de forma proporcional a cada clase y dataset.
+De esta forma, podemos conseguir proporcionalidad entre dataset y entre clases entre train y test, y hacer que la distribución de las imágenes sea prácticamente la misma. Aunque normalmente se suele realizar la separación de forma completamente aleatoria, en clasificación podría darse el caso extremo en el que una clase completa no aparezca en el conjunto de entrenamiento, y nuestro modelo obtenga pésimos resultados de $E_{test}$.  Si bien la probabilidad es muy baja, matemáticamente puede suceder estadísticamente hablando, y consideramos que no afecta negativamente al análisis haber realizado la partición de forma proporcional a cada clase y dataset.
 
 Comentando en detalle la implementación realizada, es de interés destacar el empleo de la función train-test split de SKlearn \cite{scikit-learn}. Se trata de una función que realiza de forma bastante simplificada el proceso de partición estratificada. En este caso, además, se verificará la existencia de clase con menos de 16 ejemplares de imagen presentes para confirmar que no se han filtrado clases minoritarias las cuales son imposibles de clasificar con el modelo actual. El resultado es el código de la figura \ref{fig:separar}
 
@@ -510,7 +510,7 @@ Esta red ha demostrado cuantiosos éxistos en la literatura al ser utilizada com
 
 Además, incorpora a la arquitectura las conexiones residuales al estilo de ResNet, con la diferencia de que todos los niveles de un bloque están conectados a todas las siguientes una conexión residual, arquitectura la cual han denominado Residual-in-Residual. Esto les ha permitido evitar la decaída de gradiente, y además, prescindir de la capa de Batch Normalization, que introducía artefactos en el resultado final.
 
-Considero este modelo el adecuado para el problema debido a sus buenos resultados ya logrado en modelos de la literatura \cite{healthcare10071183}, donde la aplicación de ESRGAN ofrece mejoras en el resultado del modelo evaluado, siendo este resultado evaluado con distintas arquitecturas y modelos de redes convolucionales del estado del arte.
+Concluimos que este modelo es el adecuado para el problema, debido a sus buenos resultados a nivel de mejora de imagen, y de sus resultados ya mostrados en modelos de la literatura \cite{healthcare10071183}, donde la aplicación de ESRGAN ofrece mejoras en el resultado del modelo evaluado, siendo este resultado evaluado con distintas arquitecturas y modelos de redes convolucionales del estado del arte.
 
 Gracias a este modelo, el aumento de resolución podrá darse para equiparar la calidad de las imágenes recopiladas.
 

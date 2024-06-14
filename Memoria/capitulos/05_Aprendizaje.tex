@@ -319,9 +319,9 @@ En resumen, se trata de uno de los modelos más eficientes,    debido a su estru
 
 \subsection{Conclusión: modelo seleccionado}
 
-Atendiendo a los modelos entrenados, considero justificada la elección de Resnet50 para la generación del modelo cuantizado. Aunque se trata del segundo mejor modelo en lo que a accuracy balanceado se refiere, EfficientNet ha provocado demasiados problemas a nivel local, desde errores de memoria disponible de CUDA, hasta el comportamiento exhibido en el punto anterior, donde se producían picos periódicos durante el entrenamiento.
+Atendiendo a los modelos entrenados, queda justificada la elección de Resnet50 para la generación del modelo cuantizado. Aunque se trata del segundo mejor modelo en lo que a accuracy balanceado se refiere, EfficientNet ha provocado demasiados problemas a nivel local, desde errores de memoria disponible de CUDA, hasta el comportamiento exhibido en el punto anterior, donde se producían picos periódicos durante el entrenamiento.
 
-MobileNet es el peor modelo de los 3 en todas las métricas observadas, pero con la ventaja de ofrecer un menor tiempo de inferencia. Por tanto, considero suficientemente justificada la decisión de usar ResNet50 para clasificación binaria, y las pruebas que restan de los modelos especializados. En base a validación, y al comportamiento de la curva de aprendizaje, se trata del modelo más equilibrado.
+MobileNet es el peor modelo de los 3 en todas las métricas observadas, pero con la ventaja de ofrecer un menor tiempo de inferencia. Por tanto, queda demosrado que la decisión de usar ResNet50 para clasificación binaria es una decisión correcta, así como su empleo en los modelos especializados en tipos de enfermedades. En base a validación, y al comportamiento de la curva de aprendizaje, se trata del modelo más equilibrado.
 
 \begin{figure}[H]
 	\centering
