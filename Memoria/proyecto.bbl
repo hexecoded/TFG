@@ -86,6 +86,12 @@ Mohammad Fraiwan and Esraa Faouri.
   deep transfer learning.
 \newblock {\em Sensors}, 22:4963, 06 2022.
 
+\bibitem{earlystop}
+Ramazan Gençay.
+\newblock Early stopping based on validation.
+\newblock \url{https://paperswithcode.com/method/early-stopping}, 2001.
+\newblock [Online; accessed 14-June-2024].
+
 \bibitem{GIOTIS20156578}
 Ioannis Giotis, Nynke Molders, Sander Land, Michael Biehl, Marcel~F. Jonkman,
   and Nicolai Petkov.

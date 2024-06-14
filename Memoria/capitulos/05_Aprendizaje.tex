@@ -1,16 +1,17 @@
-\chapter{Proceso de aprendizaje}
+\chapter{Entrenamiento de modelos completos sobre la base de datos}
 
 Tras las descripción de los modelos a utilizar, y las funciones de pérdida a emplear, comienza el proceso de entrenamiento de los modelos. Este proceso es uno de los más lentos de todo el desarrollo del proyecto, debido a la cantidad de horas necesarias a esperar para recopilar los resultados del modelo. Se estudiará la eficiacia de cada modelo a la hora de evaluar el problema, y las decisiones tomadas para su mejora y elección.\\
 
 Para resolver este problema, se ha tomado un enfoque de dos niveles; en primer lugar, distinguiremos si la enfermedad que se recibe como entrada se trata de un ejemplar de enfermedad maligna o benigna, y posteriormente, su salida indicará un segundo modelo a aplicar sobre la enfermedad, especializado únicamente en uno de los dos tipos de enfermedades. Así, conseguimos un conjunto de modelos especialziados que permiten otorgar el diagnóstico con mayor precisión y seguridad.\\
 
-Un aspecto clave de este proceso será la eficiencia, pero sobre todo el correcto diagnóstico de las enfermedades, por lo que usaremos como métricas de selección la precisión, el recall y el accuracy balanceado:
+Un aspecto clave de este proceso será la eficiencia, pero sobre todo el correcto diagnóstico de las enfermedades, por lo que usaremos como métricas de selección precision, el recall y balanced accuracy:
 
 \begin{itemize}
-	\item Precision = TP / (TP + FP). Proporción de valores bien clasificados dentro de una clase teniendo en cuenta verdaderos y falsos positivos.
-	\item Recall = TP / P. Valores correctamente identificados como positivos respecto al total de elementos positivos.
-	\item Accuracy balanceado: combina sensitivity (TP/(TP+FN)) y specificity (TN/(TN+FP)). La primera, devuelve el valor real de proporción de valores correctamente clasificados entre el total de casos positivos que tenemos (contando predicciones positivas y falsos negativos), mientras que la especifidad, nide el caso dual: la proporción de casos negativos bien clasificados respecto al total de datos negativos tanto bien clasificados como mal clasificados, y que son identificados como falsos positivos. Esto nos permite calcular el accuracy de forma proporcional al porcentaje de presencia de las clases, e intentamos así paliar el efecto del desequilibrio de los datos:
-	
+	\item Precision. Proporción de valores bien clasificados dentro de una clase teniendo en cuenta verdaderos y falsos positivos. $$Precision=TP / (TP + FP).$$
+	\item Recall. Valores correctamente identificados como positivos respecto al total de elementos positivos. $$Recall = TP / P$$
+	\item Balanced accuracy: combina sensitivity y specificity. La primera, devuelve el valor real de proporción de valores correctamente clasificados entre el total de casos positivos que tenemos (contando predicciones positivas y falsos negativos), mientras que la especifidad, nide el caso dual: la proporción de casos negativos bien clasificados respecto al total de datos negativos tanto bien clasificados como mal clasificados, y que son identificados como falsos positivos. Esto nos permite calcular el accuracy de forma proporcional al porcentaje de presencia de las clases, e intentamos así paliar el efecto del desequilibrio de los datos:
+	$$Sensitivity = TP/(TP+FN)$$
+	$$Specificity =(TN/(TN+FP)$$\\
 $$ Balanced\ accuracy: \frac{Sensitivity + Specificity}{2}$$
 	
 	En base a esta expresión, podemos saber que si el valor es aproximadamente 1/númeroClases, es posible que gran parte de las clases no estén siendo correctamente clasificadas en caso de ser minoritarias. Valores mayores nos harán conocer que el resultado de clasificar todas las clases es satisfactorio.
@@ -151,7 +152,6 @@ En esta primera fase, debemos ofrecer una salida binaria, que nos ofrezca una re
 
 \begin{table}[H]
 	\centering
-	\caption{Cabecera para trasfer-learning binario}
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Capa} & \textbf{Tam. Entrada} & \textbf{Tam. Salida} \\ \hline
@@ -162,6 +162,7 @@ En esta primera fase, debemos ofrecer una salida binaria, que nos ofrezca una re
 		Fully connected & 32 & 2 \\ \hline
 		Softmax & - & - \\ \hline
 	\end{tabular}
+		\caption{Cabecera para trasfer-learning binario}
 	\label{header}
 \end{table}
 
@@ -175,8 +176,8 @@ Para instanciar el modelo ya configurado, se hace uso de la clase vision\_learne
 \begin{figure}[H]
 	\centering
 	\label {earlystopping}
-	\includegraphics[scale = 0.25]{imagenes/earlystopping.png}
-	\caption{Demostración gráfica del Early stopping}
+	\includegraphics[scale = 0.17]{imagenes/earlystopping.png}
+	\caption{Demostración gráfica del Early stopping \cite{earlystop}}
 \end{figure}
 
 Resumiendo, early stopping es un mecanismo de parada automática del entrenamiento, el cual, especificando una paciencia, en época, si no se cumple una condición, se detiene el modelo; en este problema, he decidido que el monitor de parada supervise el error de pérdida en validación, para así evitar el sobreaprendizaje de la red: la memorización completa del conjunto de entrenamiento, conllevando el riesgo de pérdida de generalidad. Controlaremos este fenómeno gráficamente mediante la muestra de las pérdidas de entrenamiento y validación.
@@ -321,7 +322,7 @@ En resumen, se trata de uno de los modelos más eficientes,    debido a su estru
 
 Atendiendo a los modelos entrenados, queda justificada la elección de Resnet50 para la generación del modelo cuantizado. Aunque se trata del segundo mejor modelo en lo que a accuracy balanceado se refiere, EfficientNet ha provocado demasiados problemas a nivel local, desde errores de memoria disponible de CUDA, hasta el comportamiento exhibido en el punto anterior, donde se producían picos periódicos durante el entrenamiento.
 
-MobileNet es el peor modelo de los 3 en todas las métricas observadas, pero con la ventaja de ofrecer un menor tiempo de inferencia. Por tanto, queda demosrado que la decisión de usar ResNet50 para clasificación binaria es una decisión correcta, así como su empleo en los modelos especializados en tipos de enfermedades. En base a validación, y al comportamiento de la curva de aprendizaje, se trata del modelo más equilibrado.
+MobileNet es el peor modelo de los 3 en todas las métricas observadas, pero con la ventaja de ofrecer un menor tiempo de inferencia. Por tanto, queda demostrado que la decisión de usar ResNet50 para clasificación binaria es una decisión correcta, así como su empleo en los modelos especializados en tipos de enfermedades. En base a validación, y al comportamiento de la curva de aprendizaje, se trata del modelo más equilibrado.
 
 \begin{figure}[H]
 	\centering
@@ -339,26 +340,6 @@ Si bien Resnet ofrece un valor cercano, el tiempo de inferencia ofrecido por est
 \end{figure}
 
 Por tanto, realizaremos el proceso de cuantizado con Resnet, ya que se tratará de un modelo más versátil para la clasificación multiclase.
-
-\subsection{Cuantización}
-
-Pytorch contiene un proceso de cuantización directo a partir de los modelos entrenados con FastAI. Proporciona una interfaz de métodos ya preconfigurada que permite exportar el modelo de forma directa a Android, o bien, haciendo uso de cuantización.
-
-La optimización aplicada al realizar cuantización se centra, sobre todo, en la reducción de la precisión numérica del modelo, pero cubre los siguientes aspectos:
-
-\begin{itemize}
-	\item Fusión de las capa de convolución y normalización de batch: realiza una integración de los valores de normalización dentro de la capa convolutiva, ya que no será necesario reajustar esos valores para inferencia-
-	\item Inserción y plegado de operaciones: utiliza la librería XNNPack, que se trata de un sistema de operaciones en coma flotante especialmente optimizado para ARM, que permite variar la precisión de los valores flotantes según el modelo. Fusiona las operaciones lineales y de convolución, de forma que se realicen en un menor tiempo.
-	\item Fusión de la función ReLu con el conjunto de operaciones empaquetado creado con XNNPack en el paso anterior.
-	\item Eliminación del dropout, ya que en tiempo de inferencia, se busca el mejor resultado si necesidad de reentreno.
-	\item Optimización del grafo interno del modelo correspondiente a la convolución, para hacer que formen parte de un solo bloque raiz y mejore el tiempo de inferencia.
-	
-En total, la web estima una ganancia del 60\% en tiempo de inferencia de forma teórica. Examinaremos este resultado de forma práctica empleando el modelo elegido, y comparando el funcionamiento de versión optimizada con la original para verificarlo.
-
-\subsubsection{Creación del modelo cuantizado}
-\subsubsection{Evaluación de modelo original y cuantizado}
-	
-\end{itemize}
 
 
 \section {Clasificación multiclase}
@@ -411,8 +392,6 @@ Para el entrenamiento del modelo, hare uso de la misma configuración que la cla
 
 La precisión del modelo también es considerablemente buena, ya que alcanza el 74\%. Son resultados satisfactorios tratándose de un conjunto de datos desbalanceado, y con las limitaciones de tamaño del modelo requeridas.
 
-\subsubsection{Cuantización}
-
 
 \subsection{Modelo de enfermedades benignas}
 
@@ -420,7 +399,7 @@ Tras evaluar los resultados obtenidos en clasificación maligna, procedemos al c
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 0.6]{imagenes/countbenign.png}
+	\includegraphics[scale = 0.5]{imagenes/countbenign.png}
 	\caption{Conteo de clases malignas antes de agrupar}
 	\label {fig:buenas}
 \end{figure}
@@ -511,5 +490,4 @@ De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción e
 
 Los resultados han mejorado, escalando hasta el 46\% de accuracy balanceado. Sin embargo, estos siguen siendo pobres, y las clases minoritarias siguen siendo un problema. Por tanto, las 3 clases de menor representación sería oportuno eliminarlas, debido a la imposibilidad de unir estas enfermedades a otras clases existenetes. En el caso de los lentigo, que se encuentran divididos en 3 clases, podemos unirlos en un una única clase para mejorar los resultados.
 
-\subsubsection{Cuantización}
 

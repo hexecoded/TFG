@@ -24,13 +24,14 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Imagen original (izquierda) vs aumentada (derecha)}}{84}{figure.3.4}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Desequilibrio de datos}}{96}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Demostración gráfica del Early stopping}}{103}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Curvas del finetuning del modelo binario con Resnet50}}{106}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet B5}}{107}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con Mobilenet V2}}{109}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Valores de las métricas de cada modelo}}{110}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{110}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Conteo de clases malignas antes de agrupar}}{112}{figure.5.8}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Desequilibrio de datos}}{97}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Demostración gráfica del Early stopping \cite {earlystop}}}{103}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Curvas del finetuning del modelo binario con Resnet50}}{107}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet B5}}{108}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con Mobilenet V2}}{110}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Valores de las métricas de cada modelo}}{111}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{111}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Conteo de clases malignas antes de agrupar}}{113}{figure.5.8}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases malignas antes de agrupar}}{114}{figure.5.9}%
+\addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
