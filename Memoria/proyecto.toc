@@ -64,4 +64,9 @@
 \contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{101}{subsubsection*.29}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{103}{subsubsection*.31}%
 \contentsline {subsection}{\numberline {5.1.3}Resultados}{104}{subsection.5.1.3}%
+\contentsline {subsubsection}{\nonumberline ResNet 50}{105}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Efficient Net}{106}{subsubsection*.35}%
+\contentsline {subsubsection}{\nonumberline Mobile Net}{108}{subsubsection*.37}%
+\contentsline {subsection}{\numberline {5.1.4}Conclusión: modelo seleccionado}{109}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Cuanización}{111}{section.5.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

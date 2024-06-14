@@ -15,4 +15,7 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {5.1}{\ignorespaces Informe de clasificación}}{97}{table.5.1}%
 \contentsline {table}{\numberline {5.2}{\ignorespaces Cabecera para trasfer-learning binario}}{102}{table.5.2}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Informe de clasificación Resnet50}}{105}{table.5.3}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Informe de clasificación de EfficientNet B5}}{107}{table.5.4}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Informe de clasificación de EfficientNet B5}}{108}{table.5.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
