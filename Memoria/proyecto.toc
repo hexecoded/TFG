@@ -1,9 +1,10 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{23}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivación}{23}{section.1.1}%
-\contentsline {section}{\numberline {1.2}El cáncer de piel}{25}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Dificultades del diagnóstico}{26}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Relevancia y objetivos del proyecto}{27}{section.1.4}%
+\contentsline {subsection}{\numberline {1.1.1}El cáncer de piel}{25}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Dificultades del diagnóstico}{26}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Justificación}{27}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objetivos}{27}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Tendencias y Estado del arte}{29}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Aprendizaje profundo en dispositivos móviles}{29}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Squeeze-Net (2016)}{30}{subsection.2.1.1}%

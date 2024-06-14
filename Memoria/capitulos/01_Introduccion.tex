@@ -1,5 +1,7 @@
 \chapter{Introducción}
 
+En este primer punto, describiremos la importancia del correcto diagnóstico del cáncer de piel, y de sus dificultades de detección. Analizaremos el objetivo de este TFG, así como los objetivos a cumplir y la planificación seguida en su desarrollo.
+
 \section{Motivación}
 
 El cáncer es una de las causas de muerte principales en el mundo. Su gran agresividad, así como su dificultad de diagnóstico, debido a su gran variedad de ubicaciones y manifestaciones, provoca que un alto porcentaje de casos no sean diagnosticados a tiempo correctamente. Tan solo en 2023, aproximadamente se registraron 20 millones de nuevos casos de cáncer a nivel mundial, y produciéndose algo menos de 10 millones de defunciones.\\
@@ -19,7 +21,7 @@ Aunque este cáncer puede ser identificado de forma más sencilla por su portado
  Mediante una nueva arquitectura, el propósito es conseguir un buen modelo, capaz de segmentar las manchas de interés en la piel que estén recogidas en una fotografía. Dicha fotografía será capturada con el telefóno movil del usuario, retirando así la necesidad de disponer de dispositivos especializados. Y posteriormente, clasificar dichas manchas para ofrecer al usuario final una respuesta sólida acerca del posible tipo de lesión de piel que sufre.\\
 
 \newpage
-\section{El cáncer de piel}
+\subsection{El cáncer de piel}
 
 Prosiguiendo con el cáncer de piel, su diagnóstico si dificulta, sobre todo, por su amplia variedad de formas, tamaños, texturas y manifestaciones. Aunque su visibilidad pueda parecer evidente, (ya que es observable a nivel macroscópico) puede ser confundido fácilmente con lesiones benignas. Normalmente, suele dividirse entre dos tipos diferentes:
 \begin{itemize}
@@ -45,9 +47,9 @@ Aunque en base a su descripción parezcan distinguibles, son fácilmente confudi
 
 El uso de aprendizaje profundo para este fin resulta interesante como forma de mejora del diagnóstico ante casos malignos y benignos de gran similitud, los cuales pueden confunir y dificultar la labor incluso a expertos dermatólogos.
 
-\section{Dificultades del diagnóstico}
+\subsection{Dificultades del diagnóstico}
 
-La justificación de la realización de este proyecto se basa, sobre todo, en la dificultad de conocer la naturaleza del tumor del paciente. Habitualmente, se suele extraer una muestra del tejido afectado para proceder a su análisis en laboratorio. A esta técnica se le denomina biopsia.\\
+Existe una gran dificultad de conocer la naturaleza del tumor del paciente. Habitualmente, se suele extraer una muestra del tejido afectado para proceder a su análisis en laboratorio. A esta técnica se le denomina biopsia.\\
 
 Es un proceso efectivo, que consiste en el estudio bajo microscopio de las células extraídas, y el patrón que constituye el tejido. Su proceso más complejo es la extracción, ya que si ésta no se realiza correctamente, ciertas células cancerígenas pueden no aparecer en la muestra y realizarse un diagnóstico erróneo. Además, debido a la falta de especialistas en la materia que puedan realizar las incisiones, personal médico no cualificado en esta materia suele realizar su extracción. Se estipula que en lesiones inflamatarias, el correcto estudio de la patología se da en el 77\% de los casos si la muestra es recogida por un dermátologo, y un 41\% si la realiza un ayudante \cite{LLAMASVELASCO201212}.
 
@@ -57,15 +59,26 @@ Aunque esta técnica suele ofrecer buenos resultados, debido a que la distinció
 
 También hay que tener en cuenta otros factores que pueden perturbar el diagnóstico tradicional, como lo es la correcta manipulación de la muestra extraída, y su coloración adecuada para mejorar el contraste del tejido y poder distinguir el patrón descrito por las células y su núcleo. Además, la herida dejada en la piel puede sufrir complicaciones como hemorragias o infecciones si no se tratan adecuadamente. Reducir por tanto este tipo de operaciones a las estrictamente necesarias gracias a un modelo de aprendizaje profundo es una opción atractiva.
 
-\section{Relevancia y objetivos del proyecto}
+\section{Justificación}
 
-Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos anteriores, podemos afirmar que el uso de un modelo de aprendizaje profundo en smartphones permite:
+Debido a la necesidad de facilitar el acceso al diagnóstico de forma orientativa, sin necesidad  de medios tecnológicos especializados, surge la necesidad de algún medio de diagnóstico gratuito capaz de acelerar los prediagnósticos, y reducir la tasa de mortalidad de la enfermedad. Encontramos, de esta forma, un área de conocimiento poco explorada: la creación de modelos de diagnóstico de enfermedades cancerosas ejecutable en dispositivos de baja potencia, como lo son los teléfonos móviles.
+
+Los smartphones, al tratarse de un dispositivo altamente extendidos en la sociedad, pueden servir como un medio clave a la hora de extender modelos de salud críticos como el de diagnóstico de enfermedades cancerosas. De esta forma, podríamos acortar los largos tiempos de espera, realizando un diagnóstico previo para declarar cuáles son los casos que requieren mayor prioridad médica.
+
+Sin embargo, no existen modelos de este ámbito lo suficientemente ligeros como para ser portados de forma local dentro del dispositivos, que no necesiten de conexión a Internet, y que velen por la seguridad y privacidad de los datos. Esto convierte el problema en una interesante temática de investigación, la cual será tratada en este documento.
+
+\section{Objetivos}
+
+Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos anteriores, y las carencias del estado del arte actual, podemos afirmar que el uso de un modelo de aprendizaje profundo en dispositivos de potencia reducida permite:
 \begin{itemize}
-	\item Minimizar los costes al hacer uso de un dispositivo esencial en nuestra vida diaria como los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
+	\item Minimizar los costes, al hacer uso de un dispositivo esencial en nuestra vida diaria como por ejemplo, los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
 	\item Facilitar la toma de decisiones de los expertos dermatólogos en casos complicados, a modo de sistema de ayuda a la decisión.
-	\item Realizar diagnósticos preliminares por parte del paciente en manchas o lesiones de procedencia desconocida para el mismo, aunque sigue siendo recomendable pedir cita a un experto.
 	\item Defender la utilidad de los modelos de aprendizaje profundo en el estudio y evaluación de casos en el ámbito médico, siendo en este caso la identificación de la patalogía a nivel macroscópico, sin necesidad de realizar una biopsia con el posible riesgo que esto conlleva.
-	\item Profundizar y mejorar el rendimiento de las redes convolucionales en dispositivos móviles, haciendo un uso responsable y optimizado de los recursos disponibles, teniendo en cuenta los modelos presentes en el estado del arte actual.
+	\item Crear una base de datos robusta y completa capaz de representar adecuadamente la población real de la enfermedad, partiendo, para ello, de la construcción de un conjunto de datos mediante una técnica no explotada en el estado del arte.
+	\item Profundizar en el método de de reducción y cuantización de modelos de aprendizaje profundo complejos, para su implementación eficiente en arquitecturas de bajo consumo.
+	\item Realizar, mediante un enfoque novedoso, la tarea de clasificación de enfermedades con dos niveles de modelos especializados: uso de clasificación binaria para prediagnóstico de la enfermedad, y especificación de la misma mediante modelos especializados separados para enfermedades benignas y malignas.
+	\item Uso de los principales frameworks de trabajo para la construcción de un modelo eficiente en su conjunto.
+	\item Estudiar la calidad de un modelo cuantizado frente a los resultados otorgados por un modelo estándar de escritorio.
 \end{itemize}
 
 En este documento, estudiaremos el estado del arte actual, y analizaremos e implementaremos una aplicación para dispositivos móviles que sea capaz de realizar la segmentación de la mancha cutánea, y su posterior clasificación dentro de una lista de patologías posibles. Se busca informar al usuario del riesgo de su lesión, y de su posible diagnóstico final, el cual debe ser verificado por el experto. De esta forma, el software final puede contribuir a acelerar los diagnósticos de esta enfermedad,  y favorecer la esperanza de vida de los pacientes en caso de que su lesión sea cancerosa.
