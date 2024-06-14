@@ -335,12 +335,12 @@ Si bien Resnet ofrece un valor cercano, el tiempo de inferencia ofrecido por est
 	\centering
 	\label {fig:tam}
 	\includegraphics[scale = 0.6]{imagenes/tamestimado.png}
-	\caption{Espacio ()en MB) requerido por cada modelo}
+	\caption{Espacio (en MB) requerido por cada modelo}
 \end{figure}
 
 Por tanto, realizaremos el proceso de cuantizado con Resnet, ya que se tratará de un modelo más versátil para la clasificación multiclase.
 
-\section{Cuantización}
+\subsection{Cuantización}
 
 Pytorch contiene un proceso de cuantización directo a partir de los modelos entrenados con FastAI. Proporciona una interfaz de métodos ya preconfigurada que permite exportar el modelo de forma directa a Android, o bien, haciendo uso de cuantización.
 
@@ -355,7 +355,161 @@ La optimización aplicada al realizar cuantización se centra, sobre todo, en la
 	
 En total, la web estima una ganancia del 60\% en tiempo de inferencia de forma teórica. Examinaremos este resultado de forma práctica empleando el modelo elegido, y comparando el funcionamiento de versión optimizada con la original para verificarlo.
 
-\subsection{Creación del modelo cuantizado}
-\subsection{Evaluación de modelo original y cuantizado}
+\subsubsection{Creación del modelo cuantizado}
+\subsubsection{Evaluación de modelo original y cuantizado}
 	
 \end{itemize}
+
+
+\section {Clasificación multiclase}
+
+Una vez distinguida si la enfermedad de entrada es benigna o maligna, debemos de indicar de qué tipo de enfermedad se trata. Para ello, crearemos dos modelos especializados: uno en imágenes benignas, y otro especializado en malignas. De esta forma, favorecemos la especialización de modelos, y facilitamos el proceso de entrenamiento al mostrar imágenes dentro del intervalo de tamaño de cada clase; es decir, como la clase benigna es mayoritaria, si evaluamos sus subtipos frente a los malignos, los benignos seguirán teniendo sesgo a favor. Al separarlo en dos, esto podrá evitarse, con el único inconveniente de necesitar un extra de espacio en disco.
+
+El proceso a seguir será exactamente el mismo que con clasificación binaria, pero con ajustes en la cabecera de la red para dar salida a tantas clases de salida como tipos de entrada existen.
+
+\subsection{Modelo de enfermedades malignas}
+
+Comenzaremos por las imágenes malignas. En este caso, al estar utilizando finalmente únicamente el conjunto de entrenamiento de ISIC, disponemos de 4 clases, con un desbalanceo considerable. La clase menos representada se trata de melanoma metastasis. Debido a que su número es muy inferior al del resto de clases,  representando solo el 0.22 \% del total de datos malignos, por riesgo a una incorrecta clasificación de esta enfermedad,  he decidido fusionar dicha clase con melanoma (figura \ref{fig:malas}). Aunque aumentar la clase mayoritaria añadiendo este conjunto de imágenes puede parecer negativo, al tratarse de la misma enfermedad en una fase más avanzada, conseguimos aumentar la variabilidad de las imágenes.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.6]{imagenes/countmalignant.png}
+	\caption{Conteo de clases malignas antes de agrupar}
+	\label {fig:malas}
+\end{figure}
+
+\subsubsection{Entrenamiento}
+
+Para el entrenamiento del modelo, hare uso de la misma configuración que la clasificación binaria: imágenes 512 x 512, tamaño de batch de 32, pero con la diferencia de no emplear oversampling, para hacer el modelo lo más fiel posible al conjunto de imágenes. Además, tras la fusión de la clase minoritaria, el desequilibrio entre clases es razonable, siendo de:
+
+\begin{itemize}
+	\item Melanoma: 53.95\%
+	\item Células basales: 36\%
+	\item Células escamosas: 10.5\%
+ \end{itemize}
+ 
+ Tras el entrenamiento, se han obtenido las métricas referenciadas en la tabla \ref{tab:malignometrics}. Se puede observar como los resultados son positivos, ya que se ha conseguido alcanzar un valor de accuracy cercano al 84\% de forma balanceada.  
+ 
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& Precision & Recall & F1-score & Support \\
+		\hline
+		Basal cell & 0.81 & 0.85 & 0.83 & 908 \\
+		Melanoma & 0.88 & 0.92 & 0.90 & 1311 \\
+		Squamous cell & 0.66 & 0.38 & 0.48 & 240 \\
+		\hline
+		Accuracy &  &  & 0.84 & 19464 \\
+		Macro avg & 0.79& 0.72& 0.74&2459\\
+		Weighted avg&0.84&0.84&0.84&2459\\
+		\hline
+	\end{tabular}
+	\caption{Informe de clasificación para validación maligna}
+	\label{tab:malignometrics}
+\end{table}
+
+La precisión del modelo también es considerablemente buena, ya que alcanza el 74\%. Son resultados satisfactorios tratándose de un conjunto de datos desbalanceado, y con las limitaciones de tamaño del modelo requeridas.
+
+\subsubsection{Cuantización}
+
+
+\subsection{Modelo de enfermedades benignas}
+
+Tras evaluar los resultados obtenidos en clasificación maligna, procedemos al caso dual: las enfermedades benignas, o no cancerosas. En este caso, disponemos de un conjunto de datos mucho más amplio, englobando 17 clases distintas. En este caso, el desbalanceo que se produce es un caso límite, en cual la clase mayoritaria, el lunar común, engloba el 81\% del total. Se probarán dos alternativas distintas: la aplicación de la métrica Focal Loss, y la utilización de imágenes complementarias provenientes de los datasets distintos al ISIC.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.6]{imagenes/countbenign.png}
+	\caption{Conteo de clases malignas antes de agrupar}
+	\label {fig:buenas}
+\end{figure}
+
+\subsubsection{Entrenamiento}
+
+Conocemos que el desequilibrio del conjunto de entrenamiento es considerable. Pero, antes de probar otras soluciones más sofisticadas, es razonable considerar aplicar la misma técnica que la aplicada en clasificación binaria: el uso de la una métrica que tolere adecuadamente el desbalanceo, como FocalLoss.\\
+
+ 
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& Precision & Recall & F1-score & Support \\
+		\hline
+		       \textbf{NV} & 0.92 & 0.98 & 0.95 & 5864 \\ \hline
+		       \textbf{SK} & 0.50 & 0.35 & 0.41 & 345 \\ \hline
+		       \textbf{AK} & 0.53 & 0.58 & 0.56 & 265 \\ \hline
+		       \textbf{PBK} & 0.71 & 0.74 & 0.72 & 222 \\ \hline
+		       \textbf{SL} & 0.28 & 0.12 & 0.17 & 99 \\ \hline
+		       \textbf{DER} & 0.75 & 0.18 & 0.29 & 83 \\ \hline
+		       \textbf{VL} & 0.68 & 0.55 & 0.61 & 71 \\ \hline
+		       \textbf{LK} & 0.67 & 0.07 & 0.12 & 61 \\ \hline
+		       \textbf{ACR} & 0.46 & 0.24 & 0.32 & 54 \\ \hline
+		       \textbf{LN} & 0.16 & 0.11 & 0.13 & 44 \\ \hline
+		       \textbf{AMP} & 0.50 & 0.07 & 0.12 & 29 \\ \hline
+		       \textbf{AIMP} & 0.00 & 0.00 & 0.00 & 24 \\ \hline
+		       \textbf{WART} & 0.00 & 0.00 & 0.00 & 23 \\ \hline
+		       \textbf{ANG} & 0.29 & 0.33 & 0.31 & 6 \\ \hline
+		       \textbf{LS} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		       \textbf{NEU} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		       \textbf{SCAR} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		\hline
+		Accuracy &  &  & 0.87 & 7205 \\
+		Macro avg & 0.38& 0.25& 0.28&7205\\
+		Weighted avg&0.84&0.87&0.85&7205\\
+		\hline
+	\end{tabular}
+	\caption{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}
+	\label{tab:benignomalmetrics}
+\end{table}
+
+El resultado obtenido deja bastante que desear  (\ref{tab:benignomalmetrics}), debido a que la clase de lunares comunes es la única que ha recibido resultados excelentes; el cuanto a precisión, sin tener en cuenta al lunar común,  los mejores resultados provienen de los dermatofibromas, queratosis benigna pigmenteada,  las lesiones vasculares, y la queratosis liquenoide. Todas ellas, obtienen resultados razonables, aunque a partir de estas clases, los resultados empeoran considerable.
+
+Se ve mayormente reflejado en las tres últimas clases: la cicatrices, los neurofibromas y los lentigo simples. Estas clases, al encontrarse en absoluta minoría, no aportan suficientes caracteristicas al modelo para aprender los filtros adecuados, y por tanto, quedan descartadas por el mismo. Esto nos lleva a tomar la decisión de descartar estas clases, o bien, tratar de equilibrarlas complementando con el resto de datasets.
+
+No nos debemos dejar llevar por el valor del accuracy: este es del 87\%, debido a que prácticamente la completitud de la tasa de aciertos se ve aportada por la clase mayoritaria. Si atendemos a su valor medio, es del únicamente 28\%, que se trata de una cifra más representativa.\\
+
+Antes de probar la eliminación de clases minoritarias, trataremos de dotar al modelo de penalizaciones para las clases menos reprentadas; es decir, de forma explícita, estableceremos una serie de pesos que otorguen más importancia a clasificar ejemplares de clases minoritarias sobre las mayoritarias, calculando para ello un peso inversamente proporcional al recuento de ejemplares. Basta con aplicar la siguiente operación, teniendo en cuenta el valor c como el número de elementos de la clase C:
+
+$$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
+
+De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. Si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics.}
+
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& Precision & Recall & F1-score & Support \\
+		\hline
+	\textbf{NV} & 0.99 & 0.77 & 0.86 & 5864 \\ \hline
+	\textbf{DER} & 0.33 & 0.60 & 0.42 & 83 \\ \hline
+	\textbf{PBK} & 0.53 & 0.59 & 0.56 & 222 \\ \hline
+	\textbf{VL} & 0.37 & 0.88 & 0.52 & 71 \\ \hline
+	\textbf{LK} & 0.18 & 0.46 & 0.26 & 61 \\ \hline
+	\textbf{AK} & 0.31 & 0.63 & 0.41 & 265 \\ \hline
+	\textbf{SK} & 0.58 & 0.83 & 0.69 & 345 \\ \hline
+	\textbf{AMP} & 0.20 & 0.39 & 0.26 & 29 \\ \hline
+	\textbf{ACR} & 0.23 & 0.67 & 0.34 & 54 \\ \hline
+	\textbf{ANG} & 0.12 & 0.43 & 0.19 & 6 \\ \hline
+	\textbf{SL} & 0.23 & 0.48 & 0.31 & 99 \\ \hline
+	\textbf{LN} & 0.01 & 0.04 & 0.01 & 44 \\ \hline
+	\textbf{AIMP} & 0.40 & 0.26 & 0.32 & 24 \\ \hline
+	\textbf{WART} & 0.18 & 0.67 & 0.29 & 23 \\ \hline
+	\textbf{LS} & 0.06 & 0.20 & 0.09 & 5 \\ \hline
+	\textbf{NEU} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+	\textbf{SCAR} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		\hline
+		Accuracy &  &  & 0.74 & 7205 \\
+		Macro avg & 0.28& 0.46& 0.33&7205\\
+		Weighted avg&0.87&0.74&0.78&7205\\
+		\hline
+	\end{tabular}
+	\caption{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}
+	\label{tab:benignomalmejormetrics}
+\end{table}
+
+Los resultados han mejorado, escalando hasta el 46\% de accuracy balanceado. Sin embargo, estos siguen siendo pobres, y las clases minoritarias siguen siendo un problema. Por tanto, las 3 clases de menor representación sería oportuno eliminarlas, debido a la imposibilidad de unir estas enfermedades a otras clases existenetes. En el caso de los lentigo, que se encuentran divididos en 3 clases, podemos unirlos en un una única clase para mejorar los resultados.
+
+\subsubsection{Cuantización}
+

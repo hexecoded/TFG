@@ -68,5 +68,14 @@
 \contentsline {subsubsection}{\nonumberline Efficient Net}{106}{subsubsection*.35}%
 \contentsline {subsubsection}{\nonumberline Mobile Net}{108}{subsubsection*.37}%
 \contentsline {subsection}{\numberline {5.1.4}Conclusión: modelo seleccionado}{109}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Cuanización}{111}{section.5.2}%
+\contentsline {subsection}{\numberline {5.1.5}Cuantización}{111}{subsection.5.1.5}%
+\contentsline {subsubsection}{\nonumberline Creación del modelo cuantizado}{111}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Evaluación de modelo original y cuantizado}{111}{subsubsection*.41}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{111}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{112}{subsection.5.2.1}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{113}{subsubsection*.43}%
+\contentsline {subsubsection}{\nonumberline Cuantización}{113}{subsubsection*.45}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{113}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Cuantización}{116}{subsubsection*.49}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
