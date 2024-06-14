@@ -1,0 +1,23 @@
+\chapter{Cuantización}
+
+\subsection{Conceptos previos}
+
+\subsection{Optimizaciones}
+
+Pytorch contiene un proceso de cuantización directo a partir de los modelos entrenados con FastAI. Proporciona una interfaz de métodos ya preconfigurada que permite exportar el modelo de forma directa a Android, o bien, haciendo uso de cuantización.
+
+La optimización aplicada al realizar cuantización se centra, sobre todo, en la reducción de la precisión numérica del modelo, pero cubre los siguientes aspectos:
+
+\begin{itemize}
+	\item Fusión de las capa de convolución y normalización de batch: realiza una integración de los valores de normalización dentro de la capa convolutiva, ya que no será necesario reajustar esos valores para inferencia-
+	\item Inserción y plegado de operaciones: utiliza la librería XNNPack, que se trata de un sistema de operaciones en coma flotante especialmente optimizado para ARM, que permite variar la precisión de los valores flotantes según el modelo. Fusiona las operaciones lineales y de convolución, de forma que se realicen en un menor tiempo.
+	\item Fusión de la función ReLu con el conjunto de operaciones empaquetado creado con XNNPack en el paso anterior.
+	\item Eliminación del dropout, ya que en tiempo de inferencia, se busca el mejor resultado si necesidad de reentreno.
+	\item Optimización del grafo interno del modelo correspondiente a la convolución, para hacer que formen parte de un solo bloque raiz y mejore el tiempo de inferencia.
+	
+	En total, la web estima una ganancia del 60\% en tiempo de inferencia de forma teórica. Examinaremos este resultado de forma práctica empleando el modelo elegido, y comparando el funcionamiento de versión optimizada con la original para verificarlo.
+	
+\end{itemize}
+
+\subsubsection{Creación del modelo cuantizado}
+\subsubsection{Evaluación de modelo original y cuantizado}

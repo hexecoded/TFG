@@ -71,7 +71,6 @@ Sin embargo, no existen modelos de este ámbito lo suficientemente ligeros como 
 
 Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos anteriores, y las carencias del estado del arte actual, podemos afirmar que el uso de un modelo de aprendizaje profundo en dispositivos de potencia reducida permite:
 \begin{itemize}
-	\item Minimizar los costes, al hacer uso de un dispositivo esencial en nuestra vida diaria como por ejemplo, los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
 	\item Facilitar la toma de decisiones de los expertos dermatólogos en casos complicados, a modo de sistema de ayuda a la decisión.
 	\item Defender la utilidad de los modelos de aprendizaje profundo en el estudio y evaluación de casos en el ámbito médico, siendo en este caso la identificación de la patalogía a nivel macroscópico, sin necesidad de realizar una biopsia con el posible riesgo que esto conlleva.
 	\item Crear una base de datos robusta y completa capaz de representar adecuadamente la población real de la enfermedad, partiendo, para ello, de la construcción de un conjunto de datos mediante una técnica no explotada en el estado del arte.
@@ -79,6 +78,8 @@ Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos
 	\item Realizar, mediante un enfoque novedoso, la tarea de clasificación de enfermedades con dos niveles de modelos especializados: uso de clasificación binaria para prediagnóstico de la enfermedad, y especificación de la misma mediante modelos especializados separados para enfermedades benignas y malignas.
 	\item Uso de los principales frameworks de trabajo para la construcción de un modelo eficiente en su conjunto.
 	\item Estudiar la calidad de un modelo cuantizado frente a los resultados otorgados por un modelo estándar de escritorio.
+	\item Minimizar los costes, al hacer uso de un dispositivo esencial en nuestra vida diaria como por ejemplo, los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
+	\item Crear una aplicación para dispositivos Android, como muestra y resultado de las capacidades de los modelos cuantizados.
 \end{itemize}
 
 En este documento, estudiaremos el estado del arte actual, y analizaremos e implementaremos una aplicación para dispositivos móviles que sea capaz de realizar la segmentación de la mancha cutánea, y su posterior clasificación dentro de una lista de patologías posibles. Se busca informar al usuario del riesgo de su lesión, y de su posible diagnóstico final, el cual debe ser verificado por el experto. De esta forma, el software final puede contribuir a acelerar los diagnósticos de esta enfermedad,  y favorecer la esperanza de vida de los pacientes en caso de que su lesión sea cancerosa.
