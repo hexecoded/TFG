@@ -367,13 +367,25 @@ Por tanto, realizaremos el proceso de cuantizado con Resnet, ya que dará lugar 
 
 \section {Clasificación multiclase}
 
-Una vez distinguida si la enfermedad de entrada es benigna o maligna, debemos de indicar de qué tipo de enfermedad se trata. Para ello, crearemos dos modelos especializados: uno en imágenes benignas, y otro especializado en malignas. De esta forma, favorecemos la especialización de modelos, y facilitamos el proceso de entrenamiento al mostrar imágenes dentro del intervalo de tamaño de cada clase; es decir, como la clase benigna es mayoritaria, si evaluamos sus subtipos frente a los malignos, los benignos seguirán teniendo sesgo a favor. Al separarlo en dos, esto podrá evitarse, con el único inconveniente de necesitar un extra de espacio en disco.
+Una vez distinguida si la enfermedad de entrada es benigna o maligna, debemos de indicar de qué tipo de enfermedad se trata.  Como ya enunciamos en los objetivos de este proyecto, el proposito  del mismo consiste en crear una arquitectura de dos modelos, donde primero, se establece si la enfermedad es benigna o maligna, y posteriormente, se clasifica la posible enfermedad de la que se trata. De esta forma, podemos modularizar el espacio, y entrenar ambos modelos por separado de forma paralela si fuera necesario.
 
-El proceso a seguir será exactamente el mismo que con clasificación binaria, pero con ajustes en la cabecera de la red para dar salida a tantas clases de salida como tipos de entrada existen.
+De esta fase de entrenamiento, obtendremos dos modelos distintos, compeltamente aislados entre sí: uno de ellos, dedicado a las enfermedades malignas, y otro, únicamente a las benignas. El proceso a seguir será exactamente el mismo que con clasificación binaria: creación del dataset, entrenamiento, y evaluación del conjunto de validación.
+
+En este caso, no se aplicará oversampling para mostrar las clases en su correspondiente proporción real.  Además, debido a los grandes desequilibrios existentes entre clase, sería imposible igualar en número todas las clases a clasificar, y ocuparía un espacio en disco del cual no se dispone para la realización del proyecto.
 
 \subsection{Modelo de enfermedades malignas}
 
-Comenzaremos por las imágenes malignas. En este caso, al estar utilizando finalmente únicamente el conjunto de entrenamiento de ISIC, disponemos de 4 clases, con un desbalanceo considerable. La clase menos representada se trata de melanoma metastasis. Debido a que su número es muy inferior al del resto de clases,  representando solo el 0.22 \% del total de datos malignos, por riesgo a una incorrecta clasificación de esta enfermedad,  he decidido fusionar dicha clase con melanoma (figura \ref{fig:malas}). Aunque aumentar la clase mayoritaria añadiendo este conjunto de imágenes puede parecer negativo, al tratarse de la misma enfermedad en una fase más avanzada, conseguimos aumentar la variabilidad de las imágenes.
+Comenzaremos por las imágenes malignas. En este caso, al estar utilizando finalmente únicamente el conjunto de entrenamiento de ISIC, disponemos de 4 clases diferenciadas:
+
+\begin{itemize}
+	\item Basal cell carcinoma
+	\item Melanoma
+	\item Melanoma metastasis
+	\item Squamous cell carcinoma
+	
+\end{itemize}
+
+Dichas clases poseen un desbalanceo considerable. La clase menos representada se trata de los melanomas metastásicos, que representa solo el 0.22 \% del total de datos malignos. Como una clase con dicha proporción no se puede clasificar adecuadamente, aprovecharemos la existencia de la clase melanoma para introducir sus ejemplos como parte de esta clase, dando lugar a una nueva distribución (figura \ref{fig:malas}). Esta fusión es posible debido a que ambas clases se basan en la misma enfermedad, pero siendo la metastasis una fase más avanzada y con baja tasa de supervivencia por su diseminación a todos los órganos del cuerpo.
 
 \begin{figure}[H]
 	\centering
@@ -382,9 +394,12 @@ Comenzaremos por las imágenes malignas. En este caso, al estar utilizando final
 	\label {fig:malas}
 \end{figure}
 
+
+Al realizar esta acción, estamos aumentando también el número de ejemplares de la clase mayoritaria, pero se trata de una situación preferible sobre la exitencia de una clase minoritaria, ya que ésta penalizará considerablemente las métricas al ser todas ellas métricas equlibradas según la proproción de imágenes de la cada clase.
+
 \subsubsection{Entrenamiento}
 
-Para el entrenamiento del modelo, hare uso de la misma configuración que la clasificación binaria: imágenes 512 x 512, tamaño de batch de 32, pero con la diferencia de no emplear oversampling, para hacer el modelo lo más fiel posible al conjunto de imágenes. Además, tras la fusión de la clase minoritaria, el desequilibrio entre clases es razonable, siendo de:
+Para el entrenamiento del modelo, haré uso de la misma configuración que la clasificación binaria: imágenes 512 x 512, tamaño de batch de 32, pero con la diferencia de no emplear oversampling, para hacer el modelo lo más fiel posible al conjunto de imágenes. Además, tras la fusión de la clase minoritaria, el desequilibrio entre clases es razonable, siendo de:
 
 \begin{itemize}
 	\item Melanoma: 53.95\%

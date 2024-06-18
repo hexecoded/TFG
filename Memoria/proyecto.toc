@@ -34,48 +34,48 @@
 \contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{64}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{65}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}ASAN}{68}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{71}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}PH2}{71}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Severance}{72}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{75}{subsection.3.1.6}%
-\contentsline {section}{\numberline {3.2}Particionado de los datos}{76}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{76}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{79}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{81}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{81}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{83}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{87}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Conceptos previos}{87}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{89}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}ResNet 50}{89}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{90}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{91}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Función de pérdida}{92}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Cross entropy}{92}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Focal Loss}{92}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{93}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Entrenamiento de modelos completos sobre la base de datos}{95}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Clasificación binaria}{96}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{96}{subsection.5.1.1}%
-\contentsline {subsubsection}{\nonumberline Técnicas descartadas}{97}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{98}{subsubsection*.25}%
-\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{99}{subsection.5.1.2}%
-\contentsline {subsubsection}{\nonumberline Creación del datablock}{99}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{101}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{104}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {5.1.3}Resultados}{105}{subsection.5.1.3}%
-\contentsline {subsubsection}{\nonumberline ResNet 50}{106}{subsubsection*.33}%
-\contentsline {subsubsection}{\nonumberline Efficient Net}{108}{subsubsection*.35}%
-\contentsline {subsubsection}{\nonumberline Mobile Net}{109}{subsubsection*.37}%
-\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{111}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Clasificación multiclase}{113}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{113}{subsection.5.2.1}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.39}%
-\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{115}{subsection.5.2.2}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{116}{subsubsection*.41}%
-\contentsline {chapter}{\numberline {6}Cuantización}{119}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{119}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{120}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{121}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{121}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{70}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}PH2}{70}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Severance}{71}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{74}{subsection.3.1.6}%
+\contentsline {section}{\numberline {3.2}Particionado de los datos}{75}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{75}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{78}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{80}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{80}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{82}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{85}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conceptos previos}{85}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{87}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}ResNet 50}{87}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{88}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{89}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Función de pérdida}{90}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cross entropy}{90}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Focal Loss}{90}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{91}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Entrenamiento de modelos completos sobre la base de datos}{93}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Clasificación binaria}{94}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{94}{subsection.5.1.1}%
+\contentsline {subsubsection}{\nonumberline Técnicas descartadas}{95}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{96}{subsubsection*.25}%
+\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{97}{subsection.5.1.2}%
+\contentsline {subsubsection}{\nonumberline Creación del datablock}{97}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{99}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{102}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {5.1.3}Resultados}{103}{subsection.5.1.3}%
+\contentsline {subsubsection}{\nonumberline ResNet 50}{104}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Efficient Net}{106}{subsubsection*.35}%
+\contentsline {subsubsection}{\nonumberline Mobile Net}{107}{subsubsection*.37}%
+\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{109}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{111}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{111}{subsection.5.2.1}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{112}{subsubsection*.39}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{113}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.41}%
+\contentsline {chapter}{\numberline {6}Cuantización}{117}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{117}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{118}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{119}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{119}{subsection.6.3.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -38,7 +38,7 @@ De esta forma, se obtiene un fichero .csv donde encontrar los valores necesarios
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 0.55]{imagenes/formatocsv.png}
+	\includegraphics[scale = 0.45]{imagenes/formatocsv.png}
 	\caption{Formato del fichero csv normalizado}
 	\label {formatocsv}
 \end{figure}
@@ -50,7 +50,7 @@ Una vez establecido el formato común, podemos pasar al análisis y adaptación 
 El dataset ISIC es el mayoritario de la lista, ya que posee casi 60.000 imágenes de alta resolución, del total de casi 108.000 imágenes de las que disponemos. Para su descarga, se han empleado la galería de la web oficial \cite{isicarchive}, donde podemos filtrar cómodamente las enfermedades que queremos descargar. Como criterio de descarga, se han tenido en cuenta únicamente aquellas fotografías correctamente diagnosticadas, ya que existe un total de 27896 imágenesno etiquetadas dentro del repositiorio, las cuales descartaremos. El problema se centrará en resolver un problema de aprendizaje supervisado, por lo que las imágenes no etiquetadas suponen una complejidad adicional y un ruido para el modelo.
 
 Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre todo por cuestiones numéricas; existen nuevas clases, con escasas cantidades de datos, las cuales poseen menos de 10 imágenes, cantidad insuficiente a la hora de clasificar frente a clases como lunares comunes, que tienen en total 32697 ejemplares. De esta forma, nos queda el siguiente conjunto de clases:
-\begin{itemize}
+\begin{multiitem}
 	\item Nevus
 	\item Seborreic keratosis            
 	 \item Actinic keratosis            
@@ -58,7 +58,7 @@ Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre tod
 	\item Solar lentigo                           
 	\item Dermatofibroma                          
 	\item Vascular lesion                         
-	\item LIchenoid keratosis                     
+	\item Lichenoid keratosis                     
 	\item Acrochordon                             
 	\item Lentigo NOS                             
 	\item Atypical melanocytic proliferation       
@@ -68,7 +68,7 @@ Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre tod
 	\item Lentigo simplex                          
 	\item 	Neurofibroma                             
 	 \item 	Scar 
-\end{itemize}
+\end{multiitem}
 
 Estas clases se almacenan en ficheros zip cada una, así que tras ser descargadas, deben ser extraídas y añadidas al fichero csv que definimos anteriormente. Al tratarase del primer subconjunto que se añadirá, será la parte del código encargada de crear el fichero y establecer las columnas mencionadas. Además, se realizará la transformación de las etiquetas, dispuestas en el formato de la enumeración anterior, a notación snake case. Numerando el proceso, se ha creado un script de python que realiza las siguientes tareas:
 

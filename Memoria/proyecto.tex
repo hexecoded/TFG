@@ -22,6 +22,7 @@
 \usepackage[stable]{footmisc}
 \usepackage{index}
 \usepackage{subfigure}
+\usepackage{multicol}
 
 \newcolumntype{.}{D{.}{\esperiod}{-1}}
 \makeatletter
@@ -78,6 +79,20 @@ Telecomunicación\xspace}
 		pdfcreator={pdfLaTeX}%
 	}
 
+
+\newlist{multienum}{enumerate}{1}
+\setlist[multienum]{
+	label=\alph*),
+	before=\begin{multicols}{2},
+		after=\end{multicols}
+}
+
+\newlist{multiitem}{itemize}{1}
+\setlist[multiitem]{
+	label=\textbullet,
+	before=\begin{multicols}{2},
+		after=\end{multicols}
+}
 
 % Normal font: 			URW Palladio typeface. 
 % Sans-serif font: 	Gill Sans (paquete cabin)
