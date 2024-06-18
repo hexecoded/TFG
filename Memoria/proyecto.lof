@@ -32,6 +32,7 @@
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{110}{figure.5.6}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Distribución de las clases malignas}}{112}{figure.5.7}%
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Curvas de aprendizaje para clases malignas}}{113}{figure.5.8}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases malignas antes de agrupar}}{115}{figure.5.9}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases benignas antes de agrupar}}{116}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Conteo de clases benignas tras la agrupación}}{118}{figure.5.10}%
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

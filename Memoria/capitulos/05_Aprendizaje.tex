@@ -434,8 +434,8 @@ Aunque se traten de resultados negativos para la clase minoritaria, el conjunto 
 
 l\begin{figure}[H]
 	\centering
-	\subfigure[Fase de congelado]{\includegraphics[width=0.45\textwidth]{imagenes/malignant_freeze.png}} 
-	\subfigure[Descongelado]{\includegraphics[width=0.45\textwidth]{imagenes/malignant_unfreeze.png}} 
+	\subfigure[Fase de congelado]{\includegraphics[width=0.475\textwidth]{imagenes/malignant_freeze.png}} 
+	\subfigure[Descongelado]{\includegraphics[width=0.475\textwidth]{imagenes/malignant_unfreeze.png}} 
 	\caption{Curvas de aprendizaje para clases malignas}
 	\label{fig:curvasmalign}
 \end{figure}
@@ -476,12 +476,37 @@ Por tanto, podemos concluir de manera firme y justificada que el modelo entrenad
 
 \subsection{Modelo de enfermedades benignas}
 
-Tras evaluar los resultados obtenidos en clasificación maligna, procedemos al caso dual: las enfermedades benignas, o no cancerosas. En este caso, disponemos de un conjunto de datos mucho más amplio, englobando 17 clases distintas. En este caso, el desbalanceo que se produce es un caso límite, en cual la clase mayoritaria, el lunar común, engloba el 81\% del total. Se probarán dos alternativas distintas: la aplicación de la métrica Focal Loss, y la utilización de imágenes complementarias provenientes de los datasets distintos al ISIC.
+Una vez entrenado el modelo correspondiente a las clases malignas, es el turno de construir el modelo de las clases benignas. Recordando el estudio realizado en el problema de clasificación binario, las clases benignas eran el subconjunto de datos dominante en el dataset. Esto se debe, principalmente, a que las lesiones cutáneas son frecuentemente lesiones no cancerosas. Disponemos de un conjunto de datos mucho más amplio, englobando 17 clases distintas.  Como es de esperar, la condición más frecuente de este conjunto son los lunares comunes, denominados nevus en dermatología.
+
+El desbalanceo que se produce es un caso extremo, en cual la clase mayoritaria, el lunar común, engloba el 81\% del total, y el 19\% restante se reparte entre las 16 clases que restan (figura  \ref{fig:buenas}). Esto convierte al subproblema en un reto considerable de resolver con un modelo del tamaño de Resnet50, por lo que se tratará de hallar los mejores resultados pero teniendo en cuenta el sacrificio que supone emplear modelos más ligeros que sean cuantizables y ejecutables en Android.
+
+Dado el desbalanceo, se probarán dos alternativas distintas: la aplicación de la métrica Focal Loss sin ajuste de pesos, y la creación de un modelo basado en pesos inversamente proporcionales al número de ejemplares en dicha clase junto a CrossEntropy.
+
+Para simplificar la notación empleada en el etiquetado de las enfermedades, se usarán las siguientes abreviaturas en las tablas de resultados:
+\begin{multiitem}
+	\item Nevus: NV
+	\item Seborreic keratosis: SEK 
+	\item Actinic keratosis: AK            
+	\item Pigmented benign keratosis: PBK 
+	\item Solar lentigo: SL
+	\item Dermatofibroma: DER 
+	\item Vascular lesion: VL                        
+	\item Lichenoid keratosis: LK
+	\item Acrochordon: ACR
+	\item Lentigo NOS: LN
+	\item Atypical melanocytic proliferation: AMP
+	\item Aimp                                     
+	\item 	Wart                                     
+	\item Angioma: ANG                               
+	\item Lentigo simplex: LS
+	\item 	Neurofibroma: NF
+	\item 	Scar 
+\end{multiitem}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 0.5]{imagenes/countbenign.png}
-	\caption{Conteo de clases malignas antes de agrupar}
+	\includegraphics[scale = 0.7]{imagenes/countbenign.png}
+	\caption{Conteo de clases benignas antes de agrupar}
 	\label {fig:buenas}
 \end{figure}
 
@@ -489,51 +514,61 @@ Tras evaluar los resultados obtenidos en clasificación maligna, procedemos al c
 
 Conocemos que el desequilibrio del conjunto de entrenamiento es considerable. Pero, antes de probar otras soluciones más sofisticadas, es razonable considerar aplicar la misma técnica que la aplicada en clasificación binaria: el uso de la una métrica que tolere adecuadamente el desbalanceo, como FocalLoss.\\
 
- 
+Aplicando una configuración similar a la usada para el entrenamiento de las clases malignas, el resultado obtenido no esperanzador, y deja bastante que desear  (tabla \ref{tab:benignomalmetrics}). La clase de lunares comunes es la única que cuenta con métricas excelentes, ya que el resto de clases han sido clasificadas con valores de métrica bastante bajos. Si observamos los resultados,  los siguientes mejores casos provienen de los dermatofibromas, la queratosis benigna pigmenteada,  las lesiones vasculares, y la queratosis liquenoide. Estas obtienen unos valores de precision de 0.75, 0.71,0.68,0.67, respectivamente. Pero en el caso de recall, los dermatofibromas son ampliamente castigados, por lo que aunque la alta precisión nos aporta que el modelo es capaz de rechazar las clases que no lo son de manera aceptable, el recall bajo nos muestra que también los casos positivos están siendo identificados como negativos en la mayoría de casos.
+
 \begin{table}[!ht]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
 		& Precision & Recall & F1-score & Support \\
 		\hline
-		       \textbf{NV} & 0.92 & 0.98 & 0.95 & 5864 \\ \hline
-		       \textbf{SK} & 0.50 & 0.35 & 0.41 & 345 \\ \hline
-		       \textbf{AK} & 0.53 & 0.58 & 0.56 & 265 \\ \hline
-		       \textbf{PBK} & 0.71 & 0.74 & 0.72 & 222 \\ \hline
-		       \textbf{SL} & 0.28 & 0.12 & 0.17 & 99 \\ \hline
-		       \textbf{DER} & 0.75 & 0.18 & 0.29 & 83 \\ \hline
-		       \textbf{VL} & 0.68 & 0.55 & 0.61 & 71 \\ \hline
-		       \textbf{LK} & 0.67 & 0.07 & 0.12 & 61 \\ \hline
-		       \textbf{ACR} & 0.46 & 0.24 & 0.32 & 54 \\ \hline
-		       \textbf{LN} & 0.16 & 0.11 & 0.13 & 44 \\ \hline
-		       \textbf{AMP} & 0.50 & 0.07 & 0.12 & 29 \\ \hline
-		       \textbf{AIMP} & 0.00 & 0.00 & 0.00 & 24 \\ \hline
-		       \textbf{WART} & 0.00 & 0.00 & 0.00 & 23 \\ \hline
-		       \textbf{ANG} & 0.29 & 0.33 & 0.31 & 6 \\ \hline
-		       \textbf{LS} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
-		       \textbf{NEU} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
-		       \textbf{SCAR} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		\textbf{NV} & 0.92 & 0.98 & 0.95 & 5864 \\ \hline
+		\textbf{SK} & 0.50 & 0.35 & 0.41 & 345 \\ \hline
+		\textbf{AK} & 0.53 & 0.58 & 0.56 & 265 \\ \hline
+		\textbf{PBK} & 0.71 & 0.74 & 0.72 & 222 \\ \hline
+		\textbf{SL} & 0.28 & 0.12 & 0.17 & 99 \\ \hline
+		\textbf{DER} & 0.75 & 0.18 & 0.29 & 83 \\ \hline
+		\textbf{VL} & 0.68 & 0.55 & 0.61 & 71 \\ \hline
+		\textbf{LK} & 0.67 & 0.07 & 0.12 & 61 \\ \hline
+		\textbf{ACR} & 0.46 & 0.24 & 0.32 & 54 \\ \hline
+		\textbf{LN} & 0.16 & 0.11 & 0.13 & 44 \\ \hline
+		\textbf{AMP} & 0.50 & 0.07 & 0.12 & 29 \\ \hline
+		\textbf{AIMP} & 0.00 & 0.00 & 0.00 & 24 \\ \hline
+		\textbf{WART} & 0.00 & 0.00 & 0.00 & 23 \\ \hline
+		\textbf{ANG} & 0.29 & 0.33 & 0.31 & 6 \\ \hline
+		\textbf{LS} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		\textbf{NEU} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
+		\textbf{SCAR} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
 		\hline
 		Accuracy &  &  & 0.87 & 7205 \\
 		Macro avg & 0.38& 0.25& 0.28&7205\\
 		Weighted avg&0.84&0.87&0.85&7205\\
 		\hline
 	\end{tabular}
-	\caption{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}
+		\caption{Clasificación para validación benigna (Ordenadas de mayor a menor rep., sin pesos)}
 	\label{tab:benignomalmetrics}
 \end{table}
 
-El resultado obtenido deja bastante que desear  (\ref{tab:benignomalmetrics}), debido a que la clase de lunares comunes es la única que ha recibido resultados excelentes; el cuanto a precisión, sin tener en cuenta al lunar común,  los mejores resultados provienen de los dermatofibromas, queratosis benigna pigmenteada,  las lesiones vasculares, y la queratosis liquenoide. Todas ellas, obtienen resultados razonables, aunque a partir de estas clases, los resultados empeoran considerable.
+Esto ocurre en la mayoría de clases, aunque los peores resultados los vemos reflejados en las 6 últimas filas, donde 5 de las clases han sido completeamente ignoradas por el modelo, y establecidas a 0: la cicatrices, los neurofibromas, los lentigo simples, las verrugas y los AIMP (atypical intraepidermal melanocytic proliferation). Estas clases, al encontrarse en absoluta minoría, no aportan suficientes caracteristicas al modelo para aprender los filtros adecuados, y por tanto, quedan descartadas por el mismo. Esto nos lleva a tomar la decisión de descartar estas clases, o bien, tratar de equilibrarlas complementando con el resto de datasets.
 
-Se ve mayormente reflejado en las tres últimas clases: la cicatrices, los neurofibromas y los lentigo simples. Estas clases, al encontrarse en absoluta minoría, no aportan suficientes caracteristicas al modelo para aprender los filtros adecuados, y por tanto, quedan descartadas por el mismo. Esto nos lleva a tomar la decisión de descartar estas clases, o bien, tratar de equilibrarlas complementando con el resto de datasets.
+No nos debemos dejar llevar por el valor del accuracy: este es del 87\%, debido a que prácticamente la completitud de la tasa de aciertos se ve aportada por la clase mayoritaria. Si atendemos a su valor medio, es del únicamente 28\%, que se trata de una cifra más representativa pero mucho más pesimista.
 
-No nos debemos dejar llevar por el valor del accuracy: este es del 87\%, debido a que prácticamente la completitud de la tasa de aciertos se ve aportada por la clase mayoritaria. Si atendemos a su valor medio, es del únicamente 28\%, que se trata de una cifra más representativa.\\
-
-Antes de probar la eliminación de clases minoritarias, trataremos de dotar al modelo de penalizaciones para las clases menos reprentadas; es decir, de forma explícita, estableceremos una serie de pesos que otorguen más importancia a clasificar ejemplares de clases minoritarias sobre las mayoritarias, calculando para ello un peso inversamente proporcional al recuento de ejemplares. Basta con aplicar la siguiente operación, teniendo en cuenta el valor c como el número de elementos de la clase C:
+Para no proceder con la eliminación de clases minoritarias, trataremos de dotar al modelo de penalizaciones para las clases menos reprentadas; es decir, de forma explícita, estableceremos una serie de pesos que otorguen más importancia a clasificar ejemplares de clases minoritarias sobre las mayoritarias, calculando los pesos de la mismo forma en la que lo hicimos para el caso de las enfermedades malignas:
 
 $$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
 
-De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. Si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics}
+De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. La diferencia con el caso empleado en enfermeades malignas, es que emplearemos como función de pérdida CrossEntropy en lugar de FocalLoss, ya que pudimos apreciar en el caso anterior que al insertarle pesos, pierde el efecto regularizador visto en el caso sin pesos, y obtenemos peores resultados.
+
+Además, se han agrupado las clases minoritarias pertenecientes a subenfermedades de un tipo de enfermedad más general, como es el caso de los tres tipo de lentigos en una clase general denominada de la misma forma, y con abreviatura LN (figura  \ref{fig:buenasred}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.7]{imagenes/countbenign_corrected.png}
+	\caption{Conteo de clases benignas tras la agrupación}
+	\label {fig:buenasred}
+\end{figure}
+
+De esta forma, si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics}:
 
 
 \begin{table}[!ht]
@@ -543,19 +578,19 @@ De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción e
 		& Precision & Recall & F1-score & Support \\
 		\hline
 	\textbf{NV} & 0.99 & 0.77 & 0.86 & 5864 \\ \hline
-	\textbf{DER} & 0.33 & 0.60 & 0.42 & 83 \\ \hline
-	\textbf{PBK} & 0.53 & 0.59 & 0.56 & 222 \\ \hline
-	\textbf{VL} & 0.37 & 0.88 & 0.52 & 71 \\ \hline
-	\textbf{LK} & 0.18 & 0.46 & 0.26 & 61 \\ \hline
-	\textbf{AK} & 0.31 & 0.63 & 0.41 & 265 \\ \hline
-	\textbf{SK} & 0.58 & 0.83 & 0.69 & 345 \\ \hline
-	\textbf{AMP} & 0.20 & 0.39 & 0.26 & 29 \\ \hline
+	\textbf{DER} & 0.33 & 0.60 & 0.42 & 345 \\ \hline
+	\textbf{PBK} & 0.53 & 0.59 & 0.56 & 265 \\ \hline
+	\textbf{VL} & 0.37 & 0.88 & 0.52 & 222 \\ \hline
+	\textbf{LK} & 0.18 & 0.46 & 0.26 & 99 \\ \hline
+	\textbf{AK} & 0.31 & 0.63 & 0.41 & 83 \\ \hline
+	\textbf{SK} & 0.58 & 0.83 & 0.69 & 71 \\ \hline
+	\textbf{AMP} & 0.20 & 0.39 & 0.26 & 61 \\ \hline
 	\textbf{ACR} & 0.23 & 0.67 & 0.34 & 54 \\ \hline
-	\textbf{ANG} & 0.12 & 0.43 & 0.19 & 6 \\ \hline
-	\textbf{SL} & 0.23 & 0.48 & 0.31 & 99 \\ \hline
-	\textbf{LN} & 0.01 & 0.04 & 0.01 & 44 \\ \hline
-	\textbf{AIMP} & 0.40 & 0.26 & 0.32 & 24 \\ \hline
-	\textbf{WART} & 0.18 & 0.67 & 0.29 & 23 \\ \hline
+	\textbf{ANG} & 0.12 & 0.43 & 0.19 & 44 \\ \hline
+	\textbf{SL} & 0.23 & 0.48 & 0.31 & 29 \\ \hline
+	\textbf{LN} & 0.01 & 0.04 & 0.01 & 24 \\ \hline
+	\textbf{AIMP} & 0.40 & 0.26 & 0.32 & 23 \\ \hline
+	\textbf{WART} & 0.18 & 0.67 & 0.29 & 6 \\ \hline
 	\textbf{LS} & 0.06 & 0.20 & 0.09 & 5 \\ \hline
 	\textbf{NEU} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
 	\textbf{SCAR} & 0.00 & 0.00 & 0.00 & 5 \\ \hline
@@ -569,6 +604,7 @@ De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción e
 	\label{tab:benignomalmejormetrics}
 \end{table}
 
-Los resultados han mejorado, escalando hasta el 46\% de accuracy balanceado. Sin embargo, estos siguen siendo pobres, y las clases minoritarias siguen siendo un problema. Por tanto, las 3 clases de menor representación sería oportuno eliminarlas, debido a la imposibilidad de unir estas enfermedades a otras clases existenetes. En el caso de los lentigo, que se encuentran divididos en 3 clases, podemos unirlos en un una única clase para mejorar los resultados.
+Los resultados han mejorado, escalando hasta el 48\% de accuracy balanceado. Con la aplicación de pesos al modelo, podemos apreciar que la distribución de las métricas es mucho  más equitativa que antes, ya que aunque los valores han bajado para ciertas clases concretas, de forma global, la varianza de las métricas es menor. Sobre todo, las mejoras de rendimiento vienen vinculadas a una mejora de recall, aunque se ha producido un empeoramiento de la precisión; es decir, ahora el modelo clasifica correctamente más ejemplares pertenecientes a su correspondiente categoría, pero también diagnostica erróneamente muchos falsos positivos.
 
+Sin embargo, este enfoque nos otorga resultados globales de mayor calidad, por lo que será el modelo seleccionado para realizar la cuantización. Esto resultados podrían ser mejorables con el empleo de técnicas de aumento de datos más sofisticadas que el aumento de resolución, y el uso de datos adicionales. Sin embargo, las limitaciones de memoria de las que se dispone en el ordenador empleado para el entrenamiento,  y las limitaciones de simplicidad a la que está sometido el modelo para ser cuantizado, nos llevan a la decisión de permanecer con este segundo modelo como hipótesis final.
 
