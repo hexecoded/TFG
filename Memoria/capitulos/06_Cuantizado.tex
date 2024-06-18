@@ -1,33 +1,47 @@
 \chapter{Cuantización}
 
-La cuantización, como ya definimos en el apartado \ref{cap:cuantización}, se trata de un proceso por el cual tomamos un modelo entrenado de la forma tradicional, y realizamos una serie de operaciones de simplificación o transformaciones del formato numérico para obtener un modelo cuyos requisitos de espacio y tiempos de inferencia se ven reducidos considerablemente. En el problema que nos concierne, se trata del foco principal sobre el cual queremos investigar. ¿Cuáles son los efectos que provoca la optimización del modelo sobre el modelo final cuantizado?\\
+La cuantización, como ya definimos en el apartado \ref{cap:cuantización}, se trata de un proceso por el cual tomamos un modelo entrenado para arquitecturas de escritorio de la forma habitual, y realizamos una serie de operaciones de simplificación o transformaciones del formato numérico para obtener un modelo cuyos requisitos de espacio y tiempos de inferencia se ven reducidos considerablemente. 
 
-Estudiaremos las optimizaciones aplicadas por Pytorch mobile y realizaremos una comparativa de modelos entre la versión original y cuantizada.
+Este procedimiento es el núcleo del proyecto, y el objetivo real de estudio de modelos para tecnologías móviles: experimentar cuál es la diferencia en tiempo y uso de memoria de la arquitectura tradicional sobre la optimizada.
+
+Para realizar este proceso, emplearemos la API de Pytorch dedicada a la transformación e implementación de modelos convolucionales en Android: Pytorch mobile  \cite{pmobile}. En este punto, analizaremos las optimizaciones realizadas por este framework, y las ventajas y desventajas de dicho procedimiento.
 
 \section{Optimizaciones de Pytorch mobile}
+\subsection{Capacidades del framework}
+Pytorch, a través de sus dependecias mobile, puede transformar en unos sencillos pasos un modelo entrenado con Pytorch a un modelo simplificado optimizado para dispositivos móviles. Incluye varios métodos relacionados con la exportación que permiten optimizar o no la salida del modelo, adecuándolo a nuestras necesidades. En su página oficial, podemos encontrar un grafo donde se describe este proceso \cite{pmobile}:
 
-Pytorch contiene un proceso de cuantización directo a partir de los modelos entrenados con FastAI. Proporciona una interfaz de métodos ya preconfigurada que permite exportar el modelo de forma directa a Android, o bien, haciendo uso de cuantización.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.6]{imagenes/pytorch-mobile.png}
+	\caption{Optimización de modelos con Pytorch Mobile \cite{pmobile}}
+	\label {fig:mobileprocess}
+\end{figure}
 
-La optimización aplicada al realizar cuantización se centra, sobre todo, en la reducción de la precisión numérica del modelo, pero cubre los siguientes aspectos:
+Su compatibilidad engloba Android y iOS, siendo este último sistema soportado oficialmente tras el comienzo de la realización de este TFG. Aun así, este proyecto fue concebido inicialmente para ser probado en dispositivos Android, ya que el hardware de estos dispositivos tiene un mayor rendimiento en CPU y GPU, así como un mejor soporte de las librerías de aprendizaje. iOS, al tratarse de un SO cerrado a dispositivos Apple, y difícilmente emulable si no se dispone de dispositivos de la marca, requiere aún la existencia de frameworks estables dedicados al aprendizaje. Este motivo, sumando a que no disponemos de dispositivos con este sistema operativo, inclinó la balanza a usar únicamente dispositivos Android como dispositivo objetivo.
+
+\subsection{Optimizaciones disponibles}
+
+Pytorch mobile dispone para Android de una lista de 5 optimizaciones posibles a realizar sobre el modelo. Todas ellas, seleccionables de forma independiente, o aplicadas en conjunto por defecto, cubren los siguientes aspectos:
 
 \begin{itemize}
 	\item Fusión de las capa de convolución y normalización de batch: realiza una integración de los valores de normalización dentro de la capa convolutiva, ya que no será necesario reajustar esos valores para inferencia-
 	\item Inserción y plegado de operaciones: utiliza la librería XNNPack, que se trata de un sistema de operaciones en coma flotante especialmente optimizado para ARM, que permite variar la precisión de los valores flotantes según el modelo. Fusiona las operaciones lineales y de convolución, de forma que se realicen en un menor tiempo.
 	\item Fusión de la función ReLu con el conjunto de operaciones empaquetado creado con XNNPack en el paso anterior.
 	\item Eliminación del dropout, ya que en tiempo de inferencia, se busca el mejor resultado si necesidad de reentreno.
-	\item Optimización del grafo interno del modelo correspondiente a la convolución, para hacer que formen parte de un solo bloque raiz y mejore el tiempo de inferencia.
-	
-	En total, la web estima una ganancia del 60\% en tiempo de inferencia de forma teórica. Examinaremos este resultado de forma práctica empleando el modelo elegido, y comparando el funcionamiento de versión optimizada con la original para verificarlo.
-	
+	\item Optimización del grafo interno del modelo correspondiente a la convolución, para hacer que formen parte de un solo bloque raiz y mejore el tiempo de inferencia.	
 \end{itemize}
+
+En total, la web  \cite{pmobile} estima una ganancia aproximada del 60\% en tiempo de inferencia de forma teórica. Sin embargo, este valor puede oscilar en función de los datos que se estén evaluando, la arquitectura que deseamos cuantizar, y las capacidades de cálculo del dispositivo objetivo. A continuación, estudiaremos los resultados ofrecidos, y si merece la pena la aplicación de este proceso.
 
 \section{Creación de los modelos cuantizados}
 
-La creación del modelo cuantizado a partir del modelo original puede ser realizada de forma inmediata al haber almacenado el mejor modelo entrenado de los 3 casos distintos de estudio: clasificación binaria, clasificación multiclase benigna y clasificación multiclase maligna.\\
+La transformación de los modelos entrenados a su versión cuantizada puede realizarse de forma inmediata, ya que en los pasos anteriores, el modelo entrenado sobre cada uno de los casos (clasificación binaria, y multiclase para benigno y maligno) fue almacenado en un fichero de formato .pt (extensión de modelo Pytorch).
 
-El entrenamiento de dichos modelos fue realizado de la forma habitual, sin ningún tipo de ajuste especializado, más allá de la exportación a un archivo de formato .pt, la extensión de fichero habitual para modelos pytorch. Para cuantizar el modelo, basta con realizar los siguientes pasos:
+Al tratarse de una conversión post-entrenamiento, no se requiere ningún ajuste de parámetros previo durante el entrenamiento, lo cual significa el entrenamiento sobre los modelos preparados para cuantización (QAT, o Quantization Aware Training  \cite{kuzmin2024fp8}), con el coste de una pequeña pérdida respecto a dicha ténica.
+
+Para cuantizar el modelo tras su entrenamiento, basta con realizar los siguientes pasos:
 \begin{enumerate}
-	\item Cargar el modelo entrenado previamente. Como en nuestro caso, hemos realizado el salvado del modelo y procedemos a realizar la cuantización en el mismo, podemos directamente emplear el objeto Learner que almacena el modelo completo.
+	\item Cargar el modelo entrenado previamente. Como en nuestro caso, hemos realizado el salvado del modelo y procedemos a realizar la cuantización en el mismo en el mismo script, podemos directamente emplear el objeto Learner que almacena el modelo completo. En caso de que se quisiese leer de disco duro, bastaría con usar la función model.load().
 	\item Activar el modo de evaluación del modelo. De esta forma, bloqueamos los parámetros libres de las capas de normalización de batches, y la aplicación de dropout.
 	\item En este punto, podemos optar por dos opciones:
 	\begin{enumerate}
@@ -38,9 +52,9 @@ El entrenamiento de dichos modelos fue realizado de la forma habitual, sin ning�
 		
 \end{enumerate}
 
-Para realizar la comparativa de forma lo más exhaustiva posible, tomaremos los dos modelos de android y el modelo original,  y realizaremos la evaluación con el conjunto de test, el cual ha sido reservado hasta el momento sin ningún tipo de modificación.
+Para realizar la comparativa de forma lo más exhaustiva posible, tomaremos el modelo de Android, y lo evaluaremos con el conjunto completo de imágenes de test, de forma que la valoración obtenida sea completamente representativa.
 
-El pseucódigo a seguir es bastante sencillo:
+El pseucódigo resultante es batante sencillo, y su explicación queda prácticamente autocontenida gracias al uso de nombres de función represetativos:
 
 \begin{algorithm}[H]
 	\label{fig:cuantizado}
@@ -54,8 +68,6 @@ El pseucódigo a seguir es bastante sencillo:
 		 \State scripted\_module = torch.jit.script(nn.Sequential(model, Softmax(dim=n))) \\
 		\Comment{Exportación del modelo original}
 	 	 \State scripted\_module.save(savename + ``Full.pt")\\  
-	 	  \Comment{Exportación del modelo a Android sin opts.}
-		 \State scripted\_module.\_save\_for\_lite\_interpreter(savename + ``\_android\_noop.ptl")\\
 		 \Comment{Exportación del modelo optimizado}
 		 \State optimized\_scripted\_module = optimize\_for\_mobile(scripted\_module) 
 		 \State optimized\_scripted\_module.\_save\_for\_lite\_interpreter(savenameFull+ ``\_androidOptimized.pt")
@@ -65,15 +77,21 @@ El pseucódigo a seguir es bastante sencillo:
 	\end{algorithmic}
 \end{algorithm}
 
-Donde el paso más completo se trata de la función  \textit{jit.script}, donde debemos especificar el formato de salida de la red. Por ejemplo, en este pseudocódigo, se deja la dimensión de la Softmax a valor n, siendo este valor el número de salidas de la red. Para hacer secuencial ambas operaciones, es decir, que primero se envalúe el model, y luego se otorgue la salida a través de la softmax establecida, es necesario añadir ambos pasos a un pipeline, usando para ello el objeto Sequential de Pytorch.\\
+Podemos observar que el proceso es trivial, a excepción del último punto, donde se realiza la definición de un objeto de tipo sencuencial. Esto se debe que, cuando exportamos el modelo a Android, existen dos posibles alternativas para interpretar la capa de salida del mismo:
+\begin{enumerate}
+	\item Interpretando el tensor de salida de la función Softmax por columnas, de forma que la clase predicha para cada imagen será el máximo valor softmax encontrado en la columna en cuestión. En Python, se le conoce como máximo en dimensión 0, al tratarse del máximo de todas las filas.
+	\item Interprentando el tensor de salida por filas, donde una imagen de entrenada recibe como etiqueta de salida el índice de la posición de fila cuyo valor es mayor. En este caso, se considera como dimensión 1, ya que se trata del valor máximo encontrado entre las columnas.
+ \end{enumerate}
 
-A excepción de este paso, el resto del proceso es bastante sencillo y directo; en la función mostrada, guardamos tanto el modelo original como los modelos optimizados y sin optimizar para Android.
+Por tanto, antes de exportar el modelo, será necesario especificar la dimensión de lectura. En versiones anteriores, esta dimensión era elegida de forma implícita por la función, pero ahora, debemos especificarla explícitamente para tener un correcto funcionamiento. Como en nuestro caso, solo tenemos una dimensión de etiquetas por modelos, debemos seleccionar el valor máximo por columnas, y valor a especificar es dim=1. Basta con crear un objeto de tipo Softmax, y especificar como parámetro \textit{dim}, el valor dim = 1.
+
+Para concatenar el modelo original, y la nueva capa específica para la función Softmax, es necesario añadir ambos pasos a un pipeline, usando para la clase Sequential de Pytorch, que no es más que la creación de un modelo por capas.\\
 
 \section{Comparativa de los modelos original y cuantizado}
 
-En este apartado, una vez estudiado el proceso de exportación y cuantización, examinaremos el rendimiento de cada uno de los 3 modelos creados para el proyecto. Comenzaremos por el modelo de clasificación binaria, que el primer nivel de la arquitectura, y procederemos posteriormente con malignos y benignos.
+En este apartado, una vez comprendido el proceso de exportación y cuantización, examinaremos el rendimiento de cada uno de los 3 modelos creados para el proyecto. Para ello, evaluaremos el conjunto de test, intacto hasta esta fase, para conocer el rendimiento real de los modelos originales, y los compararemos con cada uno de los modelos cuantizados.
 
-\subsection{Cuatización del modelo binario}
+\subsection{Cuantización del modelo binario}
 
 El modelo de clasificación binaria, que decide si la enfermedad se trata de un caso benigno o maligno, es la capa más importante de la arquitectura de dos niveles implementada. Su rendimiento es crítico dentro del funcionamiento del modelo, debido a que la confusión entre subtipos de enfermedades tiene un coste relativamente pequeño, pero un error entre una enfermedad cancerígena o benigna tiene un elevado coste para el paciente en consecuencias. Por tanto, es clave evaluar el modelo con el conjunto de test para conocer la bonanza del mismo, y estudiar si las gancias en espacio y tiempo de inferencia justifican la cuantización.\\
 

@@ -35,4 +35,5 @@
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases benignas antes de agrupar}}{116}{figure.5.9}%
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Conteo de clases benignas tras la agrupación}}{118}{figure.5.10}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Optimización de modelos con Pytorch Mobile \cite {pmobile}}}{122}{figure.6.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
