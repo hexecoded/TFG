@@ -1,8 +1,10 @@
 \chapter{Cuantización}
 
-\subsection{Conceptos previos}
+La cuantización, como ya definimos en el apartado \ref{cap:cuantización}, se trata de un proceso por el cual tomamos un modelo entrenado de la forma tradicional, y realizamos una serie de operaciones de simplificación o transformaciones del formato numérico para obtener un modelo cuyos requisitos de espacio y tiempos de inferencia se ven reducidos considerablemente. En el problema que nos concierne, se trata del foco principal sobre el cual queremos investigar. ¿Cuáles son los efectos que provoca la optimización del modelo sobre el modelo final cuantizado?\\
 
-\subsection{Optimizaciones}
+Estudiaremos las optimizaciones aplicadas por Pytorch mobile y realizaremos una comparativa de modelos entre la versión original y cuantizada.
+
+\section{Optimizaciones de Pytorch mobile}
 
 Pytorch contiene un proceso de cuantización directo a partir de los modelos entrenados con FastAI. Proporciona una interfaz de métodos ya preconfigurada que permite exportar el modelo de forma directa a Android, o bien, haciendo uso de cuantización.
 
@@ -19,5 +21,61 @@ La optimización aplicada al realizar cuantización se centra, sobre todo, en la
 	
 \end{itemize}
 
-\subsubsection{Creación del modelo cuantizado}
-\subsubsection{Evaluación de modelo original y cuantizado}
+\section{Creación de los modelos cuantizados}
+
+La creación del modelo cuantizado a partir del modelo original puede ser realizada de forma inmediata al haber almacenado el mejor modelo entrenado de los 3 casos distintos de estudio: clasificación binaria, clasificación multiclase benigna y clasificación multiclase maligna.\\
+
+El entrenamiento de dichos modelos fue realizado de la forma habitual, sin ningún tipo de ajuste especializado, más allá de la exportación a un archivo de formato .pt, la extensión de fichero habitual para modelos pytorch. Para cuantizar el modelo, basta con realizar los siguientes pasos:
+\begin{enumerate}
+	\item Cargar el modelo entrenado previamente. Como en nuestro caso, hemos realizado el salvado del modelo y procedemos a realizar la cuantización en el mismo, podemos directamente emplear el objeto Learner que almacena el modelo completo.
+	\item Activar el modo de evaluación del modelo. De esta forma, bloqueamos los parámetros libres de las capas de normalización de batches, y la aplicación de dropout.
+	\item En este punto, podemos optar por dos opciones:
+	\begin{enumerate}
+		\item Exportar el modelo a Android sin ninguna optimización estructural, más allá de la adaptación de tipos de flotantes (función \textit{save\_for\_lite\_interpreter})
+		\item Exportar el modelo aplicando todas las optimizaciones anteriores mencionadas para obtener el modelo más eficiente posible (función \textit{export\_for\_mobile})
+	\end{enumerate}
+	\item (Opcional) : exportar el modelo de escritorio en formato torch script. Se trata de un lenguaje de representación universal del modelo, que puede ser empleado con python nativo, y ser transferido a otros frameworks de trabajo habituales.
+		
+\end{enumerate}
+
+Para realizar la comparativa de forma lo más exhaustiva posible, tomaremos los dos modelos de android y el modelo original,  y realizaremos la evaluación con el conjunto de test, el cual ha sido reservado hasta el momento sin ningún tipo de modificación.
+
+El pseucódigo a seguir es bastante sencillo:
+
+\begin{algorithm}[H]
+	\label{fig:cuantizado}
+	\caption{Proceso de cuantizado de modelos a Android}
+	\begin{algorithmic}
+		\Procedure{exportar\_modelo}{learner: Learner Model Object, savename : String}
+	
+		\State model = learner.model.to('cpu') : Model
+		\ State model.eval()
+		
+		 \State scripted\_module = torch.jit.script(nn.Sequential(model, Softmax(dim=n))) \\
+		\Comment{Exportación del modelo original}
+	 	 \State scripted\_module.save(savename + ``Full.pt")\\  
+	 	  \Comment{Exportación del modelo a Android sin opts.}
+		 \State scripted\_module.\_save\_for\_lite\_interpreter(savename + ``\_android\_noop.ptl")\\
+		 \Comment{Exportación del modelo optimizado}
+		 \State optimized\_scripted\_module = optimize\_for\_mobile(scripted\_module) 
+		 \State optimized\_scripted\_module.\_save\_for\_lite\_interpreter(savenameFull+ ``\_androidOptimized.pt")
+	
+		\EndProcedure
+		
+	\end{algorithmic}
+\end{algorithm}
+
+Donde el paso más completo se trata de la función  \textit{jit.script}, donde debemos especificar el formato de salida de la red. Por ejemplo, en este pseudocódigo, se deja la dimensión de la Softmax a valor n, siendo este valor el número de salidas de la red. Para hacer secuencial ambas operaciones, es decir, que primero se envalúe el model, y luego se otorgue la salida a través de la softmax establecida, es necesario añadir ambos pasos a un pipeline, usando para ello el objeto Sequential de Pytorch.\\
+
+A excepción de este paso, el resto del proceso es bastante sencillo y directo; en la función mostrada, guardamos tanto el modelo original como los modelos optimizados y sin optimizar para Android.
+
+\section{Comparativa de los modelos original y cuantizado}
+
+En este apartado, una vez estudiado el proceso de exportación y cuantización, examinaremos el rendimiento de cada uno de los 3 modelos creados para el proyecto. Comenzaremos por el modelo de clasificación binaria, que el primer nivel de la arquitectura, y procederemos posteriormente con malignos y benignos.
+
+\subsection{Cuatización del modelo binario}
+
+El modelo de clasificación binaria, que decide si la enfermedad se trata de un caso benigno o maligno, es la capa más importante de la arquitectura de dos niveles implementada. Su rendimiento es crítico dentro del funcionamiento del modelo, debido a que la confusión entre subtipos de enfermedades tiene un coste relativamente pequeño, pero un error entre una enfermedad cancerígena o benigna tiene un elevado coste para el paciente en consecuencias. Por tanto, es clave evaluar el modelo con el conjunto de test para conocer la bonanza del mismo, y estudiar si las gancias en espacio y tiempo de inferencia justifican la cuantización.\\
+
+Comenzaremos por evaluar el conjunto de test con el modelo original sin cuantizar, para tenerlo como referencia. Los resultados ofrecidos en accuracy, balanced accuracy, precision y recall son los siguientes:
+

@@ -59,23 +59,23 @@
 \contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{96}{subsection.5.1.1}%
 \contentsline {subsubsection}{\nonumberline Técnicas descartadas}{97}{subsubsection*.23}%
 \contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{98}{subsubsection*.25}%
-\contentsline {subsection}{\numberline {5.1.2}Construcción del modelo}{99}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{99}{subsection.5.1.2}%
 \contentsline {subsubsection}{\nonumberline Creación del datablock}{99}{subsubsection*.27}%
 \contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{101}{subsubsection*.29}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{104}{subsubsection*.31}%
 \contentsline {subsection}{\numberline {5.1.3}Resultados}{105}{subsection.5.1.3}%
 \contentsline {subsubsection}{\nonumberline ResNet 50}{106}{subsubsection*.33}%
-\contentsline {subsubsection}{\nonumberline Efficient Net}{107}{subsubsection*.35}%
+\contentsline {subsubsection}{\nonumberline Efficient Net}{108}{subsubsection*.35}%
 \contentsline {subsubsection}{\nonumberline Mobile Net}{109}{subsubsection*.37}%
-\contentsline {subsection}{\numberline {5.1.4}Conclusión: modelo seleccionado}{110}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Clasificación multiclase}{112}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{112}{subsection.5.2.1}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{113}{subsubsection*.39}%
-\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{114}{subsection.5.2.2}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{115}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{111}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{113}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{113}{subsection.5.2.1}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.39}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{115}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{116}{subsubsection*.41}%
 \contentsline {chapter}{\numberline {6}Cuantización}{119}{chapter.6}%
-\contentsline {subsection}{\numberline {6.0.1}Conceptos previos}{119}{subsection.6.0.1}%
-\contentsline {subsection}{\numberline {6.0.2}Optimizaciones}{119}{subsection.6.0.2}%
-\contentsline {subsubsection}{\nonumberline Creación del modelo cuantizado}{119}{subsubsection*.43}%
-\contentsline {subsubsection}{\nonumberline Evaluación de modelo original y cuantizado}{119}{subsubsection*.45}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{119}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{120}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{121}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{121}{subsection.6.3.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

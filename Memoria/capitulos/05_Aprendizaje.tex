@@ -78,7 +78,7 @@ Estos valores han sido escogidos tomando como inspiración las transformaciones 
 
 Es importante destacar que dichas transformaciones únicamente se han realizado sobre los datos de entrenamiento; los datos de validación y test permanecen inalterados de forma que éstos sigan siendo un estimador no sesgado del rendimiento del modelo. Poir tanto, la extracción del 30\% de validación se realiza antes del sobremuestreom y los dos subconjuntos se guardan en carpetas distintas, a las que llamaremos train y test.
 
-\subsection{Construcción del modelo}
+\subsection{Representación en Pytorch}
 
 Con los datos preparados, configurar mediante Fastai y Pytorch los modelos que deseamos probar. Los 3 modelos siguen la misma configuración, a excepción de la importación del modelo, por lo  que será explicado de forma paramétrica. Tenemos 3 tareas diferenciables: la creación del datablock para la gestión de los datos, el entrenamiento del modelo, y la transformación del mismo al modelo cuantizado empleado en el dispositivo Android.
 
@@ -204,38 +204,37 @@ La decicisión, por tanto, de elegir este método, es la considerable reducción
 
 \subsection{Resultados}
 
-Una vez realizado el proceso de preparación de los modelos, comienza el período de aprendizaje. Para comparar los resultados de cada uno de los modelos, se ha recopilado información acerca de las métricas ya mencionadas, las pérdidas, y, sobre todo, el accuracy balanceado, para observar la tasa de acierto de cada uno de los modelos.\\
+Una vez realizado el proceso de preparación de los modelos, podemos comenzar el entrenamiento de los mismos. Para comparar los resultados de cada uno de los modelos, se ha recopilado información acerca de las métricas ya mencionadas, las pérdidas, y, sobre todo, el accuracy balanceado, para observar la tasa de acierto de cada uno de los modelos.\\
 
-Destacar también que, en esta parte del proyecto, la gran cantidad de imágenes y el impacto de la calidad de las mismas provocaban problemas desbordamientos de memoria, que interrumpían el entrenamiento por falta de recursos hardware. Debido a este motivo, únicamente se ha utilizado el subconjunto de imágenes que pertenecen al dataset ISIC, el cual, engloba un aproximado 60\% de los datos totales recopilados, a un tamaño máximo de entrada de 512x512. Reservaremos las imágenes del resto de datasets para la distinción de enfermedades malignas y benignas de forma más concreta.
+Destacar también que, en esta parte del proyecto, la gran cantidad de imágenes y el impacto de la calidad de las mismas provocaban problemas desbordamientos de memoria, que interrumpían el entrenamiento por falta de recursos hardware. Debido a este motivo, únicamente se ha utilizado el subconjunto de imágenes que pertenecen al dataset ISIC, el cual, engloba un aproximado 60\% de los datos totales recopilados, a un tamaño máximo de entrada de 512x512. Reservaremos las imágenes para posible evaluación y equilibrado de los datos.
 
-A continuación, mostramos los resultados obtenidos por cada modelo.
+En los siguientes puntos, desglosaremos el resultado y comportamiento obtenido por cada modelo.
 
 \subsubsection{ResNet 50}
 
-Los resultados con ResNet 50 son bastante satisfactorios\ref{tab:resultsbinrn50} , ya que consiguen mejorar los ya vistos anteriormente cuando se probó el entrenamiento mediante Focal Loss.
+Comenzamos por los resutados obtenidos con ResNet50. Anteriormente, ya evaluamos un modelo para justificar la necesidad de aplicar oversampling sobre el conjunto de entrenamiento. Podemos apreciar, con respecto a dicho modelo entrenado de manera preliminar, que los nuevos resultados con ResNet 50 son razonablemente mejores \ref{tab:resultsbinrn50} en lo que a métricas respecta , ya que consiguen mejorar los ya vistos anteriormente cuando se probó el entrenamiento mediante Focal Loss.
 
 \begin{table}[!ht]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\textbf{} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
-		\textbf{Benign} & 0.87 & 0.91 & 0.89 & 7205 \\ \hline
-		\textbf{Malignant} & 0.70 & 0.60 & 0.64 & 2460 \\ \hline
-		\textbf{Accuracy} & ~ & ~ & 0.83 & 9665 \\ \hline
-		\textbf{Macro avg} & 0.78 & 0.76 & 0.77 & 9665 \\ \hline
-		\textbf{Weighted avg} & 0.83 & 0.83 & 0.83 & 9665 \\ \hline
+		\textbf{Benign} & 0.89 & 0.90 & 0.90 & 7205 \\ \hline
+		\textbf{Malignant} & 0.70 & 0.69 & 0.69 & 2460 \\ \hline
+		\textbf{Accuracy} & ~ & ~ & 0.84 & 9665 \\ \hline
+		\textbf{Macro avg} & 0.79 & 0.79 & 0.79 & 9665 \\ \hline
+		\textbf{Weighted avg} & 0.84 & 0.84 & 0.84 & 9665 \\ \hline
 	\end{tabular}
 	\caption{Informe de clasificación Resnet50}
 	\label{tab:resultsbinrn50}
 \end{table}
 
 
-Podemos apreciar que el aprendizaje de la clase minoritaria, la maligna, ha mejorado considerablemente respecto a la alternative de ajustar la función de pérdida unicamente. El aumento del accuracy se ve potenciado, sobre todo, en el aumento de la precisión y el recall. Mientras que sin hacer oversampling, obteníamos 68\%(0.68) y 41\% (0.41), respectivamente, ahora obtenemos 70 \% (0.70) y 60\% (0.60), siendo por tanto el aumento en casi 0.2 en el caso del recall. Esto significa que estamos consiguiendo mejores resultados a la hora de distinguir las lesiones malignas, y estas se diagnostican correctamente.
+Podemos apreciar que el aprendizaje de la clase minoritaria, la maligna, ha mejorado considerablemente respecto a la alternativa de ajustar la función de pérdida unicamente. La mejora de los resultados es apreciable, sobre todo, en el aumento de las métricas precision y recall. Mientras que sin hacer oversampling, obteníamos 68\%(0.68) y 41\% (0.41), respectivamente, ahora obtenemos 70 \% (0.70) y 69\% (0.69), siendo por tanto el aumento en 0.28 en el caso del recall. Esto significa que estamos consiguiendo mejores resultados a la hora de distinguir las lesiones malignas, y estas se diagnostican correctamente como tal.
 
-En cuanto a la clase benigna, hemos sacrificado parte de los resultados al realizar el equilibrado, pero sus valores siguen siendo muy buenos: entorno al 87\% de perecisión, y 91\% de recall.
+En cuanto a la clase benigna, hemos sacrificado parte de los resultados al realizar el equilibrado, pero sus valores siguen siendo muy buenos: entorno al 89\% de precision, y 90\% de recall.
 
-
-Si evaluamos el modelo en cuanto a su tasa constancia en el aprendizaje, debemos examinar primero las curvas descritas por la función de perdida en entrenamiento y validación, observables en la figura \ref{fig:curvasrensetbinaria}
+Durante el entrenamiento del modelo, ha sido almacenada la curva de aprendizaje del modelo, de forma que podemos evaluar de forma bastante visual el desempeó de la red con el progreso de las  épocas.  Tal y como podemos apreciar en el gráfico \ref{fig:curvasrensetbinaria}, la curva de aprendizaje muestra una tendencia descendente hasta la época 15, donde el conjunto de validación siempre contiene un valor de la función de pérdida superior a entrenamiento, que se trata del comportamiento habitual.
 
 l\begin{figure}[H]
 	\centering
@@ -246,15 +245,17 @@ l\begin{figure}[H]
 	
 \end{figure}
 
-El aprendizaje es correcto durante la fase de congelado, pues podemos apreciar con la curva de entrenamiento y validación descienden en valor hasta la época 10, momento en el cual la pérdida asciende durante 3 épocas seguidas y provoca la interrupción por early stopping. No podemos afirmar lo mismo de la fase de descongelado, donde podemos apreciar una subida abrupta del valor de la función de pérdida de validación, lo que quiere decir que la red ya estaba correctamente entrenada y el descongelado únicamente ha provocado sobreaprendizaje.\\
+A partir de dicha época, podemos apreciar un punto claro de inflexión de la curva, donde los valores de validación se disparan, alejándose de la curva de entrenamiento. Esto es detectado por el callback de Early Stopping, el cual cancela el entrenamiento al detectar un empeoramiento en 3 épocas continuas. En resumen, podemos concluir que el entrenamiento durante la fase de congelado se ha realizado correctamente.
 
-En total, el modelo ha requerido 4 horas y media para el proceso de entrenamiento, y casi 1.65 horas para el proceso de oversampling de la clase minoritaria, que ha llegado a ocupar 240GB de disco.\\
+En la segunda fase del proceso de finetuning, la fase de descongelado, los resultados no han sido tan positivos; el modelo sólo ha conseguido mejorar durante las dos primeras épocas, y las tres últimas han supuesto un empeoramiento que ha provocado la activación del early stopping en la quinta época. Si bien los resultados no han supuesto grandes mejoras, este comportamiento denota la complejidad que posee el modelo completo descongelado, y lo adecuadamente afinado que ya se encontraba gracias al preentrenamiento de la red con ImageNet.\\
 
-Por tanto, el mecanismo de oversampling parece haber funcionado, sin apenas penalizar los resultados ya obtenidos para la clase mayoritaria, aunque con grandes requisitos de almacenamiento. Sin embargo, debemos comparar con los otros dos modelos antes de decidir cuál se empleará para cuantizar y usar de forma definitiva en la app.
+A modo de referencia para comparación de los dos siguientes modelos a probar, este modelo ha requerido 4 horas y media para el proceso de entrenamiento, y 1.65 horas para el proceso de oversampling de la clase minoritaria, que ha llegado a ocupar 240GB de disco. Sin embargo, este último proceso sólo ha sido realizado para esta primera prueba, y el resto de modelos utilizarán este conjunto ya configurado.\\
+
+En conclusión, la técnica de oversampling ha dado sus frutos, y hemos conseguido una mejora significativa en las métricas de la clase minoritaria sin afectar negativamente a la mayoritaria. A continuación, probaremos otros dos modelos para seleccionar el que exhiba mejor comportamiento.
 
 \subsubsection{Efficient Net}
 
-Efficient net B5 es la segunda arquitectura elegida para su comparación. El resultado ofrecido, siguiendo los mismos procedimientos aplicados en Resnet, son los mostrados en la tabla \ref{tab:resefnet}.
+EfficientNet B5 es la segunda arquitectura elegida para su comparación. Esta arquitectura es el modelo más profundo de los 3 evaluados, por lo que los resultados han de ser considerablemente mejores para que se justifique la mayor complejidad. Aplicando el mismo conjunto de datos con oversampling creado para el entrenamiento de ResNet50, el resultado obtenido puede apreciarse en la tabla \ref{tab:resefnet}.
 
 \begin{table}[H]
 	\centering
@@ -263,15 +264,15 @@ Efficient net B5 es la segunda arquitectura elegida para su comparación. El res
 		\textbf{} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
 		\textbf{Benign} & 0.89 & 0.93 & 0.91 & 7205 \\ \hline
 		\textbf{Malignant} & 0.76 & 0.65 & 0.70 & 2460 \\ \hline
-		\textbf{Accuracy} &  &  & 0.85 & 9665 \\ \hline
-		\textbf{Macro avg} & 0.85 & 0.79 & 0.8 & 9665 \\ \hline
-		\textbf{Weighted avg} & 0.83 & 0.83 & 0.86 & 9665 \\ \hline
+		\textbf{Accuracy} &  &  & 0.86 & 9665 \\ \hline
+		\textbf{Macro avg} & 0.83& 0.79 & 0.8 & 9665 \\ \hline
+		\textbf{Weighted avg} & 0.85 & 0.83 & 0.86 & 9665 \\ \hline
 	\end{tabular}
 	\caption{Informe de clasificación de EfficientNet B5}
 	\label{tab:resefnet}
 \end{table}
 
-A priori, podemos apreciar unos resultados ligeramente mejores al caso anterior, siendo de media, 0.02 superior en cada una de las métricas establecidas para la comparación. Esto nos deja con una tasa de acierto equilibrada de 85\% en ambas clases. Se trata, por lo tanto, del modelo con mejores resultados hasta la fecha. Sin embargo, si analizamos las curvas de aprendizaje \ref{fig:curvasefnetbinaria}, podemos observar un fenómeno llamativo: la curva no sigue la tendencia habitual a minimizarse, y posee picos de gran altura donde el error de validación se dispara.
+A la vista de los resultados, podemos apreciar que se produce una mejora en las métricas obtenidas en lo que respecta a accuracy, pero las métricas de precision y recall tienden a ofrecer mejores resultados para la clase mayoritaria. La tasa de aciertos para ambas clases ( accuracy) ronda el valor de 0.85, que se traduce en iun 85\% de los casos correctamente clasificados.  Sin embargo, si analizamos las curvas de aprendizaje \ref{fig:curvasefnetbinaria}, podemos observar un fenómeno llamativo: la curva no sigue la tendencia habitual a minimizarse, y existen crecidas repentinas de la función, dando lugar a picos de error:
 
 l\begin{figure}[H]
 	\centering
@@ -283,11 +284,17 @@ l\begin{figure}[H]
 
 Este fenómeno puede deberse al reajuste de pesos fruto del learning rate variable, donde un subconjunto de las imágenes correctamente etiquetadas es cambiada de clase a la hora de modificar los valores para adaptarse a otro conjunto distinto no correctamente clasificado hasta el momento. También puede tratarse de un mal ajuste del learning rate, pero esto no es posible al utilzar la política de un ciclo con learning rate adaptativo.\\
 
-De forma aislada, como ocurre en la fase de descongelado, este fenómeno no adquiere mayor importancia; pero, dada la periodicidad con la que lo encontramos, es preferible valorar sus resultados con cautela. En este modelo, el tiempo de aprendizaje ha sido de aproximademante 7.7 horas, pero ha requerido el reinicio del entrenamiento en 5 ocasiones debido a problemas de memoria durante el entrenamiento.
+Este fenómeno, de forma aislada, no supone ningún problema destacable sobre el entrenamiento, pero en este caso, observamos  cierta periodicidad en el fenómeno que lo convierte en un comportamiento preocupante.
+
+Curiosamente, este fenómeno no se ve reflejado de la misma forma en la fase de descongelado del modelo; a diferencia de Resnet, el modelo si ha mejorado considerablemente en esta fase, aunque la tendencia descendente de la curva se ve eclipsada por el pico obtenido en la época número 3. En este caso, sí que podríamos considerar el pico como un fenómeno aislado sin mayor importancia.
+
+ En este modelo, el tiempo de aprendizaje ha sido de aproximademante 7.7 horas, pero ha requerido el reinicio del entrenamiento en 5 ocasiones. Dichos problemas, asociados principalmente al desbordamiento de la memoria de GPU, y la precisión de los tensores, denota que el entrenamiento de este modelo no se ha realizado en condiciones óptimas, siendo uno de los factores posibles la necesidad de una mayor memoria de GPU. Por tanto, los resultados de este modelo han de considerarse con cautela, ya que la inestabilidad del entrenamiento y el aumento considerable de coste computacional lo convierten en una alternativa menos atractiva.
 
 \subsubsection{Mobile Net}
 
-Mobilenet es la red con menor número de operaciones de las 3 opciones, debido a que está destinada directamente al uso en dispositivos de baja potencia. Los resultados de esta red, como eran de esperar, son inferiores a los otros 2 modelos probados \ref{tab:mob}.   
+MobileNet es el tercer modelo a evaluar con el conjunto de entrenamiento con sobremuestreo. Se trata del modelo con menor número de parámetros y profundidad, por lo que no se esperan mejores resultados en lo que respecta  a la métrica. Sin embargo, su simplicidad, especialmente dedicada para dispositivos de baja potencia, puede convertirse en una gran ventaja si los resultados no se ven considerablemente penalizados.\\
+
+Tras realizar el entrenamiento, los resultados obtenidos por el conjunto de validación, nuestro estimador, son los mostrados en la tabla \ref{tab:mob}, donde, como era de esperar, no apreciamos mejores resultados en cuanto a métricas:   
 
 \begin{table}[H]
 	\centering
@@ -304,9 +311,11 @@ Mobilenet es la red con menor número de operaciones de las 3 opciones, debido a
 	\label{tab:mob}
 \end{table}
 
-Podemos apreciar como onde se obtienen los peores resultados es en la columna de precisión, donde la diferencia con los modelos anteriores es de 0.11 y 0.16, respectivamente. Tratándose de la clase minoritaria, es un factor clave que este valor sea lo más alto posible, por lo que el redimiento no es el deseado. Sin embargo, resulta una opción atractiva a la hora de ejecutar el modelo dispositivos de baja potencia.
+A la vista de los resultados, podemos apreciar como la métrica especialmente penalizada es la columna de precision, donde la diferencia con los modelos anteriores es superior a una décima. Tratándose de la clase minoritaria, es un factor clave que este valor sea lo más alto posible para evitar casos malignos incorrectamente clasificados como benignos. El coste de una enfermedad maligna mal clasificada es superior al de una benigna, por lo que en cuanto a resultados, no se trata de un modelo que destaque. Sin embargo, su reducido tamaño, aproximadamente 4 veces menor que ResNet, lo haría una opción interesante para dispositivos de escaso potencia y con requisitos de bajo consumo.
 
-En cuanto a las curvas de aprendizaje (figura \ref{fig:curvasmbin}), se puede apreciar un comportamiento prácticamente ideal de la función  de pérdida en su época de descongelado; tanto el estimador de la pérdida en la función de entrenamiento como el de validación progresan en un intervalo de valores muy similares, sin picos bruscos. Pero, se puede observar cierto aplanamiento del modelo, lo cual puede indicar que hemos alcanzado la capacidad de la red, y sería necesario un modelo más profundo para minimizar aún más la pérdida. En la fase de descongelado, se puede apreciar que no se realizó un apredizaje adecuado, y que la tendencia de validación es al alza, por lo que se trata de un caso de sobreentrenamiento.
+Si estudiamos las curvas de aprendizaje (figura \ref{fig:curvasmbin}), se puede apreciar un comportamiento prácticamente ideal de la función  de pérdida de validación con respecto a entrenamiento; en la fase de congelado tanto el estimador de la pérdida en la función de entrenamiento como el de validación progresan en un intervalo de valores muy similares, sin picos bruscos, y con tendencia descendente. Como aspecto destacable, podemos observar cierto aplanamiento del modelo, y sin tendencia clara de sobreaprendizaje. Esto significa que el modelo ha alcanzado su límite de optimización, y debido a su arquitectura poco profunda, no es capaz de obtener valores más cercanos a la función real al disponer de menor dimensionalidad.
+
+En la fase de descongelado, el resultado obtenido no es para nada similar a la tendencia de entrenamiento: obtenemos una aprendizaje muy ruidoso, con gran cantidad de picos y oscilaciones. Además, existe una tendencia clara de aumento de la función de pérdida en entrenamiento, lo cual refleja, en conjunto, que se está produciendo sobreaprendizaje. Por este motivo, en la cuarta época finaliza el entrenamiento, y se conservan los valores de la fase de congelado al haber empeorado los resultados en todas las épocas.
 
 l\begin{figure}[H]
 	\centering
@@ -316,30 +325,44 @@ l\begin{figure}[H]
 	\label{fig:curvasmbin}
 \end{figure}
 
-En resumen, se trata de uno de los modelos más eficientes,    debido a su estructura especialmente optimizada, y requiriendo únicamente 2.26 horas de entrenamiento, pero se trata de un modelo con capacidades limitadas para el problema que estamos tratando.
+En resumen, se trata de un modelo fácilmente entrenable, con apenas 2.18 horas de entrenamiento, pero con capacidades de cálculo bastante limitadas.
 
-\subsection{Conclusión: modelo seleccionado}
+\subsection{Modelo seleccionado}
 
-Atendiendo a los modelos entrenados, queda justificada la elección de Resnet50 para la generación del modelo cuantizado. Aunque se trata del segundo mejor modelo en lo que a accuracy balanceado se refiere, EfficientNet ha provocado demasiados problemas a nivel local, desde errores de memoria disponible de CUDA, hasta el comportamiento exhibido en el punto anterior, donde se producían picos periódicos durante el entrenamiento.
+Tras el entrenamiento de los 3 modelos, y su correspondiente evaluación mediante el conjunto de validación, es posible tomar la decisión de qué modelo emplear para realizar la cuantización del modelo. Para ello, de la forma tradicional, bastaría con mirar la tabla de resultados de forma conjunta, y elegir aquel que demuestre un mejor resultado promedio en las métricas obtenidas. Pero, en este caso, tendré en cuenta otros factores, como la calidad de las curvas de aprendizaje, el número parámetros como medida de complejidad del modelo (junto a su número de capas), y el tiempo empleado para la inferencia, y de forma consecuente, para el entrenamiento.
 
-MobileNet es el peor modelo de los 3 en todas las métricas observadas, pero con la ventaja de ofrecer un menor tiempo de inferencia. Por tanto, queda demostrado que la decisión de usar ResNet50 para clasificación binaria es una decisión correcta, así como su empleo en los modelos especializados en tipos de enfermedades. En base a validación, y al comportamiento de la curva de aprendizaje, se trata del modelo más equilibrado.
+Siguiendo el primer criterio, las métricas, el claro ganador en cuanto a tasa de aciertos se refiere es EfficientNet, ya que su valoración para la métrica balanced accuracy es del 81\%. Sin embargo, si atendemos al resto de valores, podemos apreciar que ResNet50 ofrece resultados bastante cercanos,  requiriendo casi la mitad de tiempo para alcanzar este resultado con respecto a EfficientNet.
 
-\begin{figure}[H]
+
+\begin{table}[H]
 	\centering
-	\label {fig:metricas}
-	\includegraphics[scale = 0.35]{imagenes/metricas.png}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Modelo} & \textbf{Precision} & \textbf{Recall} & \textbf{Accuracy} & \textbf{Bal. Accuracy} \\ \hline
+		EfficientNet B5 & 0.83 & 0.79 & 0.86 & 0.82 \\ \hline
+		Resnet50 & 0.79 & 0.79 & 0.84 & 0.80 \\ \hline
+		MobileNet V2 & 0.74 & 0.73 & 0.8 & 0.74 \\ \hline
+	\end{tabular}
 	\caption{Valores de las métricas de cada modelo}
-\end{figure}
+	\label {fig:metricas}
+\end{table}
 
-Si bien Resnet ofrece un valor cercano, el tiempo de inferencia ofrecido por este es menor. Además, en cuanto a tamaño, EfficientNet posee un número de parámetros excesivo, que provoca una necesidad de almacenamiento elevada. (figura \ref)
+Además, Resnet ofrece resultados equilibrados en todas sus métricas, mientras EfficientNet aprece destaar especialmente en precision, aunque se igualan en recall.
+
+MobileNet, por su parte, ofrece resultados distantes de los dos modelos anteriores, debido, a como ya se mencionó, su menor profundidad y capacidad expresiva para su ejecución en entornos ligeros. Aunque los resultados no son demasiado lejanos a ResNet, considero que este último es una mejor alternativa para el problema que estamos desarrollando.\\
+
+Aunque a su vez, Resnet se trata de un peor modelo comparado con EfficientNet a nivel de métricas, el aprendizaje ofrecido por EfficientNet es bastante confuso por la existencia de los picos ya mostrados anteriormente. Debido a la periodicidad de los mismos, el coste computacional adicional, y los errores por falta de recursos ya producidos sin realizar cuantización, considero que no se trata de una buena alternativa, y que Resnet50 es el modelo indicado para este problema.\\
+
+La complejidad adicional de EfficientNet en cuanto a sus parámetros de anchura, entrada y profundidad, así como su mayor cantidad de parámetros y capas de profundidad variable, lo convierten en un modelo demasiado complejo. Sin medimos el tamaño de cada modelo una vez exportado, obtenemos los siguientes valores: 
+
 \begin{figure}[H]
 	\centering
-	\label {fig:tam}
 	\includegraphics[scale = 0.6]{imagenes/tamestimado.png}
 	\caption{Espacio (en MB) requerido por cada modelo}
+	\label {fig:tam}
 \end{figure}
 
-Por tanto, realizaremos el proceso de cuantizado con Resnet, ya que se tratará de un modelo más versátil para la clasificación multiclase.
+Por tanto, realizaremos el proceso de cuantizado con Resnet, ya que dará lugar a un modelo más versatil al ser cuantizado, y tiene expresividad de cálculo suficiente para el problema de clasificación multiclase. Además, ofrecerá un mejor resultado en rendimiento de inferencia que EfficientNet en dispositivos móviles.
 
 
 \section {Clasificación multiclase}
@@ -452,7 +475,7 @@ Antes de probar la eliminación de clases minoritarias, trataremos de dotar al m
 
 $$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
 
-De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. Si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics.}
+De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. Si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics}
 
 
 \begin{table}[!ht]
