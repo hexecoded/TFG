@@ -71,11 +71,11 @@
 \contentsline {section}{\numberline {5.2}Clasificación multiclase}{111}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{111}{subsection.5.2.1}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{112}{subsubsection*.39}%
-\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{113}{subsection.5.2.2}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.41}%
-\contentsline {chapter}{\numberline {6}Cuantización}{117}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{117}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{118}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{119}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{119}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{115}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{115}{subsubsection*.41}%
+\contentsline {chapter}{\numberline {6}Cuantización}{119}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{119}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{120}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{121}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{121}{subsection.6.3.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

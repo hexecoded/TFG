@@ -385,21 +385,21 @@ Comenzaremos por las imágenes malignas. En este caso, al estar utilizando final
 	
 \end{itemize}
 
-Dichas clases poseen un desbalanceo considerable. La clase menos representada se trata de los melanomas metastásicos, que representa solo el 0.22 \% del total de datos malignos. Como una clase con dicha proporción no se puede clasificar adecuadamente, aprovecharemos la existencia de la clase melanoma para introducir sus ejemplos como parte de esta clase, dando lugar a una nueva distribución (figura \ref{fig:malas}). Esta fusión es posible debido a que ambas clases se basan en la misma enfermedad, pero siendo la metastasis una fase más avanzada y con baja tasa de supervivencia por su diseminación a todos los órganos del cuerpo.
+Dichas clases poseen un desbalanceo considerable. La clase menos representada se trata de los melanomas metastásicos, que representa solo el 0.22 \% del total de datos malignos. Como una clase con dicha proporción no se puede clasificar adecuadamente, aprovecharemos la existencia de la clase melanoma para introducir sus ejemplos como parte de esta clase, dando lugar a una nueva distribución (figura \ref{fig:malas}). Esta fusión es posible debido a que ambas clases representan la misma enfermedad, pero siendo la metastasis una fase más avanzada, y con baja tasa de supervivencia por su diseminación a otros órganos vitales.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.6]{imagenes/countmalignant.png}
-	\caption{Conteo de clases malignas antes de agrupar}
+	\caption{Distribución de las clases malignas}
 	\label {fig:malas}
 \end{figure}
 
 
-Al realizar esta acción, estamos aumentando también el número de ejemplares de la clase mayoritaria, pero se trata de una situación preferible sobre la exitencia de una clase minoritaria, ya que ésta penalizará considerablemente las métricas al ser todas ellas métricas equlibradas según la proproción de imágenes de la cada clase.
+Al realizar esta acción, aumentamos el número de ejemplares de la clase mayoritaria, pero se trata de una situación preferible sobre la exitencia de una clase minoritaria, ya que ésta penalizará considerablemente las métricas al ser todas ellas métricas equlibradas según la proproción de imágenes de cada clase.
 
 \subsubsection{Entrenamiento}
 
-Para el entrenamiento del modelo, haré uso de la misma configuración que la clasificación binaria: imágenes 512 x 512, tamaño de batch de 32, pero con la diferencia de no emplear oversampling, para hacer el modelo lo más fiel posible al conjunto de imágenes. Además, tras la fusión de la clase minoritaria, el desequilibrio entre clases es razonable, siendo de:
+Para el entrenamiento del modelo, haré uso de la misma configuración que la clasificación binaria: imágenes 512 x 512, tamaño de batch de 32, pero con la diferencia de no emplear oversamplin por las razones ya explicadas. Si representamos al anterior gráfico de barras \ref{fig:malas} como proporciones porcentuales, obtenemos una distribución notablemente desequilibrada:
 
 \begin{itemize}
 	\item Melanoma: 53.95\%
@@ -407,8 +407,10 @@ Para el entrenamiento del modelo, haré uso de la misma configuración que la cl
 	\item Células escamosas: 10.5\%
  \end{itemize}
  
- Tras el entrenamiento, se han obtenido las métricas referenciadas en la tabla \ref{tab:malignometrics}. Se puede observar como los resultados son positivos, ya que se ha conseguido alcanzar un valor de accuracy cercano al 84\% de forma balanceada.  
+ Dichas clases, a pesar del desbalanceo, poseen una representatividad suficiente como para ser clasificadas en conjunto de forma adecuada. Para la clasificación, esta vez haremos uso de la función de pérdida FocalLoss, gracias a su capacidad de equilibrar el entrenamiento mediante el uso de sus parámetros $\alpha = 0.25$ y $\gamma = 2$, que son los valores recomendados por su paper original \cite{lin2018focal}.
  
+ Tras el entrenamiento, se han obtenido las métricas referenciadas en la tabla \ref{tab:malignometrics}. Podemos apreciar una valoración positiva de las métricas, ya que para Basal Cell carcinoma y los melanomas, precision y recall adquieren valores superiores a 0.8, acercándose a 0.9 en precisión y 0.92 de recall en melanomas.  La clase minoritaria de las 3, Squamous cell carcinoma, tiene un recall bajo, cercano a 0.4, mientras que una precisión algo más notable de 0.66.
+
 \begin{table}[!ht]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|}
@@ -428,8 +430,49 @@ Para el entrenamiento del modelo, haré uso de la misma configuración que la cl
 	\label{tab:malignometrics}
 \end{table}
 
-La precisión del modelo también es considerablemente buena, ya que alcanza el 74\%. Son resultados satisfactorios tratándose de un conjunto de datos desbalanceado, y con las limitaciones de tamaño del modelo requeridas.
+Aunque se traten de resultados negativos para la clase minoritaria, el conjunto del modelo ofrece resultados  adecuados, con una precisión de casi 80\%, y un 72\% de recall, que arrojan un resultado final de 84\% de accuracy. Si observamos las curvas de aprendizaje (figura \ref{fig:curvasmalign} ), el comportamiento de la función de pérdida denota un correcto aprendizaje en la fase de congelado del modelo.
 
+l\begin{figure}[H]
+	\centering
+	\subfigure[Fase de congelado]{\includegraphics[width=0.45\textwidth]{imagenes/malignant_freeze.png}} 
+	\subfigure[Descongelado]{\includegraphics[width=0.45\textwidth]{imagenes/malignant_unfreeze.png}} 
+	\caption{Curvas de aprendizaje para clases malignas}
+	\label{fig:curvasmalign}
+\end{figure}
+
+Podemos observar como, a diferencia del resto de modelos evaluados hasta el momento, la curva de aprendizaje para el conjunto de validación permanece por debajo de la curva de aprendizaje. Esto no significa que el proceso de entrenamiento sea incorrecto: se debe a un efecto del aumento de datos, y la aplicación de Focal Loss. Al unir ambos mecanismos, estamos provocando que la evaluación del conjunto de entrenamiento sea más compleja que validación, ya que en validación solo se realiza un inferencia de las imágenes, pero entrenamiento es utilizado continuamente para reajustar la función, y fomentar la correcta clasificación de aquellos elementos ``dificiles de clasificar''. Se trata de un efecto no negativo, y el entrenamiento se ha realizado satisfactoriamente.
+
+No podemos afirmar lo mismo de la fase de descogenlado, ya que tras realizar cinco épocas se ha alcanzando overfitting del modelo, ya que el callback de Early Stopping ha cancelado el entrenamiento antes del límite de épocas establecido (el cual, si recordamos, se trataba de un valor alto para que early stopping decidiera cuando realizar la parada). Por tanto, los resultados obtenidos en la segunda fase son prácticamente descartables, y no han ofrecido valor ninguno al modelo final.
+
+En resumen, el modelo obtenido cumple adecuadamente los requisitos del problema. Sin embargo, como forma de evaluar si eran posibles mejores resultados, se realizó un segundo entrenamiento, aplicando pesos a la función de pérdida para penalizar en mayor medida incorrectas clasificaciones de la clase minoritaria. Basta con aplicar la siguiente operación, donde, considerando el valor c como el número de ejemplares de la clase C:
+
+$$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
+
+De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. Si repetimos el experimento siguiendo este razonamiento, obtenemos los siguientes resultados:
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& Precision & Recall & F1-score & Support \\
+		\hline
+		Basal cell & 0.66 & 0.66 & 0.66 & 908 \\
+		Melanoma & 0.83 & 0.76 & 0.79 & 1311 \\
+		Squamous cell & 0.30 & 0.42 & 0.35 & 240 \\
+		\hline
+		Accuracy &  &  & 0.69 & 19464 \\
+		Macro avg & 0.59& 0.62& 0.60&2459\\
+		Weighted avg&0.71&0.69&0.70&2459\\
+		\hline
+	\end{tabular}
+	\caption{Informe de clasificación para validación maligna (Pesos)}
+	\label{tab:malignometrics2}
+\end{table}
+
+
+Donde, podemos observar que todas las métricas obtenidas son considerablemente inferiores a las de la versión inicial (\ref{tab:malignometrics}). Esto se debe a que, al insertar pesos a cada clase a clasificar, es altamente probable que se haya cancelado el efecto regularizador ofrecido por FocalLoss durante el entrenamiento.
+
+Por tanto, podemos concluir de manera firme y justificada que el modelo entrenado anteriormente, sin ningún tipo de penalización adicional, y haciendo uso de Focal Loss, es el modelo adecuado para este subproblema.
 
 \subsection{Modelo de enfermedades benignas}
 

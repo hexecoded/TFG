@@ -269,7 +269,7 @@
 \newlabel{fig:esrgan}{{3.3.1}{81}{Justificación de uso}{subsection.3.3.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Arquitectura de ESRGAN. Fuente: \cite  {wang2018esrgan}}}{81}{figure.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{82}{subsection.3.3.2}\protected@file@percent }
-\newlabel{fig:escalar}{{3.3.2}{82}{Proceso de reescalado}{Item.21}{}}
+\newlabel{fig:escalar}{{3.3.2}{82}{Proceso de reescalado}{Item.30}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.7}{\ignorespaces  Aumento de resolución para ASAN y Severance}}{82}{algorithm.3.7}\protected@file@percent }
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.8}{\ignorespaces  Aumento de resolución para ASAN y Severance}}{83}{algorithm.3.8}\protected@file@percent }
 \newlabel{fig:readimg}{{3.8}{83}{Proceso de reescalado}{algorithm.3.8}{}}
@@ -379,10 +379,10 @@
 \BKM@entry{id=56,dest={73756273656374696F6E2E352E322E31},srcline={376}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030306F5C3030305C3034305C303030645C303030655C3030305C3034305C303030655C3030306E5C303030665C303030655C303030725C3030306D5C303030655C303030645C303030615C303030645C303030655C303030735C3030305C3034305C3030306D5C303030615C3030306C5C303030695C303030675C3030306E5C303030615C30303073}
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}Clasificación multiclase}{111}{section.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{111}{subsection.5.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Conteo de clases malignas antes de agrupar}}{112}{figure.5.7}\protected@file@percent }
-\newlabel{fig:malas}{{5.7}{112}{Conteo de clases malignas antes de agrupar}{figure.5.7}{}}
+\citation{lin2018focal}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Distribución de las clases malignas}}{112}{figure.5.7}\protected@file@percent }
+\newlabel{fig:malas}{{5.7}{112}{Distribución de las clases malignas}{figure.5.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\nonumberline Entrenamiento}{112}{subsubsection*.39}\protected@file@percent }
-\BKM@entry{id=57,dest={73756273656374696F6E2E352E322E32},srcline={434}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030306F5C3030305C3034305C303030645C303030655C3030305C3034305C303030655C3030306E5C303030665C303030655C303030725C3030306D5C303030655C303030645C303030615C303030645C303030655C303030735C3030305C3034305C303030625C303030655C3030306E5C303030695C303030675C3030306E5C303030615C30303073}
 \@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces Informe de clasificación para validación maligna}}{113}{table.5.7}\protected@file@percent }
 \newlabel{tab:malignometrics}{{5.7}{113}{Informe de clasificación para validación maligna}{table.5.7}{}}
 \@writefile{lot}{\contentsline {subtable}{\numberline{(a)}{\ignorespaces {Fase de congelado}}}{113}{table.5.7}\protected@file@percent }
@@ -391,30 +391,37 @@
 \@writefile{lot}{\contentsline {subtable}{\numberline{(b)}{\ignorespaces {Descongelado}}}{113}{table.5.7}\protected@file@percent }
 \@writefile{lot}{\contentsline {subtable}{\numberline{(a)}{\ignorespaces {Fase de congelado}}}{113}{table.5.7}\protected@file@percent }
 \@writefile{lot}{\contentsline {subtable}{\numberline{(b)}{\ignorespaces {Descongelado}}}{113}{table.5.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{113}{subsection.5.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Conteo de clases malignas antes de agrupar}}{114}{figure.5.8}\protected@file@percent }
-\newlabel{fig:buenas}{{5.8}{114}{Conteo de clases malignas antes de agrupar}{figure.5.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.41}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}}{115}{table.5.8}\protected@file@percent }
-\newlabel{tab:benignomalmetrics}{{5.8}{115}{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}{table.5.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Curvas de aprendizaje para clases malignas}}{113}{figure.5.8}\protected@file@percent }
+\newlabel{fig:curvasmalign}{{5.8}{113}{Curvas de aprendizaje para clases malignas}{figure.5.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces Informe de clasificación para validación maligna (Pesos)}}{114}{table.5.8}\protected@file@percent }
+\newlabel{tab:malignometrics2}{{5.8}{114}{Informe de clasificación para validación maligna (Pesos)}{table.5.8}{}}
+\@writefile{lot}{\contentsline {subtable}{\numberline{(a)}{\ignorespaces {Fase de congelado}}}{114}{table.5.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {subtable}{\numberline{(b)}{\ignorespaces {Descongelado}}}{114}{table.5.8}\protected@file@percent }
+\BKM@entry{id=57,dest={73756273656374696F6E2E352E322E32},srcline={477}}{5C3337365C3337375C3030304D5C3030306F5C303030645C303030655C3030306C5C3030306F5C3030305C3034305C303030645C303030655C3030305C3034305C303030655C3030306E5C303030665C303030655C303030725C3030306D5C303030655C303030645C303030615C303030645C303030655C303030735C3030305C3034305C303030625C303030655C3030306E5C303030695C303030675C3030306E5C303030615C30303073}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{115}{subsection.5.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases malignas antes de agrupar}}{115}{figure.5.9}\protected@file@percent }
+\newlabel{fig:buenas}{{5.9}{115}{Conteo de clases malignas antes de agrupar}{figure.5.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Entrenamiento}{115}{subsubsection*.41}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {5.9}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}}{116}{table.5.9}\protected@file@percent }
-\newlabel{tab:benignomalmejormetrics}{{5.9}{116}{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}{table.5.9}{}}
+\newlabel{tab:benignomalmetrics}{{5.9}{116}{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}{table.5.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.10}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}}{117}{table.5.10}\protected@file@percent }
+\newlabel{tab:benignomalmejormetrics}{{5.10}{117}{Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}{table.5.10}{}}
 \BKM@entry{id=58,dest={636861707465722E36},srcline={1}}{5C3337365C3337375C303030435C303030755C303030615C3030306E5C303030745C303030695C3030307A5C303030615C303030635C303030695C3030305C3336335C3030306E}
 \BKM@entry{id=59,dest={73656374696F6E2E362E31},srcline={7}}{5C3337365C3337375C3030304F5C303030705C303030745C303030695C3030306D5C303030695C3030307A5C303030615C303030635C303030695C3030306F5C3030306E5C303030655C303030735C3030305C3034305C303030645C303030655C3030305C3034305C303030505C303030795C303030745C3030306F5C303030725C303030635C303030685C3030305C3034305C3030306D5C3030306F5C303030625C303030695C3030306C5C30303065}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Cuantización}{117}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Cuantización}{119}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{117}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{119}{section.6.1}\protected@file@percent }
 \BKM@entry{id=60,dest={73656374696F6E2E362E32},srcline={24}}{5C3337365C3337375C303030435C303030725C303030655C303030615C303030635C303030695C3030305C3336335C3030306E5C3030305C3034305C303030645C303030655C3030305C3034305C3030306C5C3030306F5C303030735C3030305C3034305C3030306D5C3030306F5C303030645C303030655C3030306C5C3030306F5C303030735C3030305C3034305C303030635C303030755C303030615C3030306E5C303030745C303030695C3030307A5C303030615C303030645C3030306F5C30303073}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{118}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{120}{section.6.2}\protected@file@percent }
 \BKM@entry{id=61,dest={73656374696F6E2E362E33},srcline={72}}{5C3337365C3337375C303030435C3030306F5C3030306D5C303030705C303030615C303030725C303030615C303030745C303030695C303030765C303030615C3030305C3034305C303030645C303030655C3030305C3034305C3030306C5C3030306F5C303030735C3030305C3034305C3030306D5C3030306F5C303030645C303030655C3030306C5C3030306F5C303030735C3030305C3034305C3030306F5C303030725C303030695C303030675C303030695C3030306E5C303030615C3030306C5C3030305C3034305C303030795C3030305C3034305C303030635C303030755C303030615C3030306E5C303030745C303030695C3030307A5C303030615C303030645C3030306F}
 \BKM@entry{id=62,dest={73756273656374696F6E2E362E332E31},srcline={76}}{5C3337365C3337375C303030435C303030755C303030615C303030745C303030695C3030307A5C303030615C303030635C303030695C3030305C3336335C3030306E5C3030305C3034305C303030645C303030655C3030306C5C3030305C3034305C3030306D5C3030306F5C303030645C303030655C3030306C5C3030306F5C3030305C3034305C303030625C303030695C3030306E5C303030615C303030725C303030695C3030306F}
-\newlabel{fig:cuantizado}{{6.2}{119}{Creación de los modelos cuantizados}{Item.27}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {6.1}{\ignorespaces Proceso de cuantizado de modelos a Android}}{119}{algorithm.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{119}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{119}{subsection.6.3.1}\protected@file@percent }
+\newlabel{fig:cuantizado}{{6.2}{121}{Creación de los modelos cuantizados}{Item.36}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6.1}{\ignorespaces Proceso de cuantizado de modelos a Android}}{121}{algorithm.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{121}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Cuatización del modelo binario}{121}{subsection.6.3.1}\protected@file@percent }
 \bibdata{bibliografia/bibliografia}
 \bibcite{dermis}{1}
 \bibcite{ph2data}{2}
@@ -481,9 +488,9 @@
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{10.62082pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{18.0674pt}
 \global\@namedef{scr@dte@subsection@lastmaxnumwidth}{26.27988pt}
-\global\@namedef{scr@dte@table@lastmaxnumwidth}{18.0674pt}
+\global\@namedef{scr@dte@table@lastmaxnumwidth}{23.54239pt}
 \global\@namedef{scr@dte@figure@lastmaxnumwidth}{23.54239pt}
 \@writefile{toc}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
 \@writefile{lof}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
 \@writefile{lot}{\providecommand\tocbasic@end@toc@file{}\tocbasic@end@toc@file}
-\gdef \@abspage@last{126}
+\gdef \@abspage@last{128}
