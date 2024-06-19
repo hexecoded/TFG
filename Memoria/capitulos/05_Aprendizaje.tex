@@ -559,8 +559,6 @@ $$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
 
 De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. La diferencia con el caso empleado en enfermeades malignas, es que emplearemos como función de pérdida CrossEntropy en lugar de FocalLoss, ya que pudimos apreciar en el caso anterior que al insertarle pesos, pierde el efecto regularizador visto en el caso sin pesos, y obtenemos peores resultados.
 
-Además, se han agrupado las clases minoritarias pertenecientes a subenfermedades de un tipo de enfermedad más general, como es el caso de los tres tipo de lentigos en una clase general denominada de la misma forma, y con abreviatura LN (figura  \ref{fig:buenasred}).
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.7]{imagenes/countbenign_corrected.png}

@@ -35,4 +35,7 @@
 \contentsline {table}{\numberline {6.1}{\ignorespaces Resultados de inferencia en test para el modelo original}}{127}{table.6.1}%
 \contentsline {table}{\numberline {6.2}{\ignorespaces Resultados de inferencia en test para el modelo cuantizado}}{127}{table.6.2}%
 \contentsline {table}{\numberline {6.3}{\ignorespaces Tiempos de inferencia para caso binario en Android}}{128}{table.6.3}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Resultados de inferencia en test para el modelo original}}{129}{table.6.4}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Resultados de inferencia en test para el modelo cuantizado}}{129}{table.6.5}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Tiempos de inferencia para caso binario en Android}}{130}{table.6.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

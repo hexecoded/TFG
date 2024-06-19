@@ -106,7 +106,7 @@ Evaluaremos el conjunto de test bajo las mismas condiciones, sin ningún tipo de
 
 A continuación, comparamos la inferencia de ambos modelos y la ganancia en tiempo de inferencia entre ellos.
 
-\subsubsection{Inferencia}
+\subsubsection{Métricas de inferencia en test}
 
 En primer lugar, comenzamos por evaluar la pérdida de rendimiento del modelo cuantizado. Para ello, ejecutamos el proceso de inferencia con ambos modelos, y obtenemos la tabla de resultados para ambos.
 Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en las tablas \ref{tab:bintestorig} y \ref{tab:bintestquant} respectivamente.
@@ -174,3 +174,81 @@ Tras la evaluación del modelo mediante 200 imágenes, podemos apreciar una gana
 $$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{571,71}{361,76} = 1.58$$
 
 Es decir, el modelo optimizado nos aporta uan ganancia de 1.58, lo cual supone aproximadamente un 40\% menos del tiempo de inferencia. Este resultado evidencia que el modelo cuantizado ofrece unas mejores prestaciones que el original. Teniendo en cuenta que el modelo cuantizado no pierde bondad de métricas al ser evaluado con el conjunto de test frente al original, queda demostrado que el modelo cuantizado supone una mejora considerable y debe ser el modelo a utilizar en un dispositivo móvil. La penalización obtenida es nula, y las ventajas, cuantiosas.
+
+\subsection{Cuantización del modelo maligno}
+
+El modelo de clasificación de enfermedades malignas se del primero de los casos de clasificación multiclase. A diferencia del anterior, este modelo aporta una salida más compleja, al deber distinguir entre melanomas, cáncer de células basales y cáncer de células escamosas. Esto nos deja un con vector de salida de 3 componentes, una por cada clase, que el modelo deberá aportar tanto en el modelo original como el cuantizado.
+
+De la misma manera que con el caso de clasificación binaria, compararemos los dos modelos mediante la evaluación del conjunto de test, teniendo en cuenta que las imágenes ha de ser preprocesadas con los mismos parámetros y configuraciones del conjunto de test, y no recalcular ninguno de los valores. Este preprocesado, al igual que en entrenamiento, incluye:
+
+\begin{enumerate}
+	\item Renombrado de etiquetas. Al igual que en el modelo de entrenamiento decidimos fusionar las clases melanoma y melanoma metastasis, debemos de aplicar la misma transformación en test. Si no lo hiciésemos, el modelo funcionaría adecuadamente, pero no podríamos evaluar correctamente las métricas que nos permiten ver si el rendimiento es el esperado.
+	 \item Normalización y resize: se utilizan la media y desviación típica de imagenet, empleadas en entrenamiento, y se aplica un resize de 512 x 512 px siguiendo la misma distribución.
+\end{enumerate}
+
+Una vez realizado este preprocesado, podemos calcular la inferencia de los dos modelos.
+
+\subsubsection{Métricas de inferencia en test}
+Para evaluar la calidad del modelo cuantizado, se tomarán tanto el modelo original como el cuantizado, ambos exportados durante el aprendizaje realizado en el capitulo 5, y obtendremos la tabla resumen de métricas para realizar la comparativa.
+Los resultados  podemos apreciarlos en las tablas \ref{tab:maltestorig} (original) y \ref{tab:maltestquant}(cuantizado).
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		Basal Cell C. & 0.80 & 0.84 & 0.82 & 1969 \\
+		Melanoma & 0.87 & 0.92 & 0.89 & 2950 \\
+		Squamous Cell C. & 0.65 & 0.37 & 0.47 & 549 \\ \hline
+		Accuracy & ~ & ~ & 0.83 & 5468 \\ \hline
+		Macro avg & 0.78 & 0.71 & 0.73 & 5468 \\
+		Weighted avg & 0.83 & 0.83 & 0.83 & 5468 \\ \hline
+	\end{tabular}
+	\caption{Resultados de inferencia en test para el modelo original}
+	\label{tab:maltestorig}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		Basal Cell C. & 0.80 & 0.84 & 0.82 & 1969 \\
+		Melanoma & 0.87 & 0.92 & 0.89 & 2950 \\
+		Squamous Cell C. & 0.65 & 0.37 & 0.47 & 549 \\ \hline
+		Accuracy & ~ & ~ & 0.83 & 5468 \\ \hline
+		Macro avg & 0.78 & 0.71 & 0.73 & 5468 \\
+		Weighted avg & 0.83 & 0.83 & 0.83 & 5468 \\ \hline
+	\end{tabular}
+	\caption{Resultados de inferencia en test para el modelo cuantizado}
+	\label{tab:maltestquant}
+\end{table}
+
+En este subproblema, encontramos que ambos modelos arrojan exactamente el mismo resultado, por lo que el proceso de optimización no ha conllevado ninguna pérdida para el rendimiento del modelo, lo cual es un caso totalmente ideal. Para ver su rendimiento real, podemos comparar el modelo con el resultado arrojado por el conjunto de validación:  0.79 de precisión,  0.72 de recall, y  0.74 de F1 Score (tabla \ref{tab:malignometrics}).  Podemos apreciar que, por tanto, el conjunto de validación fue un correcto estimador de las funciones de pérdida y métricas fuera de la muestra.
+
+Por tanto, el modelo cuantizado, y a su vez, el original, ofrecen un muy buen resultado, acorde a lo estimado durante el entrenamiento, y sin pérdida de precisión de clasificación en el caso del modelo cuantizado. 
+
+\subsubsection{Tiempo de inferencia}
+
+Tras observar que el modelo cuantizado no supone pérdidas sobre el modelo original, un caso ideal, nos disponemos a evaluar el tiempo de inferencia por imagen, de la misma manera que se realizó con el modelo binario.
+
+Se usará el mismo dispositivo, empleando un subconjunto para la inferencia de 200 imágenes. Los resultados se pueden apreciar en la siguiente tabla:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
+		Original & 215693 & 1078,465	 \\ \hline
+		Cuantizado & 136912 & 684,56 \\ \hline
+	\end{tabular}
+	\caption{Tiempos de inferencia para caso binario en Android}
+	\label{infbin}
+\end{table}
+
+A la vista de los resultados, podemos apreciar una ganancia significativa en tiempo, de alrededor de 394ms por imagen. A priori, parece que el ahorro en tiempo es mayor que en el caso binario, pero si calculamos la ganancia en velocidad, obtenemos:
+
+$$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{1078,465}{684,56} = 1.575$$
+
+Es decir, el modelo optimizado nos aporta uan ganancia de 1.575, lo cual es proporción es prácticamente la misma ganancia que la conseguda con la cuantización en caso binario. De nuevo, supone aproximadamente un 37\% menos de tiempo de inferencia sobre el modelo original. 
+En conclusión, el modelo a utilizar como modelo final vuelve a ser la versión cuantizada, ya que nos permite mejorar considerablemente el rendimiento sin pérdida de prestaciones.

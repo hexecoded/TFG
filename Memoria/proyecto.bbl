@@ -194,6 +194,13 @@ Forrest~N. Iandola, Song Han, Matthew~W. Moskewicz, Khalid Ashraf, William~J.
 \newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and
   <0.5mb model size, 2016.
 
+\bibitem{cancerincidence}
+WCRF International.
+\newblock Global cancer statistics for the most common cancers in the world.
+\newblock \url{https://www.wcrf.org/cancer-trends/worldwide-cancer-data/},
+  2023.
+\newblock [Online; accessed 10-October-2023].
+
 \bibitem{NIPS2012_c399862d}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.
@@ -324,6 +331,15 @@ Veronica Rotemberg, Nicholas Kurtansky, Brigid Betz-Stablein, Liam Caffery,
   melanomas using clinical context.
 \newblock {\em Scientific Data}, 8(1), January 2021.
 
+\bibitem{coloncancer}
+Quirón Salud.
+\newblock El 90% de los casos de cáncer de colon se puede curar si se
+  diagnostica en fases tempranas.
+\newblock
+  \url{https://www.quironsalud.com/es/comunicacion/actualidad/90-casos-cancer-colon-puede-curar-diagnostica-fases-tempran},
+  2016.
+\newblock [Online; accessed 10-October-2023].
+
 \bibitem{sandler2019mobilenetv2}
 Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
   Chen.
@@ -388,6 +404,14 @@ Xintao Wang, Ke~Yu, Shixiang Wu, Jinjin Gu, Yihao Liu, Chao Dong, Chen~Change
   Loy, Yu~Qiao, and Xiaoou Tang.
 \newblock Esrgan: Enhanced super-resolution generative adversarial networks,
   2018.
+
+\bibitem{cancerprevision}
+World Health~Organization (WHO).
+\newblock Global cancer burden growing, amidst mounting need for services.
+\newblock
+  \url{https://www.who.int/news/item/01-02-2024-global-cancer-burden-growing--amidst-mounting-need-for-services},
+  2024.
+\newblock [Online; accessed 10-February-2024].
 
 \bibitem{zhang2017shufflenet}
 Xiangyu Zhang, Xinyu Zhou, Mengxiao Lin, and Jian Sun.
