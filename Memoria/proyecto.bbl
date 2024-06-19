@@ -299,6 +299,12 @@ Pytorch.
 \newblock \url{https://pytorch.org/mobile/home/}, 2023.
 \newblock [Online; accessed 18-April-2024].
 
+\bibitem{comptquant}
+Pytorch.
+\newblock Quantization. quantization api summary.
+\newblock \url{https://pytorch.org/docs/stable/quantization.html}, 2023.
+\newblock [Online; accessed 18-April-2024].
+
 \bibitem{eflite2}
 Google Renjie~Liu.
 \newblock Higher accuracy on vision models with efficientnet-lite.

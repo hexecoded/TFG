@@ -87,6 +87,13 @@ Por tanto, antes de exportar el modelo, será necesario especificar la dimensió
 
 Para concatenar el modelo original, y la nueva capa específica para la función Softmax, es necesario añadir ambos pasos a un pipeline, usando para la clase Sequential de Pytorch, que no es más que la creación de un modelo por capas.\\
 
+Por último, para el proceso de comparación de modelos, realizaremos dos tareas:
+\begin{enumerate}
+	\item Evaluación del conjunto de test. Se realiza la inferncia completa del conjunto de test para estudiar la pérdida de rendimiento del modelo cuantizado frente al original haciendo uso un estimador insesgado, debido a la reserva de las imágenes hasta este momento.
+	\item Comparativa de tiempos de inferencia. Realizaremos una comparativa de ejecución de ambos modelos en Android para evaluar la ganancia en tiempo tras aplicar cuantización, y si esta compensa las pérdidas de prestaciones. Debido a las limitaciones de la arquitectura ARM, evaluaremos el tiempo sobre una muestra del total, debido a la generación de calor y el desgaste ocasionado por la evaluación del test, que al tratarse del 40\% del cómputo global de imágenes, incluye 21478 fotografías.
+
+\end{enumerate}
+
 \section{Comparativa de los modelos original y cuantizado}
 
 En este apartado, una vez comprendido el proceso de exportación y cuantización, examinaremos el rendimiento de cada uno de los 3 modelos creados para el proyecto. Para ello, evaluaremos el conjunto de test, intacto hasta esta fase, para conocer el rendimiento real de los modelos originales, y los compararemos con cada uno de los modelos cuantizados.
@@ -95,5 +102,75 @@ En este apartado, una vez comprendido el proceso de exportación y cuantización
 
 El modelo de clasificación binaria, que decide si la enfermedad se trata de un caso benigno o maligno, es la capa más importante de la arquitectura de dos niveles implementada. Su rendimiento es crítico dentro del funcionamiento del modelo, debido a que la confusión entre subtipos de enfermedades tiene un coste relativamente pequeño, pero un error entre una enfermedad cancerígena o benigna tiene un elevado coste para el paciente en consecuencias. Por tanto, es clave evaluar el modelo con el conjunto de test para conocer la bonanza del mismo, y estudiar si las gancias en espacio y tiempo de inferencia justifican la cuantización.\\
 
-Comenzaremos por evaluar el conjunto de test con el modelo original sin cuantizar, para tenerlo como referencia. Los resultados ofrecidos en accuracy, balanced accuracy, precision y recall son los siguientes:
+Evaluaremos el conjunto de test bajo las mismas condiciones, sin ningún tipo de preprocesado, más allá de la normalización de las imágenes y el reescalado a 512 x 512. Es muy importante destacar que estos valores son los mismos que los empleados en la fase de entrenamiento, ya que recalcular la media y desviación típica podría crear mejores resultados pero no ser una prueba representativa, ya que al realizar una inferencia de un diagnóstico, esta normalmente se realiza con una única imagen, y no habría datos suficientes para hallar la media y desviación típica. Debemos trabajar siempre con los parámetros de entrenamiento para que la distribución sea la misma, verificando así las condiciones ya vista acerca de disponer de un estimador no sesgado con test.
 
+A continuación, comparamos la inferencia de ambos modelos y la ganancia en tiempo de inferencia entre ellos.
+
+\subsubsection{Inferencia}
+
+En primer lugar, comenzamos por evaluar la pérdida de rendimiento del modelo cuantizado. Para ello, ejecutamos el proceso de inferencia con ambos modelos, y obtenemos la tabla de resultados para ambos.
+Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en las tablas \ref{tab:bintestorig} y \ref{tab:bintestquant} respectivamente.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		Benign & 0.90 & 0.89 & 0.89 & 16010 \\ 
+		Malignant & 0.68 & 0.70 & 0.69 & 5468 \\ \hline
+		~ & ~ & accuracy & 0.84 & 21478 \\ \hline
+		Macro avg & 0.79 & 0.80 & 0.79 & 21478 \\ 
+		Weighted avg & 0.84 & 0.84 & 0.84 & 21478 \\ \hline
+	\end{tabular}
+	\caption{Resultados de inferencia en test para el modelo original}
+	\label{tab:bintestorig}
+\end{table}
+
+
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		Benign & 0.90 & 0.89 & 0.89 & 16010 \\ 
+		Malignant & 0.68 & 0.70 & 0.69 & 5468 \\ \hline
+		~ & ~ & accuracy & 0.84 & 21478 \\ \hline
+		Macro avg & 0.79 & 0.79 & 0.79 & 21478 \\ 
+		Weighted avg & 0.84 & 0.84 & 0.84 & 21478 \\ \hline
+	\end{tabular}
+	\caption{Resultados de inferencia en test para el modelo cuantizado}
+	\label{tab:bintestquant}
+\end{table}
+
+Podemos apreciar que el resultado obtenido en el modelo original es muy similar a los obtenidos con la partición de validación, por lo que el modelo ha funcionado correctamente con datos los cuales no ha visto hasta el momento. Concretamente, en media, el modelo original en validación nos ofrecía el mismo resultado:  0.79 de precisión, 0.79 de recall,  0.79  de F1 Score y 0.84 de accuracy (\ref{tab:resultsbinrn50}). Si comparamos en detalle, hemos perdido recall y precisión en la clase maligna a favor de un ligero aumento de dichas métricas en la clase benigna, arrojando el mismo resultado medio. 
+
+Si ahora estudiamos el caso optimizado y cuantizado para Android, observamos que sorprendentemente, no se han perdido prestaciones: las métricas son prácticamente idénticas a las obtenidas en el modelo original sin optimizar, a diferencia del recall medio, una centésima menor, lo cual es posible que se deba a algún ejemplo cuya valoración se ha visto erróneamente clasificada, pero cuyo impacto global ha sido. Podríamos afirmar que para este modelo, el impacto de optimización no ha afectado al rendimiento del modelo, el cual ha conservado las mismas prestaciones, ya que la diferencia en recall es prácticamente despreciable.
+
+Esto ha sido posible gracias a las capacidades del framework desarrollado por Pytorch, las cuales han funcionado adecuadamente, al haber elegido un modelo totalmente compatible con el proceso de cuantización y optimización \cite{comptquant}.\\
+
+En conclusión, para el modelo de clasificación binaria, obtenemos un modelo optimizado sin pérdida de rendimiento.
+
+\subsubsection{Tiempo de inferencia}
+
+Tras obtener unos buenos resultados en las métricas del modelo, podemos evaluar el tiempo medio de inferencia del modelo cuantizado frente al original en Android. Este factor es clave, ya que si el modelo cuantizado no ofrece resultados más eficientes en tiempo, el proceso de cuantizado no supone ninguna ventaja sobre el modelo original, sobre todo en este modelo, el cual ha demostrado no perder prestaciones en cuanto a métricas.
+
+Los resultados se han tomado teniendo en cuenta únicamente la inferencia de 200 imágenes, debido a que la evaluación de las 21478 imágenes en un dispositivo móvil produce un sobrecalentamiento y desgaste considerable sobre los componentes. El terminal empleado hace uso de un Snapdragon 855, y 8GB de RAM, siendo estos componentes del año 2019, y arroja los siguientes resultados:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
+		Original & 114342 & 571,71 \\ \hline
+		Cuantizado & 72352 & 361,76 \\ \hline
+	\end{tabular}
+	\caption{Tiempos de inferencia para caso binario en Android}
+	\label{infbin}
+\end{table}
+
+Tras la evaluación del modelo mediante 200 imágenes, podemos apreciar una ganancia significativa en tiempo, superior a 210ms por imagen. Si calculamos la ganancia en velocidad del modelo cuantizado sobre el original, obtenemos:
+
+$$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{571,71}{361,76} = 1.58$$
+
+Es decir, el modelo optimizado nos aporta uan ganancia de 1.58, lo cual supone aproximadamente un 40\% menos del tiempo de inferencia. Este resultado evidencia que el modelo cuantizado ofrece unas mejores prestaciones que el original. Teniendo en cuenta que el modelo cuantizado no pierde bondad de métricas al ser evaluado con el conjunto de test frente al original, queda demostrado que el modelo cuantizado supone una mejora considerable y debe ser el modelo a utilizar en un dispositivo móvil. La penalización obtenida es nula, y las ventajas, cuantiosas.

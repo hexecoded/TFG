@@ -78,6 +78,8 @@
 \contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{121}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{123}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{123}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{125}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Cuantización del modelo binario}{125}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{126}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuantización del modelo binario}{126}{subsection.6.3.1}%
+\contentsline {subsubsection}{\nonumberline Inferencia}{126}{subsubsection*.43}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{127}{subsubsection*.45}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

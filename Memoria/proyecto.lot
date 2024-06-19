@@ -32,4 +32,7 @@
 \contentsline {table}{\numberline {5.9}{\ignorespaces Clasificación para validación benigna (Ordenadas de mayor a menor rep., sin pesos)}}{117}{table.5.9}%
 \contentsline {table}{\numberline {5.10}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}}{119}{table.5.10}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Resultados de inferencia en test para el modelo original}}{127}{table.6.1}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Resultados de inferencia en test para el modelo cuantizado}}{127}{table.6.2}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Tiempos de inferencia para caso binario en Android}}{128}{table.6.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
