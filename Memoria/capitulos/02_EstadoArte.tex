@@ -1,28 +1,28 @@
 \chapter{Tendencias y Estado del arte}
 
-Antes de adentrarnos en el análisis del problema, debemos de tener en cuenta de que este problema es una temática en constante evolución, y por tanto, podemos encontrar diferentes conceptos y procedimientos seguidos en la literatura que pueden servirnos de inspiración para abordar el problema sin cometer los errores ya cometidos en el pasado, y ser capaces de encontrar un nuevo enfoque que nos ofrezca ventajas.\\
+Antes de adentrarnos en el análisis del problema, debemos de tener en cuenta de que este problema es una temática en constante evolución, y por tanto, podemos encontrar diferentes conceptos y procedimientos seguidos en la literatura que pueden servirnos de inspiración para abordar el problema sin cometer los errores ya cometidos en el pasado, y ser capaces de encontrar un nuevo enfoque que nos ofrezca ventajas.
 
 Generalmente, este problema ha sido abordado empleando hardware de computador de escritorio, por lo que la mayoría de modelos se centran en el aprovechamiento de los recursos hardware alojados en un servidor para realizar la clasificación y evaluación de las imágenes potencialmente cancerosas tomadas. Por tanto, nos adentraremos en sus conceptos, pero teniendo en cuenta que el proyecto propuesto hará uso de dispositivos móviles durante el tiempo de inferencia.
 
 \section{Aprendizaje profundo en dispositivos móviles}
 
-Con la creciente tendencia de la potencia de cálculo en los dispositivos actuales, prácticamente todos los aparatos electrónicos que nos rodean han crecido en cuanto a potencia y complejidad de cálculo. Los smartphones son precisamente uno de ellos, y nos acompañan cada día, por lo que es el dispositivo ideal para tareas de uso cotidiano y portabilidad.\\
+Con la creciente tendencia de la potencia de cálculo en los dispositivos actuales, prácticamente todos los aparatos electrónicos que nos rodean han crecido en cuanto a potencia y complejidad de cálculo. Los smartphones son precisamente uno de ellos, y nos acompañan cada día, por lo que es el dispositivo ideal para tareas de uso cotidiano y portabilidad.
 
-Estos dispositivos, a diferencia de los computadores tradicionales, normalmente basado en la arquitectura x86 o AMD64, se basan en ARM, siguiendo como concepto de diseño ofrecer el máximo rendimiento posible dentro de unos consumos contenidos,mejorando el ahorro de energía y la pérdida de la misma mediante calor. El entrenamiento de modelos que encontramos habitualmente en la literatura, como ResNet, Inception o similares, es prácticamente inviable de forma nativa.\\
+Estos dispositivos, a diferencia de los computadores tradicionales, normalmente basado en la arquitectura x86 o AMD64, se basan en ARM, siguiendo como concepto de diseño ofrecer el máximo rendimiento posible dentro de unos consumos contenidos,mejorando el ahorro de energía y la pérdida de la misma mediante calor. El entrenamiento de modelos que encontramos habitualmente en la literatura, como ResNet, Inception o similares, es prácticamente inviable de forma nativa.
 
-Sin embargo, en lo que respecta a la inferencia, éstos son capaces de ofrecer muy buenos resultados, gracias a la incorporación de hardware dedicado capaz de ofrecer estas características. Como prueba, podemos observar infinidad de aplicaciones que hace uso de ello, como Google Lens, que si bien se ayuda del uso de servidores de búsqueda especializados, es capaz de realizar procedimientos locales en los dispositivos de gama alta. \\
+Sin embargo, en lo que respecta a la inferencia, éstos son capaces de ofrecer muy buenos resultados, gracias a la incorporación de hardware dedicado capaz de ofrecer estas características. Como prueba, podemos observar infinidad de aplicaciones que hace uso de ello, como Google Lens, que si bien se ayuda del uso de servidores de búsqueda especializados, es capaz de realizar procedimientos locales en los dispositivos de gama alta. 
 
 El objetivo del proyecto es aprovechar dicho vacío en la existencia de apliaciones de inferencia local para ofrecer una app que no necesite de conexión de red permanente para ofrecer resultados acerca de las manchas de piel identificadas.
 
-Aprovechando el auge de los smartphones, grandes empresas, como Google y Meta, centran sus esfuerzos en la creación de arquitecturas basadas en redes convolucionales capaces en realizar detección de imágenes en tiempo real, para la clasificación de distintos objetos que podemos encontrar en nuestra vida cotidiana, y servir así como una herramienta de apoyo para diferentes necesidades. Sin embargo, esto es una tarea completa, ya que suelen carecer de complejas operaciones, o sacrificar en profundidad para lograr un rendimiento aceptable de unas decenas de milisegundos por inferencia.\\
+Aprovechando el auge de los smartphones, grandes empresas, como Google y Meta, centran sus esfuerzos en la creación de arquitecturas basadas en redes convolucionales capaces en realizar detección de imágenes en tiempo real, para la clasificación de distintos objetos que podemos encontrar en nuestra vida cotidiana, y servir así como una herramienta de apoyo para diferentes necesidades. Sin embargo, esto es una tarea completa, ya que suelen carecer de complejas operaciones, o sacrificar en profundidad para lograr un rendimiento aceptable de unas decenas de milisegundos por inferencia.
 
 A continuación, evaluaremos algunos de los modelos más conocidos y efectivos de propósito general, como SqueezeNet\cite{iandola2016squeezenet}, MobileNet \cite{howard2017mobilenets,sandler2019mobilenetv2,howard2019searching}, ShuffleNet \cite{zhang2017shufflenet} y  EfficientNet\cite{tan2020efficientnet,eflite}.
 
 \subsection{Squeeze-Net (2016)}
 
-Squeeze-Net\cite{iandola2016squeezenet} se centra en la reducción de complejidad de la arquitectura, sin pérdida de capacidad predictiva y evitando aplicar técnicas de compresión y cuantización\cite{kuzmin2024fp8} de modelos. Se autodefine como ``una red al nivel de AlexNet\cite{NIPS2012_c399862d} pero con una quincuagésima parte de los parámetros'', haciendo alusión a disponer de una capacidad de cálculo similar a AlexNet, pero recortando en cuanto a número de parámetros necesarios.\\
+Squeeze-Net\cite{iandola2016squeezenet} se centra en la reducción de complejidad de la arquitectura, sin pérdida de capacidad predictiva y evitando aplicar técnicas de compresión y cuantización\cite{kuzmin2024fp8} de modelos. Se autodefine como ``una red al nivel de AlexNet\cite{NIPS2012_c399862d} pero con una quincuagésima parte de los parámetros'', haciendo alusión a disponer de una capacidad de cálculo similar a AlexNet, pero recortando en cuanto a número de parámetros necesarios.
 
-Aunque el motivo de su creación no es de forma directa el uso de la arquitectura en dispositivos móviles, ha sido ampliamente utilizada en ellos al formar parte de la tendencia actual de reducción de coste computacional para reducir las necesidades de potencia de cálculo. De esta forma, se puede facilitar la implementación de redes convolucionales en sistemas empotrados con escasa capacidad de memoria y cómputo, haciendo uso de FPGAs \cite{fpga}.\\
+Aunque el motivo de su creación no es de forma directa el uso de la arquitectura en dispositivos móviles, ha sido ampliamente utilizada en ellos al formar parte de la tendencia actual de reducción de coste computacional para reducir las necesidades de potencia de cálculo. De esta forma, se puede facilitar la implementación de redes convolucionales en sistemas empotrados con escasa capacidad de memoria y cómputo, haciendo uso de FPGAs \cite{fpga}.
 
 Siguiendo este punto de vista, fue capaz de igualar e incluso superar levemente el rendimiento de AlexNet\cite{NIPS2012_c399862d}, empleando las siguientes técnicas:
 \begin{itemize}
@@ -39,7 +39,7 @@ Siguiendo este punto de vista, fue capaz de igualar e incluso superar levemente 
 \end{figure}
 
 
-Esta red ha sido empleada en multitud de aplicaciones: detección de objetos en tiempo real, clasificación semántica, y modelos preliminares de conducción autónoma. Entre todas sus aplicaciones, podríamos destacar su utilización en imagen médica, concretamente MRI (Resonancias magnéticas). Ha permitido facilitar el diagnóstico de ciertas enfermedades y lesiones cerebrales en un espacio de memoria y recursos contenido.\\
+Esta red ha sido empleada en multitud de aplicaciones: detección de objetos en tiempo real, clasificación semántica, y modelos preliminares de conducción autónoma. Entre todas sus aplicaciones, podríamos destacar su utilización en imagen médica, concretamente MRI (Resonancias magnéticas). Ha permitido facilitar el diagnóstico de ciertas enfermedades y lesiones cerebrales en un espacio de memoria y recursos contenido.
 
 Sin embargo, a pesar de las mejoras recibidas en sus versiones sucesivas, como los módulos Fire de doble nivel para reducir dimensionalidad, o la introducción de más reducciones mediante pooling, sacrifica resultados a nivel de accuracy respecto a la competencia, y no ha sido aplicada de forma firme y exitosa sobre imágenes de enfermedades cutáneas.
 
@@ -383,7 +383,7 @@ Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repet
 	\item 	Eliminación del ISIC 2018. Como éste se encuentra contenido en la composición para el año 2019, puede prescindirse totalmente de él a favor de la versión de 2019.
 	\item 	Eliminación de imágenes “downsampled” del conjunto. En los años 2019 y 2020, se añadieron imágenes de challenges anteriores con una reducción en resolución. Para ahorar en espacio y tiempo de cómputo, pueden eliminarse las imágenes reducidas para quedarnos con una única copia de mayor calidad de la lesión, y luego realizarles manualmente un reescalado en caso de que sea necesario.
 	
-	Atendiendo de nuevo a los resultados propuestos por [6], obtenemos el siguiente conjunto: 
+	Atendiendo de nuevo a los resultados propuestos por  \cite{CASSIDY2022102305}, obtenemos la tabla \ref{tab:isicresum}, donde se recogen las imágenes removidas y restantes.
 	
 	\begin{table}[H]
 		\centering
@@ -398,6 +398,7 @@ Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repet
 			\textbf{Total} & - & 14,310 & 57,0621 \\ \hline
 		\end{tabular}
 		\caption{Tabla de imágenes únicas extraída de \cite{CASSIDY2022102305}. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}
+		\label{tab:isicresum}
 	\end{table}
 	
 \end{enumerate}
@@ -414,7 +415,7 @@ Obtendríamos un total de 57000 imágenes, los cuales podrían clasificarse, con
 
 Como ya se mencionó anteriormente, el repositorio de ISIC contiene una galería donde encontrar imágenes y metadatos de diferentes enfermedades diagnosticadas por especialistas dermatólogos, y verificadas en gran cantidad de casos por biopsia. Este conjunto de datos, en la actualidad, puede ser más atractivo que la fusión de los  5 datasets descritos anteriormente, ya que desde el año 2020, no les ofrece ninguna mejora o procesado.
 
-En total, podemos encontrar casi 80000 imágenes disponibles, siendo un total de 53781 imágenes correctamente etiquetadas y revisadas. Aunque se trata de unas 3500 imágenes menos que las competiciones en conjunto, la variedad de enfermedades e imágenes es mayor, ya que no se trata de las mismas imágenes empleadas en las competiciopnes, y no han sufrido ningún tipo de preprocesado o selección manual que pudiese alterar los resultados finales de forma positiva.
+En total, podemos encontrar casi 80000 imágenes disponibles, siendo un total de 53781 imágenes correctamente etiquetadas y revisadas. Aunque se trata de unas 3500 imágenes menos que las competiciones en conjunto, la variedad de enfermedades e imágenes es mayor, ya que no se trata de las mismas imágenes empleadas en las competiciones, y no han sufrido ningún tipo de preprocesado o selección manual que pudiese alterar los resultados finales de forma positiva.
 
 Por esta serie de argumentos, este conjuntos de imágenes será el empleado para realizar el diagnóstico de las enfermedades mediante la app móvil.
 
@@ -447,11 +448,11 @@ ASAN \cite{Han2017,HAN20181529,HAN20189} es un conjunto de datos de origen surco
 Tal y como se describe en la publicación de Goyal \cite{goyal2020artificial} , este dataset tiene 12 tipos de enfermedades, sumando un total de 17125 imágenes clínicas. Se dispone de escasa información acerca de este conjunto de datos, ya que los archivos de descarga no están acompañados por documentación acerca de su uso.
 
 
-En las publicaciones asociadas a este conjunto de datos \cite{Han2017,HAN20181529,HAN20189}, se hace alusión a la existencia de varios subconjuntos de datos, designados de la A a la D, pero siendo el conjunto A el conjunto intersección de todos ellos. En la breve descripción de su publicación original \cite{Han2017}, podemos encontrar que existe un conjunto de imágenes de alta calidad sólo accesible bajo petición, y sólo se dispone de acceso público a sus miniaturas, las cuales se encuentran organizadas en grandes páginas de alta resolución en configuración de matriz. En caso de necesitar las imágenes por seperado para entrenamiento, sería necesario separarlas manualmente.
+En las publicaciones asociadas a este conjunto de datos \cite{Han2017,HAN20181529,HAN20189}, se hace alusión a la existencia de varios subconjuntos de datos, designados de la A a la D, pero siendo el conjunto A el conjunto intersección de todos ellos. En la breve descripción de su publicación original \cite{Han2017}, podemos encontrar que existe un conjunto de imágenes de alta calidad sólo accesible bajo petición, y sólo se dispone de acceso público a sus miniaturas, las cuales se encuentran organizadas en grandes páginas de alta resolución en configuración de matriz. En caso de necesitar las imágenes por separado para entrenamiento, sería necesario separarlas manualmente.
 
 Tampoco encontramos un fichero de metadatos donde se especifiquen atributos como la edad, la procedencia o el sexo del paciente, pero sí existe constancia de la verificación mediante biopsia de las imágenes gracias al nombre de las mismas, ya que cada matriz de imágenes tiene como nombre la clase a la que pertenecen, y si fue verificada o no por biopsia. Se requiere, por tanto, una fase de preprocesado inicial. El tamaño de cada miniatura es de 98 x 98, siendo un tamaño bastante reducido, en comparación con los 1024 x 1024 de las imágenes contenidas en ISIC.
 
-Adicionalmente, podemos encontrar también 125 imágenes proporcionadas por el dtaset Hallym, cuya procedencia es desconocida, pero que solo contiene imágenes cancerosas de tipo melanoma.
+Adicionalmente, podemos encontrar también 125 imágenes proporcionadas por el dataset Hallym, cuya procedencia es desconocida, pero que solo contiene imágenes cancerosas de tipo melanoma.
 
 Teniendo en cuenta este segundo subconjunto, el dataset contiene un total de 12 clases:
 \begin{itemize}
@@ -465,12 +466,12 @@ Encontramos, por tanto, una mayoría de imágenes benignas sobre malignas, lo cu
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.4]{imagenes/results_asan.png}
-	\caption{Ejemplo de lunares beningnos en ASAN (Nevus)}
+	\caption{Ejemplo de lunares benignos en ASAN (Nevus)}
 \end{figure}
 
 Los resultados han sido confirmados por expertos dermatólogos y verificados en su mayoría mediante biopsia, por lo que las etiquetas asociadas a cada lesión están completamente verificadas. Como aspecto negativo, de cara al proyecto que se desarrolla en este documento, estos resultados distan bastante de lo que se puede conseguir con un smartphone, ya que, ResNet153 es uno de los modelos más profundos existentes en la literatura, y requieren grandes cantidades de memoria de gráficos. Además, sólo se dispone de las miniaturas, por lo que no será posible obtener características de grado fino aunque se aumente en profundidad o anchura el modelo. En preprocesado de datos, veremos algunas formas de evitar que se produzca esta penalización mediante la aplicación de mejora de imágenes con GANs.
 
-\subsection{Dermnet}
+\subsection{DermNet}
 
 DermNet \cite{dermnetz} es un portal online que ofrece imágenes en alta resolución sobre lesiones cutáneas, tanto cancerígenas como benignas, para el uso como material docente para la formación de dermatólogos, y tiene a disposición un conjunto de imágenes complementado por datos en formato tabular, especialmente preparado para su uso en Inteligencia artificial.
 
@@ -489,7 +490,7 @@ El conjunto de datos PH2 \cite{ph2} es un conjunto de 200 imágenes obtenidas gr
 	\item Melanomas, 40 ejemplares.
 \end{itemize}
 
-Dichas imágenes fueron captadas bajo las mismas condiciones, haciendo uso de un  sistema de análisis `Tuebinger Mole Analyzer'', capaz de realkizar una magnificación de 20 veces mayor al tamaño original. Su resolución es de  768x560 pixels, haciendo uso de los 3 habituales canales RGB a 8 bit sde profundidad cada uno. Se trata de unas imágenes de buena calidad, que llevan su correspondiente información asociada en forma de metadatos. Estos describen el color, la extensión de las manchas, la textura, la forma del borde, la localización, y otro tipo de características, como el tipo de piel.
+Dichas imágenes fueron captadas bajo las mismas condiciones, haciendo uso de un  sistema de análisis ``Tuebinger Mole Analyzer'', capaz de realkizar una magnificación de 20 veces mayor al tamaño original. Su resolución es de  768x560 pixeles, haciendo uso de los 3 habituales canales RGB a 8 bit de profundidad cada uno. Se trata de unas imágenes de buena calidad, que llevan su correspondiente información asociada en forma de metadatos. Estos describen el color, la extensión de las manchas, la textura, la forma del borde, la localización, y otro tipo de características, como el tipo de piel.
 
 De acuerdo a los requisitos especificados en su web, \cite{ph2data}, podemos acceder a los datos  y sus metadatos asociados de forma totalmente abierta y sin restricciones siempre que su uso se limite fines académicos y personales, como es este caso.
 \begin{figure}[H]
@@ -518,7 +519,7 @@ Entre sus clases, podemos encontrar, de forma equilibrada tres enfermedades beni
 	\item Cáncel de células escamosas: cancer con baja tasa de mortalidad, que surge en la capa intermedia de la piel, y cuyo crecimiento puede tener graves riesgos para la salid.
 	\end{itemize}
 
- Todos estos datos fueron revisados por dermatólogos expertos, quie aportaron metadatos muy detallados acerca del historial del paciente, gracias a la asociación con la Unidad Patológica de Anatomía del Hospital universitario Cassiano Antȳnio Moraes (HUCAM) , perteneciente a la Universidad Federal de Espírito Santo, en Brasil. EDe entre los metadatos ofrecidos, podemos destacar:
+ Todos estos datos fueron revisados por dermatólogos expertos, quie aportaron metadatos muy detallados acerca del historial del paciente, gracias a la asociación con la Unidad Patológica de Anatomía del Hospital universitario Cassiano Antonio Moraes (HUCAM) , perteneciente a la Universidad Federal de Espírito Santo, en Brasil. EDe entre los metadatos ofrecidos, podemos destacar:
 
 \begin{itemize}
 	\item ID de paciente
@@ -535,7 +536,7 @@ En su publicación original\cite{PACHECO2020106221}, podemos encontrar un resume
 	\centering
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Diagnostico} & \textbf{Ejemplares} & \textbf{\% biopsied} \\ \hline
+		\textbf{Diagnóstico} & \textbf{Ejemplares} & \textbf{\% biopsied} \\ \hline
 		Actinic Keratosis (ACK) & 730 & 24.4\% \\ \hline
 		Basal Cell Carcinoma of skin (BCC) & 845 & 100\% \\ \hline
 		Malignant Melanoma (MEL) & 52 & 100\% \\ \hline
@@ -558,25 +559,24 @@ La gran ventaja de este dataset es que sus imágenes han sido recopiladas median
 
 \subsection{Severance}
 
-Severance es otro conjunto de lesiones cutáneas que podemos encontrar para su libre acceso de forma digital \cite{severance}. Se trata de un conjunto de imágenes de lesiones cutáneas recopiladas de pacientes de Corea del Sur por el hospital Severance.  Los datos recopilados pertenecen a los casos diagnosticados por dermatólogs entre enero de 2008 y marzo de 2019, teniendo en cuenta el historial médido de cada uno de los pacientes y asegurando un grado alto de confianza en el diagnóstico.
+Severance es otro conjunto de lesiones cutáneas que podemos encontrar para su libre acceso de forma digital \cite{severance}. Se trata de un conjunto de imágenes de lesiones cutáneas recopiladas de pacientes de Corea del Sur por el hospital Severance.  Los datos recopilados pertenecen a los casos diagnosticados por dermatólogos entre enero de 2008 y marzo de 2019, teniendo en cuenta el historial medido de cada uno de los pacientes y asegurando un grado alto de confianza en el diagnóstico.
 
-La población de este muestreo se centra sobre pacientes mayores a 19 añaos, que fueron diagnosticados con lesiones provenientes de tumores. Se excluyó de este estudio a todas aquellas lesiones de dificil acceso, como las lesiones intraoculares, postoperatorias, o causas por medios externos, como láseres o costuras operatorias. Además, algunos pacientes tenían diferentes lesiones en zonas próximas, por lo que se tomaron las imágenes de forma que el diagnóstico para cada una de ellas fuera individual, y no se pudieran producir incongruencias entre los expertos en el diagnóstico. 
+La población de este muestreo se centra sobre pacientes mayores a 19 años, que fueron diagnosticados con lesiones provenientes de tumores. Se excluyó de este estudio a todas aquellas lesiones de difícil acceso, como las lesiones intraoculares, postoperatorias, o causas por medios externos, como láseres o costuras operatorias. Además, algunos pacientes tenían diferentes lesiones en zonas próximas, por lo que se tomaron las imágenes de forma que el diagnóstico para cada una de ellas fuera individual, y no se pudieran producir incongruencias entre los expertos en el diagnóstico. 
 
 En total, se dispone de 40331 imágenes clínicas, que provienen de 10426 pacientes distintos que participaron en la cesión de datos. Al igual que ASAN, este dataset posee distintas versiones publicadas en la red, siendo accesible únicamente su partición A, y podemos encontrar 38 tipos de diagnósticos distintos de los 43 disponibles en total,  los cuales no siguen una distribución equilibrada.
 
-Realizando un test estadistico previo, es posible verificar que las 6 clases más comunes contenidas en este dataset componen el 75\% del conjunto total. Está compuesto por queratosis actínica (22.5\%), angiofibromas (14.4\%), angiokeratomas(13.8\%), cáncer células basales (8.1\%), lunares de Becker (7.5\%), bluenevus (6.2\%), y la enfermedad de Bowen (carcinomas)(6.1\%).
+Realizando un test estadístico previo, es posible verificar que las 6 clases más comunes contenidas en este dataset componen el 75\% del conjunto total. Está compuesto por queratosis actínica (22.5\%), angiofibromas (14.4\%), angiokeratomas(13.8\%), cáncer células basales (8.1\%), lunares de Becker (7.5\%), bluenevus (6.2\%), y la enfermedad de Bowen (carcinomas)(6.1\%).
 
 El interés en este dataset se debe a que algunas de estas clases mayoritarias, como los nevus azules y los lunares de Becker, son condiciones benignas que suelen ser retirados únicamente con fines estéticos, permitiendo complementar con el resto de los diagnósticos negativos. Este tipo de lunares son los más complejos de diagnosticar, debido a sus colores similares a un melanoma, y suelen requerir una biopsia, por lo que su diagnóstico suele alargarse.
 
-Las imágenes publicadas son miniaturas recogidas en forma de matriz, presentando un formato similar a las encontradas en ASAN. La diferencia, en este caso, es que disponemos de los metadatos asociados a cada imagen, y el proceso de separación de miniaturas se ve simplificado. A continuación, podemos ver un ejemplo de las imágenes contenidas en el dataset:
+Las imágenes publicadas son miniaturas recogidas en forma de matriz, presentando un formato similar a las encontradas en ASAN. La diferencia, en este caso, es que disponemos de los metadatos asociados a cada imagen, y el proceso de separación de miniaturas se ve simplificado. En la figura \ref{fig:sevimg} podemos apreciar el formato matricial, y la toma de imágenes desde diferentes puntos de vista para portar una mayor variabilidad al modelo. Es posible separar cada una de estas imágenes logrando un conjunto de aproximadamente 10400 fotografías a 98 x 98 píxeles en formato jpeg, debido a la compresión con pérdidas aplicada para almacenarlas.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.5]{imagenes/Severance.png}
 	\caption{Imágenes de ejemplo provenientes del dataset Severance   }
+	 \label{fig:sevimg}
 \end{figure}
-
-Donde podemos apreciar el formato matricial, y la toma de imágenes desde diferentes puntos de vista para portar una mayor variabilidad al modelo. Es posible separar cada una de estas imágenes logrando un conjunto de aproximadamente 10400 fotografías a 98 x 98 píxeles en formato jpeg, debido a la compresión con pérdidas aplicada para almacenarlas.
 
 En cuanto a los resultados obtenidos en tareas de aprendizaje, de nuevo encontramos que se han utilizado grandes modelos para realizar el aprendizaje, siendo en este caso utilizado los modelos VGG16 y ResNext50, y siendo el resultado de accuracy top1 un 53.0\%,  dada a la complejidad del problema al utilizar clases infrarepresentadas.
 

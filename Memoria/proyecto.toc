@@ -5,6 +5,7 @@
 \contentsline {subsection}{\numberline {1.1.2}Dificultades del diagnóstico}{26}{subsection.1.1.2}%
 \contentsline {section}{\numberline {1.2}Justificación}{27}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Objetivos}{27}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Planificación}{28}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Tendencias y Estado del arte}{29}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Aprendizaje profundo en dispositivos móviles}{29}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Squeeze-Net (2016)}{30}{subsection.2.1.1}%
@@ -14,75 +15,79 @@
 \contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{35}{subsubsection*.13}%
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{36}{subsubsection*.15}%
 \contentsline {subsection}{\numberline {2.1.3}Shuffle Net}{37}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}EfficientNet}{39}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.4}EfficientNet}{38}{subsection.2.1.4}%
 \contentsline {subsubsection}{\nonumberline Aplicaciones en dermatología y cáncer de piel}{40}{subsubsection*.17}%
-\contentsline {section}{\numberline {2.2}Cuantización de modelos}{41}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Cuantización de modelos}{40}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Características}{41}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Modelos cuantizados}{43}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.2}Modelos cuantizados}{42}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Conclusión de los modelos cuantizados}{44}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Conjuntos de datos disponibles}{46}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}International Skin Imaging Collaboration​ (ISIC)}{47}{subsection.2.3.1}%
-\contentsline {subsubsection}{\nonumberline Fusión y deduplicado}{48}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline Uso de la galería de ISIC}{51}{subsubsection*.21}%
-\contentsline {subsection}{\numberline {2.3.2}ASAN Dataset}{52}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Dermnet}{54}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}PH2}{55}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}PAD-UFES 20}{56}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}Severance}{58}{subsection.2.3.6}%
-\contentsline {subsection}{\numberline {2.3.7}Otros datasets}{60}{subsection.2.3.7}%
-\contentsline {chapter}{\numberline {3}Construcción y preprocesado del conjunto de datos}{63}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{64}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{65}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}ASAN}{68}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{70}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}PH2}{70}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Severance}{71}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{74}{subsection.3.1.6}%
-\contentsline {section}{\numberline {3.2}Particionado de los datos}{75}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{75}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{78}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{80}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{80}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{82}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{85}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Conceptos previos}{85}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{87}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}ResNet 50}{87}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{88}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{89}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Función de pérdida}{90}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Cross entropy}{90}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Focal Loss}{90}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{91}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Entrenamiento de modelos completos sobre la base de datos}{93}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Clasificación binaria}{94}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{94}{subsection.5.1.1}%
-\contentsline {subsubsection}{\nonumberline Técnicas descartadas}{95}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{96}{subsubsection*.25}%
-\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{97}{subsection.5.1.2}%
-\contentsline {subsubsection}{\nonumberline Creación del datablock}{97}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{99}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{102}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {5.1.3}Resultados}{103}{subsection.5.1.3}%
-\contentsline {subsubsection}{\nonumberline ResNet 50}{104}{subsubsection*.33}%
-\contentsline {subsubsection}{\nonumberline Efficient Net}{106}{subsubsection*.35}%
-\contentsline {subsubsection}{\nonumberline Mobile Net}{107}{subsubsection*.37}%
-\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{109}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Clasificación multiclase}{111}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{111}{subsection.5.2.1}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{112}{subsubsection*.39}%
-\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{115}{subsection.5.2.2}%
-\contentsline {subsubsection}{\nonumberline Entrenamiento}{116}{subsubsection*.41}%
-\contentsline {chapter}{\numberline {6}Cuantización}{121}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{121}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{121}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{123}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{123}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{126}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Cuantización del modelo binario}{126}{subsection.6.3.1}%
-\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{126}{subsubsection*.43}%
-\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{127}{subsubsection*.45}%
-\contentsline {subsection}{\numberline {6.3.2}Cuantización del modelo maligno}{128}{subsection.6.3.2}%
-\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{129}{subsubsection*.47}%
-\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{130}{subsubsection*.49}%
+\contentsline {section}{\numberline {2.3}Conjuntos de datos disponibles}{45}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}International Skin Imaging Collaboration​ (ISIC)}{46}{subsection.2.3.1}%
+\contentsline {subsubsection}{\nonumberline Fusión y deduplicado}{47}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline Uso de la galería de ISIC}{50}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {2.3.2}ASAN Dataset}{51}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}DermNet}{53}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}PH2}{54}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}PAD-UFES 20}{55}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Severance}{57}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Otros datasets}{59}{subsection.2.3.7}%
+\contentsline {chapter}{\numberline {3}Construcción y preprocesado del conjunto de datos}{61}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{62}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{63}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}ASAN}{66}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{68}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}PH2}{68}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Severance}{69}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{72}{subsection.3.1.6}%
+\contentsline {section}{\numberline {3.2}Particionado de los datos}{73}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{73}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{76}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{78}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{78}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{80}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{83}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conceptos previos}{83}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{85}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}ResNet 50}{85}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{86}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{87}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Función de pérdida}{88}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cross entropy}{88}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Focal Loss}{88}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{89}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Entrenamiento de modelos completos sobre la base de datos}{91}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Clasificación binaria}{92}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{92}{subsection.5.1.1}%
+\contentsline {subsubsection}{\nonumberline Técnicas descartadas}{93}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{94}{subsubsection*.25}%
+\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{95}{subsection.5.1.2}%
+\contentsline {subsubsection}{\nonumberline Creación del datablock}{95}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{97}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{100}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {5.1.3}Resultados}{101}{subsection.5.1.3}%
+\contentsline {subsubsection}{\nonumberline ResNet 50}{102}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Efficient Net}{104}{subsubsection*.35}%
+\contentsline {subsubsection}{\nonumberline Mobile Net}{105}{subsubsection*.37}%
+\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{107}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{109}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{109}{subsection.5.2.1}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{110}{subsubsection*.39}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{113}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.41}%
+\contentsline {chapter}{\numberline {6}Cuantización}{119}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{119}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{119}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{121}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{122}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{124}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuantización del modelo binario}{124}{subsection.6.3.1}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{125}{subsubsection*.43}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{126}{subsubsection*.45}%
+\contentsline {subsection}{\numberline {6.3.2}Cuantización del modelo multiclase maligno}{127}{subsection.6.3.2}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{127}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{128}{subsubsection*.49}%
+\contentsline {subsection}{\numberline {6.3.3}Cuantización del modelo multiclase benigno}{129}{subsection.6.3.3}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{129}{subsubsection*.51}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{131}{subsubsection*.53}%
+\contentsline {section}{\numberline {6.4}Conclusión de la cuantización}{131}{section.6.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

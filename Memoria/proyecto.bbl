@@ -80,6 +80,12 @@ Marc Combalia, Noel C.~F. Codella, Veronica Rotemberg, Brian Helba, Veronica
   Susana Puig, and Josep Malvehy.
 \newblock Bcn20000: Dermoscopic lesions in the wild, 2019.
 
+\bibitem{torchscript}
+PyTorch Contributors.
+\newblock Torchscript.
+\newblock \url{https://pytorch.org/docs/stable/jit.html}, 2023.
+\newblock [Online; accessed 8-June-2024].
+
 \bibitem{1stISIC}
 All data~are Ext.
 \newblock Siim-isic melanoma classification, 1st solution.
@@ -87,6 +93,12 @@ All data~are Ext.
   \url{https://www.kaggle.com/competitions/siim-isic-melanoma-classification/discussion/175412},
   2020.
 \newblock [Online; accessed 8-June-2024].
+
+\bibitem{5206848}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In {\em 2009 IEEE Conference on Computer Vision and Pattern
+  Recognition}, pages 248--255, 2009.
 
 \bibitem{shuffleapp}
 Mohammad Fraiwan and Esraa Faouri.
@@ -144,7 +156,8 @@ David Gutman, Noel C.~F. Codella, Emre Celebi, Brian Helba, Michael Marchetti,
 Seung Han, Ik~Moon, Jung-Im Na, Myoung Kim, Gyeong Park, Seonghwan Kim, Kiwon
   Kim, Ju~Lee, and Sung Chang.
 \newblock Retrospective assessment of deep neural networks for skin tumor
-  diagnosis, 12 2019.
+  diagnosis.
+\newblock 12 2019.
 
 \bibitem{HAN20189}
 Seung Han, Gyeong Park, Woohyung Lim, Myoung Kim, Jung-Im Na, Ilwoo Park, and
@@ -174,6 +187,8 @@ Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 \bibitem{pytesseract}
 Samuel Hoffstaetter.
 \newblock Python tesseract.
+\newblock \url{https://github.com/h/pytesseractm}.
+\newblock [Online; accessed 10-March-2024].
 
 \bibitem{howard2019searching}
 Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo~Chen, Mingxing
@@ -353,6 +368,14 @@ Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
   Chen.
 \newblock Mobilenetv2: Inverted residuals and linear bottlenecks, 2019.
 
+\bibitem{Selvaraju_2019}
+Ramprasaath~R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam,
+  Devi Parikh, and Dhruv Batra.
+\newblock Grad-cam: Visual explanations from deep networks via gradient-based
+  localization.
+\newblock {\em International Journal of Computer Vision}, 128(2):336–359,
+  October 2019.
+
 \bibitem{mnetsqueeze}
 Rupali Kiran et~al. Shinde.
 \newblock Squeeze-mnet: Precise skin cancer detection model for low computing
@@ -403,7 +426,7 @@ Philipp Tschandl, Cliff Rosendahl, and Harald Kittler.
 
 \bibitem{gitesrgan}
 Xintao Wang.
-\newblock Dermatology information system.
+\newblock Esrgan (enhanced srgan).
 \newblock \url{https://github.com/xinntao/ESRGAN}.
 \newblock [Online; accessed 12-April-2024].
 

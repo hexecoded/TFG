@@ -4,20 +4,29 @@ La cuantización, como ya definimos en el apartado \ref{cap:cuantización}, se t
 
 Este procedimiento es el núcleo del proyecto, y el objetivo real de estudio de modelos para tecnologías móviles: experimentar cuál es la diferencia en tiempo y uso de memoria de la arquitectura tradicional sobre la optimizada.
 
-Para realizar este proceso, emplearemos la API de Pytorch dedicada a la transformación e implementación de modelos convolucionales en Android: Pytorch mobile  \cite{pmobile}. En este punto, analizaremos las optimizaciones realizadas por este framework, y las ventajas y desventajas de dicho procedimiento.
+Para realizar este proceso, emplearemos los mecanismos de Pytorch\cite{paszke2019pytorch} dedicados a la transformación e implementación de modelos convolucionales en Android: Pytorch mobile  \cite{pmobile}. En este punto, analizaremos las optimizaciones realizadas por este framework, y las ventajas y desventajas de dicho procedimiento.
 
 \section{Optimizaciones de Pytorch mobile}
+
+Pytorch mobile ofrece una serie de optimizaciones predeterminadas bastante eficientes en la optimización de modelos para arquitecturas ARM. Para comprender en detalle su funcionamiento, profundizaremos en el formato de guardado utilizado, y las optimizaciones llevadas a cabo para conseguir las ganancias en rendimiento especificadas en \cite{pmobile}.
+
 \subsection{Capacidades del framework}
-Pytorch, a través de sus dependecias mobile, puede transformar en unos sencillos pasos un modelo entrenado con Pytorch a un modelo simplificado optimizado para dispositivos móviles. Incluye varios métodos relacionados con la exportación que permiten optimizar o no la salida del modelo, adecuándolo a nuestras necesidades. En su página oficial, podemos encontrar un grafo donde se describe este proceso \cite{pmobile}:
+Pytorch \cite{paszke2019pytorch}, a través de sus dependecias mobile, tiene la capacidad de transformar en unos sencillos pasos un modelo entrenado de la forma habitual a un modelo simplificado optimizado para dispositivos móviles. Incluye varios métodos relacionados con la exportación que permiten optimizar o no la salida del modelo, adecuándolo a nuestras necesidades. En su página oficial, podemos encontrar un grafo donde se describe este proceso \cite{pmobile}:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 0.6]{imagenes/pytorch-mobile.png}
+	\includegraphics[scale = 0.5]{imagenes/pytorch-mobile.png}
 	\caption{Optimización de modelos con Pytorch Mobile \cite{pmobile}}
 	\label {fig:mobileprocess}
 \end{figure}
 
-Su compatibilidad engloba Android y iOS, siendo este último sistema soportado oficialmente tras el comienzo de la realización de este TFG. Aun así, este proyecto fue concebido inicialmente para ser probado en dispositivos Android, ya que el hardware de estos dispositivos tiene un mayor rendimiento en CPU y GPU, así como un mejor soporte de las librerías de aprendizaje. iOS, al tratarse de un SO cerrado a dispositivos Apple, y difícilmente emulable si no se dispone de dispositivos de la marca, requiere aún la existencia de frameworks estables dedicados al aprendizaje. Este motivo, sumando a que no disponemos de dispositivos con este sistema operativo, inclinó la balanza a usar únicamente dispositivos Android como dispositivo objetivo.
+Todo este procedimiento se realiza sobre un lenguaje intermedio de alto rendimiento, perteneciente al núcleo de Pytorch, llamado Torchscript \cite{torchscript}. Este lenguaje permite crear modelos escalables y optimizables sin necesidad de dependencias Python en el sistema destino. Está pensado, principalmente, para su aplicación en entornos de producción, los cuales estén basados en otros lenguajes, como C o similares. La conversión del formato habitual de Pytorch, y el establecido por Torchscript es prácticamente inmediato, ya que la conversión se realiza de forma interna al aplicar el comando \textit{torch.jit.script(model)}, siendo model el modelo que queremos transformar.
+
+Como inconvenientes, no podremos utilizar herramientas de explicabilidad de modelos como GradCam \cite{Selvaraju_2019}, debido a la pérdida de toda la información no esencial sobre los gradientes en el proceso de exportación a producción.
+
+La portabilidad al ser independizado de Python es el principal motivo de su uso para realizar la transformación del modelo a dispositivos móviles, y puede ser ejecutado tanto en PC como en smartphones, facilitando así el proceso de comparativa entre ambos.
+
+Si bien el lenguaje soporta Android y iOS,  este último fue soportado oficialmente tras el comienzo de la realización de este TFG. Debido a ello, este proyecto fue concebido inicialmente para ser probado en dispositivos Android, ya que el hardware de estos dispositivos es mñas accesible, y dispone de un mejor soporte de librerías y entornos de desarrollo. iOS, al tratarse de un SO limitado a dispositivos Apple, y difícilmente emulable si no se dispone de dispositivos de la marca, requiere unas condiciones adicionales que no se pueden cumplir por limitaciones económicas, pues no disponemos de dispositivos de la marca. Por este motivo, este proyecto se limita únicamente al desarrollo sobre terminales Android, más accesibles y frecuentes en el mercado.
 
 \subsection{Optimizaciones disponibles}
 
@@ -37,7 +46,7 @@ En total, la web  \cite{pmobile} estima una ganancia aproximada del 60\% en tiem
 
 La transformación de los modelos entrenados a su versión cuantizada puede realizarse de forma inmediata, ya que en los pasos anteriores, el modelo entrenado sobre cada uno de los casos (clasificación binaria, y multiclase para benigno y maligno) fue almacenado en un fichero de formato .pt (extensión de modelo Pytorch).
 
-Al tratarse de una conversión post-entrenamiento, no se requiere ningún ajuste de parámetros previo durante el entrenamiento, lo cual significa el entrenamiento sobre los modelos preparados para cuantización (QAT, o Quantization Aware Training  \cite{kuzmin2024fp8}), con el coste de una pequeña pérdida respecto a dicha ténica.
+Al tratarse de una conversión post-entrenamiento, no se requiere ningún ajuste de parámetros previo durante el entrenamiento, lo cual significa que el mecanismo puede aplicarse sobre los modelos entrenados de la forma habitual, sin necesidad de emplear métodos específicos como el entrenamiento apto para cuantizado (QAT, o Quantization Aware Training  \cite{kuzmin2024fp8}), el cual es más complejo de ajustar, pero puede ofrecer algunas ventajas marginales en cuanto a precisión.
 
 Para cuantizar el modelo tras su entrenamiento, basta con realizar los siguientes pasos:
 \begin{enumerate}
@@ -48,7 +57,7 @@ Para cuantizar el modelo tras su entrenamiento, basta con realizar los siguiente
 		\item Exportar el modelo a Android sin ninguna optimización estructural, más allá de la adaptación de tipos de flotantes (función \textit{save\_for\_lite\_interpreter})
 		\item Exportar el modelo aplicando todas las optimizaciones anteriores mencionadas para obtener el modelo más eficiente posible (función \textit{export\_for\_mobile})
 	\end{enumerate}
-	\item (Opcional) : exportar el modelo de escritorio en formato torch script. Se trata de un lenguaje de representación universal del modelo, que puede ser empleado con python nativo, y ser transferido a otros frameworks de trabajo habituales.
+	\item (Opcional) : exportar el modelo de escritorio en formato torch script. Se trata de un lenguaje de representación universal del modelo, que puede ser empleado con Python nativo, y ser transferido a otros frameworks de trabajo habituales.
 		
 \end{enumerate}
 
@@ -89,7 +98,7 @@ Para concatenar el modelo original, y la nueva capa específica para la función
 
 Por último, para el proceso de comparación de modelos, realizaremos dos tareas:
 \begin{enumerate}
-	\item Evaluación del conjunto de test. Se realiza la inferncia completa del conjunto de test para estudiar la pérdida de rendimiento del modelo cuantizado frente al original haciendo uso un estimador insesgado, debido a la reserva de las imágenes hasta este momento.
+	\item Evaluación del conjunto de test. Se realiza la inferencia completa del conjunto de test para estudiar la pérdida de rendimiento del modelo cuantizado frente al original haciendo uso un estimador insesgado, debido a la reserva de las imágenes hasta este momento.
 	\item Comparativa de tiempos de inferencia. Realizaremos una comparativa de ejecución de ambos modelos en Android para evaluar la ganancia en tiempo tras aplicar cuantización, y si esta compensa las pérdidas de prestaciones. Debido a las limitaciones de la arquitectura ARM, evaluaremos el tiempo sobre una muestra del total, debido a la generación de calor y el desgaste ocasionado por la evaluación del test, que al tratarse del 40\% del cómputo global de imágenes, incluye 21478 fotografías.
 
 \end{enumerate}
@@ -100,7 +109,7 @@ En este apartado, una vez comprendido el proceso de exportación y cuantización
 
 \subsection{Cuantización del modelo binario}
 
-El modelo de clasificación binaria, que decide si la enfermedad se trata de un caso benigno o maligno, es la capa más importante de la arquitectura de dos niveles implementada. Su rendimiento es crítico dentro del funcionamiento del modelo, debido a que la confusión entre subtipos de enfermedades tiene un coste relativamente pequeño, pero un error entre una enfermedad cancerígena o benigna tiene un elevado coste para el paciente en consecuencias. Por tanto, es clave evaluar el modelo con el conjunto de test para conocer la bonanza del mismo, y estudiar si las gancias en espacio y tiempo de inferencia justifican la cuantización.\\
+El modelo de clasificación binaria, que decide si la enfermedad se trata de un caso benigno o maligno, es la capa más importante de la arquitectura de dos niveles implementada. Su rendimiento es crítico dentro del funcionamiento del modelo, debido a que la confusión entre subtipos de enfermedades tiene un coste relativamente pequeño, pero un error entre una enfermedad cancerígena o benigna tiene un elevado coste para el paciente en consecuencias. Por tanto, es clave evaluar el modelo con el conjunto de test para conocer la bonanza del mismo, y estudiar si las ganancias en espacio y tiempo de inferencia justifican la cuantización.\\
 
 Evaluaremos el conjunto de test bajo las mismas condiciones, sin ningún tipo de preprocesado, más allá de la normalización de las imágenes y el reescalado a 512 x 512. Es muy importante destacar que estos valores son los mismos que los empleados en la fase de entrenamiento, ya que recalcular la media y desviación típica podría crear mejores resultados pero no ser una prueba representativa, ya que al realizar una inferencia de un diagnóstico, esta normalmente se realiza con una única imagen, y no habría datos suficientes para hallar la media y desviación típica. Debemos trabajar siempre con los parámetros de entrenamiento para que la distribución sea la misma, verificando así las condiciones ya vista acerca de disponer de un estimador no sesgado con test.
 
@@ -155,7 +164,7 @@ En conclusión, para el modelo de clasificación binaria, obtenemos un modelo op
 
 Tras obtener unos buenos resultados en las métricas del modelo, podemos evaluar el tiempo medio de inferencia del modelo cuantizado frente al original en Android. Este factor es clave, ya que si el modelo cuantizado no ofrece resultados más eficientes en tiempo, el proceso de cuantizado no supone ninguna ventaja sobre el modelo original, sobre todo en este modelo, el cual ha demostrado no perder prestaciones en cuanto a métricas.
 
-Los resultados se han tomado teniendo en cuenta únicamente la inferencia de 200 imágenes, debido a que la evaluación de las 21478 imágenes en un dispositivo móvil produce un sobrecalentamiento y desgaste considerable sobre los componentes. El terminal empleado hace uso de un Snapdragon 855, y 8GB de RAM, siendo estos componentes del año 2019, y arroja los siguientes resultados:
+Los resultados se han tomado teniendo en cuenta únicamente la inferencia de 200 imágenes, debido a que la evaluación de las 21478 imágenes en un dispositivo móvil produce un sobrecalentamiento y desgaste considerable sobre los componentes. El terminal empleado hace uso de un Snapdragon 855, y 8GB de RAM, siendo estos componentes del año 2019, y arroja los resultados de la tabla \ref{infbintmp}.
 
 \begin{table}[H]
 	\centering
@@ -166,24 +175,24 @@ Los resultados se han tomado teniendo en cuenta únicamente la inferencia de 200
 		Cuantizado & 72352 & 361,76 \\ \hline
 	\end{tabular}
 	\caption{Tiempos de inferencia para caso binario en Android}
-	\label{infbin}
+	\label{infbintmp}
 \end{table}
 
 Tras la evaluación del modelo mediante 200 imágenes, podemos apreciar una ganancia significativa en tiempo, superior a 210ms por imagen. Si calculamos la ganancia en velocidad del modelo cuantizado sobre el original, obtenemos:
 
 $$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{571,71}{361,76} = 1.58$$
 
-Es decir, el modelo optimizado nos aporta uan ganancia de 1.58, lo cual supone aproximadamente un 40\% menos del tiempo de inferencia. Este resultado evidencia que el modelo cuantizado ofrece unas mejores prestaciones que el original. Teniendo en cuenta que el modelo cuantizado no pierde bondad de métricas al ser evaluado con el conjunto de test frente al original, queda demostrado que el modelo cuantizado supone una mejora considerable y debe ser el modelo a utilizar en un dispositivo móvil. La penalización obtenida es nula, y las ventajas, cuantiosas.
+Es decir, el modelo optimizado nos aporta una ganancia de 1.58, lo cual supone aproximadamente un 40\% menos del tiempo de inferencia. Este resultado evidencia que el modelo cuantizado ofrece unas mejores prestaciones que el original. Teniendo en cuenta que el modelo cuantizado no pierde bondad de métricas al ser evaluado con el conjunto de test frente al original, queda demostrado que el modelo cuantizado supone una mejora considerable y debe ser el modelo a utilizar en un dispositivo móvil. La penalización obtenida es nula, y las ventajas, cuantiosas.
 
-\subsection{Cuantización del modelo maligno}
+\subsection{Cuantización del modelo multiclase maligno}
 
 El modelo de clasificación de enfermedades malignas se del primero de los casos de clasificación multiclase. A diferencia del anterior, este modelo aporta una salida más compleja, al deber distinguir entre melanomas, cáncer de células basales y cáncer de células escamosas. Esto nos deja un con vector de salida de 3 componentes, una por cada clase, que el modelo deberá aportar tanto en el modelo original como el cuantizado.
 
 De la misma manera que con el caso de clasificación binaria, compararemos los dos modelos mediante la evaluación del conjunto de test, teniendo en cuenta que las imágenes ha de ser preprocesadas con los mismos parámetros y configuraciones del conjunto de test, y no recalcular ninguno de los valores. Este preprocesado, al igual que en entrenamiento, incluye:
 
 \begin{enumerate}
-	\item Renombrado de etiquetas. Al igual que en el modelo de entrenamiento decidimos fusionar las clases melanoma y melanoma metastasis, debemos de aplicar la misma transformación en test. Si no lo hiciésemos, el modelo funcionaría adecuadamente, pero no podríamos evaluar correctamente las métricas que nos permiten ver si el rendimiento es el esperado.
-	 \item Normalización y resize: se utilizan la media y desviación típica de imagenet, empleadas en entrenamiento, y se aplica un resize de 512 x 512 px siguiendo la misma distribución.
+	\item Renombrado de etiquetas. Al igual que en el modelo de entrenamiento decidimos fusionar las clases ``melanoma'' y ``melanoma metastasis'', debemos de aplicar la misma transformación en test. Si no lo hiciésemos, el modelo funcionaría adecuadamente, pero no podríamos evaluar correctamente las métricas que nos permiten ver si el rendimiento es el esperado.
+	 \item Normalización y resize: se utilizan la media y desviación típica de ImageNet\cite{5206848}, empleadas en entrenamiento, y se aplica un resize de 512 x 512 px siguiendo la misma distribución.
 \end{enumerate}
 
 Una vez realizado este preprocesado, podemos calcular la inferencia de los dos modelos.
@@ -230,9 +239,9 @@ Por tanto, el modelo cuantizado, y a su vez, el original, ofrecen un muy buen re
 
 \subsubsection{Tiempo de inferencia}
 
-Tras observar que el modelo cuantizado no supone pérdidas sobre el modelo original, un caso ideal, nos disponemos a evaluar el tiempo de inferencia por imagen, de la misma manera que se realizó con el modelo binario.
+Tras observar que el modelo cuantizado no supone pérdidas frente el modelo original, un caso ideal, nos disponemos a evaluar el tiempo de inferencia por imagen, de la misma manera que se realizó con el modelo binario.
 
-Se usará el mismo dispositivo, empleando un subconjunto para la inferencia de 200 imágenes. Los resultados se pueden apreciar en la siguiente tabla:
+Se usará el mismo dispositivo, empleando un subconjunto para la inferencia de 200 imágenes. Los resultados se pueden apreciar en la tabla \ref{infmal}
 
 \begin{table}[H]
 	\centering
@@ -242,8 +251,8 @@ Se usará el mismo dispositivo, empleando un subconjunto para la inferencia de 2
 		Original & 215693 & 1078,465	 \\ \hline
 		Cuantizado & 136912 & 684,56 \\ \hline
 	\end{tabular}
-	\caption{Tiempos de inferencia para caso binario en Android}
-	\label{infbin}
+	\caption{Tiempos de inferencia para caso multiclase maligno en Android}
+	\label{infmal}
 \end{table}
 
 A la vista de los resultados, podemos apreciar una ganancia significativa en tiempo, de alrededor de 394ms por imagen. A priori, parece que el ahorro en tiempo es mayor que en el caso binario, pero si calculamos la ganancia en velocidad, obtenemos:
@@ -251,4 +260,126 @@ A la vista de los resultados, podemos apreciar una ganancia significativa en tie
 $$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{1078,465}{684,56} = 1.575$$
 
 Es decir, el modelo optimizado nos aporta una ganancia de 1.575, lo cual es proporción es prácticamente la misma ganancia que la conseguida con la cuantización en caso binario. De nuevo, supone aproximadamente un 37\% menos de tiempo de inferencia sobre el modelo original. 
-En conclusión, el modelo a utilizar como modelo final vuelve a ser la versión cuantizada, ya que nos permite mejorar considerablemente el rendimiento sin pérdida de prestaciones.
+En conclusión, la arquitectura final vuelve a ser la versión cuantizada, ya que nos permite mejorar considerablemente el rendimiento sin pérdida de prestaciones.
+
+\subsection{Cuantización del modelo multiclase benigno}
+
+Tras el estudio de los modelos para el caso de clasificación binaria y el caso multiclase maligno, es el turno del modelo para la detección de enfermedades benignas. Este modelo es el más complejo de los 3, ya que requiere dar como salida un grado de granularidad elevado en cuanto a diagnósticos, debiendo distinguir entre 18 enfermedades distintas.
+
+Los resultados de esta modelo no fueron tan prometedores debido a la alta similitud de las clases, y el uso de un modelo poco profundo para acometer la clasificación. Por tanto, los resultados del modelo cuantizado podrían verse más afectados que en los dos casos anteriores.
+
+Al igual que en la preparación de datos del modelo maligno, debemos realizar el mismo preprocesado que con las clases de entrenada de entrenamiento:
+
+\begin{enumerate}
+	\item Renombrado de etiquetas. Realizar el ajuste de etiquetas a valores numéricos para una mayor facilidad de cálculo de las métricas de evaluación.
+	\item Normalización y reescalado: utilización de la media y desviación típica de ImageNet\cite{5206848}, y reescalado a 512 x 512 px.
+\end{enumerate}
+
+Tras dichos ajustes, podemos proceder a la medición de las métricas de test y el tiempo de inferencia en el dispositivo Android.
+
+\subsubsection{Métricas de inferencia en test}
+
+De la misma forma que los casos anteriores, procedemos a la evaluación del conjunto de test, filtrando únicamente aquellas imágenes con lesiones de naturaleza benigna. Los resultados de los modelos original y cuantizado quedan reflejados en las tablas \ref{tab:testbenorig} y \ref{tab:testbenquant}, respectivamente:
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		NV & 0.99 & 0.78 & 0.87 & 13067 \\ \hline
+		DER & 0.31 & 0.61 & 0.41 & 770 \\ \hline
+		PBK & 0.53 & 0.59 & 0.56 & 547 \\ \hline
+		VL & 0.39 & 0.87 & 0.54 & 536 \\ \hline
+		LK & 0.20 & 0.47 & 0.28 & 225 \\ \hline
+		AK & 0.28 & 0.61 & 0.38 & 168 \\ \hline
+		SK & 0.59 & 0.83 & 0.69 & 139 \\ \hline
+		AMP & 0.20 & 0.43 & 0.27 & 125 \\ \hline
+		ACR & 0.29 & 0.72 & 0.42 & 120 \\ \hline
+		ANG & 0.11 & 0.36 & 0.17 & 96 \\ \hline
+		SL & 0.04 & 0.07 & 0.05 & 56 \\ \hline
+		LN & 0.02 & 0.08 & 0.03 & 48 \\ \hline
+		AIMP & 0.27 & 0.23 & 0.25 & 48 \\ \hline
+		WART & 0.35 & 0.50 & 0.41 & 28 \\ \hline
+		LS & 0.19 & 0.53 & 0.28 & 17 \\ \hline
+		NEU & 0.00 & 0.00 & 0.00 & 10 \\ \hline
+		SCAR & 0.00 & 0.00 & 0.00 & 10 \\ \hline
+		Accuracy & ~ & ~ & 0.75 & 16010 \\ \hline
+		Macro avg & 0.28 & 0.45 & 0.33 & 16010 \\ \hline
+		Weighted avg & 0.87 & 0.75 & 0.79 & 16010 \\ \hline
+	\end{tabular}
+	\caption{Resultado obtenido al inferir el conjunto de test (sin cuantizado)}
+	\label{tab:testbenorig}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~ & Precision & Recall & F1-score & Support \\ \hline
+		NV & 0.99 & 0.78 & 0.87 & 13067 \\ \hline
+		DER & 0.31 & 0.60 & 0.41 & 770 \\ \hline
+		PBK & 0.53 & 0.59 & 0.56 & 547 \\ \hline
+		VL & 0.39 & 0.87 & 0.54 & 536 \\ \hline
+		LK & 0.21 & 0.48 & 0.29 & 225 \\ \hline
+		AK & 0.27 & 0.61 & 0.38 & 168 \\ \hline
+		SK & 0.59 & 0.83 & 0.69 & 139 \\ \hline
+		AMP & 0.21 & 0.45 & 0.28 & 125 \\ \hline
+		ACR & 0.30 & 0.72 & 0.42 & 120 \\ \hline
+		ANG & 0.11 & 0.36 & 0.17 & 96 \\ \hline
+		SL & 0.04 & 0.07 & 0.05 & 56 \\ \hline
+		LN & 0.02 & 0.08 & 0.03 & 48 \\ \hline
+		AIMP & 0.28 & 0.23 & 0.25 & 48 \\ \hline
+		WART & 0.35 & 0.50 & 0.41 & 28 \\ \hline
+		LS & 0.19 & 0.53 & 0.28 & 17 \\ \hline
+		NEU & 0.00 & 0.00 & 0.00 & 10 \\ \hline
+		SCAR & 0.00 & 0.00 & 0.00 & 10 \\ \hline
+		Accuracy & ~ & ~ & 0.75 & 16010 \\ \hline
+		Macro avg & 0.28 & 0.45 & 0.33 & 16010 \\ \hline
+		Weighted avg & 0.87 & 0.75 & 0.79 & 16010 \\ \hline
+	\end{tabular}
+	\caption{Resultado obtenido al inferir el conjunto de test (cuantizado)}
+	\label{tab:testbenquant}
+\end{table}
+
+Los resultados son de nuevo positivos, ya que en lo que corresponde a los valores medios, no existe pérdida destacable. Si bajamos de nivel, y comparamos clase a clase, podemos ver que sí que existe alguna diferencia, como, una precisión una centésima menor en el diagnóstico de la queratosis actínica (abreviada como AK). Sin embargo, dicha pérdida de precisión es compensada por otros valores que, sorprendentemente, adquieren un mejor resultado en el modelo cuantizado que el modelo original, aunque menor a una centésima.
+
+A grandes rasgos, y en promedio, ambos modelos son equivalentes en características en lo que a métricas se refiere. El diagnóstico, aunque ruidoso por ser un modelo más simple de lo ideal, es muy cercano al valor visto en validación (tabla \ref{tab:benignomalmejormetrics}), por lo que podemos confirmar que el aprendizaje se realizó de forma satisfactoria.
+
+\subsubsection{Tiempo de inferencia}
+Una vez evaluado el rendimiento de ambos modelos, podemos verificar las ganancias en rendimiento obtenidas con el procedimiento de cuantización. Al tratarse de un problema con mayor número de salidas, dicha reducción será menos notable. Empleando nuestro criterio de evaluar el promedio de 200 imágenes, obtenemos el resultado mostrado en la tabla \ref{tab:infbin}.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
+		Original & 114972 & 574,86	 \\ \hline
+		Cuantizado & 73774 & 368,87 \\ \hline
+	\end{tabular}
+	\caption{Tiempos de inferencia para caso binario en Android}
+	\label{tab:infbin}
+\end{table}
+
+A la vista de los resultados, podemos apreciar una ganancia significativa en tiempo, de alrededor de 206ms por imagen. Si calculamos la ganancia en velocidad, obtenemos:
+
+$$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{574,86}{368,87} = 1,558$$
+
+Por tanto, el modelo optimizado nos aporta una ganancia de 1,558, que si bien es ligeramente inferior a los dos modelos analizados anteriormente, ofrece una ventaja muy similar en rendimiento, con la ventaja de perder precisión en sus salidas de forma apreciable.
+
+
+\section{Conclusión de la cuantización}
+
+Una vez evaluados los 3 modelos, podemos dar el veredicto final de los resultados
+\begin{enumerate}
+	\item La generalización de los 3 modelos al realizar la inferencia del conjunto de test ha sido adecuada, ya que las métricas obtenidas son prácticamente equivalentes a las obtenidas en validación por cada uno de los modelos. Esto demuestra la efectividad del método seguido, realizando las particiones de entrenamiento, validación y test.
+	\item El proceso de optimización y cuantización ofrecido por Pytorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-3}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
+	\item Las ganancias en tiempo de inferencia son considerables: en los 3 casos, el factor de ganancia ha sido superior a 1.5 (visible gráficamente en la figura \ref{fig:gananciasquant}), lo cual indica que el modelo cuantizado sería capaz de inferir aproximadamente 3 imágenes en el tiempo en el que el modelo original infiere 2. 
+	\end{enumerate}
+	
+	Las ganancia en rendimiento de inferencia, sumado a la inexistencia de pérdida de precisión en los casos estudiados, convierte a la cuantización en la solución ideal para la implementación del modelo en dispositivos móviles.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale = 0.55]{imagenes/tiempoinferencia.png}
+		\caption{Comparativa de ganancias al emplear  modelos cuantizados}
+		\label{fig:gananciasquant}
+	\end{figure}
