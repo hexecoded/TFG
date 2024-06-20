@@ -1,1 +1,108 @@
-%\chapter{Implementación}
+\chapter{Diseño de la aplicación}
+
+Una vez han sido creados, entrenados y verificados los modelos cuantizados para teléfono móvil, podemos proceder con el diseño e implementación de la aplicación. Su objetivo será, mostrar de forma visual y cómoda para el usuario habitual, la utilidad de los modelos entrenados y optimizados en los capítulos 5 y 6 de este trabajo.
+
+Al tratarse de una aplicación para uso local del dispositivo, y de funcionalidades concretas y bien delimitadas, como lo es la prueba de los modelos en casos reales, esta no será excesivamente compleja. Aun así, en este capítulo, abordaremos su diseño desde el punto de vista de la ingeniería del software, para detallar correctamente las funcionalidades necesarias y los requisitos que debe cumplir para que el resultado sea el esperado.
+
+\section{Descripción del problema. Requisitos y definiciones.}
+
+Comenzaremos por analizar la descripción de la aplicación que queremos conseguir, teniendo en cuenta los términos relevantes del texto y extrayendo los requisitos a cumplir por la misma.
+
+\subsection{Proceso de obtención de requisitos}
+
+En  primer lugar, se describe el problema a resolver, y los requisitos del mismo.
+
+\subsubsection{Descripción}
+Tras el entrenamiento de tres modelos de aprendizaje profundo orientados a la prognosis y el diagnóstico de enfermedades cancerígenas de la piel, es necesario crear una plataforma simple capaz de demostrar al usuario la versatilidad y precisión de los modelos haciendo uso de imágenes que contienen lesiones cutáneas, de manera que los modelos sean capaces de diagnosticar si la imagen se trata de un caso positivo o negativo de una enfermedad cancerígena, y clasificar su posible diagnóstico empleando dichos modelos.
+
+El diagnóstico de imágenes debe realizarse teniendo en cuenta la existencia de un usuario, que puede tomar fotografías de este tipo de lesiones, y que debe recibir el resultado del examen, para que este pueda tomar medidas en caso de tratarse de enfermedades sospechosas y visitar al dermatólogo cuanto antes. Para ello, debe clasificarse, en primer lugar, si se trata de una enfermedad maligna o benigna, y posteriormente, un posible subtipo de enfermedad.
+
+De forma detallada, el proceso sería el siguiente:
+
+\begin{enumerate}
+	\item El usuario ingresa en el sistema, y requieren al mismo la realización de un diagnóstico por medio de imagen.
+	\item El usuario obtiene la imagen de la enfermedad que desea analizar empleando para ello la cámara del dispositivo, o bien, una fotografía ya realizada en el pasado que desee clasificar.
+	\item A continuación, se realiza el diagnóstico empleando dos niveles de análisis: 
+	\begin{enumerate}
+		\item Primero, se realiza una clasificación más general para identificar si se trata de una enfermedad benigna, o de un tumor maligno.
+		\item En función del resultado de la prueba, se procede al empleo de uno de los modelos para identificar el posible tipo de enfermedad que puede ser, atendiendo a los casos más probables a nivel clínico.
+	\end{enumerate}
+	\item Una vez terminada la aplicación de los modelos de aprendizaje para la clasificación, se asignará de forma definitiva un diagnóstico, que será obtenido en base a los resultados probabilísticos más altos de la salida de los modelos evaluados. Esta información, junto con la miniatura de la imagen, y una descripción de la enfermedad, será mostrada al usuario en pantalla, no tardando más de dos segundos y empleando ventanas flotantes para una mayor legibilidad.
+\end{enumerate}
+
+\subsubsection{Restricciones a tener en cuenta}
+
+Para la realización del producto final, han de tenerse en cuenta los siguientes aspectos:
+
+\begin{itemize}
+
+	\item El usuario debe ser capaz de aportar la imagen para el diagnóstico empleando su galería o bien la cámara de su dispositivo. Opcionalmente, puede ofrecerse la posibilidad de rotar o recortar la imagen objetivo.
+	\item Se debe incluir información de uso para facilitar al usuario el proceso de aportación de la información.
+	\item Se debe tener en cuenta que el cliente no disponga de fotografías existentes, y deba realizar una nueva para continuar el proceso de diagnóstico.
+	\item Los diagnósticos realizados deben ser visibles ordenados de mayor a menor antigüedad en una sección dedicada, de forma que el usuario sea capaz de revisitar los casos anteriores y realizar un seguimiento de los mismos.
+	\item La implementación se ha de realizar en Java o Kotlin, de manera que la app sea compatible con dispositivos Android.
+	\item El sistema ha de tener un comportamiento fluido y dinámico para el usuario, no tardando más de dos segundos por imagen para realizar el diagnóstico.
+	\item La interfaz de usuario ha de ser fluida y eficiente, con el menor tiempo de carga posible entre funcionalidades.
+	\item El almacenado del histórico ha de realizarse de forma local para velar por la privacidad del usuario.
+	\item Los modelos de aprendizaje empleados han de ser compatibles con el estándar Torchscript/Pytorch.
+\end{itemize}
+
+\subsection{Requisitos}
+
+Una vez analizado el problema, podemos identificar una serie de requisitos que debemos cumplir. Estos pueden clasificarse en tres tipos:
+
+\begin{itemize}
+	\item Requisitos funcionales. Describen la interacción entre el sistema y el entorno, indicando como ha de reaccionar la app ante ciertos estímulos.
+	\item Requisitos no funcionales. Especifican restricciones del sistema no relacionadas directamente con su comportamiento funcional, pero que son clave durante el diseño e implementación del sistema.
+	\item Requisitos de información. Describe las necesidades de almacenamiento del producto software que se está desarrollando.
+\end{itemize}
+
+Podemos encontrar los requisitos siguientes para el problema descrito.
+
+\subsubsection{Requisitos funcionales}
+
+\begin{itemize}
+	\item \textbf{RF-1}. El usuario debe ser capaz de realizar el diagnóstico de una fotografía empleando el modelo de inteligencia artificial subyacente.
+	\item \textbf{RF-2}. El sistema debe proporcionar la funcionalidad al usuario de leer la imagen de galería o mediante nueva fotografía.
+	\item \textbf{RF-3}. El usuario debe poder recortar la imagen y seleccionar el área de interés.
+	\item \textbf{RF-4}. El sistema debe ofrecer la posibilidad al usuario de mostrar el historial de fotografías examinadas
+	\item\textbf{RF-5}. Cada fotografía debe ser correctamente ordenada por su fecha y hora de toma, en orden descendente.
+	\item \textbf{RF-6}. El sistema de diagnóstico debe ofrecer al usuario retroalimentación sobre la enfermedad, como su nombre y descripción de la gravedad.
+	\item \textbf{RF-7}. Tras el diagnóstico, el usuario debe ser capaz de observar la información asociada al resultado.
+\end{itemize}
+
+\subsubsection{Requisitos no funcionales}
+	\begin{itemize}
+		\item \textbf{RNF-1}. El tiempo de respuesta del modelo de aprendizaje debe ser inferior a 2 segundos.
+		\item \textbf{RNF-2}. El lenguaje de programación a emplear debe ser Java o Kotlin
+		\item \textbf{RNF-3}. La interfaz de usuario ha de ser implementada mediante ficheros XML, y siguiendo los requisitos de diseño de Material Design de Google para cumplir con las especificaciones de interfaz de Android.
+		\item \textbf{RNF-4} La inferencia del modelo de aprendizaje ha de realizarse empleando imágenes tipo bitmap de 512 x 512
+		\item \textbf{RNF-5} La implementación del proceso de inferencia debe hacer uso de la libería Pytorch Mobile.
+		\item \textbf{RNF-6} El recorte de la imagen debe realizarse a tiempo real.
+		\item \textbf{RNF-7} El menú de histórico de diagnósticos ha de ser sencillo, con opción de scroll, e implementado con un ViewPager de Java para poder ordenar los casos de mayor a menor antigüedad.
+	\end{itemize}
+\subsubsection{Requisitos de información}
+
+\begin{itemize}
+	 \item \textbf{RI-1: Historial}. El historial debe almacenar la información de cada diagnóstico realizado en el tiempo. Debe almacenarse de forma local en la memoria secundaria del dispositivo.
+	 \begin{itemize}
+	 	\item Contenido: imagen miniaturizada del diagnóstico, nombre de la enfermedad diagnosticada y si se trata de una patología benigna o maligna. 
+	 	\item Requisitos asociados: RF-4, RF-5, RF-6.
+	 \end{itemize}
+	\item  \textbf{RI-2: Descripción de las enfermedades}. Almancena un breve resumen para cada enfermedad, codificada por su nombre de etiqueta.
+		 \begin{itemize}
+		\item Contenido: nombre de la enfermedad, descripción.
+		\item Requisitos asociados: RF-4, RF-5, RF-6, RF-7.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Glosario de términos}
+Las palabras clave de la descripción se concentra en la siguiente lista:
+\begin{itemize}
+	\item Diagnóstico: proceso mediante el cual se identifica la enfermedad de un paciente.
+	\item Prognosis: acción de pronosticar, o juzgar médicamente una condición de un paciente.
+	\item Lesión cutánea: mancha o tumor de características sospechosas originado en la piel.
+	\item Modelo de aprendizaje profundo: algoritmos basados habitualmente en el uso de arquitecturas neuronales, empleados para la clasificación o segmentación de imágenes de entrada con el fin de dar como salida una clasificación o característica de relevancia sobre la entrada.
+	\item Ventana flotante: interfaz de usuario que se superpone de forma total o parcial sobre una ventaja ya existente. En Android, esta funcionalidad es implementada por los fragmentos, o bien, el uso de otros componentes específicos como ``viewpager''.
+\end{itemize}
+	
