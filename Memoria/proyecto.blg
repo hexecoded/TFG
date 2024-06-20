@@ -3,52 +3,50 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
-Warning--I didn't find a database entry for "tab:infbin"
 Warning--to sort, need author or key in isicarchive
 Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
-Warning--to sort, need author or key in dermis
 Warning--empty journal in severance
 Warning--empty journal in Han2017
-You've used 70 entries,
+You've used 76 entries,
             2118 wiz_defined-function locations,
-            839 strings with 18278 characters,
-and the built_in function-call counts, 23912 in all, are:
-= -- 2095
-> -- 1740
+            862 strings with 19706 characters,
+and the built_in function-call counts, 26668 in all, are:
+= -- 2313
+> -- 2027
 < -- 4
-+ -- 697
-- -- 622
-* -- 1692
-:= -- 4118
-add.period$ -- 212
-call.type$ -- 70
-change.case$ -- 514
++ -- 811
+- -- 730
+* -- 1920
+:= -- 4627
+add.period$ -- 231
+call.type$ -- 76
+change.case$ -- 586
 chr.to.int$ -- 0
-cite$ -- 76
-duplicate$ -- 625
-empty$ -- 1636
-format.name$ -- 622
-if$ -- 4833
+cite$ -- 81
+duplicate$ -- 670
+empty$ -- 1762
+format.name$ -- 730
+if$ -- 5348
 int.to.chr$ -- 0
-int.to.str$ -- 70
-missing$ -- 25
-newline$ -- 353
-num.names$ -- 136
-pop$ -- 724
+int.to.str$ -- 76
+missing$ -- 26
+newline$ -- 384
+num.names$ -- 150
+pop$ -- 820
 preamble$ -- 1
-purify$ -- 446
+purify$ -- 512
 quote$ -- 0
-skip$ -- 541
+skip$ -- 583
 stack$ -- 0
-substring$ -- 720
-swap$ -- 108
+substring$ -- 750
+swap$ -- 114
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 276
-warning$ -- 6
-while$ -- 154
-width$ -- 72
-write$ -- 720
-(There were 7 warnings)
+type$ -- 300
+warning$ -- 5
+while$ -- 168
+width$ -- 78
+write$ -- 781
+(There were 5 warnings)

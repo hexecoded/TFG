@@ -549,24 +549,17 @@ Aplicando una configuración similar a la usada para el entrenamiento de las cla
 	\label{tab:benignomalmetrics}
 \end{table}
 
-Esto ocurre en la mayoría de clases, aunque los peores resultados los vemos reflejados en las 6 últimas filas, donde 5 de las clases han sido completeamente ignoradas por el modelo, y establecidas a 0: la cicatrices, los neurofibromas, los lentigo simples, las verrugas y los AIMP (atypical intraepidermal melanocytic proliferation). Estas clases, al encontrarse en absoluta minoría, no aportan suficientes caracteristicas al modelo para aprender los filtros adecuados, y por tanto, quedan descartadas por el mismo. Esto nos lleva a tomar la decisión de descartar estas clases, o bien, tratar de equilibrarlas complementando con el resto de datasets.
+Esto ocurre en la mayoría de clases, aunque los peores resultados los vemos reflejados en las 6 últimas filas, donde 5 de las clases han sido completamente ignoradas por el modelo, y establecidas a 0: la cicatrices, los neurofibromas, los lentigo simples, las verrugas y los AIMP (atypical intraepidermal melanocytic proliferation). Estas clases, al encontrarse en absoluta minoría, no aportan suficientes características al modelo para aprender los filtros adecuados, y por tanto, quedan descartadas por el mismo. Esto nos lleva a tomar la decisión de descartar estas clases, o bien, tratar de equilibrarlas complementando con el resto de datasets.
 
 No nos debemos dejar llevar por el valor del accuracy: este es del 87\%, debido a que prácticamente la completitud de la tasa de aciertos se ve aportada por la clase mayoritaria. Si atendemos a su valor medio, es del únicamente 28\%, que se trata de una cifra más representativa pero mucho más pesimista.
 
-Para no proceder con la eliminación de clases minoritarias, trataremos de dotar al modelo de penalizaciones para las clases menos reprentadas; es decir, de forma explícita, estableceremos una serie de pesos que otorguen más importancia a clasificar ejemplares de clases minoritarias sobre las mayoritarias, calculando los pesos de la mismo forma en la que lo hicimos para el caso de las enfermedades malignas:
+Para no proceder con la eliminación de clases minoritarias, trataremos de dotar al modelo de penalizaciones para las clases menos representadas; es decir, de forma explícita, estableceremos una serie de pesos que otorguen más importancia a clasificar ejemplares de clases minoritarias sobre las mayoritarias, calculando los pesos de la misma forma en la que lo hicimos para el caso de las enfermedades malignas:
 
 $$p_C =(\frac{c}{\sum_{i=0}^{num\_clases} c} )^{-1}$$
 
-De esta forma, haremos que cada ejemplar tenga un peso acorde a su proproción en el dataset. La diferencia con el caso empleado en enfermeades malignas, es que emplearemos como función de pérdida CrossEntropy en lugar de FocalLoss, ya que pudimos apreciar en el caso anterior que al insertarle pesos, pierde el efecto regularizador visto en el caso sin pesos, y obtenemos peores resultados.
+De esta forma, haremos que cada ejemplar tenga un peso acorde a su proporción en el dataset. La diferencia con el caso empleado en enfermedades malignas, es que emplearemos como función de pérdida CrossEntropy en lugar de FocalLoss, ya que pudimos apreciar en el caso anterior que al insertarle pesos, pierde el efecto regularizador visto en el caso sin pesos, y obtenemos peores resultados.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale = 0.7]{imagenes/countbenign_corrected.png}
-	\caption{Conteo de clases benignas tras la agrupación}
-	\label {fig:buenasred}
-\end{figure}
-
-De esta forma, si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics}.
+Si repetimos el experimento siguiendo este razonamiento, obtenemos los resultados de la tabla \ref{tab:benignomalmejormetrics}.
 
 
 \begin{table}[!ht]
