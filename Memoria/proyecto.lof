@@ -38,4 +38,15 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Optimización de modelos con Pytorch Mobile \cite {pmobile}}}{122}{figure.6.1}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Comparativa de ganancias al emplear modelos cuantizados}}{134}{figure.6.2}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Caso de uso: Diagnóstico}}{140}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Caso de uso: Consulta de historial}}{140}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Diagrama de paquetes}}{141}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Actor: usuario}}{141}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Caso de uso CU-1: realizar diagnóstico}}{142}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Caso de uso CU-2: seleccionar imagen}}{143}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Caso de uso CU-3: seleccionar desde galería}}{144}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Caso de uso CU-4: tomar fotografía}}{145}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Caso de uso CU-5: recortar región}}{146}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Caso de uso CU-6: consultar historial}}{147}{figure.7.10}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Caso de uso CU-7: recuperar diagnóstico}}{148}{figure.7.11}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

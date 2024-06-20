@@ -100,4 +100,8 @@
 \contentsline {subsubsection}{\nonumberline Requisitos no funcionales}{138}{subsubsection*.61}%
 \contentsline {subsubsection}{\nonumberline Requisitos de información}{138}{subsubsection*.63}%
 \contentsline {subsection}{\numberline {7.1.3}Glosario de términos}{139}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Modelo casos de uso}{139}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Representación de los casos de uso}{139}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Actores}{141}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Descripción extendida de los casos de uso}{142}{subsection.7.2.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

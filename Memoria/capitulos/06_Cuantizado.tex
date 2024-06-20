@@ -372,7 +372,7 @@ Una vez evaluados los 3 modelos, podemos dar el veredicto final de los resultado
 \begin{enumerate}
 	\item La generalización de los 3 modelos al realizar la inferencia del conjunto de test ha sido adecuada, ya que las métricas obtenidas son prácticamente equivalentes a las obtenidas en validación por cada uno de los modelos. Esto demuestra la efectividad del método seguido, realizando las particiones de entrenamiento, validación y test.
 	\item El proceso de optimización y cuantización ofrecido por Pytorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-3}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
-	\item Las ganancias en tiempo de inferencia son considerables: en los 3 casos, el factor de ganancia ha sido superior a 1.5 (visible gráficamente en la figura \ref{fig:gananciasquant}), lo cual indica que el modelo cuantizado sería capaz de inferir aproximadamente 3 imágenes en el tiempo en el que el modelo original infiere 2. 
+	\item Las ganancias en tiempo de inferencia son considerables: en los 3 casos, el factor de ganancia ha sido superior a 1,5 (visible gráficamente en la figura \ref{fig:gananciasquant}), lo cual indica que el modelo cuantizado sería capaz de inferir aproximadamente 3 imágenes en el tiempo en el que el modelo original infiere 2. 
 	\end{enumerate}
 	
 	Las ganancia en rendimiento de inferencia, sumado a la inexistencia de pérdida de precisión en los casos estudiados, convierte a la cuantización en la solución ideal para la implementación del modelo en dispositivos móviles.

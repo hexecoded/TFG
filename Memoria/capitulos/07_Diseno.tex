@@ -105,4 +105,101 @@ Las palabras clave de la descripción se concentra en la siguiente lista:
 	\item Modelo de aprendizaje profundo: algoritmos basados habitualmente en el uso de arquitecturas neuronales, empleados para la clasificación o segmentación de imágenes de entrada con el fin de dar como salida una clasificación o característica de relevancia sobre la entrada.
 	\item Ventana flotante: interfaz de usuario que se superpone de forma total o parcial sobre una ventaja ya existente. En Android, esta funcionalidad es implementada por los fragmentos, o bien, el uso de otros componentes específicos como ``viewpager''.
 \end{itemize}
-	
+
+\section{Modelo casos de uso}
+
+Una vez especificados los requisitos del proyecto software que debemos cumplir, incluyendo las funcionalidades del mismo y las limitaciones técnicas asociadas, podemos proceder a la definición de los casos de uso de nuestro proyecto. Para ello, debemos estudiar los actores presentes en la interacción con el sistema, y aislar las funcionalidades a implementar. En resumen, definiremos el punto de vista de los usuarios de nuestro sistema y el contexto de uso del mismo.
+
+ \subsection{Representación de los casos de uso}
+ 
+ Dentro de la aplicación, podemos identificar, basado en los requisitos anteriores, dos objetivos a satisfacer por el usuario: realizar un diagnóstico \ref{fig:diagcu}, y consultar el historial de pruebas realizadas \ref{fig:histcu}.
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.9]{imagenes/TomarFoto.png}
+ 	\caption{Caso de uso: Diagnóstico}
+ 	\label{fig:diagcu}
+ \end{figure}
+ 
+ 
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 1]{imagenes/Historial.png}
+ 	\caption{Caso de uso: Consulta de historial}
+ 	\label{fig:histcu}
+ \end{figure}
+
+Si agrupamos las funcionalidades en paquetes, podemos obtener un modelo visual que organiza los contenidos de los casos de uso en lo que  será la estructura del proyecto. El resultado es un diagrama bastante simple, contenido en la figura \ref{fig:paquetes}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.7]{imagenes/DiagramaPaquetes.png}
+	\caption{Diagrama de paquetes}
+	\label{fig:paquetes}
+\end{figure}
+
+\subsection{Actores}
+
+En el sistema que estamos diseñando, únicamente disponemos de un actor presente: el usuario, paciente de una enfermedad cutánea, que desea emplear el sistema para conocer qué enfermedad sufre en su piel. Se trata de una interacción directa con la aplicación, donde no intervienen otros actores humanos. En la tabla \ref{fig:actorusuario}, podemos apreciar una descripción detallada de sus características.
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.2]{imagenes/tablausuario.png}
+	\caption{Actor: usuario}
+	\label{fig:actorusuario}
+\end{figure}
+
+\subsection	{Descripción extendida de los casos de uso}
+
+Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de realizar un análisis en detalle del mismo. En las tablas mostradas a continuación, podemos observar numerados, los 7 casos identificables: \textit{CU-1} (figura \ref{fig:cu1}), \textit{CU-2} (figura \ref{fig:cu2}), \textit{CU-3} (figura \ref{fig:cu3}), \textit{CU-4} (figura \ref{fig:cu4}), \textit{CU-5} (figura \ref{fig:cu5}), \textit{CU-6} (figura \ref{fig:cu6}) y \textit{CU-7} (figura \ref{fig:cu7}).
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.81]{imagenes/cu-1.png}
+	\caption{Caso de uso CU-1: realizar diagnóstico}
+	\label{fig:cu1}
+\end{figure}
+
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-2.png}
+	\caption{Caso de uso CU-2: seleccionar imagen}
+	\label{fig:cu2}
+\end{figure}
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-3.png}
+	\caption{Caso de uso CU-3: seleccionar desde galería}
+	\label{fig:cu3}
+\end{figure}
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-4.png}
+	\caption{Caso de uso CU-4: tomar fotografía}
+	\label{fig:cu4}
+\end{figure}
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-5.png}
+	\caption{Caso de uso CU-5: recortar región}
+	\label{fig:cu5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-6.png}
+	\caption{Caso de uso CU-6: consultar historial}
+	\label{fig:cu6}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{imagenes/cu-7.png}
+	\caption{Caso de uso CU-7: recuperar diagnóstico}
+	\label{fig:cu7}
+\end{figure}
+
