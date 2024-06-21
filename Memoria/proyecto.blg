@@ -8,45 +8,45 @@ Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
 Warning--empty journal in severance
 Warning--empty journal in Han2017
-You've used 77 entries,
+You've used 81 entries,
             2118 wiz_defined-function locations,
-            868 strings with 19914 characters,
-and the built_in function-call counts, 26931 in all, are:
-= -- 2339
-> -- 2040
+            882 strings with 20389 characters,
+and the built_in function-call counts, 27799 in all, are:
+= -- 2427
+> -- 2068
 < -- 4
-+ -- 816
-- -- 734
-* -- 1933
-:= -- 4674
-add.period$ -- 235
-call.type$ -- 77
-change.case$ -- 590
++ -- 828
+- -- 742
+* -- 1957
+:= -- 4822
+add.period$ -- 251
+call.type$ -- 81
+change.case$ -- 606
 chr.to.int$ -- 0
-cite$ -- 82
-duplicate$ -- 682
-empty$ -- 1784
-format.name$ -- 734
-if$ -- 5405
+cite$ -- 86
+duplicate$ -- 710
+empty$ -- 1872
+format.name$ -- 742
+if$ -- 5597
 int.to.chr$ -- 0
-int.to.str$ -- 77
+int.to.str$ -- 81
 missing$ -- 28
-newline$ -- 389
-num.names$ -- 152
-pop$ -- 827
+newline$ -- 413
+num.names$ -- 160
+pop$ -- 859
 preamble$ -- 1
-purify$ -- 516
+purify$ -- 528
 quote$ -- 0
-skip$ -- 590
+skip$ -- 614
 stack$ -- 0
-substring$ -- 755
-swap$ -- 115
+substring$ -- 775
+swap$ -- 119
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 302
+type$ -- 318
 warning$ -- 5
-while$ -- 170
-width$ -- 79
-write$ -- 792
+while$ -- 178
+width$ -- 83
+write$ -- 840
 (There were 5 warnings)

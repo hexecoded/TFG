@@ -109,6 +109,28 @@ Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
 \newblock In {\em 2009 IEEE Conference on Computer Vision and Pattern
   Recognition}, pages 248--255, 2009.
 
+\bibitem{androidstudio}
+Android Developer.
+\newblock Android studio jellyfish.
+\newblock \url{https://developer.android.com/studio?hl=es-419}, 2023.
+\newblock [Online; accessed 19-Feb-2024].
+
+\bibitem{actividad}
+Android Developer.
+\newblock Etapas del ciclo de vida de la actividad.
+\newblock
+  \url{https://developer.android.com/codelabs/basic-android-kotlin-compose-activity-lifecycle?hl=es-419#0},
+  2023.
+\newblock [Online; accessed 18-April-2024].
+
+\bibitem{fragmento}
+Android Developer.
+\newblock Etapas del ciclo de vida de los fragmentos.
+\newblock
+  \url{https://developer.android.com/guide/fragments/lifecycle?hl=es-419},
+  2023.
+\newblock [Online; accessed 18-April-2024].
+
 \bibitem{shuffleapp}
 Mohammad Fraiwan and Esraa Faouri.
 \newblock On the automatic detection and classification of skin cancer using
@@ -301,6 +323,13 @@ Neuralscope.
 \newblock
   \url{https://neuralscope.org/mobile/index.php?route=product/benchmark}, 2019.
 \newblock [Online; accessed 8-June-2024].
+
+\bibitem{javalang}
+Oracle.
+\newblock Java language.
+\newblock \url{https://docs.oracle.com/en/java/javase/21/docs/api/index.html},
+  2023.
+\newblock [Online; accessed 19-Feb-2024].
 
 \bibitem{PACHECO2020106221}
 Andre~G.C. Pacheco, Gustavo~R. Lima, Amanda~S. Salomão, Breno Krohling,

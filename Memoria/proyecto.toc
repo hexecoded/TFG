@@ -56,7 +56,7 @@
 \contentsline {subsection}{\numberline {4.3.1}Cross entropy}{92}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Focal Loss}{92}{subsection.4.3.2}%
 \contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{93}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Entrenamiento de modelos completos sobre la base de datos}{95}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Análisis y estudio de modelos sobre la base de datos}{95}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Clasificación binaria}{96}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{96}{subsection.5.1.1}%
 \contentsline {subsubsection}{\nonumberline Técnicas descartadas}{97}{subsubsection*.23}%
@@ -75,7 +75,7 @@
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.39}%
 \contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{117}{subsection.5.2.2}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{118}{subsubsection*.41}%
-\contentsline {chapter}{\numberline {6}Cuantización}{123}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Cuantización del modelo seleccionado}{123}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{123}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{123}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{125}{subsection.6.1.2}%
@@ -91,7 +91,7 @@
 \contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{133}{subsubsection*.51}%
 \contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{135}{subsubsection*.53}%
 \contentsline {section}{\numberline {6.4}Conclusión de la cuantización}{135}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Diseño de la aplicación}{137}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Diseño de la aplicación para el cáncer de piel}{137}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Descripción del problema. Requisitos y definiciones.}{137}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Proceso de obtención de requisitos}{137}{subsection.7.1.1}%
 \contentsline {subsubsection}{\nonumberline Descripción}{137}{subsubsection*.55}%
@@ -107,9 +107,11 @@
 \contentsline {subsection}{\numberline {7.2.3}Descripción extendida de los casos de uso}{144}{subsection.7.2.3}%
 \contentsline {section}{\numberline {7.3}Modelo de análisis}{151}{section.7.3}%
 \contentsline {subsection}{\numberline {7.3.1}Modelo estático: diagrama conceptual}{151}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Modelo dinámico}{152}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.2}Modelo dinámico: diagramas de secuencia y contratos}{152}{subsection.7.3.2}%
 \contentsline {subsubsection}{\nonumberline Diagrama de secuencia}{152}{subsubsection*.65}%
 \contentsline {subsubsection}{\nonumberline Contratos}{153}{subsubsection*.67}%
 \contentsline {section}{\numberline {7.4}Diseño}{156}{section.7.4}%
 \contentsline {subsection}{\numberline {7.4.1}Diagramas de comunicación}{157}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Diagrama de clases de implementación}{160}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Pruebas de uso}{163}{section.7.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

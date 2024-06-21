@@ -52,4 +52,7 @@
 \contentsline {figure}{\numberline {7.11}{\ignorespaces Diagrama de comunicación: realizar diagnóstico}}{159}{figure.7.11}%
 \contentsline {figure}{\numberline {7.12}{\ignorespaces Diagrama de comunicación: consultar historial}}{159}{figure.7.12}%
 \contentsline {figure}{\numberline {7.13}{\ignorespaces Diagrama de comunicación: consultar entrada de historial}}{160}{figure.7.13}%
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Diagrama de clases: visión general del sistema}}{161}{figure.7.14}%
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Diagrama de clases: subsistema de diagnósticos}}{162}{figure.7.15}%
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Diagrama de clases: subsistema de historial}}{163}{figure.7.16}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

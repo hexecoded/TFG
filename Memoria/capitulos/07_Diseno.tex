@@ -1,4 +1,4 @@
-\chapter{Diseño de la aplicación}
+\chapter{Diseño de la aplicación para el cáncer de piel}
 
 Una vez han sido creados, entrenados y verificados los modelos cuantizados para teléfono móvil, podemos proceder con el diseño e implementación de la aplicación. Su objetivo será, mostrar de forma visual y cómoda para el usuario habitual, la utilidad de los modelos entrenados y optimizados en los capítulos 5 y 6 de este trabajo.
 
@@ -238,7 +238,7 @@ De esta forma, nos queda el diagrama conceptual apreciable en la figura \ref{fig
 	\label{fig:conceptual}
 \end{figure}
 
-\subsection{Modelo dinámico}
+\subsection{Modelo dinámico: diagramas de secuencia y contratos}
 
 En esta sección, estudiaremos las interacciones entre las diferentes partes del sistema. Para ello, emplearemos los diagramas de secuencia y los contratos de C. Larman \cite{larman2003uml}.
 
@@ -371,3 +371,42 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  	\caption{Diagrama de comunicación: consultar entrada de historial}
  	\label{fig:com6}
  \end{figure}
+ 
+ Una vez establecido el comportamiento de forma específica, podemos pasar a la fase de creación del diagrama UML de clases.
+ 
+ \subsection{Diagrama de clases de implementación}
+ Este paso es el último antes de la implementación, por lo que debemos especificar adecuadamente cada una de las clases y métodos que realmente se requieren para crear la aplicación. La implementación se llevará a cabo empleando el IDE de Android Studio~\cite{androidstudio}, y siguiendo el patrón de implementación propuesto por Android.
+  
+ Su estructura es bastante diferente a la de un proyecto habitual; a pesar de emplear Java \cite{javalang} para la implementación de clases, la creación de una aplicación se centra en hacer uso de dos patrones principalmente: el uso de actividades y fragmentos, por lo que las clases presentes en el proyecto heredan de estas dos clases y producen cambios sustanciales en la estructura originalmente ideada. Si profundizamos en los conceptos de fragmento y actividad:
+ 
+ \begin{itemize}
+ 	\item \textbf{Actividad}~\cite{actividad}: es la unidad básica de ejecución de una aplicación Android, y permite mostrar el contenido de la aplicación. El ciclo de vida de una actividad comprende la creación de la misma, hasta su destrucción, cuando el sistema recupera los recursos de esa actividad. Es posible navegar entre actividades, realizando su declaración adecuadamente, aunque, como última tendencia, se suelen emplear fragmentos para realizar cambios de ventana.
+ 	\item \textbf{Fragmento}~\cite{fragmento}: es una parte modular de la interfaz de usuario, la cual posee un ciclo vida con varias fases; principalmente, usaremos creación (método onCreate), destrucción (onDestroy) y actualización del contenido, mediante métodos implementados por nosotros mismos. Permite recoger las entradas y salidas del usuario, y normalmente, dependen de una actividad para funcionar.
+ \end{itemize}
+ 
+ Por tanto, al heredar de estas clases, deben incorporar los métodos de creación y destrucción, así como de actualización de información, y podemos obtener 3 subsistemas bien diferenciados: la pantalla de bienvenida de la aplicación, puramente informativa; el subsistema de diagnóstico y el subsistema de historial, siendo estos dos últimos los definidos en fases previas de esta tarea de diseño, pero que han requerido las modificaciones pertinentes para funcionar adecuadamente en el ecosistema Android.
+ 
+ Podemos encontrar una visión general del sistema en el diagrama de la figura \ref{fig:clasesglobal}, así como una implementación del sistema de diagnóstico en la figura \ref{fig:clasesdiag} y el historial en la figura \ref{fig:claseshist}.
+ 
+    \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/DiagramaGeneral.png}
+ 	\caption{Diagrama de clases: visión general del sistema}
+ 	\label{fig:clasesglobal}
+ \end{figure}
+ 
+     \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/androidAPP-Diagnostico.png}
+ 	\caption{Diagrama de clases: subsistema de diagnósticos}
+ 	\label{fig:clasesdiag}
+ \end{figure}
+ 
+      \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/androidAPP-Historial.png}
+ 	\caption{Diagrama de clases: subsistema de historial}
+ 	\label{fig:claseshist}
+ \end{figure}
+ 
+ \section{Pruebas de uso}
