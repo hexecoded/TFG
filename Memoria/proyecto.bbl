@@ -390,6 +390,12 @@ Pytorch.
 \newblock \url{https://pytorch.org/docs/stable/quantization.html}, 2023.
 \newblock [Online; accessed 18-April-2024].
 
+\bibitem{ganskincancer}
+Zhiwei Qin, Zhao Liu, Ping Zhu, and Yongbo Xue.
+\newblock A gan-based image synthesis method for skin lesion classification.
+\newblock {\em Computer Methods and Programs in Biomedicine}, 195:105568, 05
+  2020.
+
 \bibitem{eflite2}
 Google Renjie~Liu.
 \newblock Higher accuracy on vision models with efficientnet-lite.
@@ -465,6 +471,12 @@ Xiaoxiao Sun, Jufeng Yang, Ming Sun, and Kai Wang.
 Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
   Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
 \newblock Going deeper with convolutions, 2014.
+
+\bibitem{9306830}
+Lidia Talavera-Martínez, Pedro Bibiloni, and Manuel González-Hidalgo.
+\newblock Hair segmentation and removal in dermoscopic images using deep
+  learning.
+\newblock {\em IEEE Access}, 9:2694--2704, 2021.
 
 \bibitem{tan2020efficientnet}
 Mingxing Tan and Quoc~V. Le.
