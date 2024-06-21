@@ -1,4 +1,5 @@
 \babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{25}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivación}{25}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}El cáncer de piel}{27}{subsection.1.1.1}%
@@ -104,4 +105,11 @@
 \contentsline {subsection}{\numberline {7.2.1}Representación de los casos de uso}{141}{subsection.7.2.1}%
 \contentsline {subsection}{\numberline {7.2.2}Actores}{143}{subsection.7.2.2}%
 \contentsline {subsection}{\numberline {7.2.3}Descripción extendida de los casos de uso}{144}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Modelo de análisis}{151}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Modelo estático: diagrama conceptual}{151}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Modelo dinámico}{152}{subsection.7.3.2}%
+\contentsline {subsubsection}{\nonumberline Diagrama de secuencia}{152}{subsubsection*.65}%
+\contentsline {subsubsection}{\nonumberline Contratos}{153}{subsubsection*.67}%
+\contentsline {section}{\numberline {7.4}Diseño}{156}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Diagramas de comunicación}{157}{subsection.7.4.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -1,4 +1,5 @@
 \babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Recopilación de datasets disponibles de ISIC}}{51}{table.2.1}%
@@ -44,4 +45,17 @@
 \contentsline {table}{\numberline {6.8}{\ignorespaces Resultado obtenido al inferir el conjunto de test (cuantizado)}}{134}{table.6.8}%
 \contentsline {table}{\numberline {6.9}{\ignorespaces Tiempos de inferencia para caso binario en Android}}{135}{table.6.9}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Caso de uso CU-1: realizar diagnóstico}}{144}{table.7.1}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Caso de uso CU-2: seleccionar imagen}}{145}{table.7.2}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Caso de uso CU-3: seleccionar desde galería}}{146}{table.7.3}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Caso de uso CU-4: tomar fotografía}}{147}{table.7.4}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces Caso de uso CU-5: recortar región}}{148}{table.7.5}%
+\contentsline {table}{\numberline {7.6}{\ignorespaces Caso de uso CU-6: consultar historial}}{149}{table.7.6}%
+\contentsline {table}{\numberline {7.7}{\ignorespaces Caso de uso CU-7: recuperar diagnóstico}}{150}{table.7.7}%
+\contentsline {table}{\numberline {7.8}{\ignorespaces Contrato: tomar fotografía.}}{154}{table.7.8}%
+\contentsline {table}{\numberline {7.9}{\ignorespaces Contrato: seleccionar imagen.}}{154}{table.7.9}%
+\contentsline {table}{\numberline {7.10}{\ignorespaces Contrato: recortar región de una imagen.}}{155}{table.7.10}%
+\contentsline {table}{\numberline {7.11}{\ignorespaces Contrato: realizar diagnóstico.}}{155}{table.7.11}%
+\contentsline {table}{\numberline {7.12}{\ignorespaces Contrato: consultar historial.}}{156}{table.7.12}%
+\contentsline {table}{\numberline {7.13}{\ignorespaces Contrato: recuperar diagnóstico.}}{156}{table.7.13}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

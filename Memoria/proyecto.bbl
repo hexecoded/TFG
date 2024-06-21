@@ -256,6 +256,12 @@ Andrey Kuzmin, Mart~Van Baalen, Yuwei Ren, Markus Nagel, Jorn Peters, and
   Tijmen Blankevoort.
 \newblock Fp8 quantization: The power of the exponent, 2024.
 
+\bibitem{larman2003uml}
+C.~Larman and B.M. Valle.
+\newblock {\em UML y patrones: una introducci{\'o}n al an{\'a}lisis y
+  dise{\~n}o orientado a objetos y al proceso unificado}.
+\newblock Fuera de colecci{\'o}n Out of series. Pearson Educaci{\'o}n, 2003.
+
 \bibitem{lin2018focal}
 Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár.
 \newblock Focal loss for dense object detection, 2018.

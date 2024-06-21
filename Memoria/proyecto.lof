@@ -1,4 +1,5 @@
 \babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura de SqueezeNet, extraída de \ref {iandola2016squeezenet}}}{33}{figure.2.1}%
@@ -42,11 +43,13 @@
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Caso de uso: Consulta de historial}}{142}{figure.7.2}%
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Diagrama de paquetes}}{143}{figure.7.3}%
 \contentsline {figure}{\numberline {7.4}{\ignorespaces Actor: usuario}}{143}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Caso de uso CU-1: realizar diagnóstico}}{144}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Caso de uso CU-2: seleccionar imagen}}{145}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Caso de uso CU-3: seleccionar desde galería}}{146}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Caso de uso CU-4: tomar fotografía}}{147}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Caso de uso CU-5: recortar región}}{148}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Caso de uso CU-6: consultar historial}}{149}{figure.7.10}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Caso de uso CU-7: recuperar diagnóstico}}{150}{figure.7.11}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Diagrama conceptual}}{152}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Diagrama de secuencia para el subsistema de fotografías y diagnóstico.}}{153}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama de secuencia para el subsistema de historial.}}{153}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Diagrama de comunicación: recuperar diagnóstico.}}{157}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Diagrama de comunicación: seleccionar imagen}}{158}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Diagrama de comunicación: recortar región}}{158}{figure.7.10}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Diagrama de comunicación: realizar diagnóstico}}{159}{figure.7.11}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Diagrama de comunicación: consultar historial}}{159}{figure.7.12}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Diagrama de comunicación: consultar entrada de historial}}{160}{figure.7.13}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

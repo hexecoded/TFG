@@ -5,6 +5,7 @@ Una vez han sido creados, entrenados y verificados los modelos cuantizados para 
 Al tratarse de una aplicación para uso local del dispositivo, y de funcionalidades concretas y bien delimitadas, como lo es la prueba de los modelos en casos reales, esta no será excesivamente compleja. Aun así, en este capítulo, abordaremos su diseño desde el punto de vista de la ingeniería del software, para detallar correctamente las funcionalidades necesarias y los requisitos que debe cumplir para que el resultado sea el esperado.
 
 \section{Descripción del problema. Requisitos y definiciones.}
+\label{sec:descripcion}
 
 Comenzaremos por analizar la descripción de la aplicación que queremos conseguir, teniendo en cuenta los términos relevantes del texto y extrayendo los requisitos a cumplir por la misma.
 
@@ -151,55 +152,222 @@ En el sistema que estamos diseñando, únicamente disponemos de un actor present
 
 \subsection	{Descripción extendida de los casos de uso}
 
-Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de realizar un análisis en detalle del mismo. En las tablas mostradas a continuación, podemos observar numerados, los 7 casos identificables: \textit{CU-1} (figura \ref{fig:cu1}), \textit{CU-2} (figura \ref{fig:cu2}), \textit{CU-3} (figura \ref{fig:cu3}), \textit{CU-4} (figura \ref{fig:cu4}), \textit{CU-5} (figura \ref{fig:cu5}), \textit{CU-6} (figura \ref{fig:cu6}) y \textit{CU-7} (figura \ref{fig:cu7}).
+Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de realizar un análisis en detalle del mismo. En las tablas mostradas a continuación, podemos observar numerados, los 7 casos identificables: \textit{CU-1} (tabla \ref{fig:cu1}), \textit{CU-2} (tabla \ref{fig:cu2}), \textit{CU-3} (tabla \ref{fig:cu3}), \textit{CU-4} (tabla \ref{fig:cu4}), \textit{CU-5} (tabla \ref{fig:cu5}), \textit{CU-6} (tabla \ref{fig:cu6}) y \textit{CU-7} (tabla \ref{fig:cu7}).
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale=0.81]{imagenes/cu-1.png}
 	\caption{Caso de uso CU-1: realizar diagnóstico}
 	\label{fig:cu1}
-\end{figure}
+\end{table}
 
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-2.png}
 	\caption{Caso de uso CU-2: seleccionar imagen}
 	\label{fig:cu2}
-\end{figure}
+\end{table}
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-3.png}
 	\caption{Caso de uso CU-3: seleccionar desde galería}
 	\label{fig:cu3}
-\end{figure}
+\end{table}
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-4.png}
 	\caption{Caso de uso CU-4: tomar fotografía}
 	\label{fig:cu4}
-\end{figure}
+\end{table}
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-5.png}
 	\caption{Caso de uso CU-5: recortar región}
 	\label{fig:cu5}
-\end{figure}
+\end{table}
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-6.png}
 	\caption{Caso de uso CU-6: consultar historial}
 	\label{fig:cu6}
-\end{figure}
+\end{table}
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[scale=0.85]{imagenes/cu-7.png}
 	\caption{Caso de uso CU-7: recuperar diagnóstico}
 	\label{fig:cu7}
+\end{table}
+
+De esta forma, ya disponemos de las interacciones detalladas que existen entre cada uno de los casos de uso, y podemos elaborar el diagrama de concepto asociado que nos describe la cardinalidad de las mismas. Dicho diagrama, se convertirá posteriormente en la base para la creación del diagrama de clases de diseño.
+
+\section{Modelo de análisis}
+Una vez hemos descrito adecuadamente los casos de uso obtenidos, podemos pasar a la fase de análisis del problema. En esta fase, una vez se han detectado todos los requisitos, procedemos a representarlos formalmente mediante modelos. Concretamente, tenemos dos tipos de modelos: estático y dinámico.
+
+\begin{enumerate}
+	\item \textbf{Modelo estático}.  Muestra la estructura que sigue el proyecto, a través de un modelo conceptual, donde se relacionan las distintas entidades detectadas en el problema. Se representa a través de un diagrama conceptual.
+	\item \textbf{Modelo dinámico}. Representa las relaciones que se producen durante el uso del proyecto, es decir, representan el comportamiento del mismo. Se hace uso de los diagramas de secuencia y los contratos de diseño.
+\end{enumerate} 
+
+Comenzaremos por la especificación del diagrama conceptual, y posteriormente al comportamiento dinámico del sistema.
+
+\subsection{Modelo estático: diagrama conceptual}
+
+Para la especificación del modelo estático, debemos realizar una análisis de los conceptos que componen el sistema, e identificar aquellos que verdaderamente participan en él. De esta forma, podemos construir el diagrama de conceptual, y representar de manera estática la estructura del proyecto.
+
+Atendiendo a los objetivos especificados en el capítulo \ref{cap:objetivos} y la descripción del problema que extendimos en el apartado \ref{sec:descripcion}, podemos identificar los siguientes conceptos clave:
+
+\begin{itemize}
+	\item \textbf{Imagen}: elemento clave del sistema, sobre el cual se realiza la clasificación de la enfermedad.  A su vez, podemos encontrar dos tipos muy similares, pero con distintos tipos de almacenaje: \textbf{ImagenDisco} e \textbf{ImagenCámara}, siendo la primera obtenida a partir de su dirección URI (identificador de recursos uniforme, i.e, una dirección única), y la segunda, directamente como mapa de bits procedente de la cámara.
+	\item  \textbf{Patología} (llamada como \textbf{InfoPatología}): se trata de la información asociada a la enfermedad que el usuario recibe como descripción.
+	\item \textbf{Diagnóstico} (llamado como \textbf{DiagnósticoData}). Información completa, que incluye la descripción de la patología, y la imagen asociada, cuyo objetivo es ser almacenado en el historial para ser recuperado cuando se desee.
+	\item \textbf{Historial} Estructura de información que puede contener ninguno o varios diagnósticos previamente realizados de forma que el usuario pueda consultar la evolución de su enfermedad, o buscar antiguas prognosis.
+\end{itemize}
+
+De esta forma, nos queda el diagrama conceptual apreciable en la figura \ref{fig:conceptual}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 1.2]{imagenes/MapaConceptual.png}
+	\caption{Diagrama conceptual}
+	\label{fig:conceptual}
 \end{figure}
 
+\subsection{Modelo dinámico}
+
+En esta sección, estudiaremos las interacciones entre las diferentes partes del sistema. Para ello, emplearemos los diagramas de secuencia y los contratos de C. Larman \cite{larman2003uml}.
+
+\subsubsection{Diagrama de secuencia}
+En un diagrama de secuencia, se muestran como los eventos que generan los actores del sistema provocan la ejecución de una operación por el Sistema, siendo visto este como una caja negra. En nuestro caso, las acciones son bastante limitadas, ya que únicamente disponemos de un actor: el usuario de la aplicación. 
+
+Partiendo de las acciones definidas en los casos de uso, junto con los posibles parámetros de entrada que puede requerir cada evento producido. En este caso, además, se ha empleado el uso de un diagrama de secuencia por cada diagrama de casos de uso, de forma que ya quede establecido la separación de funcionalidades.
+
+En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociado al diagnóstico, mientras que en la figura \ref{fig:sechistorial}, se represente el diagrama para el subsistema del historial.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 1]{imagenes/DiagramaSecuenciaFotografia.png}
+	\caption{Diagrama de secuencia para el subsistema de fotografías y diagnóstico.}
+	\label{fig:secdiag}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 1]{imagenes/DiagramaSecuenciaFotografia.png}
+	\caption{Diagrama de secuencia para el subsistema de historial.}
+	\label{fig:sechistorial}
+\end{figure}
+
+ \subsubsection{Contratos}
+ 
+ Una vez queda representado visualmente los eventos que el usuario puede iniciar en el sistema mediante el diagrama de secuencia, debemos	de especificar lo que se desea lograr en cada operación realizada, pero aun sin entrar en detalles de su implementación. No existe un formato estandarizado único como sí lo ha sido hasta ahora el caso de los diagramas UML (Lenguaje unificado de modelado) con los diagramas de caso de uso y los de secuencia. Sin embargo, habitualmente se emplean los contratos de C. Larman \cite{larman2003uml}, donde se presentan las especificaciones de cada operación en un estilo declarativo, y comúnmente estructurado en formato de tabla.
+ 
+ Para cada evento descrito en el modelo de secuencia, obtenemos su correspondiente contrato, que incluirá principalmente las precondiciones, excepciones, descripción de la operación, y postcondiciones que se producen en el sistema.
+ 
+ En este proyecto, obtenemos 6 contratos, representados en las tablas \ref{fig:contrato1}, \ref{fig:contrato2}, \ref{fig:contrato3}, \ref{fig:contrato4},\ref{fig:contrato5} y \ref{fig:contrato6}, siguiendo el orden de los eventos especificados en los diagramas de secuencia \ref{fig:secdiag} y \ref{fig:sechistorial}.
+ 
+ \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato1.png}
+ 	\caption{Contrato: tomar fotografía.}
+ 	\label{fig:contrato1}
+ \end{table}
+ 
+  \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato2.png}
+ 	\caption{Contrato: seleccionar imagen.}
+ 	\label{fig:contrato2}
+ \end{table}
+ 
+   \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato3.png}
+ 	\caption{Contrato: recortar región de una imagen.}
+ 	\label{fig:contrato3}
+ \end{table}
+ 
+   \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato4.png}
+ 	\caption{Contrato: realizar diagnóstico.}
+ 	\label{fig:contrato4}
+ \end{table}
+ 
+   \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato5.png}
+ 	\caption{Contrato: consultar historial.}
+ 	\label{fig:contrato5}
+ \end{table}
+ 
+    \begin{table}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.16]{imagenes/contrato6.png}
+ 	\caption{Contrato: recuperar diagnóstico.}
+ 	\label{fig:contrato6}
+ \end{table}
+ 
+ Gracias a la definición formalizada en cada contrato, podemos trazar de forma específica los comportamientos de cada operación en diagramas de comunicación, para diseñar el modelo UML de clases de implementación, que describe la arquitectura definitiva del proyecto.
+ 
+ \section{Diseño}
+ 
+ La fase de diseño recoge la especificación final del sistema, teniendo como referencia los contratos y el diagrama conceptual asociado.
+ 
+ En esta fase, llamada diseño por ser la fase previa a la implementación,  debemos crear los diagramas de comunicación (o interacción) de todas las
+ operaciones especificadas en los contratos, y agregar posibles nuevas clases y atributos que no fueron especificados anteriormente, y que son requeridos para el correcto funcionamiento del sistema
+ 
+ Toda esta información es recogida en el diagrama UML de clases del diseño, donde, partiendo del diagrama conceptual, se incluirán las clases con sus atributos y métodos, de los cuales se detallan la navegabilidad y la visibilidad de los atributos.
+ 
+ \subsection{Diagramas de comunicación}
+ 
+ Los diagramas de comunicación permiten observar con detalle el comportamiento interno de cada una de las operaciones del sistema. Si bien estas ya fueron especificadas en los contratos, el funcionamiento interno de la misma quedó en un segundo plano, ya que su objetivo era describir la operación sin entrar en detalles de implementación. Mediante los diagramas de comunicación presentes a continuación, podemos acercarnos un paso más a la implementación. Siguiendo el orden de los contratos, podemos encontrar los diagramas  en ese mismo orden: tomar fotografía (\ref{fig:com1}),  seleccionar imagen (\ref{fig:com2}), recortar región de una imagen (\ref{fig:com3}), realizar diagnóstico (\ref{fig:com4}), consultar historial (\ref{fig:com5}) y recuperar diagnóstico (\ref{fig:com6}).
+ 
+\begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.8]{imagenes/TomarFotografía.png}
+ 	\caption{Diagrama de comunicación: recuperar diagnóstico.}
+ 	\label{fig:com1}
+ \end{figure}
+ 
+ 
+\begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.8]{imagenes/SeleccionarImagen.png}
+ 	\caption{Diagrama de comunicación: seleccionar imagen}
+ 	\label{fig:com2}
+ \end{figure}
+ 
+\begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.8]{imagenes/RecortarRegión.png}
+ 	\caption{Diagrama de comunicación: recortar región}
+ 	\label{fig:com3}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/RealizarDiagnóstico.png}
+ 	\caption{Diagrama de comunicación: realizar diagnóstico}
+ 	\label{fig:com4}
+ \end{figure}
+ 
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/HistorialSec.png}
+ 	\caption{Diagrama de comunicación: consultar historial}
+ 	\label{fig:com5}
+ \end{figure}
+ 
+ 
+   \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.75]{imagenes/GetDiagnóstico.png}
+ 	\caption{Diagrama de comunicación: consultar entrada de historial}
+ 	\label{fig:com6}
+ \end{figure}
