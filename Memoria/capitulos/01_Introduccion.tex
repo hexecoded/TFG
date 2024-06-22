@@ -25,7 +25,7 @@ Aunque este cáncer puede ser identificado de forma más sencilla por su portado
 
 Prosiguiendo con el estudio inicial, el diagnóstico del cáncer de piel  \cite{cancerpieltipos}, se dificulta, sobre todo, por su amplia variedad de formas, tamaños, texturas y manifestaciones. Aunque su visibilidad pueda parecer evidente, (ya que es observable a nivel macroscópico) puede ser confundido fácilmente con lesiones benignas. Normalmente, suele dividirse entre dos tipos diferentes:
 \begin{itemize}
-	\item \textbf{Melanomas de la piel}. Son la variante más peligrosa. Su origen se encuentra en los melanocitos, las células encargadas de dar el color bronceado a la piel.  Éstas pueden comenzar a crecer sin control originando tumores, los cuales crecen y se diseminan rápidamente hacia otras regiones del organismo, provocando la metástasis, una extensión a nivel total del organismo. Es el más grave de los diagnósticos. Puede identificarse como una mancha oscura en la piel, formando tumores de color café oscuro. Sin embargo, debido a la gran variedad de reacciones, pueden darse de color rosado si dejan de producir melanina. Este aspecto dificulta su diagnóstico, por lo que el papel de las herramientas de visión por computador pueden ayudar a su identificación.
+	\item \textbf{Melanomas de la piel}. Son la variante más peligrosa. Su origen se encuentra en los melanocitos, las células encargadas de dar el color bronceado a la piel.  Estas pueden comenzar a crecer sin control originando tumores, los cuales crecen y se diseminan rápidamente hacia otras regiones del organismo, provocando la metástasis, una extensión a nivel total del organismo. Es el más grave de los diagnósticos. Puede identificarse como una mancha oscura en la piel, formando tumores de color café oscuro. Sin embargo, debido a la gran variedad de reacciones, pueden darse de color rosado si dejan de producir melanina. Este aspecto dificulta su diagnóstico, por lo que el papel de las herramientas de visión por computador pueden ayudar a su identificación.
 	\item \textbf{Cánceres no melanomas}. Este tipo de cánceres no se ubican en los melanocitos, y pueden ser tratados mediante otras ténicas menos agresivas debido a su rara probabilidad de expansión. Los más comunes, son los tumores de células basales y los de células escamosas:
 	\begin{itemize}
 		\item \textit{Células basales}. Componen la capa inferior de la piel, y son las células encargadas de sustituir aquellas que componen la capa más externa de la piel. Se encuentran , por tanto, en constante reproducción para cubrir aquellas que mueren en la superificie. Si experimentan alguna mutación, producen tumores de color similar a la piel del paciente, con la posibilidad de aparecer en colores como negro brillante en las pieles más oscuras.
@@ -51,7 +51,7 @@ El uso de deep learning para este fin resulta interesante como forma de mejora d
 
 Existe una gran dificultad de conocer la naturaleza del tumor del paciente. Habitualmente, se suele extraer una muestra del tejido afectado para proceder a su análisis en laboratorio. A esta técnica se le denomina biopsia.\\
 
-Es un proceso efectivo, que consiste en el estudio bajo microscopio de las células extraídas, y el patrón que constituye el tejido. Su proceso más complejo es la extracción, ya que si ésta no se realiza correctamente, ciertas células cancerígenas pueden no aparecer en la muestra y realizarse un diagnóstico erróneo. Además, debido a la falta de especialistas en la materia que puedan realizar las incisiones, personal médico no cualificado en esta materia suele realizar su extracción. Se estipula que en lesiones inflamatarias, el correcto estudio de la patología se da en el 77\% de los casos si la muestra es recogida por un dermátologo, y un 41\% si la realiza un ayudante \cite{LLAMASVELASCO201212}.
+Es un proceso efectivo, que consiste en el estudio bajo microscopio de las células extraídas, y el patrón que constituye el tejido. Su proceso más complejo es la extracción, ya que si ésta no se realiza correctamente, ciertas células cancerígenas pueden no aparecer en la muestra y realizarse un diagnóstico erróneo. Además, debido a la falta de especialistas en la materia que puedan realizar las incisiones, personal médico no cualificado en esta materia suele realizar su extracción. Se estipula que en lesiones inflamatorias, el correcto estudio de la patología se da en el 77\% de los casos si la muestra es recogida por un dermatólogo, y un 41\% si la realiza un ayudante \cite{LLAMASVELASCO201212}.
 
 Existen varias técnicas: mediante corte con tijera, mediante rasurado, extracción mediante bisturí, o en forma elíptica, persiguiendo la extracción total de la lesión. En el caso de las dos primeras opciones, solo está indicada si la lesión es superficial y no existe riesgo de que se trata de un melanoma por las complicaciones que esto conlleva de una posible diseminación y metástasis. \\
 
@@ -104,7 +104,7 @@ De esta forma, podemos resumir el tiempo dedicado a cada una de las tareas en la
 		Valoración de temáticas a elegir para el TFG & 15/09/23 & 03/10/23 \\ \hline
 		Estudio y valoración del estado del arte & 03/02/24 & 24/04/24 \\ \hline
 		Preprocesado de datos & 07/02/24 & 18/04/24 \\ \hline
-		Entrenamiento de modelos & 07/02/24 & 31/05/24 \\ \hline
+		Entrenamiento de modelos & 14/02/24 & 31/05/24 \\ \hline
 		Cuantización & 31/05/24 & 14/06/24 \\ \hline
 		Desarrollo de la aplicación & 20/05/24 & 20/06/24 \\ \hline
 		Escritura de la memoria & 08/06/24 & 22/06/24 \\ \hline
@@ -112,3 +112,17 @@ De esta forma, podemos resumir el tiempo dedicado a cada una de las tareas en la
 	\caption{Tabla de tiempos de trabajo}
 	\label{tab:planif}
 \end{table}
+
+Teniendo en cuenta únicamente los aspectos relacionados con el desarrollo de este TFG, este se ha llevado a cabo dando lugar al diagrama de Gantt de la figura \ref{fig:gantt}, donde la semana uno (S1) se corresponde a la semana del 3 de febrero, y la última, S19, a la semana del 17 de junio.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.1755]{imagenes/ganttplan.png}
+	\caption{Diagrama de Gantt de planificación}
+	\label{fig:gantt}
+\end{figure}
+
+
+Podemos observar también el desglose en subtareas realizado para cada una de las tareas realizadas, que han dado como resultado final la realización y completado del proyecto.
+
+Las reuniones de seguimiento y planificación se han desarrollado en un período medio de 2 semanas entre reuniones, de forma que existiese tiempo suficiente para realizar avances medibles. En dichas reuniones, se trataban los avances realizados, y los problemas encontrados, de forma que se pudiera poner remedio a ellos durante el siguiente \textit{sprint}.

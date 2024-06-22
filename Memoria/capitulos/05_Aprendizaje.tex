@@ -17,7 +17,7 @@ La matriz de confusión es una herramienta que nos permite evaluar el modelo ent
 
 
 \begin{itemize}
-	\item  \textbf{Precision}. Proporción de valores bien clasificados dentro de una clase teniendo en cuenta verdaderos y falsos positivos. $$Precision=TP / (TP + FP).$$
+	\item  \textbf{Precision}. Proporción de valores bien clasificados dentro de una clase teniendo en cuenta verdaderos y falsos positivos. $$Precision=TP / (TP + FP)$$
 	\item \textbf{Recall}. Valores correctamente identificados como positivos respecto al total de elementos positivos. $$Recall = TP / P$$
 	\item  \textbf{Balanced accuracy}: combina sensitivity y specificity. La primera, devuelve el valor real de proporción de valores correctamente clasificados entre el total de casos positivos que tenemos (contando predicciones positivas y falsos negativos), mientras que la especifidad, nide el caso dual: la proporción de casos negativos bien clasificados respecto al total de datos negativos tanto bien clasificados como mal clasificados, y que son identificados como falsos positivos. Esto nos permite calcular el accuracy de forma proporcional al porcentaje de presencia de las clases, e intentamos así paliar el efecto del desequilibrio de los datos:
 	$$Sensitivity = TP/(TP+FN)$$
@@ -60,7 +60,7 @@ El uso de la función de pérdida FocalLoss podría ayudar a paliar este efecto.
 		Benign & 0,86 & 0,95 & 0,90 & 15.338 \\
 		Malignant & 0,68 & 0,41 & 0,51 & 4.126 \\
 		\hline
-		Accuracy &  &  & 0,83 & 19.464 \\
+		Accuracy &  &  & 0,83 & 19.464 \\ \hline
 		Macro avg & 0,77& 0,68& 0,71&19.464\\
 		Weighted avg&0,82&0,83&0,82&19.464\\
 		\hline
@@ -81,7 +81,7 @@ Se aplicarán una serie de transformaciones a la imagen que alteren su estructur
 	\item \textbf{Gaussian blur (p=0,5)}. Se aplicará filtro gaussiano en el 50\% de los casos, especificándose un valor de sigma muy pequeño de 0.5.
 	\item \textbf{Modificación de contraste  (p=0,25)}. Se aplicará un aumento o decremento del contraste del 20\% en el 25\% de los casos. Esto emula posibles cambios de luminosidad ambiente y de profundidad de color de la cámara.
 	\item \textbf{Ruido Gaussiano aditivo  (p=0,5)}. Se aplica en caso de que el ruido gaussiano estándar no sea aplicado. Aplica un filtro gaussiano a nivel de canal, de forma que solo parte de la imagen se encuentra difuminada.  Se aplica también en un 50\% de los casos.
-	\item \textbf{Transformaciones afines  (p=0,2)}: se trata de una alteración compuesta de escala y zoom, y una posterior traslación o rotación de la imagen. Se trata de una opcionalidad ofrecida por Imgaug de forma no configurable directamente.
+	\item \textbf{Transformaciones afines  (p=0,2)}. Se trata de una alteración compuesta de escala y zoom, y una posterior traslación o rotación de la imagen. Se trata de una opcionalidad ofrecida por Imgaug de forma no configurable directamente.
 \end{itemize}
 
 Estos valores han sido escogidos tomando como inspiración las transformaciones realizadas por el equipo ganador de la competición de ISIC \cite{1stISIC}, debido a sus buenos resultados.

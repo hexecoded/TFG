@@ -126,9 +126,9 @@ Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en l
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		Benign & 0.90 & 0,89 & 0,89 & 16.010 \\ 
+		Benign & 0,90 & 0,89 & 0,89 & 16.010 \\ 
 		Malignant & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
-		~ & ~ & accuracy & 0,84 & 21.478 \\ \hline
+		Accuracy & ~ & ~  & 0,84 & 21.478 \\ \hline
 		Macro avg & 0,79 & 0,80 & 0,79 & 21.478 \\ 
 		Weighted avg & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
 	\end{tabular}
@@ -145,7 +145,7 @@ Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en l
 		~ & Precision & Recall & F1-score & Support \\ \hline
 		Benign & 0,90 & 0,89 & 0,89 & 16.010 \\ 
 		Malignant & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
-		~ & ~ & accuracy & 0,84 & 21.478 \\ \hline
+		Accuracy & ~ & ~  & 0,84 & 21.478 \\ \hline
 		Macro avg & 0,79 & 0,79 & 0,79 & 21.478 \\ 
 		Weighted avg & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
 	\end{tabular}
@@ -172,8 +172,8 @@ Los resultados se han tomado teniendo en cuenta únicamente la inferencia de 200
 	\begin{tabular}{|c|c|c|}
 		\hline
 		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
-		Original & 114342 & 571,71 \\ \hline
-		Cuantizado & 72352 & 361,76 \\ \hline
+		Original & 114.342 & 571,71 \\ \hline
+		Cuantizado & 72.352 & 361,76 \\ \hline
 	\end{tabular}
 	\caption{Tiempos de inferencia para caso binario en Android}
 	\label{infbintmp}
@@ -207,12 +207,12 @@ Los resultados  podemos apreciarlos en las tablas \ref{tab:maltestorig} (origina
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1969 \\
-		Melanoma & 0,87 & 0,92 & 0,89 & 2950 \\
+		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1.969 \\
+		Melanoma & 0,87 & 0,92 & 0,89 & 2.950 \\
 		Squamous Cell C. & 0,65 & 0,37 & 0,47 & 549 \\ \hline
 		Accuracy & ~ & ~ & 0,83 & 5468 \\ \hline
-		Macro avg & 0,78 & 0,71 & 0,73 & 5468 \\
-		Weighted avg & 0,83 & 0,83 & 0,83 & 5468 \\ \hline
+		Macro avg & 0,78 & 0,71 & 0,73 & 5.468 \\
+		Weighted avg & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo original}
 	\label{tab:maltestorig}
@@ -223,12 +223,12 @@ Los resultados  podemos apreciarlos en las tablas \ref{tab:maltestorig} (origina
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1969 \\
-		Melanoma & 0,87 & 0,92 & 0,89 & 2950 \\
+		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1.969 \\
+		Melanoma & 0,87 & 0,92 & 0,89 & 2.950 \\
 		Squamous Cell C. & 0,65 & 0,37 & 0,47 & 549 \\ \hline
-		Accuracy & ~ & ~ & 0,83 & 5468 \\ \hline
-		Macro avg & 0,78 & 0,71 & 0,73 & 5468 \\
-		Weighted avg & 0,83 & 0,83 & 0,83 & 5468 \\ \hline
+		Accuracy & ~ & ~ & 0,83 & 5.468 \\ \hline
+		Macro avg & 0,78 & 0,71 & 0,73 & 5.468 \\
+		Weighted avg & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo cuantizado}
 	\label{tab:maltestquant}
@@ -249,8 +249,8 @@ Se usará el mismo dispositivo, empleando un subconjunto para la inferencia de 2
 	\begin{tabular}{|c|c|c|}
 		\hline
 		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
-		Original & 215,693 & 1,078,465	 \\ \hline
-		Cuantizado & 136,912 & 684,56 \\ \hline
+		Original & 215.693 & 1.078,465	 \\ \hline
+		Cuantizado & 136.912 & 684,56 \\ \hline
 	\end{tabular}
 	\caption{Tiempos de inferencia para caso multiclase maligno en Android}
 	\label{infmal}
@@ -280,32 +280,32 @@ Tras dichos ajustes, podemos proceder a la medición de las métricas de test y 
 
 \subsubsection{Métricas de inferencia en test}
 
-De la misma forma que los casos anteriores, procedemos a la evaluación del conjunto de test, filtrando únicamente aquellas imágenes con lesiones de naturaleza benigna. Los resultados de los modelos original y cuantizado quedan reflejados en las tablas \ref{tab:testbenorig} y \ref{tab:testbenquant}, respectivamente:
+De la misma forma que los casos anteriores, procedemos a la evaluación del conjunto de test, filtrando únicamente aquellas imágenes con lesiones de naturaleza benigna. Los resultados de los modelos original y cuantizado quedan reflejados en las tablas \ref{tab:testbenorig} y \ref{tab:testbenquant}, respectivamente.
 
 \begin{table}[!ht]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ \hline
-		DER & 0,31 & 0,61 & 0,41 & 770 \\ \hline
-		PBK & 0,53 & 0,59 & 0,56 & 547 \\ \hline
-		VL & 0,39 & 0,87 & 0,54 & 536 \\ \hline
-		LK & 0,20 & 0,47 & 0,28 & 225 \\ \hline
-		AK & 0,28 & 0,61 & 0,38 & 168 \\ \hline
-		SK & 0,59 & 0,83 & 0,69 & 139 \\ \hline
-		AMP & 0,20 & 0,43 & 0,27 & 125 \\ \hline
-		ACR & 0,29 & 0,72 & 0,42 & 120 \\ \hline
-		ANG & 0,11 & 0,36 & 0,17 & 96 \\ \hline
-		SL & 0,04 & 0,07 & 0,05 & 56 \\ \hline
-		LN & 0,02 & 0,08 & 0,03 & 48 \\ \hline
-		AIMP & 0,27 & 0,23 & 0,25 & 48 \\ \hline
-		WART & 0,35 & 0,50 & 0,41 & 28 \\ \hline
-		LS & 0,19 & 0,53 & 0,28 & 17 \\ \hline
-		NEU & 0,00 & 0,00 & 0,00 & 10 \\ \hline
+		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ 
+		DER & 0,31 & 0,61 & 0,41 & 770 \\ 
+		PBK & 0,53 & 0,59 & 0,56 & 547 \\ 
+		VL & 0,39 & 0,87 & 0,54 & 536 \\ 
+		LK & 0,20 & 0,47 & 0,28 & 225 \\ 
+		AK & 0,28 & 0,61 & 0,38 & 168 \\ 
+		SK & 0,59 & 0,83 & 0,69 & 139 \\ 
+		AMP & 0,20 & 0,43 & 0,27 & 125 \\ 
+		ACR & 0,29 & 0,72 & 0,42 & 120 \\ 
+		ANG & 0,11 & 0,36 & 0,17 & 96 \\ 
+		SL & 0,04 & 0,07 & 0,05 & 56 \\ 
+		LN & 0,02 & 0,08 & 0,03 & 48 \\ 
+		AIMP & 0,27 & 0,23 & 0,25 & 48 \\ 
+		WART & 0,35 & 0,50 & 0,41 & 28 \\ 
+		LS & 0,19 & 0,53 & 0,28 & 17 \\ 
+		NEU & 0,00 & 0,00 & 0,00 & 10 \\ 
 		SCAR & 0,00 & 0,00 & 0,00 & 10 \\ \hline
 		Accuracy & ~ & ~ & 0,75 & 16.010 \\ \hline
-		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ \hline
+		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ 
 		Weighted avg & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
 	\end{tabular}
 	\caption{Resultado obtenido al inferir el conjunto de test (sin cuantizado)}
