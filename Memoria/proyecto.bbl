@@ -329,6 +329,13 @@ Neuralscope.
   \url{https://neuralscope.org/mobile/index.php?route=product/benchmark}, 2019.
 \newblock [Online; accessed 8-June-2024].
 
+\bibitem{confmat}
+Datacamp Nisha Arya~Ahmed.
+\newblock What is a confusion matrix in machine learning?
+\newblock
+  \url{https://www.datacamp.com/tutorial/what-is-a-confusion-matrix-in-machine-learning},
+  2024.
+
 \bibitem{javalang}
 Oracle.
 \newblock Java language.

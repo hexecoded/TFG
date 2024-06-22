@@ -25,15 +25,16 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Imagen original (izquierda) vs aumentada (derecha)}}{85}{figure.3.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Desequilibrio de datos}}{97}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Demostración gráfica del Early stopping \cite {earlystop}}}{103}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Curvas del finetuning del modelo binario con Resnet50}}{107}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet B5}}{108}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con Mobilenet V2}}{111}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{112}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Distribución de las clases malignas}}{114}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Curvas de aprendizaje para clases malignas}}{115}{figure.5.8}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Conteo de clases benignas antes de agrupar}}{118}{figure.5.9}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Definición de la matriz de confusión, extraído de \cite {confmat}}}{96}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Desequilibrio de datos}}{97}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Demostración gráfica del early stopping \cite {earlystop}}}{104}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con Resnet50}}{107}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet B5}}{109}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Curvas del finetuning del modelo binario con MobileNet V2}}{111}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{112}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Distribución de las clases malignas}}{114}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Curvas de aprendizaje para clases malignas}}{115}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Conteo de clases benignas}}{118}{figure.5.10}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Optimización de modelos con Pytorch Mobile \cite {pmobile}}}{124}{figure.6.1}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Comparativa de ganancias al emplear modelos cuantizados}}{136}{figure.6.2}%
