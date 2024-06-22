@@ -1,8 +1,8 @@
 \chapter{Diseño de la aplicación para el cáncer de piel}
 
-Una vez han sido creados, entrenados y verificados los modelos cuantizados para teléfono móvil, podemos proceder con el diseño e implementación de la aplicación. Su objetivo será, mostrar de forma visual y cómoda para el usuario habitual, la utilidad de los modelos entrenados y optimizados en los capítulos 5 y 6 de este trabajo.
+Una vez han sido creados, entrenados y verificados los modelos cuantizados para teléfono móvil, podemos proceder con el diseño e implementación de la aplicación. Su objetivo será, mostrar de forma visual y cómoda para el usuario habitual, la utilidad de los modelos entrenados y optimizados en los capítulos \ref{sec:capt5} y  \ref{sec:capt6}  de este trabajo.
 
-Al tratarse de una aplicación para uso local del dispositivo, y de funcionalidades concretas y bien delimitadas, como lo es la prueba de los modelos en casos reales, esta no será excesivamente compleja. Aun así, en este capítulo, abordaremos su diseño desde el punto de vista de la ingeniería del software, para detallar correctamente las funcionalidades necesarias y los requisitos que debe cumplir para que el resultado sea el esperado.
+Al tratarse de una aplicación para uso local en el dispositivo, y de funcionalidades concretas y bien delimitadas, como lo es la prueba de los modelos en casos reales, esta no será excesivamente compleja. Aun así, en este capítulo, abordaremos su diseño desde el punto de vista de la ingeniería del software, para detallar correctamente las funcionalidades necesarias y los requisitos que debe cumplir para que el resultado sea el esperado.
 
 \section{Descripción del problema. Requisitos y definiciones.}
 \label{sec:descripcion}
@@ -21,17 +21,17 @@ El diagnóstico de imágenes debe realizarse teniendo en cuenta la existencia de
 De forma detallada, el proceso sería el siguiente:
 
 \begin{enumerate}
-	\item El usuario ingresa en el sistema, y requieren al mismo la realización de un diagnóstico por medio de imagen.
+	\item El usuario ingresa en el sistema, y requiere al mismo la realización de un diagnóstico por medio de imagen.
 	\item El usuario obtiene la imagen de la enfermedad que desea analizar empleando para ello la cámara del dispositivo, o bien, una fotografía ya realizada en el pasado que desee clasificar.
 	\item A continuación, se realiza el diagnóstico empleando dos niveles de análisis: 
 	\begin{enumerate}
 		\item Primero, se realiza una clasificación más general para identificar si se trata de una enfermedad benigna, o de un tumor maligno.
-		\item En función del resultado de la prueba, se procede al empleo de uno de los modelos para identificar el posible tipo de enfermedad que puede ser, atendiendo a los casos más probables a nivel clínico.
+		\item En función del resultado de la prueba, se procede al empleo de uno de los modelos especializados para identificar el posible tipo de enfermedad que puede ser, atendiendo a los casos más probables a nivel clínico.
 	\end{enumerate}
 	\item Una vez terminada la aplicación de los modelos de aprendizaje para la clasificación, se asignará de forma definitiva un diagnóstico, que será obtenido en base a los resultados probabilísticos más altos de la salida de los modelos evaluados. Esta información, junto con la miniatura de la imagen, y una descripción de la enfermedad, será mostrada al usuario en pantalla, no tardando más de dos segundos y empleando ventanas flotantes para una mayor legibilidad.
 \end{enumerate}
 
-\subsubsection{Restricciones a tener en cuenta}
+\subsubsection{Objetivos a tener en cuenta}
 
 Para la realización del producto final, han de tenerse en cuenta los siguientes aspectos:
 
@@ -45,7 +45,7 @@ Para la realización del producto final, han de tenerse en cuenta los siguientes
 	\item El sistema ha de tener un comportamiento fluido y dinámico para el usuario, no tardando más de dos segundos por imagen para realizar el diagnóstico.
 	\item La interfaz de usuario ha de ser fluida y eficiente, con el menor tiempo de carga posible entre funcionalidades.
 	\item El almacenado del histórico ha de realizarse de forma local para velar por la privacidad del usuario.
-	\item Los modelos de aprendizaje empleados han de ser compatibles con el estándar Torchscript/Pytorch.
+	\item Los modelos de aprendizaje empleados han de ser compatibles con el estándar Torchscript/Pytorch \cite{paszke2019pytorch}.
 \end{itemize}
 
 \subsection{Requisitos}
@@ -53,9 +53,9 @@ Para la realización del producto final, han de tenerse en cuenta los siguientes
 Una vez analizado el problema, podemos identificar una serie de requisitos que debemos cumplir. Estos pueden clasificarse en tres tipos:
 
 \begin{itemize}
-	\item Requisitos funcionales. Describen la interacción entre el sistema y el entorno, indicando como ha de reaccionar la app ante ciertos estímulos.
-	\item Requisitos no funcionales. Especifican restricciones del sistema no relacionadas directamente con su comportamiento funcional, pero que son clave durante el diseño e implementación del sistema.
-	\item Requisitos de información. Describe las necesidades de almacenamiento del producto software que se está desarrollando.
+	\item \textbf{Requisitos funcionales}. Describen la interacción entre el sistema y el entorno, indicando como ha de reaccionar la aplicación ante ciertos estímulos.
+	\item \textbf{Requisitos no funcionales}. Especifican restricciones del sistema no relacionadas directamente con su comportamiento funcional, pero que son clave durante el diseño e implementación del sistema.
+	\item \textbf{Requisitos de información}. Establecen las necesidades de almacenamiento del producto software que se está desarrollando.
 \end{itemize}
 
 Podemos encontrar los requisitos siguientes para el problema descrito.
@@ -63,24 +63,23 @@ Podemos encontrar los requisitos siguientes para el problema descrito.
 \subsubsection{Requisitos funcionales}
 
 \begin{itemize}
-	\item \textbf{RF-1}. El usuario debe ser capaz de realizar el diagnóstico de una fotografía empleando el modelo de inteligencia artificial subyacente.
-	\item \textbf{RF-2}. El sistema debe proporcionar la funcionalidad al usuario de leer la imagen de galería o mediante nueva fotografía.
-	\item \textbf{RF-3}. El usuario debe poder recortar la imagen y seleccionar el área de interés.
-	\item \textbf{RF-4}. El sistema debe ofrecer la posibilidad al usuario de mostrar el historial de fotografías examinadas
-	\item\textbf{RF-5}. Cada fotografía debe ser correctamente ordenada por su fecha y hora de toma, en orden descendente.
-	\item \textbf{RF-6}. El sistema de diagnóstico debe ofrecer al usuario retroalimentación sobre la enfermedad, como su nombre y descripción de la gravedad.
-	\item \textbf{RF-7}. Tras el diagnóstico, el usuario debe ser capaz de observar la información asociada al resultado.
+	\item \textbf{RF-1}. El usuario debe ser capaz de realizar el diagnóstico de una fotografía empleando el modelo de inteligencia artificial subyacente. Debe ofrecer al usuario retroalimentación sobre la enfermedad, como su nombre y descripción de la gravedad.
+	\begin{itemize}
+		\item \textbf{RF-1.1}. El sistema debe proporcionar la funcionalidad al usuario de leer la imagen de galería o mediante nueva fotografía.
+		\item \textbf{RF-1.2}. El usuario debe poder recortar la imagen y seleccionar el área de interés.
+	\end{itemize}
+	\item \textbf{RF-2}. El sistema debe ofrecer la posibilidad al usuario de mostrar el historial de fotografías examinadas. Cada fotografía debe ser correctamente ordenada por su fecha y hora de toma, en orden descendente.
 \end{itemize}
 
 \subsubsection{Requisitos no funcionales}
 	\begin{itemize}
 		\item \textbf{RNF-1}. El tiempo de respuesta del modelo de aprendizaje debe ser inferior a 2 segundos.
-		\item \textbf{RNF-2}. El lenguaje de programación a emplear debe ser Java o Kotlin
-		\item \textbf{RNF-3}. La interfaz de usuario ha de ser implementada mediante ficheros XML, y siguiendo los requisitos de diseño de Material Design de Google para cumplir con las especificaciones de interfaz de Android.
-		\item \textbf{RNF-4} La inferencia del modelo de aprendizaje ha de realizarse empleando imágenes tipo bitmap de 512 x 512
-		\item \textbf{RNF-5} La implementación del proceso de inferencia debe hacer uso de la libería Pytorch Mobile.
-		\item \textbf{RNF-6} El recorte de la imagen debe realizarse a tiempo real.
-		\item \textbf{RNF-7} El menú de histórico de diagnósticos ha de ser sencillo, con opción de scroll, e implementado con un ViewPager de Java para poder ordenar los casos de mayor a menor antigüedad.
+		\item \textbf{RNF-2}. El lenguaje de programación a emplear debe ser Java o Kotlin.
+		\item \textbf{RNF-3}. La interfaz de usuario ha de ser implementada mediante ficheros XML, y siguiendo los requisitos de diseño de Material Design\footnote{Material Design: \url{https://m3.material.io/}} de Google para cumplir con las especificaciones de interfaz de Android.
+		\item \textbf{RNF-4}. La inferencia del modelo de aprendizaje ha de realizarse empleando imágenes tipo bitmap de 512 x 512.
+		\item \textbf{RNF-5}. La implementación del proceso de inferencia debe hacer uso de la libería Pytorch mobile y Torchscript.
+		\item \textbf{RNF-6}. El recorte de la imagen debe realizarse a tiempo real.
+		\item \textbf{RNF-7}. El menú de histórico de diagnósticos ha de ser sencillo, con opción de scroll, e implementado con un ViewPager de Java para poder ordenar los casos de mayor a menor antigüedad.
 	\end{itemize}
 \subsubsection{Requisitos de información}
 
@@ -98,13 +97,13 @@ Podemos encontrar los requisitos siguientes para el problema descrito.
 \end{itemize}
 
 \subsection{Glosario de términos}
-Las palabras clave de la descripción se concentra en la siguiente lista:
+Las palabras clave de la descripción se recopilan en la siguiente lista:
 \begin{itemize}
-	\item Diagnóstico: proceso mediante el cual se identifica la enfermedad de un paciente.
-	\item Prognosis: acción de pronosticar, o juzgar médicamente una condición de un paciente.
-	\item Lesión cutánea: mancha o tumor de características sospechosas originado en la piel.
-	\item Modelo de aprendizaje profundo: algoritmos basados habitualmente en el uso de arquitecturas neuronales, empleados para la clasificación o segmentación de imágenes de entrada con el fin de dar como salida una clasificación o característica de relevancia sobre la entrada.
-	\item Ventana flotante: interfaz de usuario que se superpone de forma total o parcial sobre una ventaja ya existente. En Android, esta funcionalidad es implementada por los fragmentos, o bien, el uso de otros componentes específicos como ``viewpager''.
+	\item \textbf{Diagnóstico}. Proceso mediante el cual se identifica la enfermedad de un paciente.
+	\item \textbf{ Prognosis}. Acción de pronosticar, o juzgar médicamente una condición de un paciente.
+	\item  \textbf{Lesión cutánea}.Mancha o tumor de características sospechosas originado en la piel.
+	\item  \textbf{Modelo de aprendizaje profundo}. Algoritmos basados habitualmente en el uso de arquitecturas neuronales, empleados para la clasificación o segmentación de imágenes de entrada con el fin de dar como salida una clasificación o característica de relevancia sobre la entrada.
+	\item  \textbf{Ventana flotante}. Interfaz de usuario que se superpone de forma total o parcial sobre una ventaja ya existente. En Android, esta funcionalidad es implementada por los fragmentos, o bien, el uso de otros componentes específicos como ventanas de scroll.
 \end{itemize}
 
 \section{Modelo casos de uso}
@@ -113,7 +112,7 @@ Una vez especificados los requisitos del proyecto software que debemos cumplir, 
 
  \subsection{Representación de los casos de uso}
  
- Dentro de la aplicación, podemos identificar, basado en los requisitos anteriores, dos objetivos a satisfacer por el usuario: realizar un diagnóstico \ref{fig:diagcu}, y consultar el historial de pruebas realizadas \ref{fig:histcu}.
+ Dentro de la aplicación, podemos identificar, basado en los requisitos anteriores, dos objetivos a satisfacer por el usuario: realizar un diagnóstico (figura \ref{fig:diagcu}), y consultar el historial de pruebas realizadas (figura \ref{fig:histcu}).
  
  \begin{figure}[H]
  	\centering
@@ -130,7 +129,7 @@ Una vez especificados los requisitos del proyecto software que debemos cumplir, 
  	\label{fig:histcu}
  \end{figure}
 
-Si agrupamos las funcionalidades en paquetes, podemos obtener un modelo visual que organiza los contenidos de los casos de uso en lo que  será la estructura del proyecto. El resultado es un diagrama bastante simple, contenido en la figura \ref{fig:paquetes}.
+Si agrupamos las funcionalidades en paquetes, podemos obtener un modelo visual que organiza los contenidos de los casos de uso en lo que  será la estructura del proyecto. El resultado es el diagrama de la figura \ref{fig:paquetes}.
 
 \begin{figure}[H]
 	\centering
@@ -145,18 +144,18 @@ En el sistema que estamos diseñando, únicamente disponemos de un actor present
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale = 0.2]{imagenes/tablausuario.png}
+	\includegraphics[scale = 0.225]{imagenes/tablausuario.png}
 	\caption{Actor: usuario}
 	\label{fig:actorusuario}
 \end{table}
 
 \subsection	{Descripción extendida de los casos de uso}
 
-Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de realizar un análisis en detalle del mismo. En las tablas mostradas a continuación, podemos observar numerados, los 7 casos identificables: \textit{CU-1} (tabla \ref{fig:cu1}), \textit{CU-2} (tabla \ref{fig:cu2}), \textit{CU-3} (tabla \ref{fig:cu3}), \textit{CU-4} (tabla \ref{fig:cu4}), \textit{CU-5} (tabla \ref{fig:cu5}), \textit{CU-6} (tabla \ref{fig:cu6}) y \textit{CU-7} (tabla \ref{fig:cu7}).
+Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de realizar un análisis en detalle del mismo. En las tablas mostradas a continuación, podemos observar numerados los 7 casos identificables: \textit{CU-1} (tabla \ref{fig:cu1}), \textit{CU-2} (tabla \ref{fig:cu2}), \textit{CU-3} (tabla \ref{fig:cu3}), \textit{CU-4} (tabla \ref{fig:cu4}), \textit{CU-5} (tabla \ref{fig:cu5}), \textit{CU-6} (tabla \ref{fig:cu6}) y \textit{CU-7} (tabla \ref{fig:cu7}).
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.81]{imagenes/cu-1.png}
+	\includegraphics[scale=0.33]{imagenes/cu-1.png}
 	\caption{Caso de uso CU-1: realizar diagnóstico}
 	\label{fig:cu1}
 \end{table}
@@ -164,42 +163,42 @@ Para comprender adecuadamente las implicaciones de cada caso de uso, debemos de 
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-2.png}
+	\includegraphics[scale=0.4]{imagenes/cu-2.png}
 	\caption{Caso de uso CU-2: seleccionar imagen}
 	\label{fig:cu2}
 \end{table}
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-3.png}
+	\includegraphics[scale=0.45]{imagenes/cu-3.png}
 	\caption{Caso de uso CU-3: seleccionar desde galería}
 	\label{fig:cu3}
 \end{table}
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-4.png}
+	\includegraphics[scale=0.45]{imagenes/cu-4.png}
 	\caption{Caso de uso CU-4: tomar fotografía}
 	\label{fig:cu4}
 \end{table}
 
   \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-5.png}
+	\includegraphics[scale=0.45]{imagenes/cu-5.png}
 	\caption{Caso de uso CU-5: recortar región}
 	\label{fig:cu5}
 \end{table}
 
 \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-6.png}
+	\includegraphics[scale=0.45]{imagenes/cu-6.png}
 	\caption{Caso de uso CU-6: consultar historial}
 	\label{fig:cu6}
 \end{table}
 
 \begin{table}[H]
 	\centering
-	\includegraphics[scale=0.85]{imagenes/cu-7.png}
+	\includegraphics[scale=0.375]{imagenes/cu-7.png}
 	\caption{Caso de uso CU-7: recuperar diagnóstico}
 	\label{fig:cu7}
 \end{table}
@@ -214,7 +213,7 @@ Una vez hemos descrito adecuadamente los casos de uso obtenidos, podemos pasar a
 	\item \textbf{Modelo dinámico}. Representa las relaciones que se producen durante el uso del proyecto, es decir, representan el comportamiento del mismo. Se hace uso de los diagramas de secuencia y los contratos de diseño.
 \end{enumerate} 
 
-Comenzaremos por la especificación del diagrama conceptual, y posteriormente al comportamiento dinámico del sistema.
+Comenzaremos por la especificación del diagrama conceptual, y posteriormente el comportamiento dinámico del sistema.
 
 \subsection{Modelo estático: diagrama conceptual}
 
@@ -243,9 +242,9 @@ De esta forma, nos queda el diagrama conceptual apreciable en la figura \ref{fig
 En esta sección, estudiaremos las interacciones entre las diferentes partes del sistema. Para ello, emplearemos los diagramas de secuencia y los contratos de C. Larman \cite{larman2003uml}.
 
 \subsubsection{Diagrama de secuencia}
-En un diagrama de secuencia, se muestran como los eventos que generan los actores del sistema provocan la ejecución de una operación por el Sistema, siendo visto este como una caja negra. En nuestro caso, las acciones son bastante limitadas, ya que únicamente disponemos de un actor: el usuario de la aplicación. 
+En un diagrama de secuencia, se muestran como los eventos que generan los actores del sistema provocan la ejecución de una operación por el sistema, siendo visto este como una caja negra. En nuestro caso, las acciones son bastante limitadas, ya que únicamente disponemos de un actor: el usuario de la aplicación. 
 
-Partiendo de las acciones definidas en los casos de uso, junto con los posibles parámetros de entrada que puede requerir cada evento producido. En este caso, además, se ha empleado el uso de un diagrama de secuencia por cada diagrama de casos de uso, de forma que ya quede establecido la separación de funcionalidades.
+Partiendo de las acciones definidas en los casos de uso, junto con los posibles parámetros de entrada que puede requerir cada evento producido. En este caso, además, se ha empleado el uso de un diagrama de secuencia por cada diagrama de casos de uso, de forma que ya quede establecida la separación de funcionalidades.
 
 En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociado al diagnóstico, mientras que en la figura \ref{fig:sechistorial}, se represente el diagrama para el subsistema del historial.
 
@@ -265,7 +264,7 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
 
  \subsubsection{Contratos}
  
- Una vez queda representado visualmente los eventos que el usuario puede iniciar en el sistema mediante el diagrama de secuencia, debemos	de especificar lo que se desea lograr en cada operación realizada, pero aun sin entrar en detalles de su implementación. No existe un formato estandarizado único como sí lo ha sido hasta ahora el caso de los diagramas UML (Lenguaje unificado de modelado) con los diagramas de caso de uso y los de secuencia. Sin embargo, habitualmente se emplean los contratos de C. Larman \cite{larman2003uml}, donde se presentan las especificaciones de cada operación en un estilo declarativo, y comúnmente estructurado en formato de tabla.
+ Una vez queda representado visualmente los eventos que el usuario puede iniciar en el sistema mediante el diagrama de secuencia, debemos	de especificar lo que se desea lograr en cada operación realizada, pero aún sin entrar en detalles de su implementación. No existe un formato estandarizado único como sí lo ha sido hasta ahora el caso de los diagramas UML (Lenguaje unificado de modelado) con los diagramas de caso de uso y los de secuencia. Sin embargo, habitualmente se emplean los contratos de C. Larman \cite{larman2003uml}, donde se presentan las especificaciones de cada operación en un estilo declarativo, y comúnmente estructurado en formato de tabla.
  
  Para cada evento descrito en el modelo de secuencia, obtenemos su correspondiente contrato, que incluirá principalmente las precondiciones, excepciones, descripción de la operación, y postcondiciones que se producen en el sistema.
  
@@ -308,7 +307,7 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  
     \begin{table}[H]
  	\centering
- 	\includegraphics[scale = 0.16]{imagenes/contrato6.png}
+ 	\includegraphics[scale = 0.315]{imagenes/contrato6.png}
  	\caption{Contrato: recuperar diagnóstico.}
  	\label{fig:contrato6}
  \end{table}
@@ -326,12 +325,12 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  
  \subsection{Diagramas de comunicación}
  
- Los diagramas de comunicación permiten observar con detalle el comportamiento interno de cada una de las operaciones del sistema. Si bien estas ya fueron especificadas en los contratos, el funcionamiento interno de la misma quedó en un segundo plano, ya que su objetivo era describir la operación sin entrar en detalles de implementación. Mediante los diagramas de comunicación presentes a continuación, podemos acercarnos un paso más a la implementación. Siguiendo el orden de los contratos, podemos encontrar los diagramas  en ese mismo orden: tomar fotografía (\ref{fig:com1}),  seleccionar imagen (\ref{fig:com2}), recortar región de una imagen (\ref{fig:com3}), realizar diagnóstico (\ref{fig:com4}), consultar historial (\ref{fig:com5}) y recuperar diagnóstico (\ref{fig:com6}).
+ Los diagramas de comunicación permiten observar con detalle el comportamiento interno de cada una de las operaciones del sistema. Si bien estas ya fueron especificadas en los contratos, el funcionamiento interno de la misma quedó en un segundo plano, ya que su objetivo era describir la operación sin entrar en detalles de implementación. Mediante los diagramas de comunicación presentes a continuación, podemos acercarnos un paso más al lenguaje del desarrollador. Siguiendo el orden de los contratos, podemos encontrar los diagramas  en ese mismo orden: tomar fotografía (\ref{fig:com1}),  seleccionar imagen (\ref{fig:com2}), recortar región de una imagen (\ref{fig:com3}), realizar diagnóstico (\ref{fig:com4}), consultar historial (\ref{fig:com5}) y recuperar diagnóstico (\ref{fig:com6}).
  
 \begin{figure}[H]
  	\centering
  	\includegraphics[scale = 0.8]{imagenes/TomarFotografía.png}
- 	\caption{Diagrama de comunicación: recuperar diagnóstico.}
+ 	\caption{Diagrama de comunicación: tomar fotografía}
  	\label{fig:com1}
  \end{figure}
  
@@ -380,8 +379,8 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  Su estructura es bastante diferente a la de un proyecto habitual; a pesar de emplear Java \cite{javalang} para la implementación de clases, la creación de una aplicación se centra en hacer uso de dos patrones principalmente: el uso de actividades y fragmentos, por lo que las clases presentes en el proyecto heredan de estas dos clases y producen cambios sustanciales en la estructura originalmente ideada. Si profundizamos en los conceptos de fragmento y actividad:
  
  \begin{itemize}
- 	\item \textbf{Actividad}~\cite{actividad}: es la unidad básica de ejecución de una aplicación Android, y permite mostrar el contenido de la aplicación. El ciclo de vida de una actividad comprende la creación de la misma, hasta su destrucción, cuando el sistema recupera los recursos de esa actividad. Es posible navegar entre actividades, realizando su declaración adecuadamente, aunque, como última tendencia, se suelen emplear fragmentos para realizar cambios de ventana.
- 	\item \textbf{Fragmento}~\cite{fragmento}: es una parte modular de la interfaz de usuario, la cual posee un ciclo vida con varias fases; principalmente, usaremos creación (método onCreate), destrucción (onDestroy) y actualización del contenido, mediante métodos implementados por nosotros mismos. Permite recoger las entradas y salidas del usuario, y normalmente, dependen de una actividad para funcionar.
+ 	\item \textbf{Actividad}~\cite{actividad}. Unidad básica de ejecución de una aplicación Android, y permite mostrar el contenido de la aplicación. El ciclo de vida de una actividad comprende la creación de la misma, hasta su destrucción, cuando el sistema recupera los recursos de esa actividad. Es posible navegar entre actividades, realizando su declaración adecuadamente, aunque, como última tendencia, se suelen emplear fragmentos para realizar cambios de ventana.
+ 	\item \textbf{Fragmento}~\cite{fragmento}. Parte modular de la interfaz de usuario, la cual posee un ciclo vida con varias fases; principalmente, usaremos creación (método \textit{onCreate}), destrucción (\textit{onDestroy}) y actualización del contenido, mediante métodos implementados por nosotros mismos. Permite recoger las entradas y salidas del usuario, y normalmente, dependen de una actividad para funcionar.
  \end{itemize}
  
  Por tanto, al heredar de estas clases, deben incorporar los métodos de creación y destrucción, así como de actualización de información, y podemos obtener 3 subsistemas bien diferenciados: la pantalla de bienvenida de la aplicación, puramente informativa; el subsistema de diagnóstico y el subsistema de historial, siendo estos dos últimos los definidos en fases previas de esta tarea de diseño, pero que han requerido las modificaciones pertinentes para funcionar adecuadamente en el ecosistema Android.
@@ -428,23 +427,23 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  \end{figure}
  
  \subsection{Realización de un diagnóstico}
- 
+  \label{sec:diag}
  La realización de un diagnóstico es la funcionalidad elemental de la aplicación. Es la actividad que contiene la mayor carga computacional  de la misma, ya que se requiere realizar la carga de modelos y se procede posteriormente a la inferencia del resultado.
  
  El proceso, descrito a modo guion, engloba los siguientes pasos:
  \begin{enumerate}
  	\item \textbf{Seleccionar la ventana de diagnóstico}. Haciendo uso del menú lateral, el usuario debe dirigirse a la segunda opción, llamada  \textbf{Diagnóstico}, y representada con el icono de una fotografía (figura \ref{fig:inicioapp}).
- 	\item \textbf{Seleccionar método de importación}. Dentro de la actividad de diagnóstico, la aplicación nos permite realizar la importación de imagen a diagnosticar mediante dos medios: el uso de la galería, y la toma de una fotografía mediante la cámara. Para iniciar el proceso de importación, se debe pulsar uno de dos grandes botones azules en la parte inferior de la ventana, según el origen de la imagen (ver en figura \ref{}).
+ 	\item \textbf{Seleccionar método de importación}. Dentro de la actividad de diagnóstico, la aplicación nos permite realizar la importación de imagen a diagnosticar mediante dos medios: el uso de la galería, y la toma de una fotografía mediante la cámara. Para iniciar el proceso de importación, se debe pulsar uno de dos grandes botones azules en la parte inferior de la ventana, según el origen de la imagen (ver en figura \ref{fig:recortarapp}).
  	\begin{enumerate}
  		\item Si selecciona tomar fotografía, se solicitarán permisos de acceso a ella, y podrá tomar una fotografía con la aplicación de cámara por defecto de su dispositivo.
- 		\item Si selecciona abrir galería, de mostrará una solicitud de acceso a memoria, y a continuación, se muestra la galería en modo mosaico para seleccionar la imagen que se desee, como se aprecia en la figura \ref{fig:recortarapp}.
+ 		\item Si selecciona abrir galería, se mostrará una solicitud de acceso a memoria, y a continuación, se muestra la galería en modo mosaico para seleccionar la imagen que se desee, como se aprecia en la figura \ref{fig:recortarapp}.
  	\end{enumerate}
  	\item \textbf{Recortado}. Tras la importación de la fotografía mediante alguno de los medios, se ofrece de forma opcional realizar el recorte de la misma. Este mecanismo es útil si la cámara no es capaz de enfocar debido a la cercanía, o la imagen es demasiado grande. Su funcionamiento se basa en desplazar las esferas que marcan las esquinas de la imagen para modificar el tamaño, y arrastrando desde el centro del rectángulo en caso de que se desee desplazar la región, como se puede apreciar en la figura \ref{fig:recortarapp}.
  	
  	\item \textbf {Comunicación del resultado}. Tras el recorte, se procede a realizar la clasificación de la imagen y a mostrar los resultados del diagnóstico de forma el usuario pueda comprender qué enfermedad sufre. Se muestran los campos enunciados a continuación y en la figura \ref{fig:diagnostico}.
  	\begin{itemize}
  		\item \textit{Bondad del resultado}. Especifica si se trata de una imagen benigna o maligna, y el porcentaje de seguridad del modelo. No representa una opinión médica real, sólo un valor indicativo procedente del modelo subyacente.
- 		\item \textit{Tipo de enfermedad}. Tras la predicción binaria, se ha realizado también en segundo plano la clasificación mediante los modelos especializados, de forma que se muestran las tres enfermedades con mayor porcentaje de coincidencia dentro del conjunto benigno o maligno.
+ 		\item \textit{Tipo de enfermedad}. Tras la predicción binaria, se ha realizado también en segundo plano la clasificación mediante los modelos especializados, de forma que se muestran las tres enfermedades con mayor porcentaje de coincidencias dentro del conjunto benigno o maligno.
  		\item \textit{Descripción}. A título informativo, se muestra en pantalla una breve descripción acerca de la gravedad de la enfermedad, posibles orígenes y formas que posee.
  	\end{itemize}
  	
@@ -469,8 +468,9 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  
  
  \subsection{Consulta del historial}
+ \label{sec:hist}
  
- Todos los diagnósticos realizados por el usuario son almacenados en un fichero .json, el cual simula el comportamiento de una base de datos local. Son almacenadas en formato lista, de forma que si requiere comprobar la evolución de la enfermedad, sea capaz de comparar las imágenes y observar el diagnóstico ofrecido en aquel momento.  Para acceder a él, simplemente se deben seguir los pasos a continuación:
+ Todos los diagnósticos realizados por el usuario son almacenados en un fichero JSON, el cual simula el comportamiento de una base de datos local. Son almacenadas en formato lista, de forma que si requiere comprobar la evolución de la enfermedad, sea capaz de comparar las imágenes y observar el diagnóstico ofrecido en aquel momento.  Para acceder a él, simplemente se deben seguir los pasos a continuación:
  
  \begin{enumerate}
  	\item \textbf{Seleccionar ventana de diagnóstico}. De la misma forma que la iniciación de la acción de diagnóstico, debemos seleccionar en el panel lateral el botón \textbf{Historial}, representado con un icono de elementos apilados.
@@ -478,7 +478,7 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  	\begin{enumerate}
  		\item \textit{Tipo de enfermedad}. Si el caso es maligno o benigno.
  		\item \textit{Diagnóstico}. Enfermedad específica con mayor valor de probabilidad.
- 		\item \textit{Imagen}. Se crea la miniatura de la imagen durante el diagnóstico para ser mostrada en esta sección e identificar más fácilmente el caso a buscar. Adicionalmente, en caso de necesidad de comprobar la imagen completa, se guarda una copia de cada recorte realizado en la galería del dispositivo. Éstas podrían ser borradas, pero la miniatura permanecería en el historial.
+ 		\item \textit{Imagen}. Se crea la miniatura de la imagen durante el diagnóstico para ser mostrada en esta sección e identificar más fácilmente el caso a buscar. Adicionalmente, en caso de necesidad de comprobar la imagen completa, se guarda una copia de cada recorte realizado en la galería del dispositivo. Estas podrían ser borradas, pero la miniatura permanecería en el historial.
  	\end{enumerate}
  \end{enumerate}
  

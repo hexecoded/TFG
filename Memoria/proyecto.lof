@@ -45,7 +45,7 @@
 \contentsline {figure}{\numberline {7.4}{\ignorespaces Diagrama conceptual}}{152}{figure.7.4}%
 \contentsline {figure}{\numberline {7.5}{\ignorespaces Diagrama de secuencia para el subsistema de fotografías y diagnóstico.}}{153}{figure.7.5}%
 \contentsline {figure}{\numberline {7.6}{\ignorespaces Diagrama de secuencia para el subsistema de historial.}}{153}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama de comunicación: recuperar diagnóstico.}}{157}{figure.7.7}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama de comunicación: tomar fotografía}}{157}{figure.7.7}%
 \contentsline {figure}{\numberline {7.8}{\ignorespaces Diagrama de comunicación: seleccionar imagen}}{158}{figure.7.8}%
 \contentsline {figure}{\numberline {7.9}{\ignorespaces Diagrama de comunicación: recortar región}}{158}{figure.7.9}%
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Diagrama de comunicación: realizar diagnóstico}}{159}{figure.7.10}%

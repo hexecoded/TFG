@@ -94,12 +94,12 @@
 \contentsline {section}{\numberline {7.1}Descripción del problema. Requisitos y definiciones.}{137}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Proceso de obtención de requisitos}{137}{subsection.7.1.1}%
 \contentsline {subsubsection}{\nonumberline Descripción}{137}{subsubsection*.51}%
-\contentsline {subsubsection}{\nonumberline Restricciones a tener en cuenta}{138}{subsubsection*.53}%
+\contentsline {subsubsection}{\nonumberline Objetivos a tener en cuenta}{138}{subsubsection*.53}%
 \contentsline {subsection}{\numberline {7.1.2}Requisitos}{139}{subsection.7.1.2}%
 \contentsline {subsubsection}{\nonumberline Requisitos funcionales}{139}{subsubsection*.55}%
 \contentsline {subsubsection}{\nonumberline Requisitos no funcionales}{140}{subsubsection*.57}%
 \contentsline {subsubsection}{\nonumberline Requisitos de información}{140}{subsubsection*.59}%
-\contentsline {subsection}{\numberline {7.1.3}Glosario de términos}{141}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.3}Glosario de términos}{140}{subsection.7.1.3}%
 \contentsline {section}{\numberline {7.2}Modelo casos de uso}{141}{section.7.2}%
 \contentsline {subsection}{\numberline {7.2.1}Representación de los casos de uso}{141}{subsection.7.2.1}%
 \contentsline {subsection}{\numberline {7.2.2}Actores}{143}{subsection.7.2.2}%
