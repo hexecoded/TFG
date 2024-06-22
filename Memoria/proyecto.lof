@@ -2,7 +2,7 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura de SqueezeNet, extraída de \ref {iandola2016squeezenet}}}{35}{figure.2.1}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura de SqueezeNet, extraída de \cite {iandola2016squeezenet}}}{35}{figure.2.1}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Producto depthwise \cite {howard2017mobilenets}}}{37}{figure.2.2}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Bloque residual invertido}}{38}{figure.2.3}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Arquitectura de MobileNet V2, extraída de \cite {sandler2019mobilenetv2}.}}{39}{figure.2.4}%
