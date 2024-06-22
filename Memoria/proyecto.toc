@@ -113,8 +113,8 @@
 \contentsline {section}{\numberline {7.4}Diseño}{156}{section.7.4}%
 \contentsline {subsection}{\numberline {7.4.1}Diagramas de comunicación}{157}{subsection.7.4.1}%
 \contentsline {subsection}{\numberline {7.4.2}Diagrama de clases de implementación}{160}{subsection.7.4.2}%
-\contentsline {section}{\numberline {7.5}Apariencia de la interfaz y pruebas de uso}{163}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Realización de un diagnóstico}{163}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}Consulta del historial}{163}{subsection.7.5.2}%
-\contentsline {chapter}{\numberline {8}Conclusiones y trabajos futuros}{165}{chapter.8}%
+\contentsline {section}{\numberline {7.5}Manual de uso de la aplicación}{163}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Realización de un diagnóstico}{164}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Consulta del historial}{166}{subsection.7.5.2}%
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajos futuros}{169}{chapter.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

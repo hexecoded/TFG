@@ -42,18 +42,27 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Caso de uso: Diagnóstico}}{142}{figure.7.1}%
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Caso de uso: Consulta de historial}}{142}{figure.7.2}%
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Diagrama de paquetes}}{143}{figure.7.3}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Actor: usuario}}{143}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Diagrama conceptual}}{152}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Diagrama de secuencia para el subsistema de fotografías y diagnóstico.}}{153}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama de secuencia para el subsistema de historial.}}{153}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Diagrama de comunicación: recuperar diagnóstico.}}{157}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Diagrama de comunicación: seleccionar imagen}}{158}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Diagrama de comunicación: recortar región}}{158}{figure.7.10}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Diagrama de comunicación: realizar diagnóstico}}{159}{figure.7.11}%
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Diagrama de comunicación: consultar historial}}{159}{figure.7.12}%
-\contentsline {figure}{\numberline {7.13}{\ignorespaces Diagrama de comunicación: consultar entrada de historial}}{160}{figure.7.13}%
-\contentsline {figure}{\numberline {7.14}{\ignorespaces Diagrama de clases: visión general del sistema}}{161}{figure.7.14}%
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Diagrama de clases: subsistema de diagnósticos}}{162}{figure.7.15}%
-\contentsline {figure}{\numberline {7.16}{\ignorespaces Diagrama de clases: subsistema de historial}}{163}{figure.7.16}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Diagrama conceptual}}{152}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Diagrama de secuencia para el subsistema de fotografías y diagnóstico.}}{153}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Diagrama de secuencia para el subsistema de historial.}}{153}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama de comunicación: recuperar diagnóstico.}}{157}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Diagrama de comunicación: seleccionar imagen}}{158}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Diagrama de comunicación: recortar región}}{158}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Diagrama de comunicación: realizar diagnóstico}}{159}{figure.7.10}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Diagrama de comunicación: consultar historial}}{159}{figure.7.11}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Diagrama de comunicación: consultar entrada de historial}}{160}{figure.7.12}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Diagrama de clases: visión general del sistema}}{161}{figure.7.13}%
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Diagrama de clases: subsistema de diagnósticos}}{162}{figure.7.14}%
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Diagrama de clases: subsistema de historial}}{163}{figure.7.15}%
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Interfaz de la aplicación: menús básicos}}{164}{figure.7.16}%
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Interfaz de la aplicación: selección desde galería y recorte de imágenes}}{166}{figure.7.17}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Pantalla de inicio}}}{166}{figure.7.17}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Menú de navegación}}}{166}{figure.7.17}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Importación desde galería}}}{166}{figure.7.17}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Recorte de la sección}}}{166}{figure.7.17}%
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Interfaz de la aplicación: selección desde galería y recorte de imágenes}}{167}{figure.7.18}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Diagnóstico benigno (mediante cámara)}}}{167}{figure.7.18}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Diagnóstico maligno (mediante galería)}}}{167}{figure.7.18}%
+\contentsline {figure}{\numberline {7.19}{\ignorespaces Interfaz de la aplicación: historial}}{168}{figure.7.19}%
 \addvspace {10\p@ }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

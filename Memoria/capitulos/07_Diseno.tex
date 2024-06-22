@@ -143,12 +143,12 @@ Si agrupamos las funcionalidades en paquetes, podemos obtener un modelo visual q
 
 En el sistema que estamos diseñando, únicamente disponemos de un actor presente: el usuario, paciente de una enfermedad cutánea, que desea emplear el sistema para conocer qué enfermedad sufre en su piel. Se trata de una interacción directa con la aplicación, donde no intervienen otros actores humanos. En la tabla \ref{fig:actorusuario}, podemos apreciar una descripción detallada de sus características.
 
-  \begin{figure}[H]
+  \begin{table}[H]
 	\centering
 	\includegraphics[scale = 0.2]{imagenes/tablausuario.png}
 	\caption{Actor: usuario}
 	\label{fig:actorusuario}
-\end{figure}
+\end{table}
 
 \subsection	{Descripción extendida de los casos de uso}
 
@@ -258,7 +258,7 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale = 1]{imagenes/DiagramaSecuenciaFotografia.png}
+	\includegraphics[scale = 1]{imagenes/DiagramaSecuenciaHistorial.png}
 	\caption{Diagrama de secuencia para el subsistema de historial.}
 	\label{fig:sechistorial}
 \end{figure}
@@ -409,9 +409,84 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  	\label{fig:claseshist}
  \end{figure}
  
- \section{Apariencia de la interfaz y pruebas de uso}
+ \section{Manual de uso de la aplicación}
+ En este apartado, se muestra el comportamiento de la aplicación y todas las funcionalidades disponibles para facilitar al usuario su funcionamiento.  Aunque la aplicación muestra mensajes de retroalimentación y descripciones en la interfaz, destacaremos en este apartado de forma visual toda su disposición.
  
- En este apartado, se muestra el comportamiento de la aplicación a la hora de realizar un diagnóstico mediante la misma. Se tendrán en cuenta, principalmente, los casos de uso de realizar el diagnóstico, y de mostrar el historial.
+ Nada más proceder con su apertura, podemos encontrar 3 submenús distintos si hacemos uso del panel lateral de navegación (apreciable en la figura  \ref{fig:inicioapp}):
+ \begin{itemize}
+ 	\item  \textbf{Pantalla de bienvenida}. Página principal al iniciar la aplicación. Muestra información previa acerca de la utilidad de la aplicación, consejos de cuidados para la piel, y una exención de responsabilidades, donde se informa del propósito plenamente informativo del producto (ver figura \ref{fig:inicioapp}).
+ 	\item \textbf{Sección de diagnóstico}. Menú que coincide con la descrita en los diagramas anteriores, en la cual el usuario puede especificar una imagen de galería o mediante la cámara para ser diagnosticada. Se explica con detalle en la sección \ref{sec:diag}.
+ 	\item \textbf{Sección de historial}. Menú en forma lista que muestra todos los casos diagnosticados por el paciente. Permite ver la imagen analizada, y la información del diagnóstico realizado. Profundizado en la sección \ref{sec:hist}.
+ \end{itemize}
+ 
+   \begin{figure}[H]
+ 	\centering
+ 	\subfigure[Pantalla de inicio]{\includegraphics[scale = 0.125]{imagenes/bievenidaapp.jpg}}
+ 	 \subfigure[Menú de navegación]{\includegraphics[scale = 0.125]{imagenes/menuapp.jpg}}
+ 	\caption{Interfaz de la aplicación: menús básicos}
+ 	\label{fig:inicioapp}
+ \end{figure}
  
  \subsection{Realización de un diagnóstico}
+ 
+ La realización de un diagnóstico es la funcionalidad elemental de la aplicación. Es la actividad que contiene la mayor carga computacional  de la misma, ya que se requiere realizar la carga de modelos y se procede posteriormente a la inferencia del resultado.
+ 
+ El proceso, descrito a modo guion, engloba los siguientes pasos:
+ \begin{enumerate}
+ 	\item \textbf{Seleccionar la ventana de diagnóstico}. Haciendo uso del menú lateral, el usuario debe dirigirse a la segunda opción, llamada  \textbf{Diagnóstico}, y representada con el icono de una fotografía (figura \ref{fig:inicioapp}).
+ 	\item \textbf{Seleccionar método de importación}. Dentro de la actividad de diagnóstico, la aplicación nos permite realizar la importación de imagen a diagnosticar mediante dos medios: el uso de la galería, y la toma de una fotografía mediante la cámara. Para iniciar el proceso de importación, se debe pulsar uno de dos grandes botones azules en la parte inferior de la ventana, según el origen de la imagen (ver en figura \ref{}).
+ 	\begin{enumerate}
+ 		\item Si selecciona tomar fotografía, se solicitarán permisos de acceso a ella, y podrá tomar una fotografía con la aplicación de cámara por defecto de su dispositivo.
+ 		\item Si selecciona abrir galería, de mostrará una solicitud de acceso a memoria, y a continuación, se muestra la galería en modo mosaico para seleccionar la imagen que se desee, como se aprecia en la figura \ref{fig:recortarapp}.
+ 	\end{enumerate}
+ 	\item \textbf{Recortado}. Tras la importación de la fotografía mediante alguno de los medios, se ofrece de forma opcional realizar el recorte de la misma. Este mecanismo es útil si la cámara no es capaz de enfocar debido a la cercanía, o la imagen es demasiado grande. Su funcionamiento se basa en desplazar las esferas que marcan las esquinas de la imagen para modificar el tamaño, y arrastrando desde el centro del rectángulo en caso de que se desee desplazar la región, como se puede apreciar en la figura \ref{fig:recortarapp}.
+ 	
+ 	\item \textbf {Comunicación del resultado}. Tras el recorte, se procede a realizar la clasificación de la imagen y a mostrar los resultados del diagnóstico de forma el usuario pueda comprender qué enfermedad sufre. Se muestran los campos enunciados a continuación y en la figura \ref{fig:diagnostico}.
+ 	\begin{itemize}
+ 		\item \textit{Bondad del resultado}. Especifica si se trata de una imagen benigna o maligna, y el porcentaje de seguridad del modelo. No representa una opinión médica real, sólo un valor indicativo procedente del modelo subyacente.
+ 		\item \textit{Tipo de enfermedad}. Tras la predicción binaria, se ha realizado también en segundo plano la clasificación mediante los modelos especializados, de forma que se muestran las tres enfermedades con mayor porcentaje de coincidencia dentro del conjunto benigno o maligno.
+ 		\item \textit{Descripción}. A título informativo, se muestra en pantalla una breve descripción acerca de la gravedad de la enfermedad, posibles orígenes y formas que posee.
+ 	\end{itemize}
+ 	
+ 	El usuario dispone de la posibilidad de desplazar hacia la izquierda el recuadro de la descripción para observar otras dos posibles clases que con un valor de probabilidad especificado pudieran tratarse de posibles alternativas (figura \ref{fig:diagnostico}).
+ \end{enumerate}
+ 
+    \begin{figure}[!ht]
+ 	\centering
+ 	\subfigure[Importación desde galería]{\includegraphics[scale = 0.125]{imagenes/galeriaapp.jpg}}
+ 	\subfigure[Recorte de la sección]{\includegraphics[scale = 0.125]{imagenes/recorteapp.jpg}}
+ 	\caption{Interfaz de la aplicación: selección desde galería y recorte de imágenes}
+ 	\label{fig:recortarapp}
+ \end{figure}
+ 
+     \begin{figure}[!ht]
+ 	\centering
+ 	\subfigure[Diagnóstico benigno (mediante cámara)]{\includegraphics[scale = 0.125]{imagenes/diagnosticobenigno.jpg}}
+ 	\subfigure[Diagnóstico maligno (mediante galería)]{\includegraphics[scale = 0.125]{imagenes/diagnosticoapp.jpg}}
+ 	\caption{Interfaz de la aplicación: selección desde galería y recorte de imágenes}
+ 	\label{fig:diagnostico}
+ \end{figure}
+ 
+ 
  \subsection{Consulta del historial}
+ 
+ Todos los diagnósticos realizados por el usuario son almacenados en un fichero .json, el cual simula el comportamiento de una base de datos local. Son almacenadas en formato lista, de forma que si requiere comprobar la evolución de la enfermedad, sea capaz de comparar las imágenes y observar el diagnóstico ofrecido en aquel momento.  Para acceder a él, simplemente se deben seguir los pasos a continuación:
+ 
+ \begin{enumerate}
+ 	\item \textbf{Seleccionar ventana de diagnóstico}. De la misma forma que la iniciación de la acción de diagnóstico, debemos seleccionar en el panel lateral el botón \textbf{Historial}, representado con un icono de elementos apilados.
+ 	\item \textbf{Búsqueda del diagnóstico}. Una vez accedido, es posible buscar el diagnóstico de interés gracias a su ordenado de mayor a menor cronología; es decir, los casos más antiguos aparecen primero, y los más recientes, últimos. La información proporcionada engloba:
+ 	\begin{enumerate}
+ 		\item \textit{Tipo de enfermedad}. Si el caso es maligno o benigno.
+ 		\item \textit{Diagnóstico}. Enfermedad específica con mayor valor de probabilidad.
+ 		\item \textit{Imagen}. Se crea la miniatura de la imagen durante el diagnóstico para ser mostrada en esta sección e identificar más fácilmente el caso a buscar. Adicionalmente, en caso de necesidad de comprobar la imagen completa, se guarda una copia de cada recorte realizado en la galería del dispositivo. Éstas podrían ser borradas, pero la miniatura permanecería en el historial.
+ 	\end{enumerate}
+ \end{enumerate}
+ 
+ En la figura \ref{fig:historial}, podemos observar un ejemplo de la distribución de los casos, los cuales se almacenan en formato de lista deslizable mediante scroll.
+ 
+      \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[scale = 0.125]{imagenes/historialapp.jpg}
+ 	\caption{Interfaz de la aplicación: historial}
+ 	\label{fig:historial}
+ \end{figure}
