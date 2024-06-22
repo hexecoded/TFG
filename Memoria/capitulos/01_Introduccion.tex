@@ -83,3 +83,32 @@ Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos
 En este documento, estudiaremos el estado del arte actual, y analizaremos e implementaremos una aplicación para dispositivos móviles que sea capaz de realizar la segmentación de la mancha cutánea, y su posterior clasificación dentro de una lista de patologías posibles. Se busca informar al usuario del riesgo de su lesión, y de su posible diagnóstico final, el cual debe ser verificado por el experto. De esta forma, el software final puede contribuir a acelerar los diagnósticos de esta enfermedad,  y favorecer la esperanza de vida de los pacientes en caso de que su lesión sea cancerosa.
 
 \section{Planificación}
+
+La planificación de este proyecto se ha realizado teniendo en cuenta la necesidad de alcanzar pequeños objetivos de forma frecuente, para avanzar de forma firme y segura descartando la mínima cantidad de trabajo realizado. Esto coincide de forma directa con la filosofía de trabajo Scrum, que tiene en cuenta los siguientes elementos:
+
+\begin{enumerate}
+	\item Puesta en valor de avances ejecutables y mostrables, mediante pruebas correctamente realizadas.
+	\item Entregas periódicas, donde se ofrezca de forma visual y tangible los avances realizados.
+	\item Reuniones cada cortos periodos de tiempo, para evaluar los progresos alcanzados y proponer las siguientes tareas a realizar.
+\end{enumerate}
+
+Si bien se ha priorizado la aplicación de este mecanismo de trabajo, también se ha combinado con el establecimiento en períodos concretos dedicados a ciertas áreas de trabajo, como el estudio del estado del arte, el preprocesado de datos, los modelos, la cuantización o el desarrollo en Android, sin olvidar la documentación del proyecto en la memoria. Esto se debe a que fases como el entrenamiento de modelos no se entenderían sin el estudio del estado del arte o el preprocesado de datos.
+
+De esta forma, podemos resumir el tiempo dedicado a cada una de las tareas en la tabla \ref{tab:planif}, donde se describen los intervalos de tiempo dedicados a cada sección del proyecto.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Fase} & \textbf{Inicio} & \textbf{Fin} \\ \hline
+		Valoración de temáticas a elegir para el TFG & 15/09/23 & 03/10/23 \\ \hline
+		Estudio y valoración del estado del arte & 03/02/24 & 17/05/24 \\ \hline
+		Preprocesado de datos & 03/02/24 & 18/04/24 \\ \hline
+		Entrenamiento de modelos & 07/02/24 & 31/05/24 \\ \hline
+		Cuantización & 31/05/24 & 14/06/24 \\ \hline
+		Desarrollo de la aplicación & 20/05/24 & 20/06/24 \\ \hline
+		Escritura de la memoria & 08/06/24 & 22/06/24 \\ \hline
+	\end{tabular}
+	\caption{Tabla de tiempos de trabajo}
+	\label{tab:planif}
+\end{table}
