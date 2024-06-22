@@ -2143,4 +2143,373 @@ Package pdftex.def Info: imagenes/RecortarRegión.png  used on input line 348.
 (pdftex.def)             Requested size: 376.96082pt x 167.08846pt.
 <imagenes/RealizarDiagnóstico.png, id=1706, 596.2275pt x 320.1561pt>
 File: imagenes/RealizarDiagnóstico.png Graphic file (type png)
-<use imagenes/Realiz
+<use imagenes/RealizarDiagnóstico.png>
+Package pdftex.def Info: imagenes/RealizarDiagnóstico.png  used on input line 
+355.
+(pdftex.def)             Requested size: 447.16953pt x 240.11647pt.
+
+Overfull \hbox (38.87242pt too wide) in paragraph at lines 355--356
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [158 <./imagenes/SeleccionarImagen.png> <./imagenes/RecortarRegión.png>]
+<imagenes/HistorialSec.png, id=1713, 613.5723pt x 252.945pt>
+File: imagenes/HistorialSec.png Graphic file (type png)
+<use imagenes/HistorialSec.png>
+Package pdftex.def Info: imagenes/HistorialSec.png  used on input line 362.
+(pdftex.def)             Requested size: 460.17809pt x 189.70828pt.
+
+Overfull \hbox (51.88098pt too wide) in paragraph at lines 362--363
+ [][] 
+ []
+
+<imagenes/GetDiagnóstico.png, id=1714, 466.1415pt x 269.5671pt>
+File: imagenes/GetDiagnóstico.png Graphic file (type png)
+<use imagenes/GetDiagnóstico.png>
+Package pdftex.def Info: imagenes/GetDiagnóstico.png  used on input line 370.
+(pdftex.def)             Requested size: 349.60526pt x 202.17482pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [159 <./imagenes/RealizarDiagnóstico.png> <./imagenes/HistorialSec.png>] [160
+ <./imagenes/GetDiagnóstico.png>]
+<imagenes/DiagramaGeneral.png, id=1737, 419.8887pt x 313.6518pt>
+File: imagenes/DiagramaGeneral.png Graphic file (type png)
+<use imagenes/DiagramaGeneral.png>
+Package pdftex.def Info: imagenes/DiagramaGeneral.png  used on input line 393.
+(pdftex.def)             Requested size: 314.91576pt x 235.23825pt.
+<imagenes/androidAPP-Diagnostico.png, id=1738, 521.0667pt x 364.2408pt>
+File: imagenes/androidAPP-Diagnostico.png Graphic file (type png)
+<use imagenes/androidAPP-Diagnostico.png>
+Package pdftex.def Info: imagenes/androidAPP-Diagnostico.png  used on input lin
+e 400.
+(pdftex.def)             Requested size: 390.79906pt x 273.17993pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [161 <./imagenes/DiagramaGeneral.png>]
+<imagenes/androidAPP-Historial.png, id=1744, 535.5207pt x 371.4678pt>
+File: imagenes/androidAPP-Historial.png Graphic file (type png)
+<use imagenes/androidAPP-Historial.png>
+Package pdftex.def Info: imagenes/androidAPP-Historial.png  used on input line 
+407.
+(pdftex.def)             Requested size: 401.63954pt x 278.60016pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [162 <./imagenes/androidAPP-Diagnostico.png>]
+
+LaTeX Warning: Reference `sec:diag' on page 163 undefined on input line 418.
+
+
+LaTeX Warning: Reference `sec:hist' on page 163 undefined on input line 419.
+
+[163 <./imagenes/androidAPP-Historial.png>]
+<imagenes/bievenidaapp.jpg, id=1758, 1084.05pt x 2348.775pt>
+File: imagenes/bievenidaapp.jpg Graphic file (type jpg)
+<use imagenes/bievenidaapp.jpg>
+Package pdftex.def Info: imagenes/bievenidaapp.jpg  used on input line 424.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+<imagenes/menuapp.jpg, id=1759, 1084.05pt x 2348.775pt>
+File: imagenes/menuapp.jpg Graphic file (type jpg)
+<use imagenes/menuapp.jpg>
+Package pdftex.def Info: imagenes/menuapp.jpg  used on input line 425.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+
+
+LaTeX Warning: Reference `' on page 164 undefined on input line 437.
+
+[164 <./imagenes/bievenidaapp.jpg> <./imagenes/menuapp.jpg>]
+<imagenes/galeriaapp.jpg, id=1774, 1084.05pt x 2348.775pt>
+File: imagenes/galeriaapp.jpg Graphic file (type jpg)
+<use imagenes/galeriaapp.jpg>
+Package pdftex.def Info: imagenes/galeriaapp.jpg  used on input line 456.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+<imagenes/recorteapp.jpg, id=1775, 1084.05pt x 2348.775pt>
+File: imagenes/recorteapp.jpg Graphic file (type jpg)
+<use imagenes/recorteapp.jpg>
+Package pdftex.def Info: imagenes/recorteapp.jpg  used on input line 457.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+<imagenes/diagnosticobenigno.jpg, id=1776, 1084.05pt x 2348.775pt>
+File: imagenes/diagnosticobenigno.jpg Graphic file (type jpg)
+<use imagenes/diagnosticobenigno.jpg>
+Package pdftex.def Info: imagenes/diagnosticobenigno.jpg  used on input line 46
+4.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+<imagenes/diagnosticoapp.jpg, id=1777, 1084.05pt x 2348.775pt>
+File: imagenes/diagnosticoapp.jpg Graphic file (type jpg)
+<use imagenes/diagnosticoapp.jpg>
+Package pdftex.def Info: imagenes/diagnosticoapp.jpg  used on input line 465.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+ [165] [166 <./imagenes/galeriaapp.jpg> <./imagenes/recorteapp.jpg>]
+<imagenes/historialapp.jpg, id=1796, 1084.05pt x 2348.775pt>
+File: imagenes/historialapp.jpg Graphic file (type jpg)
+<use imagenes/historialapp.jpg>
+Package pdftex.def Info: imagenes/historialapp.jpg  used on input line 489.
+(pdftex.def)             Requested size: 135.50592pt x 293.59616pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [167 <./imagenes/diagnosticobenigno.jpg> <./imagenes/diagnosticoapp.jpg>]
+(./capitulos/08_ConclusionesFuturo.tex [168 <./imagenes/historialapp.jpg>]
+chapter 8.
+[169
+
+
+] [170]) (./proyecto.bbl [171] [172
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 9--12
+[]\T1/pplj/m/n/10.95 Dermnet: all about skin.  [][]$\T1/cmtt/m/n/10.95 https : 
+/ / dermnetnz . org /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+[]\T1/pplj/m/n/10.95 Vardan Agar-wal.  Bye-bye mo-bi-le-net. he-llo ef-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--44
+\T1/pplj/m/n/10.95 fi-cient-net!  [][]$\T1/cmtt/m/n/10.95 https : / / towardsda
+tascience . com /
+ []
+
+
+Underfull \hbox (badness 6876) in paragraph at lines 38--44
+\T1/cmtt/m/n/10.95 bye-[]bye-[]mobilenet-[]hello-[]efficientnet-[]9b8ec2cc1a9c$
+[][]\T1/pplj/m/n/10.95 , 2020.  [On-li-ne;
+ []
+
+
+Underfull \hbox (badness 2970) in paragraph at lines 58--64
+[]\T1/pplj/m/n/10.95 MD: Na-tio-nal Can-cer Ins-ti-tu-te. Bethes-da.  Pdq tra-t
+a-mien-to del c�n-
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 58--64
+\T1/pplj/m/n/10.95 cer de piel.  [][]$\T1/cmtt/m/n/10.95 https : / / www . canc
+er . gov / espanol / tipos / piel / paciente /
+ []
+
+
+Underfull \hbox (badness 7238) in paragraph at lines 66--71
+[]\T1/pplj/m/n/10.95 Bill Cas-sidy, Con-nah Ken-drick, Andrzej Brod-zic-ki, Joa
+n-na Jaworek-
+ []
+
+[173]
+Underfull \hbox (badness 10000) in paragraph at lines 99--105
+\T1/cmtt/m/n/10.95 / / www . kaggle . com / competitions / siim-[]isic-[]melano
+ma-[]classification /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+[]\T1/pplj/m/n/10.95 Android De-ve-lo-per.  Eta-pas del ci-clo de vi-da de la
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+\T1/pplj/m/n/10.95 ac-ti-vi-dad.  [][]$\T1/cmtt/m/n/10.95 https : / / developer
+ . android . com / codelabs /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+\T1/cmtt/m/n/10.95 basic-[]android-[]kotlin-[]compose-[]activity-[]lifecycle ? 
+hl = es-[]419 # 0$[][]\T1/pplj/m/n/10.95 , 2023.
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 147--151
+[]\T1/pplj/m/n/10.95 Ramazan Ge-n�ay.  Early stop-ping ba-sed on va-li-da-tion.
+  [][]$\T1/cmtt/m/n/10.95 https : / /
+ []
+
+[174]
+Underfull \hbox (badness 3460) in paragraph at lines 165--171
+[]\T1/pplj/m/n/10.95 Google.  Ef-fi-cient-netli-te (me-dia-pi-pe.  [][]$\T1/cmt
+t/m/n/10.95 https : / / console . cloud . google .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--171
+\T1/cmtt/m/n/10.95 com / vertex-[]ai / publishers / google / model-[]garden / e
+fficientnetlite ? hl =
+ []
+
+[175] [176]
+Underfull \hbox (badness 4096) in paragraph at lines 351--357
+[]\T1/pplj/m/n/10.95 Ian Pan.  Siim-isic me-la-no-ma clas-si-fi-ca-tion, 2nd so
+-lu-tion.  [][]$\T1/cmtt/m/n/10.95 https :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--357
+\T1/cmtt/m/n/10.95 / / www . kaggle . com / competitions / siim-[]isic-[]melano
+ma-[]classification /
+ []
+
+[177]
+Underfull \hbox (badness 10000) in paragraph at lines 379--385
+[]\T1/pplj/m/n/10.95 Paul-Louis Pr�-ve.  Mo-bi-le-netv2: In-ver-ted re-si-duals
+ and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--385
+\T1/pplj/m/n/10.95 li-near bottle-necks.  [][]$\T1/cmtt/m/n/10.95 https : / / t
+owardsdatascience . com /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--385
+\T1/cmtt/m/n/10.95 mobilenetv2-[]inverted-[]residuals-[]and-[]linear-[]bottlene
+cks-[]8a4362f4ffd5$[][]\T1/pplj/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--411
+[]\T1/pplj/m/n/10.95 Google Ren-jie Liu.  Higher ac-cu-racy on vi-sion mo-dels
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--411
+\T1/pplj/m/n/10.95 with efficientnet-lite.  [][]$\T1/cmtt/m/n/10.95 https : / /
+ blog . tensorflow . org / 2020 / 03 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--411
+\T1/cmtt/m/n/10.95 higher-[]accuracy-[]on-[]vision-[]models-[]with-[]efficientn
+et-[]lite . html$[][]\T1/pplj/m/n/10.95 , 2020.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--431
+[]\T1/pplj/m/n/10.95 Quir�n Sa-lud.  El 90diag-nos-ti-ca en fa-ses tem-pra-nas.
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--431
+[][]$\T1/cmtt/m/n/10.95 https : / / www . quironsalud . com / es / comunicacion
+ / actualidad /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--431
+\T1/cmtt/m/n/10.95 90-[]casos-[]cancer-[]colon-[]puede-[]curar-[]diagnostica-[]
+fases-[]tempran$[][]\T1/pplj/m/n/10.95 , 2016.
+ []
+
+[178]
+Underfull \hbox (badness 10000) in paragraph at lines 461--466
+[]\T1/pplj/m/n/10.95 CT so-lu-tions.  Arm vs x86: What's the key dif-fe-ren-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--466
+\T1/pplj/m/n/10.95 ce?  [][]$\T1/cmtt/m/n/10.95 https : / / www . candtsolution
+ . com / news _ events-[]detail /
+ []
+
+
+Underfull \hbox (badness 2856) in paragraph at lines 461--466
+\T1/cmtt/m/n/10.95 what-[]is-[]the-[]difference-[]between-[]arm-[]and-[]x86/$[]
+[]\T1/pplj/m/n/10.95 .  [On-li-ne; ac-ces-sed 18-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--510
+[]\T1/pplj/m/n/10.95 Sik-Ho Tsang.  Re-view: Shuf-fle-net v1 ^^V light
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--510
+\T1/pplj/m/n/10.95 weight mo-del.  [][]$\T1/cmtt/m/n/10.95 https : / / towardsd
+atascience . com /
+ []
+
+
+Overfull \hbox (35.21915pt too wide) in paragraph at lines 504--510
+\T1/cmtt/m/n/10.95 review-[]shufflenet-[]v1-[]light-[]weight-[]model-[]image-[]
+classification-[]5b253dfe982f$[][]\T1/pplj/m/n/10.95 ,
+ []
+
+[179]
+Underfull \hbox (badness 1424) in paragraph at lines 524--528
+[]\T1/pplj/m/n/10.95 Xintao Wang, Ke Yu, Shi-xiang Wu, Jin-jin Gu, Yihao Liu, C
+hao Dong,
+ []
+
+
+Underfull \hbox (badness 3058) in paragraph at lines 530--536
+[]\T1/pplj/m/n/10.95 World Health Or-ga-ni-za-tion (WHO).  Glo-bal can-cer bur-
+den gro-wing,
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 530--536
+\T1/pplj/m/n/10.95 amidst moun-ting need for ser-vi-ces.  [][]$\T1/cmtt/m/n/10.
+95 https : / / www . who . int / news / item /
+ []
+
+
+Overfull \hbox (42.87752pt too wide) in paragraph at lines 530--536
+\T1/cmtt/m/n/10.95 01-[]02-[]2024-[]global-[]cancer-[]burden-[]growing-[]-[]ami
+dst-[]mounting-[]need-[]for-[]services$[][]\T1/pplj/m/n/10.95 ,
+ []
+
+) [180] (./proyecto.aux
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `proyecto.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 20769 strings out of 476014
+ 362057 string characters out of 5792005
+ 1956187 words of memory out of 5000000
+ 41879 multiletter control sequences out of 15000+600000
+ 678183 words of font info for 148 fonts, out of 8000000 for 9000
+ 40 hyphenation exceptions out of 8191
+ 108i,12n,107p,10903b,846s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texmf-dist/font
+s/type1/public/mathpazo/fplmr.pfb></usr/share/texmf-dist/fonts/type1/public/mat
+hpazo/fplmri.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></us
+r/share/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a
+.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/te
+xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1
+/urw/palatino/uplri8a.pfb>
+Output written on proyecto.pdf (180 pages, 11344853 bytes).
+PDF statistics:
+ 2401 PDF objects out of 2487 (max. 8388607)
+ 2003 compressed objects within 21 object streams
+ 603 named destinations out of 1000 (max. 500000)
+ 1085 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,119 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{25}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivación}{25}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}El cáncer de piel}{27}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Dificultades del diagnóstico}{28}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Justificación}{29}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objetivos}{29}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Planificación}{30}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Tendencias y Estado del arte}{31}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Aprendizaje profundo en dispositivos móviles}{31}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}SqueezeNet}{32}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}MobileNet}{34}{subsection.2.1.2}%
+\contentsline {subsubsection}{\nonumberline MobileNet V1 (2017)}{34}{subsubsection*.9}%
+\contentsline {subsubsection}{\nonumberline MobileNet V2 (2018)}{36}{subsubsection*.11}%
+\contentsline {subsubsection}{\nonumberline MobileNet V3 (2019)}{37}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {2.1.3}ShuffleNet}{39}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}EfficientNet}{41}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Aplicaciones en dermatología y cáncer de piel}{42}{subsection.2.1.5}%
+\contentsline {section}{\numberline {2.2}Cuantización de modelos}{43}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Características}{44}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Modelos cuantizados}{45}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Conclusión de los modelos cuantizados}{47}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Conjuntos de datos disponibles}{49}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}International Skin Imaging Collaboration​ (ISIC)}{50}{subsection.2.3.1}%
+\contentsline {subsubsection}{\nonumberline Fusión y deduplicado}{51}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Uso de la galería de ISIC}{54}{subsubsection*.17}%
+\contentsline {subsection}{\numberline {2.3.2}ASAN Dataset}{55}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}DermNet}{57}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}PH2}{58}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}PAD-UFES 20}{59}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Severance}{61}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Otros datasets}{63}{subsection.2.3.7}%
+\contentsline {chapter}{\numberline {3}Construcción y preprocesado del conjunto de datos}{65}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{65}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{67}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}ASAN}{70}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{72}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}PH2}{72}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Severance}{73}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{76}{subsection.3.1.6}%
+\contentsline {section}{\numberline {3.2}Particionado de los datos}{77}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{77}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{80}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{82}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{82}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{84}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{87}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conceptos previos}{87}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{89}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}ResNet50}{89}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{90}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{91}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Función de pérdida}{92}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}CrossEntropy}{92}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}FocalLoss}{92}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Especificaciones y framework de trabajo}{93}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Análisis y estudio de modelos sobre la base de datos}{95}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Clasificación binaria}{96}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Equilibrio de los datos}{96}{subsection.5.1.1}%
+\contentsline {subsubsection}{\nonumberline Técnicas descartadas}{97}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline Propuesta: oversampling}{98}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {5.1.2}Representación en Pytorch}{99}{subsection.5.1.2}%
+\contentsline {subsubsection}{\nonumberline Creación del datablock}{99}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{101}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{104}{subsubsection*.27}%
+\contentsline {subsection}{\numberline {5.1.3}Resultados}{105}{subsection.5.1.3}%
+\contentsline {subsubsection}{\nonumberline ResNet 50}{106}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Efficient Net}{108}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Mobile Net}{109}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{111}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{113}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{113}{subsection.5.2.1}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{114}{subsubsection*.35}%
+\contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{117}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Entrenamiento}{118}{subsubsection*.37}%
+\contentsline {chapter}{\numberline {6}Cuantización del modelo seleccionado}{123}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{123}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{123}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{125}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{126}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Comparativa de los modelos original y cuantizado}{128}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Cuantización del modelo binario}{128}{subsection.6.3.1}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{129}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{130}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {6.3.2}Cuantización del modelo multiclase maligno}{131}{subsection.6.3.2}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{131}{subsubsection*.43}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{132}{subsubsection*.45}%
+\contentsline {subsection}{\numberline {6.3.3}Cuantización del modelo multiclase benigno}{133}{subsection.6.3.3}%
+\contentsline {subsubsection}{\nonumberline Métricas de inferencia en test}{133}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Tiempo de inferencia}{135}{subsubsection*.49}%
+\contentsline {section}{\numberline {6.4}Conclusión de la cuantización}{135}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Diseño de la aplicación para el cáncer de piel}{137}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Descripción del problema. Requisitos y definiciones.}{137}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Proceso de obtención de requisitos}{137}{subsection.7.1.1}%
+\contentsline {subsubsection}{\nonumberline Descripción}{137}{subsubsection*.51}%
+\contentsline {subsubsection}{\nonumberline Restricciones a tener en cuenta}{138}{subsubsection*.53}%
+\contentsline {subsection}{\numberline {7.1.2}Requisitos}{139}{subsection.7.1.2}%
+\contentsline {subsubsection}{\nonumberline Requisitos funcionales}{139}{subsubsection*.55}%
+\contentsline {subsubsection}{\nonumberline Requisitos no funcionales}{140}{subsubsection*.57}%
+\contentsline {subsubsection}{\nonumberline Requisitos de información}{140}{subsubsection*.59}%
+\contentsline {subsection}{\numberline {7.1.3}Glosario de términos}{141}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Modelo casos de uso}{141}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Representación de los casos de uso}{141}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Actores}{143}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Descripción extendida de los casos de uso}{144}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Modelo de análisis}{151}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Modelo estático: diagrama conceptual}{151}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Modelo dinámico: diagramas de secuencia y contratos}{152}{subsection.7.3.2}%
+\contentsline {subsubsection}{\nonumberline Diagrama de secuencia}{152}{subsubsection*.61}%
+\contentsline {subsubsection}{\nonumberline Contratos}{153}{subsubsection*.63}%
+\contentsline {section}{\numberline {7.4}Diseño}{156}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Diagramas de comunicación}{157}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Diagrama de clases de implementación}{160}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Manual de uso de la aplicación}{163}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Realización de un diagnóstico}{164}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Consulta del historial}{166}{subsection.7.5.2}%
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajos futuros}{169}{chapter.8}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
