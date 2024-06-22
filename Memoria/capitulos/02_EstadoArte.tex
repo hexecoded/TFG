@@ -147,15 +147,6 @@ Debido a la gran complejidad adquirida por el modelo, los problemas de latencia 
 	\caption{Arquitectura de MobileNetV3 small (extraído de \cite{howard2019searching})}
 \end{figure}
 
-
-\subsubsection{Aplicaciones en dermatología y cáncer de piel}
-
-MobileNet, concretamente en su segunda versión, ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En~\cite{Chaturvedi_2020}, es utilizado para realizar la clasificación de 7 enfermedades cutáneas extraídas del dataset HAM10000 (``Human Against Machine with 10000 training images'')~\cite{ham10000}, que podemos encontrar en ISIC archive~\cite{isicarchive} (International Skin Imaging Collaboration), un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas. 
-
-También se utilizó más recientemente para su implementación en dispositivos de IOT~\cite{mnetsqueeze}, donde se logra alcanzar el 99\% de accuracy en un pequeño conjunto extraído de ISIC, haciendo uso de la versión V3 junto a un algoritmo de squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. 
-
-Para ello, hace uso de un filtro black hat, que binariza la imagen y obtiene los píxeles objetivo de eliminar, que son sustituidos por los colores de los píxeles adyacentes, junto al uso del aumento de datos. Sin embargo, no se define de forma específica la tasa de precisión del modelo para cada una de las enfermedades que se tratan de diagnosticar.
-
 \subsection{ShuffleNet}
 
 ShuffleNet~\cite{zhang2017shufflenet,shufflenetreview} surge con el objetivo ofrecer un modelo capaz de ofrecer un buen modelo con la mínima pérdida de rendimiento frente a modelos profundos. Es capaz de superar en resultados a la primera versión de MobileNet, logrando un error de aproximadamente tres puntos menos que MobileNet V1. Su mejor rendimiento se debe sobre todo al uso de Channel shuffle (mezcla de canales) para las convoluciones grupales, y creando una arquitectura basada en módulos shuffle.
@@ -218,13 +209,21 @@ Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una ser
 En smartphones de alta gama, los modelos B0 a B4 pueden ser ejecutados con un rendimiento aceptable para aquellas aplicaciones que no requieran un alto tiempo de respuesta, pero necesitan dar al usuario una respuesta aceptable. Para modelos de mayor complejidad computacional, se usan las variantes lite, que estudiaremos más adelante.
 
 
-\subsubsection{Aplicaciones en dermatología y cáncer de piel}
+\subsection{Aplicaciones en dermatología y cáncer de piel}
 
-En el problema que nos concierne, esta arquitectura ha conseguido grandes resultados en el dataset del ISIC abierto al público como competición en la plataforma Kaggle, habiendo sido utilizado como parte de un ensemble de modelos, o bien como modelo único entrenado en el top 3 de ganadores de la competición. En el caso de la segunda mejor solución clasificada ~\cite{2ndISIC}, se menciona la utilización de EfficientNet-B6, con tamaño de entrada de 512x512, y un tamaño de batch de 64, obteniendo 0.9485 de accuracy como resultado final a la hora de emplear los datasets ISIC 2019 y 2020.
+En el problema que nos concierne, esta arquitectura ha conseguido grandes resultados en el dataset del ISIC abierto al público como competición en la plataforma Kaggle, habiendo sido utilizado como parte de un ensemble de modelos, o bien como modelo único entrenado en el top 3 de ganadores de la competición. En el caso de la segunda mejor solución clasificada ~\cite{2ndISIC}, se menciona la utilización de EfficientNet-B6, con tamaño de entrada de 512x512, y un tamaño de batch de 64, obteniendo 0,9485 de accuracy como resultado final a la hora de emplear los datasets ISIC 2019 y 2020.
 
  En la primera solución, es usada en conjunto a Resnet50, y una red especializada en los metadatos de la imagen, y todos los modelos juntos someten su resultado a votación ~\cite{1stISIC}.
 
 Ambos resultados han sido evaluados con computadores de alta gama, haciendo uso de múltiples tarjetas gráficas para el entrenamiento y la inferencia. Este proceso es demasiado pesado para un dispositivo móvil, por lo que de cara a este trabajo, se han buscado mecanismos de optimización, como la cuantización.
+
+MobileNet, concretamente en su segunda versión~\cite{sandler2019mobilenetv2}, también ha sido utilizado en la literatura para el diagnóstico de enfermedades de la piel. En~\cite{Chaturvedi_2020}, es utilizado para realizar la clasificación de 7 enfermedades cutáneas extraídas del dataset HAM10000 (``Human Against Machine with 10000 training images'')~\cite{ham10000}, que podemos encontrar en ISIC archive~\cite{isicarchive} (International Skin Imaging Collaboration), un repositorio web de acceso libre con enfermedades de la piel tanto beningnas como cancerosas. 
+
+También se utilizó más recientemente para su implementación en dispositivos de IOT~\cite{mnetsqueeze}, donde se logra alcanzar el 99\% de accuracy en un pequeño conjunto extraído de ISIC, haciendo uso de la versión V3 junto a un algoritmo de squeeze. Dicho algortimo se encarga de localizar la ubicación de los pelos y otros posibles artefactos para preprocesar la imagen y lograr una fotografía resultante libre de interferencias. 
+
+Para ello, hace uso de un filtro black hat, que binariza la imagen y obtiene los píxeles objetivo de eliminar, que son sustituidos por los colores de los píxeles adyacentes, junto al uso del aumento de datos. Sin embargo, no se define de forma específica la tasa de precisión del modelo para cada una de las enfermedades que se tratan de diagnosticar.
+
+Por tanto, se han llevado a cabo distintas implementaciones que tratan de abordar este problema siguiendo estategias muy distintas, lo que abre la puerta a nuevas alternativas.
 
  \section{Cuantización de modelos}
 \label{cap:cuantización}
@@ -250,7 +249,7 @@ Este mecanismo es empleado tanto por los frameworks de trabajo habituales para a
 	\item Para mejorar estos resultados, se puede usar la técnica Quantization Aware Training (QAT), o entrenamiento preparado para cuantización, donde el objetivo es facilitar el paso a FP8 desde el proceso de entrenamiento teniendo en cuenta los rangos de valores adoptados durante el entrenamiento, como por ejemplo, controlando el diferencial mínimo que puede tomar el algoritmo de optimización. Esta operación muestra mejor resultado sobre valores enteros, pero también es capaz de mejorar los resultados obtenidos por PF8.
 \end{itemize}
 
-En los frameworks Pytorch y TensorFlow, podemos encontar estas optimizaciones en sus funcionalidades relacionadas con la optimización de modelos en post entrenamiento, con las dependencias de Pytorch Mobile y TensorFlow Lite, respectivamente. Ambas aplican cuantización numérica de los tensores, y en caso de tratarse de modelos tradicionales de la literatura, existen arquitecturas simplificadas de forma profunda, con redes como EfficientNet o ResNet, que cuentan con variantes lite.
+En los frameworks Pytorch~\cite{paszke2019pytorch} y TensorFlow~\cite{tensorflow2015-whitepaper}, podemos encontar estas optimizaciones en sus funcionalidades relacionadas con la optimización de modelos en post entrenamiento, con las dependencias de Pytorch Mobile y TensorFlow Lite, respectivamente. Ambas aplican cuantización numérica de los tensores, y en caso de tratarse de modelos tradicionales de la literatura, existen arquitecturas simplificadas de forma profunda, con redes como EfficientNet o ResNet, que cuentan con variantes lite.
 
 \subsection{Modelos cuantizados}
 
@@ -532,7 +531,8 @@ De acuerdo a los requisitos especificados en su web, ~\cite{ph2data}, podemos ac
 En la figura \ref{ph2}, podemos encontrar una muestra de estas imágenes, concretamente un lunar común (nevus) y un lunar de tipo cancerígeno.
 
 \subsection{PAD-UFES 20}
-PAD-UFES-20~\cite{PACHECO2020106221} se trata de un conjunto de imágenes disponible públicamente acerca de lesiones cutáneas benignas y malignas. Concretamente, dispone de imágenes de 1.641 lesiones cutáneas únicas recopiladas, procedentes de 1.373 pacientes. Tal y como se especifica en su publicación ~\cite{PACHECO2020106221}, cada paciente perteneciente al dataset puede ofrecer imágenes de piel sana, una lesión, o varias de ellas. Por tanto, el conteo final de imágenes asciende a un total de 2.298 ejemplares.
+\label{padufesdesc}
+PAD-UFES 20~\cite{PACHECO2020106221} se trata de un conjunto de imágenes disponible públicamente acerca de lesiones cutáneas benignas y malignas. Concretamente, dispone de imágenes de 1.641 lesiones cutáneas únicas recopiladas, procedentes de 1.373 pacientes. Tal y como se especifica en su publicación ~\cite{PACHECO2020106221}, cada paciente perteneciente al dataset puede ofrecer imágenes de piel sana, una lesión, o varias de ellas. Por tanto, el conteo final de imágenes asciende a un total de 2.298 ejemplares.
 
 Las imágenes a analizar han sido extraídas en su totalidad de dispositivos móviles, los cuales se conectaban a un servidor al cual enviaban la imagen para su posterior diagnóstico y validación mediante biopsia en caso de sospecha de caso positivo de cáncer. Todas ellas fueron almacenadas de forma directa, sin aplicar ningún tipo de ecualización o filtro, ya que el formato de guardado escogido es PNG, caracterizado por ser un formato sin pérdidas.
 
@@ -573,7 +573,7 @@ En su publicación original~\cite{PACHECO2020106221}, podemos encontrar un resum
 		Seborrheic Keratosis (SEK)	&235	&6,4 \% \\ \hline
 		\textbf{Total} & \textbf{2.298} & \textbf{58,4\%} \\ \hline
 	\end{tabular}
-	\caption{Tabla de casos diagnosticados en PAD-UFES20}
+	\caption{Tabla de casos diagnosticados en PAD-UFES 20}
 	\label{tab:casospadufes}
 \end{table}
 

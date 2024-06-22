@@ -217,14 +217,14 @@ Seung~Seog Han, Myoung~Shin Kim, Woohyung Lim, Gyeong~Hun Park, Ilwoo Park, and
   cutaneous tumors using a deep learning algorithm.
 \newblock {\em Journal of Investigative Dermatology}, 138(7):1529--1538, 2018.
 
+\bibitem{he2015deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition, 2015.
+
 \bibitem{DBLP:journals/corr/HeZRS15}
 Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 \newblock Deep residual learning for image recognition.
 \newblock {\em CoRR}, abs/1512.03385, 2015.
-
-\bibitem{he2015deep}
-Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
-\newblock Deep residual learning for image recognition, 2015.
 
 \bibitem{pytesseract}
 Samuel Hoffstaetter.
@@ -265,6 +265,11 @@ WCRF International.
 \newblock \url{https://www.wcrf.org/cancer-trends/worldwide-cancer-data/},
   2023.
 \newblock [Online; accessed 10-October-2023].
+
+\bibitem{itseez2015opencv}
+Itseez.
+\newblock Open source computer vision library.
+\newblock \url{https://github.com/itseez/opencv}, 2015.
 
 \bibitem{NIPS2012_c399862d}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
