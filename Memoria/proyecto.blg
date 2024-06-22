@@ -10,43 +10,43 @@ Warning--empty journal in severance
 Warning--empty journal in Han2017
 You've used 85 entries,
             2118 wiz_defined-function locations,
-            902 strings with 21011 characters,
-and the built_in function-call counts, 28954 in all, are:
-= -- 2537
-> -- 2123
+            898 strings with 20771 characters,
+and the built_in function-call counts, 28707 in all, are:
+= -- 2518
+> -- 2097
 < -- 4
-+ -- 851
-- -- 760
-* -- 2030
-:= -- 5019
-add.period$ -- 263
++ -- 841
+- -- 750
+* -- 1990
+:= -- 4976
+add.period$ -- 264
 call.type$ -- 85
-change.case$ -- 627
+change.case$ -- 622
 chr.to.int$ -- 0
 cite$ -- 90
-duplicate$ -- 746
-empty$ -- 1969
-format.name$ -- 760
-if$ -- 5838
+duplicate$ -- 742
+empty$ -- 1962
+format.name$ -- 750
+if$ -- 5796
 int.to.chr$ -- 0
 int.to.str$ -- 85
-missing$ -- 30
-newline$ -- 433
+missing$ -- 29
+newline$ -- 434
 num.names$ -- 168
-pop$ -- 884
+pop$ -- 885
 preamble$ -- 1
-purify$ -- 545
+purify$ -- 540
 quote$ -- 0
-skip$ -- 642
+skip$ -- 641
 stack$ -- 0
-substring$ -- 841
+substring$ -- 814
 swap$ -- 123
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 334
 warning$ -- 5
-while$ -- 188
+while$ -- 187
 width$ -- 87
-write$ -- 882
+write$ -- 883
 (There were 5 warnings)

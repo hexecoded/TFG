@@ -1,5 +1,5 @@
 \chapter{Análisis y estudio de modelos sobre la base de datos}
-
+\label{sec:capt5}
 Tras la descripción de los modelos a utilizar, y las funciones de pérdida a emplear, comienza el proceso de entrenamiento de los modelos. Este proceso es uno de los más lentos de todo el desarrollo del proyecto, debido a la cantidad de horas necesarias a esperar para recopilar los resultados del modelo. Se estudiará la eficacia de cada modelo a la hora de evaluar el problema, y las decisiones tomadas para su mejora y elección.
 
 Para resolver este problema, se ha tomado un enfoque de dos niveles; en primer lugar, distinguiremos si la enfermedad que se recibe como entrada se trata de un ejemplar de enfermedad maligna o benigna, y posteriormente, su salida indicará un segundo modelo a aplicar sobre la enfermedad, especializado únicamente en uno de los dos tipos de enfermedades. Así, conseguimos un conjunto de modelos especializados que permiten otorgar el diagnóstico con mayor precisión y seguridad.\\
@@ -486,6 +486,7 @@ Donde, podemos observar que todas las métricas obtenidas son considerablemente 
 Por tanto, podemos concluir de manera firme y justificada que el modelo entrenado anteriormente, sin ningún tipo de penalización adicional, y haciendo uso de FocalLoss, es el modelo adecuado para este subproblema.
 
 \subsection{Modelo de enfermedades benignas}
+\label{sec:benigncapt5}
 
 Una vez entrenado el modelo correspondiente a las clases malignas, es el turno de construir el modelo de las clases benignas. Recordando el estudio realizado en el problema de clasificación binario, las clases benignas eran el subconjunto de datos dominante en el dataset. Esto se debe, principalmente, a que las lesiones cutáneas son frecuentemente lesiones no cancerosas. Disponemos de un conjunto de datos mucho más amplio, englobando 17 clases distintas.  Como es de esperar, la condición más frecuente de este conjunto son los lunares comunes, denominados nevus en dermatología.
 

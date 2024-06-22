@@ -266,13 +266,13 @@ En conclusión, la arquitectura final vuelve a ser la versión cuantizada, ya qu
 
 Tras el estudio de los modelos para el caso de clasificación binaria y el caso multiclase maligno, es el turno del modelo para la detección de enfermedades benignas. Este modelo es el más complejo de los tres, ya que requiere dar como salida un grado de granularidad elevado en cuanto a diagnósticos, debiendo distinguir entre 18 enfermedades distintas.
 
-Los resultados de este modelo en su entrenamiento previo de la sección  \ref{sec:benigncapt5} no fueron prometedores. La alta similitud de las clases, y el uso de un modelo poco profundo para acometer la clasificación son la causa. Por tanto, los resultados del modelo cuantizado podrían verse más afectados que en los dos casos anteriores.
+Los resultados de este modelo, en su entrenamiento previo en la sección  \ref{sec:benigncapt5}, no fueron tan prometedores debido a la alta similitud de las clases, y el uso de un modelo poco profundo para acometer la clasificación. Por tanto, los resultados del modelo cuantizado podrían verse más afectados que en los dos casos anteriores.
 
 Al igual que en la preparación de datos del modelo maligno, debemos realizar el mismo preprocesado que con las clases de entrenamiento:
 
 \begin{enumerate}
 	\item \textbf{Renombrado de etiquetas}. Realizar el ajuste de etiquetas a valores numéricos para una mayor facilidad de cálculo de las métricas de evaluación.
-	\item \textbf{Normalización y reescalado}. Utilización de la media y desviación típica de ImageNet\cite{5206848}, y reescalado a 512 x 512.
+	\item \textbf{Normalización y reescalado: utilización de la media y desviación típica de ImageNet\cite{5206848}, y reescalado a 512 x 512 px.
 \end{enumerate}
 
 Tras dichos ajustes, podemos proceder a la medición de las métricas de test y el tiempo de inferencia en el dispositivo Android.
@@ -286,7 +286,7 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ \hline
+		NV & 0,99 & 0,78 & 0,87 & 13067 \\ \hline
 		DER & 0,31 & 0,61 & 0,41 & 770 \\ \hline
 		PBK & 0,53 & 0,59 & 0,56 & 547 \\ \hline
 		VL & 0,39 & 0,87 & 0,54 & 536 \\ \hline
@@ -303,9 +303,9 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 		LS & 0,19 & 0,53 & 0,28 & 17 \\ \hline
 		NEU & 0,00 & 0,00 & 0,00 & 10 \\ \hline
 		SCAR & 0,00 & 0,00 & 0,00 & 10 \\ \hline
-		Accuracy & ~ & ~ & 0,75 & 16.010 \\ \hline
-		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ \hline
-		Weighted avg & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
+		Accuracy & ~ & ~ & 0,75 & 16010 \\ \hline
+		Macro avg & 0,28 & 0,45 & 0,33 & 16010 \\ \hline
+		Weighted avg & 0,87 & 0,75 & 0,79 & 16010 \\ \hline
 	\end{tabular}
 	\caption{Resultado obtenido al inferir el conjunto de test (sin cuantizado)}
 	\label{tab:testbenorig}
@@ -316,7 +316,7 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		~ & Precision & Recall & F1-score & Support \\ \hline
-		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ \hline
+		NV & 0,99 & 0,78 & 0,87 & 13067 \\ \hline
 		DER & 0,31 & 0,60 & 0,41 & 770 \\ \hline
 		PBK & 0,53 & 0,59 & 0,56 & 547 \\ \hline
 		VL & 0,39 & 0,87 & 0,54 & 536 \\ \hline
@@ -333,17 +333,17 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 		LS & 0,19 & 0,53 & 0,28 & 17 \\ \hline
 		NEU & 0,00 & 0,00 & 0,00 & 10 \\ \hline
 		SCAR & 0,00 & 0,00 & 0,00 & 10 \\ \hline
-		Accuracy & ~ & ~ & 0,75 & 16.010 \\ \hline
-		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ \hline
-		Weighted avg & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
+		Accuracy & ~ & ~ & 0,75 & 16010 \\ \hline
+		Macro avg & 0,28 & 0,45 & 0,33 & 16010 \\ \hline
+		Weighted avg & 0,87 & 0,75 & 0,79 & 16010 \\ \hline
 	\end{tabular}
 	\caption{Resultado obtenido al inferir el conjunto de test (cuantizado)}
 	\label{tab:testbenquant}
 \end{table}
 
-Los resultados son de nuevo positivos, ya que en lo que corresponde a los valores medios, no existe pérdida destacable. Si bajamos de nivel, y comparamos clase a clase, podemos ver que sí que existe alguna diferencia, como  una precisión un 1\% menor en el diagnóstico de la queratosis actínica (abreviada como AK). Sin embargo, dicha pérdida de precisión es compensada por otros valores que, sorprendentemente, adquieren un mejor resultado en el modelo cuantizado que el modelo original.
+Los resultados son de nuevo positivos, ya que en lo que corresponde a los valores medios, no existe pérdida destacable. Si bajamos de nivel, y comparamos clase a clase, podemos ver que sí que existe alguna diferencia, como, una precisión una centésima menor en el diagnóstico de la queratosis actínica (abreviada como AK). Sin embargo, dicha pérdida de precisión es compensada por otros valores que, sorprendentemente, adquieren un mejor resultado en el modelo cuantizado que el modelo original, aunque menor a una centésima.
 
-A grandes rasgos y en promedio, ambos modelos son equivalentes en características en lo que a métricas se refiere. El diagnóstico, aunque ruidoso por ser un modelo más simple de lo ideal, es muy cercano al valor visto en validación (tabla \ref{tab:benignomalmejormetrics}), por lo que podemos confirmar que el aprendizaje se realizó de forma satisfactoria.
+A grandes rasgos, y en promedio, ambos modelos son equivalentes en características en lo que a métricas se refiere. El diagnóstico, aunque ruidoso por ser un modelo más simple de lo ideal, es muy cercano al valor visto en validación (tabla \ref{tab:benignomalmejormetrics}), por lo que podemos confirmar que el aprendizaje se realizó de forma satisfactoria.
 
 \subsubsection{Tiempo de inferencia}
 Una vez evaluado el rendimiento de ambos modelos, podemos verificar las ganancias en rendimiento obtenidas con el procedimiento de cuantización. Al tratarse de un problema con mayor número de salidas, dicha reducción será menos notable. Empleando nuestro criterio de evaluar el promedio de 200 imágenes, obtenemos el resultado mostrado en la tabla \ref{tab:infbin}.
@@ -352,8 +352,8 @@ Una vez evaluado el rendimiento de ambos modelos, podemos verificar las ganancia
 	\begin{tabular}{|c|c|c|}
 		\hline
 		Modelo & Tiempo total (ms) & Tiempo medio (ms) \\ \hline
-		Original & 114.972 & 574,86	 \\ \hline
-		Cuantizado & 73.774 & 368,87 \\ \hline
+		Original & 114972 & 574,86	 \\ \hline
+		Cuantizado & 73774 & 368,87 \\ \hline
 	\end{tabular}
 	\caption{Tiempos de inferencia para caso binario en Android}
 	\label{tab:infbin}
@@ -361,17 +361,17 @@ Una vez evaluado el rendimiento de ambos modelos, podemos verificar las ganancia
 
 A la vista de los resultados, podemos apreciar una ganancia significativa en tiempo, de alrededor de 206ms por imagen. Si calculamos la ganancia en velocidad, obtenemos:
 
-$$Ganancia = \frac{t\_original}{t\_cuantizado} = \frac{574,86}{368,87} = 1,558$$
+$$Ganancia = \frac{t\ original}{t\ cuantizado} = \frac{574,86}{368,87} = 1,558$$
 
-Por tanto, el modelo optimizado nos aporta una ganancia de 1,558, que si bien es ligeramente inferior a los dos modelos analizados anteriormente, ofrece una ventaja muy similar en rendimiento, empleando un 64\% del tiempo que originalmente necesitaba el modelo original, y con la ventaja de no perder precisión en sus salidas de forma apreciable.
+Por tanto, el modelo optimizado nos aporta una ganancia de 1,558, que si bien es ligeramente inferior a los dos modelos analizados anteriormente, ofrece una ventaja muy similar en rendimiento, con la ventaja de perder precisión en sus salidas de forma apreciable.
 
 
 \section{Conclusión de la cuantización}
 
-Una vez evaluados los 3 modelos, podemos dar el veredicto final de los resultados:
+Una vez evaluados los 3 modelos, podemos dar el veredicto final de los resultados
 \begin{enumerate}
 	\item La generalización de los 3 modelos al realizar la inferencia del conjunto de test ha sido adecuada, ya que las métricas obtenidas son prácticamente equivalentes a las obtenidas en validación por cada uno de los modelos. Esto demuestra la efectividad del método seguido, realizando las particiones de entrenamiento, validación y test.
-	\item El proceso de optimización y cuantización ofrecido por Pytorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-2}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
+	\item El proceso de optimización y cuantización ofrecido por Pytorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-3}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
 	\item Las ganancias en tiempo de inferencia son considerables: en los 3 casos, el factor de ganancia ha sido superior a 1,5 (visible gráficamente en la figura \ref{fig:gananciasquant}), lo cual indica que el modelo cuantizado sería capaz de inferir aproximadamente 3 imágenes en el tiempo en el que el modelo original infiere 2. 
 	\end{enumerate}
 	
