@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  22 JUN 2024 09:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.10)  22 JUN 2024 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2229,7 +2229,13 @@ chapter 8.
 [169
 
 
-] [170]) (./proyecto.bbl [171] [172
+]
+Overfull \hbox (15.48067pt too wide) in paragraph at lines 19--19
+[][][]\T1/pplj/m/n/9 OCD: [][]$\T1/cmtt/m/n/9 https : / / www . un . org / sust
+ainabledevelopment / es / objetivos-[]de-[]desarrollo-[]sostenible/$[][]| 
+ []
+
+[170]) (./proyecto.bbl [171] [172
 
 
 ]
@@ -2466,8 +2472,8 @@ Package rerunfilecheck Info: File `proyecto.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20781 strings out of 476014
- 362248 string characters out of 5792005
+ 20782 strings out of 476014
+ 362259 string characters out of 5792005
  1956187 words of memory out of 5000000
  41889 multiletter control sequences out of 15000+600000
  678183 words of font info for 148 fonts, out of 8000000 for 9000
@@ -2487,10 +2493,10 @@ ic/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a
 .pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/te
 xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1
 /urw/palatino/uplri8a.pfb>
-Output written on proyecto.pdf (180 pages, 11388333 bytes).
+Output written on proyecto.pdf (180 pages, 11390878 bytes).
 PDF statistics:
- 2421 PDF objects out of 2487 (max. 8388607)
- 2020 compressed objects within 21 object streams
- 605 named destinations out of 1000 (max. 500000)
+ 2424 PDF objects out of 2487 (max. 8388607)
+ 2023 compressed objects within 21 object streams
+ 606 named destinations out of 1000 (max. 500000)
  1090 words of extra memory for PDF output out of 10000 (max. 10000000)
 
