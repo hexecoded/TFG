@@ -38,11 +38,11 @@ Prosiguiendo con el estudio inicial, el diagnóstico del cáncer de piel  \cite{
 Aunque en base a su descripción parezcan distinguibles, son fácilmente confundidos por su variedad con otros tumores benignos de la piel, como:
 
 \begin{itemize}
-	\item \textbf{Lunares}: también conocidos médicamente con nevus, se trata de hiperpigmentación benigna en la piel.
-	\item \textbf{Verrugas}: tumores benignos de piel, frecuente debido a virus como el del papiloma humano.
-	\item \textbf{Lesiones vasculares}: varices, derrames, y otro tipo de problemas circulatorios.
-	\item \textbf{Lipomas}: tumores de tacto blando, debido a su contenido en lípidos (grasa).
-	\item \textbf{Queratosis seborreica}: son manchas cerosas, comúnmente desarrolladas en la espalda. De aspecto oscuro y gran relieve, no suponen ninguna amenaza más allá de posible incomodidad al roce o estética.
+	\item \textbf{Lunares}. Conocidos médicamente con nevus, se trata de hiperpigmentación benigna en la piel.
+	\item \textbf{Verrugas}. Tumores benignos de piel, frecuente debido a virus como el del papiloma humano.
+	\item \textbf{Lesiones vasculares}. Varices, derrames, y otro tipo de problemas circulatorios.
+	\item \textbf{Lipomas}. Tumores de tacto blando, debido a su contenido en lípidos (grasa).
+	\item \textbf{Queratosis seborreica}. Son manchas cerosas, comúnmente desarrolladas en la espalda. De aspecto oscuro y gran relieve, no suponen ninguna amenaza más allá de posible incomodidad al roce o estética.
 \end{itemize}
 
 El uso de deep learning para este fin resulta interesante como forma de mejora del diagnóstico ante casos malignos y benignos de gran similitud, los cuales pueden confundir y dificultar la labor incluso a expertos dermatólogos.
@@ -51,7 +51,7 @@ El uso de deep learning para este fin resulta interesante como forma de mejora d
 
 Existe una gran dificultad de conocer la naturaleza del tumor del paciente. Habitualmente, se suele extraer una muestra del tejido afectado para proceder a su análisis en laboratorio. A esta técnica se le denomina biopsia.\\
 
-Es un proceso efectivo, que consiste en el estudio bajo microscopio de las células extraídas, y el patrón que constituye el tejido. Su proceso más complejo es la extracción, ya que si ésta no se realiza correctamente, ciertas células cancerígenas pueden no aparecer en la muestra y realizarse un diagnóstico erróneo. Además, debido a la falta de especialistas en la materia que puedan realizar las incisiones, personal médico no cualificado en esta materia suele realizar su extracción. Se estipula que en lesiones inflamatorias, el correcto estudio de la patología se da en el 77\% de los casos si la muestra es recogida por un dermatólogo, y un 41\% si la realiza un ayudante \cite{LLAMASVELASCO201212}.
+Es un proceso efectivo, que consiste en el estudio bajo microscopio de las células extraídas, y el patrón que constituye el tejido. Su proceso más complejo es la extracción, ya que si ésta no se realiza correctamente, ciertas células cancerígenas pueden no aparecer en la muestra y realizarse un diagnóstico erróneo. Además, debido a la falta de especialistas en la materia que puedan realizar las incisiones, personal médico no cualificado en esta materia suele realizar su extracción. Se estipula que en lesiones inflamatorias, el correcto estudio de la patología se da en el 77\% de los casos si la muestra es recogida por un dermatólogo, y un 41\% si la realiza un ayudante \cite{LLAMASVELASCO201212}.\\
 
 Existen varias técnicas: mediante corte con tijera, mediante rasurado, extracción mediante bisturí, o en forma elíptica, persiguiendo la extracción total de la lesión. En el caso de las dos primeras opciones, solo está indicada si la lesión es superficial y no existe riesgo de que se trata de un melanoma por las complicaciones que esto conlleva de una posible diseminación y metástasis. \\
 
@@ -76,15 +76,17 @@ Teniendo en cuenta los factores estudiados acerca de la enfermedad en los puntos
 	\item Defender la utilidad de los modelos de aprendizaje profundo en el estudio y evaluación de casos en el ámbito médico, siendo en este caso la identificación de la patología a nivel macroscópico, sin necesidad de realizar una biopsia con el posible riesgo que esto conlleva.
 	\item Crear una base de datos robusta y completa capaz de representar adecuadamente la población real de la enfermedad, partiendo, para ello, de la construcción de un conjunto de datos mediante una técnica no explotada en el estado del arte: la fusión de conjuntos de imágenes.
 	\item Realizar, mediante un enfoque novedoso, el entrenamiento de un modelo con dos niveles de modelos especializados: uso de clasificación binaria para prediagnóstico de la enfermedad, y especificación de la misma mediante modelos especializados separados para enfermedades benignas y malignas, empleando la cuantización como método de simplificación.
-	\item Minimizar los costes, al hacer uso de un dispositivo esencial en nuestra vida diaria como por ejemplo, los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
+	\item Mejorar la accesibilidad, al hacer uso de un dispositivo esencial en nuestra vida diaria como por ejemplo, los teléfonos móviles, aprovechando la posibilidad de que la manifestación de los tumores de piel son visibles a nivel macroscópico.
 	\item Mostrar el desempeño de los modelos cuantizados y simplificados mediante el uso de una aplicación para dispositivos Android, capaz de ejecutarlos y mostrar su funcionamiento.
 \end{enumerate}
 
 En este documento, estudiaremos el estado del arte actual, y analizaremos e implementaremos una aplicación para dispositivos móviles que sea capaz de realizar la segmentación de la mancha cutánea, y su posterior clasificación dentro de una lista de patologías posibles. Se busca informar al usuario del riesgo de su lesión, y de su posible diagnóstico final, el cual debe ser verificado por el experto. De esta forma, el software final puede contribuir a acelerar los diagnósticos de esta enfermedad,  y favorecer la esperanza de vida de los pacientes en caso de que su lesión sea cancerosa.
 
+Adicionalmente, se incluyen dos repositorios en los que se incluye información acerca de los datos empleados y los modelos entrenados\footnote{Datos: \url{https://github.com/hexecoded/TFG}}, y la aplicación realizada\footnote{Aplicación: \url{https://github.com/hexecoded/TFG-Android}}, de forma que se pueda contribuir en su desarrollo y realizar nuevas mejoras en trabajos futuros.
+
 \section{Planificación}
 
-La planificación de este proyecto se ha realizado teniendo en cuenta la necesidad de alcanzar pequeños objetivos de forma frecuente, para avanzar de forma firme y segura descartando la mínima cantidad de trabajo realizado. Esto coincide de forma directa con la filosofía de trabajo Scrum, que tiene en cuenta los siguientes elementos:
+La planificación de este proyecto se ha realizado teniendo en cuenta la necesidad de alcanzar pequeños objetivos de forma frecuente, para avanzar de forma firme y segura descartando la mínima cantidad de trabajo realizado. Esto coincide de forma directa con la filosofía de trabajo Scrum~\cite{schwaber2011scrum}, que tiene en cuenta los siguientes elementos:
 
 \begin{enumerate}
 	\item Puesta en valor de avances ejecutables y mostrables, mediante pruebas correctamente realizadas.

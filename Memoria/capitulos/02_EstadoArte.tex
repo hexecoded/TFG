@@ -115,13 +115,13 @@ En la figura \ref{fig:mobilenet2}, podemos apreciar la nueva arquitectura implem
     \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.3]{imagenes/MobileNetV2.png}
-	\caption{Arquitectura de MobileNet V2, extraída de \cite{sandler2019mobilenetv2}.}
+	\caption{Arquitectura de MobileNet V2, extraída de \cite{sandler2019mobilenetv2}}
 	\label{fig:mobilenet2}
 \end{figure}
 
 \subsubsection{MobileNet V3 (2019)}
 
-En su tercera versión~\cite{howard2019searching}, MobileNet incorpora métodos avanzados de diseños de redes basados en NetAdapt. Este algoritmo se basa en la transformación de modelos preentrenados para escritorio, y, en base a una serie de requisitos de potencia especificados, adapartar la arquitectura a una plataforma móvil perdiendo las mínimas capacidades posibles de la red original.  El modelo de partida empleado fue ajustado con precisión para mejorar latencias y uso de memoria, aplicando los siguientes conceptos:
+En su tercera versión~\cite{howard2019searching}, MobileNet incorpora métodos avanzados de diseños de redes basados en NetAdapt. Este algoritmo se basa en la transformación de modelos preentrenados para escritorio, y, en base a una serie de requisitos de potencia especificados, adaptar la arquitectura a una plataforma móvil perdiendo las mínimas capacidades posibles de la red original.  El modelo de partida empleado fue ajustado con precisión para mejorar latencias y uso de memoria, aplicando los siguientes conceptos:
 
 \begin{itemize}
     \item Se añade la capa Squeeze-and-Excite, dentro de las conexiones residuales. Se trata de un mecanismo surgido en 2018 ~\cite{hu2019squeezeandexcitation}. Este estudio afirma que existen filtros de imagen con mayor importancia para el cómputo global que otros, como, por ejemplo, los bordes. Por tanto, les aporta un mayor ``peso'' durante el entrenamiento a dichos filtros haciendo uso de una serie de parámetros adicionales. Éstos añaden una carga computacional muy pequeña, por lo que se trata de una técnica eficaz. Para obtener los parámetros de relevancia, se dispone de dos módulos: squeeze, y excite. El módulo squeeze se encarga de representar cada filtro mediante un valor numérico, obtenido por average pooling de la imagen. Y por otro lado, el módulo excite se encarga de aprender los pesos que dar a cada uno de estos filtros o canales, haciendo uso de un MLP. El resultado final serán los pesos de cada canal en cuanto a su importancia, normalizados entre 0 y 1 por una función sigmoide.
@@ -136,7 +136,7 @@ Debido a la gran complejidad adquirida por el modelo, los problemas de latencia 
 	\label{fig:mbnetlarge}
 	\centering
 	\includegraphics[scale = 0.25]{imagenes/mbnetv3-large.png}
-	\caption{Arquitectura de MobileNetV3 small (extraído de \cite{howard2019searching})}
+	\caption{Arquitectura de MobileNet V3 small (extraído de \cite{howard2019searching})}
 \end{figure}
 
 
@@ -144,14 +144,14 @@ Debido a la gran complejidad adquirida por el modelo, los problemas de latencia 
 	\label{fig:mbnetsmall}
 	\centering
 	\includegraphics[scale = 0.25]{imagenes/mbnetv3-small.png}
-	\caption{Arquitectura de MobileNetV3 small (extraído de \cite{howard2019searching})}
+	\caption{Arquitectura de MobileNet V3 small (extraído de \cite{howard2019searching})}
 \end{figure}
 
 \subsection{ShuffleNet}
 
 ShuffleNet~\cite{zhang2017shufflenet,shufflenetreview} surge con el objetivo ofrecer un modelo capaz de ofrecer un buen modelo con la mínima pérdida de rendimiento frente a modelos profundos. Es capaz de superar en resultados a la primera versión de MobileNet, logrando un error de aproximadamente tres puntos menos que MobileNet V1. Su mejor rendimiento se debe sobre todo al uso de Channel shuffle (mezcla de canales) para las convoluciones grupales, y creando una arquitectura basada en módulos shuffle.
 
-La convolución en grupo mediante Channel shuffle surge tras el estudio del funcionamiento de las convoluciones grupales en 	AlexNet~\cite{NIPS2012_c399862d} y ResNet~\cite{DBLP:journals/corr/HeZRS15}. En ambos modelos, se utilizan convoluciones grupales, donde cada canal de salida sólo se relaciona con los canales de entrada del que proviene. Esto podría debilitar la relación entre cada canal, y debilitar los resultados; para evitarlo, y no poner en riesgo el rendimiento con demasiadas convoluciones 1x1 para relacionarlos, se hace uso del mezclado de canales; es decir, es como si permitiésemos que cada grupo convolucional pudiera obtener información de otros grupos adyacentes, para así mejorar la relación entre ellos.
+La convolución en grupo mediante Channel shuffle surge tras el estudio del funcionamiento de las convoluciones grupales en 	AlexNet~\cite{NIPS2012_c399862d} y ResNet~\cite{he2015deep}. En ambos modelos, se utilizan convoluciones grupales, donde cada canal de salida sólo se relaciona con los canales de entrada del que proviene. Esto podría debilitar la relación entre cada canal, y debilitar los resultados; para evitarlo, y no poner en riesgo el rendimiento con demasiadas convoluciones 1x1 para relacionarlos, se hace uso del mezclado de canales; es decir, es como si permitiésemos que cada grupo convolucional pudiera obtener información de otros grupos adyacentes, para así mejorar la relación entre ellos.
 
 Para evitar un sistema complejo a la hora de representar dichas interconexiones, se aplica el método Channel shuffle: se mezclan los canales de forma que los grupos ya no queden aislados con sus respectivas entradas y salidas. Podemos apreciar una demostración gráfica en la figura \ref{shufflechannels}.
 
@@ -189,12 +189,12 @@ Parte de que una red convolucional puede representarse mediante la ecuación \re
 Donde se denota que la capa $F_i$ es repetida $L_i$ veces la etapa i de la red, y la dimensionalidad de la capa queda representada con ${( W_i,L_i)}$.  Fijando $F_i$, EfficientNet intenta dar versatilidad a sus modelos variando las dimensiones restantes, Li, Ci, Hi, Wi mediante el uso de 3 constantes de escalabilidad:
 
 \begin{itemize}
-	 \item  \textbf{Profundidad, Depth (d)}:  Aumentar la profundidad es la tendencia habitual presente en las redes convolucionales. Pero llegar a un equilibrio es crítico, ya que aumentar demasiado la profundidad sin modificar otros parámetros puede ocasionar pérdidades rendimiento por el desvanecimiento del gradiente  a menor profundidad. 
-	\item  \textbf{Anchura, Width (w)}: Aumentar la anchura suele ser beneficioso para modelos de pocos recursos donde el aumento de profundidad supone un gran aumento de la carga computacional. Permite conseguir mayor cantidad de características de grado fino, pero si la red es demasiado poco profunda, el modelo careceré de características de alto grado que permitan aprender patrones generales.
-	\item  \textbf{Resolución, (r)}: al emplear tamaños de entrada mayores, damos opciones a obtener una mayor cantidad de características de grado fino, pero un exceso de resolución puede provocar grandes tiempos de ejecución y puede ser contraproducente, al reducirse la ganancia con tamaños demasiados grandes.
+	 \item  \textbf{Profundidad, Depth (d)}. Aumentar la profundidad es la tendencia habitual presente en las redes convolucionales. Pero llegar a un equilibrio es crítico, ya que aumentar demasiado la profundidad sin modificar otros parámetros puede ocasionar pérdidades rendimiento por el desvanecimiento del gradiente  a menor profundidad. 
+	\item  \textbf{Anchura, Width (w)}. Aumentar la anchura suele ser beneficioso para modelos de pocos recursos donde el aumento de profundidad supone un gran aumento de la carga computacional. Permite conseguir mayor cantidad de características de grado fino, pero si la red es demasiado poco profunda, el modelo careceré de características de alto grado que permitan aprender patrones generales.
+	\item  \textbf{Resolución, (r)}. Haciendo uso de tamaños de entrada mayores, damos opciones a obtener una mayor cantidad de características de grado fino, pero un exceso de resolución puede provocar grandes tiempos de ejecución y puede ser contraproducente, al reducirse la ganancia con tamaños demasiados grandes.
 \end{itemize}
 
-Dichos parámetros pueden apreciarse visualmente en la figura \ref{fig:paramsefnet}
+Dichos parámetros pueden apreciarse visualmente en la figura \ref{fig:paramsefnet}.
 
 \begin{figure}[H]
 	\centering
@@ -204,7 +204,7 @@ Dichos parámetros pueden apreciarse visualmente en la figura \ref{fig:paramsefn
 \end{figure}
 
 
-Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una serie de modelos variada: los modelos EfficientNetB0 - B7, denotando el valor numérico la profundidad y complejidad del modelo, siendo esta mayor a mayor valor del índice. Cada una de ellas fue ajustada utilizando una profundidad concreta, y puede ser posteriormente ajustada con el resto de parámetros libres no fijados a las características del conjunto de entrada.
+Experimentalmente, estos parámetros pueden ser ajustados, y dan lugar a una serie de modelos variada: los modelos EfficientNet-B0 - B7, denotando el valor numérico la profundidad y complejidad del modelo, siendo esta mayor a mayor valor del índice. Cada una de ellas fue ajustada utilizando una profundidad concreta, y puede ser posteriormente ajustada con el resto de parámetros libres no fijados a las características del conjunto de entrada.
 
 En smartphones de alta gama, los modelos B0 a B4 pueden ser ejecutados con un rendimiento aceptable para aquellas aplicaciones que no requieran un alto tiempo de respuesta, pero necesitan dar al usuario una respuesta aceptable. Para modelos de mayor complejidad computacional, se usan las variantes lite, que estudiaremos más adelante.
 
@@ -213,7 +213,7 @@ En smartphones de alta gama, los modelos B0 a B4 pueden ser ejecutados con un re
 
 En el problema que nos concierne, esta arquitectura ha conseguido grandes resultados en el dataset del ISIC abierto al público como competición en la plataforma Kaggle, habiendo sido utilizado como parte de un ensemble de modelos, o bien como modelo único entrenado en el top 3 de ganadores de la competición. En el caso de la segunda mejor solución clasificada ~\cite{2ndISIC}, se menciona la utilización de EfficientNet-B6, con tamaño de entrada de 512x512, y un tamaño de batch de 64, obteniendo 0,9485 de accuracy como resultado final a la hora de emplear los datasets ISIC 2019 y 2020.
 
- En la primera solución, es usada en conjunto a Resnet50, y una red especializada en los metadatos de la imagen, y todos los modelos juntos someten su resultado a votación ~\cite{1stISIC}.
+ En la primera solución, es usada en conjunto a ResNet50, y una red especializada en los metadatos de la imagen, y todos los modelos juntos someten su resultado a votación ~\cite{1stISIC}.
 
 Ambos resultados han sido evaluados con computadores de alta gama, haciendo uso de múltiples tarjetas gráficas para el entrenamiento y la inferencia. Este proceso es demasiado pesado para un dispositivo móvil, por lo que de cara a este trabajo, se han buscado mecanismos de optimización, como la cuantización.
 
@@ -241,7 +241,7 @@ Este concepto ya fue brevemente mencionado durante el desglose de característic
 
 En dispositivos de baja potencia, esta precisión suele verse reducida a 8 bits, de forma que reducimos la longitud del máximo número almacenable en 4 veces menos, y reducimos también así el tiempo por operación.
 
-Este mecanismo es empleado tanto por los frameworks de trabajo habituales para aprendizaje mediante redes convolucionales, como Pytorch \cite{paszke2019pytorch} y TensorFlow~\cite{tensorflow2015-whitepaper}, y por los propios fabricantes de teléfonos móviles de forma nativa. Es el caso de Qualcomm, conocido por su gama de procesadores Snapdragon. Esta empresa realizó un estudio del impacto de la cuantización en los modelos ~\cite{kuzmin2024fp8} usando flotantes de 8 bits del precisión. Demuestran que el uso de números flotantes de 8 bits en lugar de enteros con exponenciación para desplazar el punto ofrece un mayor rendimiento. Las consideraciones a la hora de defender la utilidad de la cuantización son las siguientes:
+Este mecanismo es empleado tanto por los frameworks de trabajo habituales para aprendizaje mediante redes convolucionales, como PyTorch \cite{paszke2019pytorch} y TensorFlow~\cite{tensorflow2015-whitepaper}, y por los propios fabricantes de teléfonos móviles de forma nativa. Es el caso de Qualcomm, conocido por su gama de procesadores Snapdragon. Esta empresa realizó un estudio del impacto de la cuantización en los modelos ~\cite{kuzmin2024fp8} usando flotantes de 8 bits del precisión. Demuestran que el uso de números flotantes de 8 bits en lugar de enteros con exponenciación para desplazar el punto ofrece un mayor rendimiento. Las consideraciones a la hora de defender la utilidad de la cuantización son las siguientes:
 
 \begin{itemize}
 	\item La operación más costosa realizada durante la inferencia es el producto de matrices. Para simplificar la complejidad de la operación, normalmente se suelen emplear matrices de números enteros reescalados a un nuevo intervalo de valores. Esto es, se aplica una transformación de rangos, donde una matriz $\mathbb{R}^{m x n}$ se cuantiza a una matriz $X^{(int)}$ asociado a un valor de reescalado s: $X^{(int)}=clip([\frac{X}{s}],x_{min},x_{max})$, donde el producto pasa a ser el valor redondeado más cercano al número tras aplicar la transformación de rango mediante escala, y la operación de clip asegura que el número es representable dentro de los valores establecidos para el extremo. Esto proporciona una simplificación respecto a la habitual notación IEEE-754 de 32-bit, FP32 (coma flotante de 32 bits), donde se usa un bit de signo, 23 de mantisa, y 8 bits de exponente.
@@ -249,14 +249,14 @@ Este mecanismo es empleado tanto por los frameworks de trabajo habituales para a
 	\item Para mejorar estos resultados, se puede usar la técnica Quantization Aware Training (QAT), o entrenamiento preparado para cuantización, donde el objetivo es facilitar el paso a FP8 desde el proceso de entrenamiento teniendo en cuenta los rangos de valores adoptados durante el entrenamiento, como por ejemplo, controlando el diferencial mínimo que puede tomar el algoritmo de optimización. Esta operación muestra mejor resultado sobre valores enteros, pero también es capaz de mejorar los resultados obtenidos por PF8.
 \end{itemize}
 
-En los frameworks Pytorch~\cite{paszke2019pytorch} y TensorFlow~\cite{tensorflow2015-whitepaper}, podemos encontar estas optimizaciones en sus funcionalidades relacionadas con la optimización de modelos en post entrenamiento, con las dependencias de Pytorch Mobile y TensorFlow Lite, respectivamente. Ambas aplican cuantización numérica de los tensores, y en caso de tratarse de modelos tradicionales de la literatura, existen arquitecturas simplificadas de forma profunda, con redes como EfficientNet o ResNet, que cuentan con variantes lite.
+En los frameworks PyTorch~\cite{paszke2019pytorch} y TensorFlow~\cite{tensorflow2015-whitepaper}, podemos encontar estas optimizaciones en sus funcionalidades relacionadas con la optimización de modelos en post entrenamiento, con las dependencias de PyTorch Mobile y TensorFlow Lite, respectivamente. Ambas aplican cuantización numérica de los tensores, y en caso de tratarse de modelos tradicionales de la literatura, existen arquitecturas simplificadas de forma profunda, con redes como EfficientNet o ResNet, que cuentan con variantes lite.
 
 \subsection{Modelos cuantizados}
 
 El framework de TensorFlow Lite contiene dos de los modelos más utilizados en la literatura en sus variantes lite: EfficientNet Lite y ResNetV2. Ambos han recibido un tratamiento de simplificación, que pasa por el uso de INT8 como modelo de representación numérica y la simplificación de la arquitectura, retirando algunas de las capas más resentidas en el proceso de optimización. En el caso de EfficientNet Lite, podemos encontrar un descripción detallada sobre aquellos cambios realizados para la mejora de rendimiento~\cite{eflite2}:
 
 \begin{itemize}
-	\item Se hace uso de cuantización post entrenamiento mediante el algoritmo de cuantización empleado por Tensorflow Lite. Esta cuantización se hace de forma dinámica, dependiendo del hardware en el que se ejecuta el modelo. Puede realizarse una cuantización de rango dinámico, donde el factor de escalado puede aplicarse de forma distinta dependiendo de la capa en la que se realice la operación; cuantización de enteros, para los dispositivos menos potentes; y 	por último, cuantización de FP16, de forma que se logra un término medio entre ambas soluciones, y se puede emplear en dispositivos con GPU de potencia considerable. Por defecto, es la opción de rango variable la utilizada.
+	\item Se hace uso de cuantización post entrenamiento mediante el algoritmo de cuantización empleado por TensorFlow Lite. Esta cuantización se hace de forma dinámica, dependiendo del hardware en el que se ejecuta el modelo. Puede realizarse una cuantización de rango dinámico, donde el factor de escalado puede aplicarse de forma distinta dependiendo de la capa en la que se realice la operación; cuantización de enteros, para los dispositivos menos potentes; y 	por último, cuantización de FP16, de forma que se logra un término medio entre ambas soluciones, y se puede emplear en dispositivos con GPU de potencia considerable. Por defecto, es la opción de rango variable la utilizada.
 	\item Se eliminan algunos módulos squeeze and excite presentes en capas intermedias, debido a su coste e imprecisión para dispositivos que no soportan gran precisión numérica.
 	\item Las funciones de activación se reemplazan con RELU6, al igual que se realizó en MobileNet V3~\cite {howard2019searching} 
 \end{itemize}
@@ -269,7 +269,7 @@ El framework de TensorFlow Lite contiene dos de los modelos más utilizados en l
 		\label{eflite}
 \end{figure}
 
-Su simplificación mejora notablemente el uso de memoria y el tiempo de inferencia en comparación con algunas de las redes habitualmente usadas, como ResNet~\cite{DBLP:journals/corr/HeZRS15} o MobileNet V2 \cite{sandler2019mobilenetv2}, tal y como se refleja en la figura \cite{eflite}, cuyos tiempos han sido medidos empleando un terminal ARM Pixel 4 de Google.
+Su simplificación mejora notablemente el uso de memoria y el tiempo de inferencia en comparación con algunas de las redes habitualmente usadas, como ResNet~\cite{he2015deep} o MobileNet V2 \cite{sandler2019mobilenetv2}, tal y como se refleja en la figura \cite{eflite}, cuyos tiempos han sido medidos empleando un terminal ARM Pixel 4 de Google.
 
 La configuración múltiple de modelos, heredada de la arquitectura no simplificada, se realiza debido a la gran variedad del mercado actual. Existe una gran diversidad de  dispositivos: conviven procesadores de bajo consumo con escasa potencia gráfica, así como terminales especializados con unidades de TPU para acelerar el cálculo neuronal. Y, de esta forma, con optimizaciones modulares, podemos priorizar la eficiencia en dispositivos con poca capacidad de cálculo , y aumentar la precisión en aquellos que pueden ejecutarlos.
 
@@ -277,7 +277,7 @@ La configuración múltiple de modelos, heredada de la arquitectura no simplific
 
 A la vista de los resultados, los modelos cuantizados pueden suponer una ventaja; obtenemos resultados cercanos a los modelos complejos del estado del arte, con una pequeña penalización ganada en forma de rendimiento, y que la ejecución ofrezca tiempos de respuesta razonables. Además, este tipo de transformaciones no se han empleado para el reconocimiento y detección de enfermedades de la piel, y abren una nueva linea de investigación en la que obtener resultados.
 
-Como puntos en contra, debemos tener en cuenta que la penalización obtenida al entrenar este tipo de modelos no es siempre la misma; dependiendo del problema a clasificar, y del modelo seleccionado, la penalización de la cuantización puede ser o no más marcada; para ello, es necesario obtener empíricamente resultados que nos permitan conocer el tipo adecuado para nuestro problema. Este conflicto para encontrar el equilibrio ya fue detectado por los desarrolladores de Google en EfficientNet Lite ~\cite{eflite,eflite2}, donde inicialmente, sus pruebas en Imagenet arrojaron resultados pésimos al obtener un 46\% de accuracy en clasificación TOP1 a diferencia del 75.1\% obtenido con FP32. Pero, tras ajustar el rango de amplitud de los enteros utilizados para cuantización, se consiguió una ganancia de 1.85x sobre el modelo original con tan solo un 0.7\% de pérdida en los resultados (ver figura \ref{gananciacuant}).
+Como puntos en contra, debemos tener en cuenta que la penalización obtenida al entrenar este tipo de modelos no es siempre la misma; dependiendo del problema a clasificar, y del modelo seleccionado, la penalización de la cuantización puede ser o no más marcada; para ello, es necesario obtener empíricamente resultados que nos permitan conocer el tipo adecuado para nuestro problema. Este conflicto para encontrar el equilibrio ya fue detectado por los desarrolladores de Google en EfficientNet Lite~\cite{eflite,eflite2}, donde inicialmente, sus pruebas en Imagenet arrojaron resultados pésimos al obtener un 46\% de accuracy en clasificación TOP1 a diferencia del 75,1\% obtenido con FP32. Pero, tras ajustar el rango de amplitud de los enteros utilizados para cuantización, se consiguió una ganancia de 1,85x sobre el modelo original con tan solo un 0,7\% de pérdida en los resultados (ver figura \ref{gananciacuant}).
 
 \begin{figure}[H]
 
@@ -287,7 +287,7 @@ Como puntos en contra, debemos tener en cuenta que la penalización obtenida al 
 	\label{gananciacuant}
 \end{figure}
 
-Como aspecto negativo, aunque la varianza de los resultados pueda verse paliada mediante la selección de la cuantización más adecuada, aún existen riesgos de resultados inesperados. Con este mismo modelo, por ejemplo, se han alcanzado resultados inesperados, como que los modelos de menor tamaño (B0,B1,B2) poseen un mejor desempeño que B3 y B4 en datasets de propósito general, como podemos observar en el artículo de Agarwal  ~\cite{efliteworse}, pero esto puede deberse por la necesidad de una mayor cantidad de datos para realizar el entrenamiento.
+Como aspecto negativo, aunque la varianza de los resultados pueda verse paliada mediante la selección de la cuantización más adecuada, aún existen riesgos de resultados inesperados. Con este mismo modelo, por ejemplo, se han alcanzado resultados inesperados, como que los modelos de menor tamaño (B0, B1, B2) poseen un mejor desempeño que B3 y B4 en datasets de propósito general, como podemos observar en el artículo de Agarwal  ~\cite{efliteworse}, pero esto puede deberse por la necesidad de una mayor cantidad de datos para realizar el entrenamiento.
 
 Dado a los buenos resultados en general, la cuantización será la senda seguida por este TFG a la hora de optimizar los modelos de escritorio en post entrenamiento.
 
@@ -349,12 +349,12 @@ Si desglosamos el conjunto de datasets disponibles, nos encontramos con 5 conjun
 
 \begin{itemize}
 	
-	\item ISIC 2016~\cite{gutman2016skin}:  Es el dataset de menor tamaño de todos los propuestos. Hace distinción únicamente de los casos malignos y benignos. Contiene imágenes dermoscópicas anotadas con información acerca de la localización de la mancha, y la edad del paciente. Contiene información adicional para la segmentación de la mancha pigmentada de interés (máscaras).
-	\item ISIC 2017~\cite{codella2018skin} Es un conjunto de mayor tamaño al anterior, y hace alusión a 4 clases diferentes: melanomas, nevus, y seborheic keratosis. Contiene también información acerca de la edad del paciente, y otros metadatos de interés. La escasa cantidad de datos provoca que normalmente se recurra a aislar distintas clases del conjunto entre sí, y realizar comparaciones de tipo binario entre cada par de clases.
-	\item ISIC 2018~\cite{ham10000,codella2018skin,combalia2019bcn20000}. Este dataset contiene un número de imágenes considerable, siendo un total de 10.015 imágenes para entrenamiento, y 1.512 para test. En este caso, se realiza subclasificación de tipos, a través de las clases melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma y lesiones vasculares. Es de especial interés destacar que este dataset proviene, a su vez, de HAM10000~\cite{ham10000} )  y MSK Dataset. El challenge original comprendía, de nuevo, la clasificación de los diferentes tipos realizando previamente una discriminación de la mancha en cuestión mediante segmentación. Existen gran cantidad de publicaciones que tratan este conjunto de datos, como ~\cite{benvcevic2021training}, donde se emplea este dataset para demostrar mejores resultados al emplear transformaciones polares de la imagen y aumentar la invarianza.
+	\item \textbf{ISIC 2016}~\cite{gutman2016skin}. Es el dataset de menor tamaño de todos los propuestos. Hace distinción únicamente de los casos malignos y benignos. Contiene imágenes dermoscópicas anotadas con información acerca de la localización de la mancha, y la edad del paciente. Contiene información adicional para la segmentación de la mancha pigmentada de interés (máscaras).
+	\item \textbf{ ISIC 2017}~\cite{codella2018skin}. Es un conjunto de mayor tamaño al anterior, y hace alusión a 4 clases diferentes: melanomas, nevus, y seborheic keratosis. Contiene también información acerca de la edad del paciente, y otros metadatos de interés. La escasa cantidad de datos provoca que normalmente se recurra a aislar distintas clases del conjunto entre sí, y realizar comparaciones de tipo binario entre cada par de clases.
+	\item\textbf{ISIC 2018}~\cite{ham10000,codella2018skin,combalia2019bcn20000}. Este dataset contiene un número de imágenes considerable, siendo un total de 10.015 imágenes para entrenamiento, y 1.512 para test. En este caso, se realiza subclasificación de tipos, a través de las clases melanocytic nevus, basal cell carcinoma, actinic keratosis, benign keratosis, dermatofibroma y lesiones vasculares. Es de especial interés destacar que este dataset proviene, a su vez, de HAM10000~\cite{ham10000} )  y MSK Dataset. El challenge original comprendía, de nuevo, la clasificación de los diferentes tipos realizando previamente una discriminación de la mancha en cuestión mediante segmentación. Existen gran cantidad de publicaciones que tratan este conjunto de datos, como ~\cite{benvcevic2021training}, donde se emplea este dataset para demostrar mejores resultados al emplear transformaciones polares de la imagen y aumentar la invarianza.
 	
-	\item ISIC 2019~\cite{ham10000,codella2018skin,combalia2019bcn20000}.  Se trata del mayor conjunto de datos para clasificación multiclase propuesto por ISIC. Este conjunto es la unión del empleado para el año 2018, con la adición de BCN\_20000 Dataset ~\cite{combalia2019bcn20000}, cuyos datos provienen del Hospital Clínic de Barcelona. Las clases a clasificar se amplían hasta 9, encontrando dos subtipos de melanomas en el conjuto: aquellos que muestran sangrado, frente a los que no.
-	\item ISIC 2020~\cite{Rotemberg_2021}. El último dataset propuesto públicamente, contiene únicamente datos binarios acordes a melanomas y lesiones no malignas. Esta construido principalmente de los datasets mencionados anteriormente.
+	\item \textbf{ISIC 2019}~\cite{ham10000,codella2018skin,combalia2019bcn20000}.  Se trata del mayor conjunto de datos para clasificación multiclase propuesto por ISIC. Este conjunto es la unión del empleado para el año 2018, con la adición de BCN\_20000 Dataset ~\cite{combalia2019bcn20000}, cuyos datos provienen del Hospital Clínic de Barcelona. Las clases a clasificar se amplían hasta 9, encontrando dos subtipos de melanomas en el conjunto: aquellos que muestran sangrado, frente a los que no.
+	\item \textbf{ISIC 2020}~\cite{Rotemberg_2021}. El último dataset propuesto públicamente, contiene únicamente datos binarios acordes a melanomas y lesiones no malignas. Esta construido principalmente de los datasets mencionados anteriormente.
 \end{itemize}
 
 Todos estos datos pueden ser acoplados entre sí para dar un dataset global de ISIC~\cite{CASSIDY2022102305}, donde obtendríamos las siguientes clases desglosadas en la tabla \ref{tab:isicclases}.
@@ -417,11 +417,11 @@ Sin embargo, sería necesario tener en cuenta la eliminación de imágenes repet
 			\hline
 			\textbf{Year} & \textbf{Task No.} & \textbf{Images Removed} & \textbf{Images Remaining} \\ \hline
 			\textbf{2016} & 3 & 826 & 74 \\ \hline
-			\textbf{2017} & 3 & 801 & 1199 \\ \hline
-			\textbf{2018} & 3 & 10,015 & 0 \\ \hline
-			\textbf{2019} & 1 & 2235 & 23,096 \\ \hline
-			\textbf{2020} & - & 433 & 32,693 \\ \hline
-			\textbf{Total} & - & 14,310 & 57,0621 \\ \hline
+			\textbf{2017} & 3 & 801 & 1.199 \\ \hline
+			\textbf{2018} & 3 & 10.015 & 0 \\ \hline
+			\textbf{2019} & 1 & 2.235 & 23.096 \\ \hline
+			\textbf{2020} & - & 433 & 32.693 \\ \hline
+			\textbf{Total} & - & 14.310 & 57.621 \\ \hline
 		\end{tabular}
 		\caption{Tabla de imágenes únicas extraída de ~\cite{CASSIDY2022102305}. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}
 		\label{tab:isicresum}
@@ -472,7 +472,7 @@ ASAN ~\cite{Han2017,HAN20181529,HAN20189} es un conjunto de datos de origen surc
 	 \label{tab:asandistrib}
 \end{table}
 
-Tal y como se describe en la publicación de Goyal ~\cite{goyal2020artificial} , este dataset tiene 12 tipos de enfermedades, representadas en la tabla \ref{tab:asandistrib}, sumando un total de 17125 imágenes clínicas. Se dispone de escasa información acerca de este conjunto de datos, ya que los archivos de descarga no están acompañados por documentación acerca de su uso.
+Tal y como se describe en la publicación de Goyal ~\cite{goyal2020artificial} , este dataset tiene 12 tipos de enfermedades, representadas en la tabla \ref{tab:asandistrib}, sumando un total de 17.125 imágenes clínicas. Se dispone de escasa información acerca de este conjunto de datos, ya que los archivos de descarga no están acompañados por documentación acerca de su uso.
 
 
 En las publicaciones asociadas a este conjunto de datos ~\cite{Han2017,HAN20181529,HAN20189}, se hace alusión a la existencia de varios subconjuntos de datos, designados de la A a la D, pero siendo el conjunto A el conjunto intersección de todos ellos. En la breve descripción de su publicación original ~\cite{Han2017}, podemos encontrar que existe un conjunto de imágenes de alta calidad sólo accesible bajo petición, y sólo se dispone de acceso público a sus miniaturas, las cuales se encuentran organizadas en grandes páginas de alta resolución en configuración de matriz. En caso de necesitar las imágenes por separado para entrenamiento, sería necesario separarlas manualmente.
@@ -483,19 +483,19 @@ Adicionalmente, podemos encontrar también 125 imágenes proporcionadas por el d
 
 Teniendo en cuenta este segundo subconjunto, el dataset contiene un total de 12 clases:
 \begin{itemize}
-	\item \textbf{Benignas}: Dermatofibromas (acumulaciones de colágeno), Angiodemas hereditarios, lentigos (manchas debidas a exposición solar o por envejecimiento), lunares comunes, granuloma piógeno (proliferación de capilares sanguíneos), queratosis seborreica (en forma de descamación de la piel) y verrugas comunes.
-	 \item \textbf{Malignas}: Carcinomas intraepiteliales, carcinomas de células basales, melanomas (el más mortal e invasivo) y cáncer de células escamosas.
+	\item \textbf{Benignas}. Dermatofibromas (acumulaciones de colágeno), Angiodemas hereditarios, lentigos (manchas debidas a exposición solar o por envejecimiento), lunares comunes, granuloma piógeno (proliferación de capilares sanguíneos), queratosis seborreica (en forma de descamación de la piel) y verrugas comunes.
+	 \item \textbf{Malignas}. Carcinomas intraepiteliales, carcinomas de células basales, melanomas (el más mortal e invasivo) y cáncer de células escamosas.
 \end{itemize}
 
 Encontramos, por tanto, una mayoría de imágenes benignas sobre malignas, lo cual puede introducir ciertos desequilibrios que provoquen sesgo a la hora del aprendizaje. Los resultados en la literatura con este dataset (visibles en \ref{fig:resultadosasan}) oscilan en torno al 90\% en el caso de que se empleen las imágenes de resolución completa. En~\cite{HAN20189}, los resultados ofrecidos se acercan al 91\% de media, tras haber utilizado ResNet152~\cite{he2015deep}.
 
 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
 	\includegraphics[scale = 0.45]{imagenes/results_asan.png}
 	\caption{Resultados obtenidos con ASAN, extraídos de \cite{HAN20189}}
 	\label{fig:resultadosasan}
-\end{figure}
+\end{table}
 
 Los resultados han sido confirmados por expertos dermatólogos y verificados en su mayoría mediante biopsia, por lo que las etiquetas asociadas a cada lesión están completamente verificadas. Como aspecto negativo, de cara al proyecto que se desarrolla en este documento, estos resultados distan bastante de lo que se puede conseguir con un smartphone, ya que, ResNet152~\cite{he2015deep} es uno de los modelos más profundos existentes en la literatura, y requieren grandes cantidades de memoria de gráficos. Además, sólo se dispone de las miniaturas, por lo que no será posible obtener características de grado fino aunque se aumente en profundidad o anchura el modelo. En preprocesado de datos, veremos algunas formas de evitar que se produzca esta penalización mediante la aplicación de mejora de imágenes como ténica como las GAN (Redes generativas adversarias)\cite{goodfellow2014generative}.
 
@@ -520,7 +520,7 @@ El conjunto de datos PH2~\cite{ph2} es una recopilación de 200 imágenes obteni
 
 Dichas imágenes fueron captadas bajo las mismas condiciones, haciendo uso de un  sistema de análisis ``Tuebinger Mole Analyzer'', capaz de realizar una magnificación de 20 veces mayor al tamaño original. Su resolución es de  768 x 560 píxeles, haciendo uso de los 3 habituales canales RGB a 8 bits de profundidad cada uno. Se trata de unas imágenes de buena calidad, que llevan su correspondiente información asociada en forma de metadatos. Estos describen el color, la extensión de las manchas, la textura, la forma del borde, la localización, y otro tipo de características, como el tipo de piel.
 
-De acuerdo a los requisitos especificados en su web, ~\cite{ph2data}, podemos acceder a los datos  y sus metadatos asociados de forma totalmente abierta y sin restricciones siempre que su uso se limite fines académicos y personales, como es este caso.
+De acuerdo a los requisitos especificados en su web~\cite{ph2data}, podemos acceder a los datos  y sus metadatos asociados de forma totalmente abierta y sin restricciones siempre que su uso se limite fines académicos y personales, como es este caso.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.6]{imagenes/PH2.png}
@@ -540,8 +540,8 @@ En su distribución de clases, podemos encontrar tres enfermedades benignas de l
 
 \begin{itemize}
 	\item \textbf{Queratosis actínica}
-	\item \textbf{Queratosis seborreica}: enfermedad benigna, que forma manchas protuberantes de color oscuro no contagiosas
-	\item \textbf{Lunares comunes}.
+	\item \textbf{Queratosis seborreica}
+	\item \textbf{Lunares comunes}
 	\item \textbf{Cáncer de células escamosas}
 	\item \textbf{Cáncer de células basales}
 	\item \textbf{Melanoma}
@@ -595,7 +595,7 @@ La población de este muestreo se centra sobre pacientes mayores a 19 años, que
 
 En total, se dispone de 40.331 imágenes clínicas, que provienen de 10.426 pacientes distintos que participaron en la cesión de datos. Al igual que ASAN, este dataset posee distintas versiones publicadas en la red, siendo accesible únicamente su partición A, y podemos encontrar 38 tipos de diagnósticos distintos de los 43 disponibles en total,  los cuales no siguen una distribución equilibrada.
 
-Realizando un test estadístico previo, es posible verificar que las 6 clases más comunes contenidas en este dataset componen el 75\% del conjunto total. Está compuesto por queratosis actínica (22,5\%), angiofibromas (14,4\%), angiokeratomas(13,8\%), cáncer células basales (8,1\%), lunares de Becker (7,5\%), lunares azules (6,2\%), y la enfermedad de Bowen (carcinomas)(6,1\%).
+Realizando un test estadístico previo, es posible verificar que las 6 clases más comunes contenidas en este dataset componen el 75\% del conjunto total. Está compuesto por queratosis actínica (22,5\%), angiofibromas (14,4\%), angiokeratomas (13,8\%), cáncer células basales (8,1\%), lunares de Becker (7,5\%), lunares azules (6,2\%), y la enfermedad de Bowen (carcinomas) (6,1\%).
 
 El interés en este dataset se debe a que algunas de estas clases mayoritarias, como los nevus azules y los lunares de Becker, son condiciones benignas que suelen ser retirados únicamente con fines estéticos, permitiendo complementar con el resto de los diagnósticos negativos. Este tipo de lunares son los más complejos de diagnosticar, debido a sus colores similares a un melanoma, y suelen requerir una biopsia, por lo que su diagnóstico suele alargarse.
 
@@ -617,9 +617,9 @@ En los puntos anteriores, se han descrito los datasets disponibles con mayores r
 \begin{itemize}
 	\item \textbf{DermQuest}~\cite{dermquest}. Se trataba de un atlas virtual que contenía información detallada acerca de lesiones cutáneas, con el fin de servir como atlas de estudio para dermatólogos en formación. Esta información, a pesar de ser principalmente académica, podía ser recopilada por técnicas de minería de datos.  Posteriormente, este conjunto de datos fue dado de baja, pero reapareció como un subconjunto del repositorio Derm101. Sin embargo, desapareció de forma definitiva en el año 2019, por lo que no es posible encontrar estos datos para uso.
 	
-	\item \textbf{SD-198 y SD-260}~\cite{10.1007/978-3-319-46466-4_13} son dos datasets de origen chino que recopilan fotografías y metadatos acerca de 198 y 260 imágenes respectivamente, asegurando al menos un total de 50 imágenes como mínimo por patología. Ambos datasets se pueden ver referenciados en multitud de papers como ~\cite{goyal2020artificial}. Habitualmente, el más usado de ambas variantes era SD-198. Existen datasets con mayor y menor cantidad de clases, pero son subconjuntos de estos, ya que los datasets se organizaban en niveles de carpetas, donde cada nivel descendido aportaba un mayor nivel de granularidad en el diagnóstico. En la actualidad, sólo el subconjunto 198 permanece en línea, pero bajo solicitud. Contiene 6,584 imágenes, que fueron capturadas para historias clínicas mediante smartphones. Sin embargo, debido a las dificultades del idioma, y la dificultad de contacto con el autor original, se prescindirá de este dataset para el estudio del problema.
-	\item \textbf{DermIS}~\cite {dermis} es un atlas online creado con fines académicos. Aunque no dispone de metainformación asociada, podría emplearse para el  problema que se trata en este trabajo. Pero, debido a la incorporación de otras enfermedades que no vinculan con el dominio del problema, se descarta su utilización.
-	\item \textbf{Mednode}~\cite{GIOTIS20156578} contiene 70 melanomas y 100 nevus provenientes del  departamento de dermatologia de University Medical Center Groningen (UMCG) , cuyo objetivo es la creación de una aplicación de diagnóstico de enfermedades cutáneas no dermoscópicas que faciliten la decisión a los dermatólogos. Debido a su pequeño tamaño, y a que este aporta datos acerca de clases ya mayoritarias en otros datasets, se propone su no utilización para el experimento.
+	\item \textbf{SD-198 y SD-260}~\cite{10.1007/978-3-319-46466-4_13}. Son dos datasets de origen chino que recopilan fotografías y metadatos acerca de 198 y 260 imágenes respectivamente, asegurando al menos un total de 50 imágenes como mínimo por patología. Ambos datasets se pueden ver referenciados en multitud de papers como ~\cite{goyal2020artificial}. Habitualmente, el más usado de ambas variantes era SD-198. Existen datasets con mayor y menor cantidad de clases, pero son subconjuntos de estos, ya que los datasets se organizaban en niveles de carpetas, donde cada nivel descendido aportaba un mayor nivel de granularidad en el diagnóstico. En la actualidad, sólo el subconjunto 198 permanece en línea, pero bajo solicitud. Contiene 6.584 imágenes, que fueron capturadas para historias clínicas mediante smartphones. Sin embargo, debido a las dificultades del idioma, y la dificultad de contacto con el autor original, se prescindirá de este dataset para el estudio del problema.
+	\item \textbf{DermIS}~\cite {dermis}. Es un atlas online creado con fines académicos. Aunque no dispone de metainformación asociada, podría emplearse para el  problema que se trata en este trabajo. Pero, debido a la incorporación de otras enfermedades que no vinculan con el dominio del problema, se descarta su utilización.
+	\item \textbf{Mednode}~\cite{GIOTIS20156578}. Contiene 70 melanomas y 100 nevus provenientes del  departamento de dermatologia de University Medical Center Groningen (UMCG) , cuyo objetivo es la creación de una aplicación de diagnóstico de enfermedades cutáneas no dermoscópicas que faciliten la decisión a los dermatólogos. Debido a su pequeño tamaño, y a que este aporta datos acerca de clases ya mayoritarias en otros datasets, se propone su no utilización para el experimento.
 \end{itemize}
 
 Además de estos datasets no disponibles en la actualidad, existen publicaciones recientes sobre nuevos conjuntos de datos utilizados de uso interno para dicha investigación, fortaleciendo así la visión de que la inteligencia artificial aplicada a la dermatología es un campo de interés y competitividad. No es posible acceder a este tipo de conjuntos debido a su gran valor competitivo dentro de la industria  de las aplicaciones de asistencia al diagnóstico dermatológico.

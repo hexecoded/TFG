@@ -35,14 +35,14 @@
 \contentsline {section}{\numberline {3.1}Estrategia de preprocesado para la fusión}{67}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}ISIC Dataset}{69}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}ASAN}{72}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}PAD UFES 20}{74}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.3}PAD-UFES 20}{74}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}PH2}{74}{subsection.3.1.4}%
 \contentsline {subsection}{\numberline {3.1.5}Severance}{75}{subsection.3.1.5}%
 \contentsline {subsection}{\numberline {3.1.6}Etiquetado binario}{78}{subsection.3.1.6}%
 \contentsline {section}{\numberline {3.2}Particionado de los datos}{79}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Importancia de la separación train-test}{79}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Particionado de validación}{82}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Uso de GANs de super resolución}{84}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Uso de GANs de súper resolución}{84}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Justificación de uso}{84}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Proceso de reescalado}{86}{subsection.3.3.2}%
 \contentsline {chapter}{\numberline {4}Modelos y entorno de trabajo}{89}{chapter.4}%
@@ -50,7 +50,7 @@
 \contentsline {section}{\numberline {4.2}Modelos preentrenados escogidos}{91}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}ResNet50}{91}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}MobileNet V2}{92}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}EfficientNet B5}{93}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}EfficientNet-B5}{93}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Función de pérdida}{94}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}CrossEntropy}{94}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}FocalLoss}{94}{subsection.4.3.2}%
@@ -65,17 +65,17 @@
 \contentsline {subsubsection}{\nonumberline Definición del modelo. Transfer learning}{104}{subsubsection*.25}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{106}{subsubsection*.27}%
 \contentsline {subsection}{\numberline {5.1.3}Resultados}{107}{subsection.5.1.3}%
-\contentsline {subsubsection}{\nonumberline ResNet 50}{108}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline ResNet50}{108}{subsubsection*.29}%
 \contentsline {subsubsection}{\nonumberline EfficientNet}{110}{subsubsection*.31}%
 \contentsline {subsubsection}{\nonumberline MobileNet}{111}{subsubsection*.33}%
 \contentsline {subsection}{\numberline {5.1.4}Modelo seleccionado}{113}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Clasificación multiclase}{115}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Clasificación multiclase}{114}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Modelo de enfermedades malignas}{115}{subsection.5.2.1}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{116}{subsubsection*.35}%
 \contentsline {subsection}{\numberline {5.2.2}Modelo de enfermedades benignas}{119}{subsection.5.2.2}%
 \contentsline {subsubsection}{\nonumberline Entrenamiento}{120}{subsubsection*.37}%
 \contentsline {chapter}{\numberline {6}Cuantización del modelo seleccionado}{125}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Optimizaciones de Pytorch mobile}{125}{section.6.1}%
+\contentsline {section}{\numberline {6.1}Optimizaciones de PyTorch mobile}{125}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Capacidades del framework}{125}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Optimizaciones disponibles}{127}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Creación de los modelos cuantizados}{128}{section.6.2}%

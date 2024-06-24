@@ -45,7 +45,7 @@ Para la realización del producto final, han de tenerse en cuenta los siguientes
 	\item El sistema ha de tener un comportamiento fluido y dinámico para el usuario, no tardando más de dos segundos por imagen para realizar el diagnóstico.
 	\item La interfaz de usuario ha de ser fluida y eficiente, con el menor tiempo de carga posible entre funcionalidades.
 	\item El almacenado del histórico ha de realizarse de forma local para velar por la privacidad del usuario.
-	\item Los modelos de aprendizaje empleados han de ser compatibles con el estándar Torchscript/Pytorch \cite{paszke2019pytorch}.
+	\item Los modelos de aprendizaje empleados han de ser compatibles con el estándar TorchScript/PyTorch \cite{paszke2019pytorch}.
 \end{itemize}
 
 \subsection{Requisitos}
@@ -77,7 +77,7 @@ Podemos encontrar los requisitos siguientes para el problema descrito.
 		\item \textbf{RNF-2}. El lenguaje de programación a emplear debe ser Java o Kotlin.
 		\item \textbf{RNF-3}. La interfaz de usuario ha de ser implementada mediante ficheros XML, y siguiendo los requisitos de diseño de Material Design\footnote{Material Design: \url{https://m3.material.io/}} de Google para cumplir con las especificaciones de interfaz de Android.
 		\item \textbf{RNF-4}. La inferencia del modelo de aprendizaje ha de realizarse empleando imágenes tipo bitmap de 512 x 512.
-		\item \textbf{RNF-5}. La implementación del proceso de inferencia debe hacer uso de la libería Pytorch mobile y Torchscript.
+		\item \textbf{RNF-5}. La implementación del proceso de inferencia debe hacer uso de la libería PyTorch mobile y TorchScript.
 		\item \textbf{RNF-6}. El recorte de la imagen debe realizarse a tiempo real.
 		\item \textbf{RNF-7}. El menú de histórico de diagnósticos ha de ser sencillo, con opción de scroll, e implementado con un ViewPager de Java para poder ordenar los casos de mayor a menor antigüedad.
 	\end{itemize}
@@ -222,10 +222,10 @@ Para la especificación del modelo estático, debemos realizar una análisis de 
 Atendiendo a los objetivos especificados en el capítulo \ref{cap:objetivos} y la descripción del problema que extendimos en el apartado \ref{sec:descripcion}, podemos identificar los siguientes conceptos clave:
 
 \begin{itemize}
-	\item \textbf{Imagen}: elemento clave del sistema, sobre el cual se realiza la clasificación de la enfermedad.  A su vez, podemos encontrar dos tipos muy similares, pero con distintos tipos de almacenaje: \textbf{ImagenDisco} e \textbf{ImagenCámara}, siendo la primera obtenida a partir de su dirección URI (identificador de recursos uniforme, i.e, una dirección única), y la segunda, directamente como mapa de bits procedente de la cámara.
-	\item  \textbf{Patología} (llamada como \textbf{InfoPatología}): se trata de la información asociada a la enfermedad que el usuario recibe como descripción.
+	\item \textbf{Imagen}. Elemento clave del sistema, sobre el cual se realiza la clasificación de la enfermedad.  A su vez, podemos encontrar dos tipos muy similares, pero con distintos tipos de almacenaje: \textbf{ImagenDisco} e \textbf{ImagenCámara}, siendo la primera obtenida a partir de su dirección URI (identificador de recursos uniforme, i.e, una dirección única), y la segunda, directamente como mapa de bits procedente de la cámara.
+	\item  \textbf{Patología} (llamada como \textbf{InfoPatología}). Información asociada a la enfermedad que el usuario recibe como descripción.
 	\item \textbf{Diagnóstico} (llamado como \textbf{DiagnósticoData}). Información completa, que incluye la descripción de la patología, y la imagen asociada, cuyo objetivo es ser almacenado en el historial para ser recuperado cuando se desee.
-	\item \textbf{Historial} Estructura de información que puede contener ninguno o varios diagnósticos previamente realizados de forma que el usuario pueda consultar la evolución de su enfermedad, o buscar antiguas prognosis.
+	\item \textbf{Historial}. Estructura de información que puede contener ninguno o varios diagnósticos previamente realizados de forma que el usuario pueda consultar la evolución de su enfermedad, o buscar antiguas prognosis.
 \end{itemize}
 
 De esta forma, nos queda el diagrama conceptual apreciable en la figura \ref{fig:conceptual}.
@@ -268,7 +268,7 @@ En la figura \ref{fig:secdiag} podemos apreciar el diagrama de secuencia asociad
  
  Para cada evento descrito en el modelo de secuencia, obtenemos su correspondiente contrato, que incluirá principalmente las precondiciones, excepciones, descripción de la operación, y postcondiciones que se producen en el sistema.
  
- En este proyecto, obtenemos 6 contratos, representados en las tablas \ref{fig:contrato1}, \ref{fig:contrato2}, \ref{fig:contrato3}, \ref{fig:contrato4},\ref{fig:contrato5} y \ref{fig:contrato6}, siguiendo el orden de los eventos especificados en los diagramas de secuencia \ref{fig:secdiag} y \ref{fig:sechistorial}.
+ En este proyecto, obtenemos 6 contratos, representados en las tablas \ref{fig:contrato1}, \ref{fig:contrato2}, \ref{fig:contrato3}, \ref{fig:contrato4}, \ref{fig:contrato5} y \ref{fig:contrato6}, siguiendo el orden de los eventos especificados en los diagramas de secuencia \ref{fig:secdiag} y \ref{fig:sechistorial}.
  
  \begin{table}[H]
  	\centering

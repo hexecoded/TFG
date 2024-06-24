@@ -5,23 +5,23 @@ La cuantización, como ya definimos en el apartado \ref{cap:cuantización}, se t
 
 Este procedimiento es uno de los objetivos clave del proyecto, ya que el uso de modelos optimizados en dispositivos móviles requiere conocer y experimentar cuál es la diferencia en tiempo y uso de memoria de la arquitectura tradicional sobre la optimizada.
 
-Para realizar este proceso, emplearemos los mecanismos de Pytorch\cite{paszke2019pytorch} dedicados a la transformación e implementación de modelos convolucionales en Android: Pytorch mobile  \cite{pmobile}. En este punto, analizaremos las optimizaciones realizadas por este framework, y las ventajas y desventajas de dicho procedimiento.
+Para realizar este proceso, emplearemos los mecanismos de PyTorch\cite{paszke2019pytorch} dedicados a la transformación e implementación de modelos convolucionales en Android: PyTorch mobile  \cite{pmobile}. En este punto, analizaremos las optimizaciones realizadas por este framework, y las ventajas y desventajas de dicho procedimiento.
 
-\section{Optimizaciones de Pytorch mobile}
+\section{Optimizaciones de PyTorch mobile}
 
-Pytorch mobile ofrece una serie de optimizaciones predeterminadas bastante eficientes en la optimización de modelos para arquitecturas ARM. Para comprender en detalle su funcionamiento, profundizaremos en el formato de guardado utilizado, y las optimizaciones llevadas a cabo para conseguir las ganancias en rendimiento especificadas en \cite{pmobile}.
+PyTorch mobile ofrece una serie de optimizaciones predeterminadas bastante eficientes en la optimización de modelos para arquitecturas ARM. Para comprender en detalle su funcionamiento, profundizaremos en el formato de guardado utilizado, y las optimizaciones llevadas a cabo para conseguir las ganancias en rendimiento especificadas en \cite{pmobile}.
 
 \subsection{Capacidades del framework}
-Pytorch \cite{paszke2019pytorch}, a través de sus dependencias mobile, tiene la capacidad de transformar en unos sencillos pasos un modelo entrenado de la forma habitual a un modelo simplificado optimizado para dispositivos móviles. Incluye varios métodos relacionados con la exportación que permiten optimizar o no la salida del modelo, adecuándolo a nuestras necesidades. En su página oficial, podemos encontrar un grafo donde se describe este proceso \cite{pmobile}, visible en la figura \ref{fig:mobileprocess}.
+PyTorch \cite{paszke2019pytorch}, a través de sus dependencias mobile, tiene la capacidad de transformar en unos sencillos pasos un modelo entrenado de la forma habitual a un modelo simplificado optimizado para dispositivos móviles. Incluye varios métodos relacionados con la exportación que permiten optimizar o no la salida del modelo, adecuándolo a nuestras necesidades. En su página oficial, podemos encontrar un grafo donde se describe este proceso \cite{pmobile}, visible en la figura \ref{fig:mobileprocess}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale = 0.5]{imagenes/pytorch-mobile.png}
-	\caption{Optimización de modelos con Pytorch Mobile \cite{pmobile}}
+	\caption{Optimización de modelos con PyTorch Mobile \cite{pmobile}}
 	\label {fig:mobileprocess}
 \end{figure}
 
-Todo este procedimiento se realiza sobre un lenguaje intermedio de alto rendimiento, perteneciente al núcleo de Pytorch, llamado Torchscript \cite{torchscript}. Este lenguaje permite crear modelos escalables y optimizables sin necesidad de dependencias Python en el sistema destino. Está pensado, principalmente, para su aplicación en entornos de producción, los cuales estén basados en otros lenguajes, como C o similares. La conversión del formato habitual de Pytorch, y el establecido por Torchscript es prácticamente inmediato, ya que la conversión se realiza de forma interna al aplicar el comando \textit{torch.jit.script(model)}, siendo model el modelo que queremos transformar.
+Todo este procedimiento se realiza sobre un lenguaje intermedio de alto rendimiento, perteneciente al núcleo de PyTorch, llamado Torchscript \cite{torchscript}. Este lenguaje permite crear modelos escalables y optimizables sin necesidad de dependencias Python en el sistema destino. Está pensado, principalmente, para su aplicación en entornos de producción, los cuales estén basados en otros lenguajes, como C o similares. La conversión del formato habitual de PyTorch, y el establecido por TorchScript es prácticamente inmediato, ya que la conversión se realiza de forma interna al aplicar el comando \textit{torch.jit.script(model)}, siendo model el modelo que queremos transformar.
 
 Como inconvenientes, no podremos modificar o reentrenar la arquitectura, debido a la pérdida de toda la información no esencial sobre los gradientes en el proceso de exportación a producción, pero esto no supone una desventaja si el modelo sólo va a ser empleado para inferir.
 
@@ -31,7 +31,7 @@ Si bien el lenguaje soporta Android e iOS,  este último fue soportado oficialme
 
 \subsection{Optimizaciones disponibles}
 
-Pytorch mobile dispone para Android de una lista de 5 optimizaciones posibles a realizar sobre el modelo. Todas ellas, seleccionables de forma independiente, o aplicadas en conjunto por defecto, cubren los siguientes aspectos:
+PyTorch mobile dispone para Android de una lista de 5 optimizaciones posibles a realizar sobre el modelo. Todas ellas, seleccionables de forma independiente, o aplicadas en conjunto por defecto, cubren los siguientes aspectos:
 
 \begin{itemize}
 	\item Fusión de las capas de convolución y normalización de batch. Realiza una integración de los valores de normalización dentro de la capa convolutiva, ya que no será necesario reajustar esos valores para inferencia-
@@ -45,7 +45,7 @@ En total, la web  \cite{pmobile} estima una ganancia aproximada del 60\% en tiem
 
 \section{Creación de los modelos cuantizados}
 
-La transformación de los modelos entrenados a su versión cuantizada puede realizarse de forma inmediata, ya que en los pasos anteriores, el modelo entrenado sobre cada uno de los casos (clasificación binaria, y multiclase para benigno y maligno) fue almacenado en un fichero de formato .pt (extensión de modelo Pytorch).
+La transformación de los modelos entrenados a su versión cuantizada puede realizarse de forma inmediata, ya que en los pasos anteriores, el modelo entrenado sobre cada uno de los casos (clasificación binaria, y multiclase para benigno y maligno) fue almacenado en un fichero de formato .pt (extensión de modelo PyTorch).
 
 Al tratarse de una conversión post-entrenamiento, no se requiere ningún ajuste de parámetros previo durante el entrenamiento, lo cual significa que el mecanismo puede aplicarse sobre los modelos entrenados de la forma habitual, sin necesidad de emplear métodos específicos como el entrenamiento apto para cuantizado (QAT, o Quantization Aware Training  \cite{kuzmin2024fp8}), el cual es más complejo de ajustar, pero puede ofrecer algunas ventajas marginales en cuanto a precisión.
 
@@ -95,7 +95,7 @@ Podemos observar que el proceso es trivial, a excepción del último punto, dond
 
 Por tanto, antes de exportar el modelo, será necesario especificar la dimensión de lectura. En versiones anteriores, esta dimensión era elegida de forma implícita por la función, pero ahora, debemos especificarla explícitamente para tener un correcto funcionamiento. Como en nuestro caso, solo tenemos una dimensión de etiquetas por modelos, debemos seleccionar el valor máximo por columnas, y valor a especificar es $dim = 1$ Basta con crear un objeto de tipo Softmax, y especificar como parámetro \textit{dim}, el valor $dim = 1$.
 
-Para concatenar el modelo original, y la nueva capa específica para la función Softmax, es necesario añadir ambos pasos a un pipeline, usando para la clase \textit{Sequential} de Pytorch, que no es más que la creación de un modelo por capas.\\
+Para concatenar el modelo original, y la nueva capa específica para la función Softmax, es necesario añadir ambos pasos a un pipeline, usando para la clase \textit{Sequential} de PyTorch, que no es más que la creación de un modelo por capas.
 
 Por último, para el proceso de comparación de modelos, realizaremos dos tareas:
 \begin{enumerate}
@@ -125,12 +125,12 @@ Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en l
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		Benign & 0,90 & 0,89 & 0,89 & 16.010 \\ 
-		Malignant & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
-		Accuracy & ~ & ~  & 0,84 & 21.478 \\ \hline
-		Macro avg & 0,79 & 0,80 & 0,79 & 21.478 \\ 
-		Weighted avg & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+		\textbf{Benign} & 0,90 & 0,89 & 0,89 & 16.010 \\ 
+		\textbf{Malignant} & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
+		\textbf{Accuracy} & ~ & ~  & 0,84 & 21.478 \\ \hline
+		\textbf{Macro avg} & 0,79 & 0,80 & 0,79 & 21.478 \\ 
+		\textbf{Weighted avg} & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo original}
 	\label{tab:bintestorig}
@@ -142,22 +142,22 @@ Los resultados de ambos modelos, original y cuantizado, podemos apreciarlos en l
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		Benign & 0,90 & 0,89 & 0,89 & 16.010 \\ 
-		Malignant & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
-		Accuracy & ~ & ~  & 0,84 & 21.478 \\ \hline
-		Macro avg & 0,79 & 0,79 & 0,79 & 21.478 \\ 
-		Weighted avg & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+		\textbf{Benign} & 0,90 & 0,89 & 0,89 & 16.010 \\ 
+		\textbf{Malignant} & 0,68 & 0,70 & 0,69 & 5.468 \\ \hline
+		\textbf{Accuracy} & ~ & ~  & 0,84 & 21.478 \\ \hline
+		\textbf{Macro avg} & 0,79 & 0,79 & 0,79 & 21.478 \\ 
+		\textbf{Weighted avg} & 0,84 & 0,84 & 0,84 & 21.478 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo cuantizado}
 	\label{tab:bintestquant}
 \end{table}
 
-Podemos apreciar que el resultado obtenido en el modelo original es muy similar a los obtenidos con la partición de validación, por lo que el modelo ha funcionado correctamente con datos los cuales no ha visto hasta el momento. Concretamente, en media, el modelo original en validación nos ofrecía el mismo resultado:  0,79 de precisión, 0,79 de recall,  0,79  de F1 Score y 0,84 de accuracy (\ref{tab:resultsbinrn50}). Si comparamos en detalle, hemos perdido recall y precisión en la clase maligna a favor de un ligero aumento de dichas métricas en la clase benigna, arrojando el mismo resultado medio. 
+Podemos apreciar que el resultado obtenido en el modelo original es muy similar a los obtenidos con la partición de validación, por lo que el modelo ha funcionado correctamente con datos los cuales no ha visto hasta el momento. Concretamente, en media, el modelo original en validación nos ofrecía el mismo resultado:  0,79 de precisión, 0,79 de recall,  0,79  de F1-score y 0,84 de accuracy (\ref{tab:resultsbinrn50}). Si comparamos en detalle, hemos perdido recall y precisión en la clase maligna a favor de un ligero aumento de dichas métricas en la clase benigna, arrojando el mismo resultado medio. 
 
 Si ahora estudiamos el caso optimizado y cuantizado para Android, observamos que sorprendentemente, no se han perdido prestaciones: las métricas son prácticamente idénticas a las obtenidas en el modelo original sin optimizar, a diferencia del recall medio, un 1\% menor, lo cual es posible que se deba a algún ejemplo cuya valoración se ha visto erróneamente clasificada, pero cuyo impacto global ha sido mínimo. Podríamos afirmar que para este modelo, el impacto de optimización no ha afectado al rendimiento del modelo, el cual ha conservado las mismas prestaciones, ya que la diferencia en recall es prácticamente despreciable.
 
-Esto ha sido posible gracias a las capacidades del framework desarrollado por Pytorch, las cuales han funcionado adecuadamente, al haber elegido un modelo totalmente compatible con el proceso de cuantización y optimización \cite{comptquant}.\\
+Esto ha sido posible gracias a las capacidades del framework desarrollado por PyTorch, las cuales han funcionado adecuadamente, al haber elegido un modelo totalmente compatible con el proceso de cuantización y optimización \cite{comptquant}.
 
 En conclusión, para el modelo de clasificación binaria, obtenemos un modelo optimizado sin pérdida de rendimiento.
 
@@ -193,7 +193,7 @@ De la misma manera que con el caso de clasificación binaria, compararemos los d
 
 \begin{enumerate}
 	\item \textbf{Renombrado de etiquetas}. Al igual que en el modelo de entrenamiento decidimos fusionar las clases ``melanoma'' y ``melanoma metastasis'', debemos de aplicar la misma transformación en test. Si no lo hiciésemos, el modelo funcionaría adecuadamente, pero no podríamos evaluar correctamente las métricas que nos permiten ver si el rendimiento es el esperado.
-	 \item \textbf{Normalización y reescalado}. Se utilizan la media y desviación típica de ImageNet\cite{5206848}, empleadas en entrenamiento, y se aplica un resize de 512 x 512, siguiendo la misma distribución.
+	 \item \textbf{Normalización y reescalado}. Se utilizan la media y desviación típica de ImageNet~\cite{5206848}, empleadas en entrenamiento, y se aplica un resize de 512 x 512, siguiendo la misma distribución.
 \end{enumerate}
 
 Una vez realizado este preprocesado, podemos calcular la inferencia de los dos modelos.
@@ -206,13 +206,13 @@ Los resultados  podemos apreciarlos en las tablas \ref{tab:maltestorig} (origina
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1.969 \\
-		Melanoma & 0,87 & 0,92 & 0,89 & 2.950 \\
-		Squamous Cell C. & 0,65 & 0,37 & 0,47 & 549 \\ \hline
-		Accuracy & ~ & ~ & 0,83 & 5468 \\ \hline
-		Macro avg & 0,78 & 0,71 & 0,73 & 5.468 \\
-		Weighted avg & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+	\textbf{	Basal cell}  & 0,80 & 0,84 & 0,82 & 1.969 \\
+		\textbf{Melanoma} & 0,87 & 0,92 & 0,89 & 2.950 \\
+		\textbf{Squamous cell}  & 0,65 & 0,37 & 0,47 & 549 \\ \hline
+		\textbf{Accuracy} & ~ & ~ & 0,83 & 5.468 \\ \hline
+		\textbf{Macro avg} & 0,78 & 0,71 & 0,73 & 5.468 \\
+		\textbf{Weighted avg} & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo original}
 	\label{tab:maltestorig}
@@ -222,19 +222,19 @@ Los resultados  podemos apreciarlos en las tablas \ref{tab:maltestorig} (origina
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		Basal Cell C. & 0,80 & 0,84 & 0,82 & 1.969 \\
-		Melanoma & 0,87 & 0,92 & 0,89 & 2.950 \\
-		Squamous Cell C. & 0,65 & 0,37 & 0,47 & 549 \\ \hline
-		Accuracy & ~ & ~ & 0,83 & 5.468 \\ \hline
-		Macro avg & 0,78 & 0,71 & 0,73 & 5.468 \\
-		Weighted avg & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+		\textbf{Basal cell} & 0,80 & 0,84 & 0,82 & 1.969 \\
+		\textbf{Melanoma} & 0,87 & 0,92 & 0,89 & 2.950 \\
+		\textbf{Squamous cell} & 0,65 & 0,37 & 0,47 & 549 \\ \hline
+		\textbf{Accuracy} & ~ & ~ & 0,83 & 5.468 \\ \hline
+	\textbf{Macro avg} & 0,78 & 0,71 & 0,73 & 5.468 \\
+	\textbf{Weighted avg} & 0,83 & 0,83 & 0,83 & 5.468 \\ \hline
 	\end{tabular}
 	\caption{Resultados de inferencia en test para el modelo cuantizado}
 	\label{tab:maltestquant}
 \end{table}
 
-En este subproblema, encontramos que ambos modelos arrojan exactamente el mismo resultado, por lo que el proceso de optimización no ha conllevado ninguna pérdida para el rendimiento del modelo, lo cual es un caso totalmente ideal. Para ver su rendimiento real, podemos comparar el modelo con el resultado arrojado por el conjunto de validación:  0,79 de precisión,  0,72 de recall, y  0,74 de F1 Score (tabla \ref{tab:malignometrics}).  Podemos apreciar que, por tanto, el conjunto de validación fue un correcto estimador de las funciones de pérdida y métricas fuera de la muestra.
+En este subproblema, encontramos que ambos modelos arrojan exactamente el mismo resultado, por lo que el proceso de optimización no ha conllevado ninguna pérdida para el rendimiento del modelo, lo cual es un caso totalmente ideal. Para ver su rendimiento real, podemos comparar el modelo con el resultado arrojado por el conjunto de validación:  0,79 de precisión,  0,72 de recall, y  0,74 de F1-score (tabla \ref{tab:malignometrics}).  Podemos apreciar que, por tanto, el conjunto de validación fue un correcto estimador de las funciones de pérdida y métricas fuera de la muestra.
 
 Por tanto, el modelo cuantizado, y a su vez, el original, ofrecen un muy buen resultado, acorde a lo estimado durante el entrenamiento, y sin pérdida de precisión de clasificación en el caso del modelo cuantizado. 
 
@@ -273,7 +273,7 @@ Al igual que en la preparación de datos del modelo maligno, debemos realizar el
 
 \begin{enumerate}
 	\item \textbf{Renombrado de etiquetas}. Realizar el ajuste de etiquetas a valores numéricos para una mayor facilidad de cálculo de las métricas de evaluación.
-	\item \textbf{Normalización y reescalado}. Utilización de la media y desviación típica de ImageNet\cite{5206848}, y reescalado a 512 x 512.
+	\item \textbf{Normalización y reescalado}. Utilización de la media y desviación típica de ImageNet~\cite{5206848}, y reescalado a 512 x 512.
 \end{enumerate}
 
 Tras dichos ajustes, podemos proceder a la medición de las métricas de test y el tiempo de inferencia en el dispositivo Android.
@@ -286,27 +286,27 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ 
-		DER & 0,31 & 0,61 & 0,41 & 770 \\ 
-		PBK & 0,53 & 0,59 & 0,56 & 547 \\ 
-		VL & 0,39 & 0,87 & 0,54 & 536 \\ 
-		LK & 0,20 & 0,47 & 0,28 & 225 \\ 
-		AK & 0,28 & 0,61 & 0,38 & 168 \\ 
-		SK & 0,59 & 0,83 & 0,69 & 139 \\ 
-		AMP & 0,20 & 0,43 & 0,27 & 125 \\ 
-		ACR & 0,29 & 0,72 & 0,42 & 120 \\ 
-		ANG & 0,11 & 0,36 & 0,17 & 96 \\ 
-		SL & 0,04 & 0,07 & 0,05 & 56 \\ 
-		LN & 0,02 & 0,08 & 0,03 & 48 \\ 
-		AIMP & 0,27 & 0,23 & 0,25 & 48 \\ 
-		WART & 0,35 & 0,50 & 0,41 & 28 \\ 
-		LS & 0,19 & 0,53 & 0,28 & 17 \\ 
-		NEU & 0,00 & 0,00 & 0,00 & 10 \\ 
-		SCAR & 0,00 & 0,00 & 0,00 & 10 \\ \hline
-		Accuracy & ~ & ~ & 0,75 & 16.010 \\ \hline
-		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ 
-		Weighted avg & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} &\textbf{ F1-score} & \textbf{Support} \\ \hline
+		\textbf{NV} & 0,99 & 0,78 & 0,87 & 13.067 \\ 
+		\textbf{DER} & 0,31 & 0,61 & 0,41 & 770 \\ 
+		\textbf{PBK} & 0,53 & 0,59 & 0,56 & 547 \\ 
+		\textbf{VL} & 0,39 & 0,87 & 0,54 & 536 \\ 
+		\textbf{LK} & 0,20 & 0,47 & 0,28 & 225 \\ 
+		\textbf{AK} & 0,28 & 0,61 & 0,38 & 168 \\ 
+		\textbf{SK} & 0,59 & 0,83 & 0,69 & 139 \\ 
+		\textbf{AMP} & 0,20 & 0,43 & 0,27 & 125 \\ 
+		\textbf{ACR} & 0,29 & 0,72 & 0,42 & 120 \\ 
+		\textbf{ANG} & 0,11 & 0,36 & 0,17 & 96 \\ 
+		\textbf{SL} & 0,04 & 0,07 & 0,05 & 56 \\ 
+		\textbf{LN} & 0,02 & 0,08 & 0,03 & 48 \\ 
+		\textbf{AIMP} & 0,27 & 0,23 & 0,25 & 48 \\ 
+		\textbf{WART} & 0,35 & 0,50 & 0,41 & 28 \\ 
+		\textbf{LS} & 0,19 & 0,53 & 0,28 & 17 \\ 
+		\textbf{NEU} & 0,00 & 0,00 & 0,00 & 10 \\ 
+		\textbf{SCAR} & 0,00 & 0,00 & 0,00 & 10 \\ \hline
+		\textbf{Accuracy} & ~ & ~ & 0,75 & 16.010 \\ \hline
+		\textbf{Macro avg} & 0,28 & 0,45 & 0,33 & 16.010 \\ 
+		\textbf{Weighted avg} & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
 	\end{tabular}
 	\caption{Resultado obtenido al inferir el conjunto de test (sin cuantizado)}
 	\label{tab:testbenorig}
@@ -316,27 +316,27 @@ De la misma forma que los casos anteriores, procedemos a la evaluación del conj
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		~ & Precision & Recall & F1-score & Support \\ \hline
-		NV & 0,99 & 0,78 & 0,87 & 13.067 \\ \hline
-		DER & 0,31 & 0,60 & 0,41 & 770 \\ \hline
-		PBK & 0,53 & 0,59 & 0,56 & 547 \\ \hline
-		VL & 0,39 & 0,87 & 0,54 & 536 \\ \hline
-		LK & 0,21 & 0,48 & 0,29 & 225 \\ \hline
-		AK & 0,27 & 0,61 & 0,38 & 168 \\ \hline
-		SK & 0,59 & 0,83 & 0,69 & 139 \\ \hline
-		AMP & 0,21 & 0,45 & 0,28 & 125 \\ \hline
-		ACR & 0,30 & 0,72 & 0,42 & 120 \\ \hline
-		ANG & 0,11 & 0,36 & 0,17 & 96 \\ \hline
-		SL & 0,04 & 0,07 & 0,05 & 56 \\ \hline
-		LN & 0,02 & 0,08 & 0,03 & 48 \\ \hline
-		AIMP & 0,28 & 0,23 & 0,25 & 48 \\ \hline
-		WART & 0,35 & 0,50 & 0,41 & 28 \\ \hline
-		LS & 0,19 & 0,53 & 0,28 & 17 \\ \hline
-		NEU & 0,00 & 0,00 & 0,00 & 10 \\ \hline
-		SCAR & 0,00 & 0,00 & 0,00 & 10 \\ \hline
-		Accuracy & ~ & ~ & 0,75 & 16.010 \\ \hline
-		Macro avg & 0,28 & 0,45 & 0,33 & 16.010 \\ \hline
-		Weighted avg & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
+		~ & \textbf{Precision} & \textbf{Recall} &\textbf{F1-score} & \textbf{Support} \\ \hline
+		\textbf{NV} & 0,99 & 0,78 & 0,87 & 13.067 \\ 
+		\textbf{DER} & 0,31 & 0,60 & 0,41 & 770 \\ 
+		\textbf{PBK} & 0,53 & 0,59 & 0,56 & 547 \\ 
+		\textbf{VL} & 0,39 & 0,87 & 0,54 & 536 \\ 
+		\textbf{LK} & 0,21 & 0,48 & 0,29 & 225 \\ 
+		\textbf{AK} & 0,27 & 0,61 & 0,38 & 168 \\ 
+		\textbf{SK} & 0,59 & 0,83 & 0,69 & 139 \\ 
+		\textbf{AMP} & 0,21 & 0,45 & 0,28 & 125 \\ 
+		\textbf{ACR} & 0,30 & 0,72 & 0,42 & 120 \\ 
+		\textbf{ANG} & 0,11 & 0,36 & 0,17 & 96 \\ 
+		\textbf{SL} & 0,04 & 0,07 & 0,05 & 56 \\ 
+		\textbf{LN} & 0,02 & 0,08 & 0,03 & 48 \\ 
+		\textbf{AIMP} & 0,28 & 0,23 & 0,25 & 48 \\ 
+		\textbf{WART} & 0,35 & 0,50 & 0,41 & 28 \\ 
+		\textbf{LS} & 0,19 & 0,53 & 0,28 & 17 \\ 
+		\textbf{NEU} & 0,00 & 0,00 & 0,00 & 10 \\ 
+		\textbf{SCAR} & 0,00 & 0,00 & 0,00 & 10 \\ \hline
+		\textbf{Accuracy} & ~ & ~ & 0,75 & 16.010 \\ \hline
+		\textbf{Macro avg} & 0,28 & 0,45 & 0,33 & 16.010 \\ 
+		\textbf{Weighted avg} & 0,87 & 0,75 & 0,79 & 16.010 \\ \hline
 	\end{tabular}
 	\caption{Resultado obtenido al inferir el conjunto de test (cuantizado)}
 	\label{tab:testbenquant}
@@ -372,7 +372,7 @@ Por tanto, el modelo optimizado nos aporta una ganancia de 1,558, que si bien es
 Una vez evaluados los 3 modelos, podemos dar el veredicto final de los resultados:
 \begin{enumerate}
 	\item La generalización de los 3 modelos al realizar la inferencia del conjunto de test ha sido adecuada, ya que las métricas obtenidas son prácticamente equivalentes a las obtenidas en validación por cada uno de los modelos. Esto demuestra la efectividad del método seguido, realizando las particiones de entrenamiento, validación y test.
-	\item El proceso de optimización y cuantización ofrecido por Pytorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-2}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
+	\item El proceso de optimización y cuantización ofrecido por PyTorch mobile \cite{pmobile} ha demostrado ser efectivo: la pérdida de rendimiento es mínima, siendo inferior a $10^{-2}$ en todos los casos, ya que no es apreciable en el resultado de dos decimales de precisión.
 	\item Las ganancias en tiempo de inferencia son considerables: en los 3 casos, el factor de ganancia ha sido superior a 1,5 (visible gráficamente en la figura \ref{fig:gananciasquant}), lo cual indica que el modelo cuantizado sería capaz de inferir aproximadamente 3 imágenes en el tiempo en el que el modelo original infiere 2. 
 	\end{enumerate}
 	

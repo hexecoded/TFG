@@ -1,52 +1,59 @@
-This is BibTeX, Version 0.99d (TeX Live 2024/Arch Linux)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: proyecto.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: bibliografia/bibliografia.bib
+Warning--I didn't find a database entry for "DBLP:journals/corr/HeZRS15"
 Warning--to sort, need author or key in isicarchive
 Warning--to sort, need author or key in dermnetz
 Warning--to sort, need author or key in ph2data
+Too many commas in name 1 of "A. Buslaev, A. Parinov, E. Khvedchenya, V.~I. Iglovikov and A.~A. Kalinin" for entry 2018arXiv180906839B
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "A. Buslaev, A. Parinov, E. Khvedchenya, V.~I. Iglovikov and A.~A. Kalinin" for entry 2018arXiv180906839B
+while executing---line 1090 of file plain.bst
 Warning--empty journal in severance
 Warning--empty journal in Han2017
-You've used 85 entries,
+You've used 86 entries,
             2118 wiz_defined-function locations,
-            898 strings with 20771 characters,
-and the built_in function-call counts, 28707 in all, are:
-= -- 2518
-> -- 2097
+            908 strings with 20994 characters,
+and the built_in function-call counts, 28886 in all, are:
+= -- 2545
+> -- 2089
 < -- 4
-+ -- 841
-- -- 750
-* -- 1990
-:= -- 4976
-add.period$ -- 264
-call.type$ -- 85
-change.case$ -- 622
++ -- 839
+- -- 746
+* -- 1995
+:= -- 5008
+add.period$ -- 268
+call.type$ -- 86
+change.case$ -- 624
 chr.to.int$ -- 0
-cite$ -- 90
-duplicate$ -- 742
-empty$ -- 1962
-format.name$ -- 750
-if$ -- 5796
+cite$ -- 91
+duplicate$ -- 751
+empty$ -- 1981
+format.name$ -- 746
+if$ -- 5834
 int.to.chr$ -- 0
-int.to.str$ -- 85
+int.to.str$ -- 86
 missing$ -- 29
-newline$ -- 434
-num.names$ -- 168
-pop$ -- 885
+newline$ -- 440
+num.names$ -- 170
+pop$ -- 879
 preamble$ -- 1
 purify$ -- 540
 quote$ -- 0
-skip$ -- 641
+skip$ -- 650
 stack$ -- 0
-substring$ -- 814
-swap$ -- 123
+substring$ -- 836
+swap$ -- 124
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 334
+type$ -- 340
 warning$ -- 5
-while$ -- 187
-width$ -- 87
-write$ -- 883
-(There were 5 warnings)
+while$ -- 191
+width$ -- 88
+write$ -- 896
+(There were 2 error messages)

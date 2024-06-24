@@ -1,14 +1,14 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de Gantt de planificación}}{31}{figure.1.1}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de Gantt de planificación}}{32}{figure.1.1}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitectura de SqueezeNet, extraída de \cite {iandola2016squeezenet}}}{35}{figure.2.1}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Producto depthwise \cite {howard2017mobilenets}}}{37}{figure.2.2}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Bloque residual invertido}}{38}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Arquitectura de MobileNet V2, extraída de \cite {sandler2019mobilenetv2}.}}{39}{figure.2.4}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Arquitectura de MobileNetV3 small (extraído de \cite {howard2019searching})}}{40}{figure.2.5}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Arquitectura de MobileNetV3 small (extraído de \cite {howard2019searching})}}{41}{figure.2.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Arquitectura de MobileNet V2, extraída de \cite {sandler2019mobilenetv2}}}{39}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Arquitectura de MobileNet V3 small (extraído de \cite {howard2019searching})}}{40}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Arquitectura de MobileNet V3 small (extraído de \cite {howard2019searching})}}{41}{figure.2.6}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Channel shuffle de ShuffleNet (extraído de \cite {zhang2017shufflenet})}}{42}{figure.2.7}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Arquitectura de ShuffleNet \cite {zhang2017shufflenet}}}{42}{figure.2.8}%
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Parámetros de EfficientNet definidos en~\cite {Chaturvedi_2020}}}{44}{figure.2.9}%
@@ -16,10 +16,9 @@
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Ganancia de la cuantización en EfficientNet \cite {eflite2}}}{49}{figure.2.11}%
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Proceso de búsqueda seguido}}{52}{figure.2.12}%
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Ejemplo de imágenes de ISIC 2017 (extraído de \cite {codella2018skin})}}{56}{figure.2.13}%
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Resultados obtenidos con ASAN, extraídos de \cite {HAN20189}}}{59}{figure.2.14}%
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Nevus maligno y benigno en PH2}}{61}{figure.2.15}%
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Batch de ejemplo de PAD-UFES 20~\cite {PACHECO2020106221}}}{63}{figure.2.16}%
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Imágenes de ejemplo provenientes del dataset Severance }}{64}{figure.2.17}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Nevus maligno y benigno en PH2}}{61}{figure.2.14}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Batch de ejemplo de PAD-UFES 20~\cite {PACHECO2020106221}}}{63}{figure.2.15}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Imágenes de ejemplo provenientes del dataset Severance }}{64}{figure.2.16}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Distribución de clases}}{78}{figure.3.1}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Arquitectura de ESRGAN. Fuente: \cite {wang2018esrgan}}}{85}{figure.3.2}%
@@ -29,15 +28,15 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Definición de la matriz de confusión, extraído de \cite {confmat}}}{98}{figure.5.1}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Desequilibrio de datos}}{99}{figure.5.2}%
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Demostración gráfica del early stopping \cite {earlystop}}}{106}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con Resnet50}}{109}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet B5}}{111}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Curvas del finetuning del modelo binario con MobileNet V2}}{113}{figure.5.6}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Curvas del finetuning del modelo binario con ResNet50}}{109}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Curvas del finetuning del modelo binario con EfficientNet-B5}}{110}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Curvas del finetuning del modelo binario con MobileNet V2}}{112}{figure.5.6}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Espacio (en MB) requerido por cada modelo}}{114}{figure.5.7}%
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Distribución de las clases malignas}}{116}{figure.5.8}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Curvas de aprendizaje para clases malignas}}{117}{figure.5.9}%
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Conteo de clases benignas}}{120}{figure.5.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Optimización de modelos con Pytorch Mobile \cite {pmobile}}}{126}{figure.6.1}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Optimización de modelos con PyTorch Mobile \cite {pmobile}}}{126}{figure.6.1}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Comparativa de ganancias al emplear modelos cuantizados}}{138}{figure.6.2}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Caso de uso: Diagnóstico}}{144}{figure.7.1}%

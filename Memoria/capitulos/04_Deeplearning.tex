@@ -7,7 +7,7 @@ Una vez disponemos de los datos correctamente preprocesados, podemos pasar a la 
 	\item La resolución de las imágenes de entrada es variable, ya que depende del terminal en el que se ejecute y su cámara. Es posible que se requiera un reescalado de la entrada (resize) o la posibilidad de disponer de un tamaño de entrada sin fijar. Esto es posible mediante la no utilización de capas totalmente conectadas, o de pooling.
 \end{itemize}
 
-En los siguientes apartados, entraremos en detalle en cada uno de estos aspectos, y describiremos los modelos a probar: MobileNet, y las familias de redes EfficientNet y ResNet~\cite{DBLP:journals/corr/HeZRS15}.
+En los siguientes apartados, entraremos en detalle en cada uno de estos aspectos, y describiremos los modelos a probar: MobileNet, y las familias de redes EfficientNet y ResNet~\cite{he2015deep}.
 
 \section{Conceptos previos}
 
@@ -62,8 +62,8 @@ En la literatura, se encuentran algunos casos de utilización de esta arquitectu
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
 		\textbf{Model} & \textbf{ Input} & \textbf {Size (model)} & \textbf{Size (feat.)} & \textbf{Est. FLOPS} \\ \hline
-		resnet18 & 224 x 224 & 45 MB & 23 MB & 2 GFLOPs  \\ \hline
-		resnet34 & 224 x 224 & 83 MB & 35 MB & 4 GFLOPs   \\ \hline
+		resnet-18 & 224 x 224 & 45 MB & 23 MB & 2 GFLOPs  \\ \hline
+		resnet-34 & 224 x 224 & 83 MB & 35 MB & 4 GFLOPs   \\ \hline
 		resnet-50 & 224 x 224 & 98 MB & 103 MB & 4 GFLOPs   \\ \hline
 		resnet-101 & 224 x 224 & 170 MB & 155 MB & 8 GFLOPs  \\ \hline
 		resnet-152 & 224 x 224 & 230 MB & 219 MB & 11 GFLOPs   \\ \hline
@@ -72,7 +72,7 @@ En la literatura, se encuentran algunos casos de utilización de esta arquitectu
 		\label{fig:tablaresnet}
 \end{table}
 
-Concretamente, se procede a escoger la versión ResNet50 del modelo, cuya característica clave es ser el punto de equilibrio entre modelos de pequeño y gran tamaño por sus requisitos de memoria y tiempo de inferencia. Podemos apreciar estos valores en la tabla \ref{fig:tablaresnet}
+Concretamente, se procede a escoger la versión ResNet50 del modelo, cuya característica clave es ser el punto de equilibrio entre modelos de pequeño y gran tamaño por sus requisitos de memoria y tiempo de inferencia. Podemos apreciar estos valores en la tabla \ref{fig:tablaresnet}.
 
 
 
@@ -85,31 +85,31 @@ MobileNet es una red convolucional especializada en su uso directo en dispositiv
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
 		\textbf{Model} & \textbf{Input} & \textbf{Size (model)} & \textbf{Est. FLOPS}  \\ \hline
-		MobileNet-V1 & 224 x 224 & 16.9 MB & 0.569 GFLOPs \\ \hline
-		MobileNet-V2 & 224 x 224 & 14.0 MB & 0.3 GFLOPs	  \\ \hline
+		MobileNet-V1 & 224 x 224 & 16.9 MB & 0,569 GFLOPs \\ \hline
+		MobileNet-V2 & 224 x 224 & 14.0 MB & 0,3 GFLOPs	  \\ \hline
 	\end{tabular}
 		\caption{Rendimiento de MobileNet en ImageNet \cite{mobilespecs}}
 \end{table}
 
 Ambos modelos son bastante ligeros, por lo que no requieren cuantización para obtener buen rendimiento. En este caso, se elige la versión V2, debido a su mejor eficiencia computacional sin pérdida de resultados. En cuanto a la profundidad y ancho de la red, parámetros clave, se utilizan profundidad = 1 y anchura = 1, es decir, no se realizará ninguna reducción sobre el modelo, de forma que pueda tener profundidad suficiente para aprender todas las clases del conjunto de entrenamiento. Se descarta el uso del modelo V3 por su especialización en segmentación, ya que el problema que estamos tratando es clasificación.
 
-\subsection{EfficientNet B5}
+\subsection{EfficientNet-B5}
 
 EfficientNet, modelo descrito en el capítulo \ref{efnetcap},  se trata de otro conjunto de arquitectura de red cuyo funcionamiento en problemas de clasificación de enfermedades cutáneas es positivo, tal y como demuestran los resultados ganadores de la competición de ISIC Challenge \cite{1stISIC, 2ndISIC}.
 
-Como ya detallamos anteriormente, estos modelos son demasiado costosos para entrenar y ejecutar en sus versiones de gran tamaño, como las utilizadas en dichas soluciones. En este caso, emplearemos de nuevo el modelo intermedio en coste, EfficientNet B5, el cual logra un equilibrio suficiente entre tamaño y calidad del resultado. Además, por limitación del hardware disponible, no es posible utilizar sus variantes superiores, ya que ni el entrenamiento e inferencia de los mismos es posible.
+Como ya detallamos anteriormente, estos modelos son demasiado costosos para entrenar y ejecutar en sus versiones de gran tamaño, como las utilizadas en dichas soluciones. En este caso, emplearemos de nuevo el modelo intermedio en coste, EfficientNet-B5, el cual logra un equilibrio suficiente entre tamaño y calidad del resultado. Además, por limitación del hardware disponible, no es posible utilizar sus variantes superiores, ya que ni el entrenamiento e inferencia de los mismos es posible.
 
 \begin{table}[!ht]
 	\centering
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Model} & \textbf{\# of Parameters} & \textbf{Est. FLOPs} \\ \hline
-		EfficientNet-B0 & 5.3M & 0.39B \\ \hline
-		EfficientNet-B1 & 7.8M & 0.70B \\ \hline
-		EfficientNet-B2 & 9.2M & 1.0B \\ \hline
-		EfficientNet-B3 & 12M & 1.8B \\ \hline
-		EfficientNet-B4 & 19M & 4.2B \\ \hline
-		EfficientNet-B5 & 30M & 9.9B \\ \hline
+		EfficientNet-B0 & 5,3M & 0,39B \\ \hline
+		EfficientNet-B1 & 7,8M & 0,70B \\ \hline
+		EfficientNet-B2 & 9,2M & 1,0B \\ \hline
+		EfficientNet-B3 & 12M & 1,8B \\ \hline
+		EfficientNet-B4 & 19M & 4,2B \\ \hline
+		EfficientNet-B5 & 30M & 9,9B \\ \hline
 		EfficientNet-B6 & 43M & 19B \\ \hline
 		EfficientNet-B7 & 66M & 37B \\ \hline
 	\end{tabular}
@@ -130,9 +130,12 @@ Se apoya en las salidas de la función Softmax. Conocemos que Softmax proporcion
 
 Como su resultado es nuestra representación del error, queremos que sea lo más pequeño posible. Por eso, se intenta minimizar esta función para obtener mejores resultados.
 
-Su expresión analítica es la siguiente:
-
-$$H(P,Q)= -\sum_{x \in X}p(x)log(q(x))$$
+Su expresión analítica puede observarse en la ecuación \ref{eqn:crossentropy}.
+\begin{equation}
+	\label{eqn:crossentropy}
+	\centering
+	H(P,Q)= -\sum_{x \in X}p(x)log(q(x))
+\end{equation}
 
 Donde $p$ es el valor real, y $q$ es el valor estimado por nuestro modelo para cada ejemplo del conjunto $X$ de entrenamiento.
 
@@ -142,30 +145,34 @@ Esta función es adecuada para la mayoría de casos, aunque puede ver perjudicad
 
 FocalLoss \cite{lin2018focal} es una función de perdida que modula el aprendizaje en conjuntos de datos desbalanceados, para fomentar el aprendizaje de ejemplos infrarepresentados, o más complejos, sobre aquellos más sencillos.
 
-Para ello, parte de las expresiones de CrossEntropy loss, aplicando el efecto de una valor regularizador, al que llamaremos $\alpha$. Este peso aportará más valor a los casos complejos, mediante la siguiente expresión:
+Para ello, parte de las expresiones de CrossEntropy, aplicando el efecto de una valor regularizador, al que llamaremos $\alpha$. Este peso aportará más valor a los casos complejos, como se puede ver en la ecuación \ref{eqn:focalloss}.
 
-$$FL = \left\{ \begin{array}{lcc} -\alpha(1-p)^{\gamma}log(p)& y = 1 \\ 
-	\\  -(1-\alpha)p^{\gamma}log(1-p) & otherwise  \\ \end{array} \right.$$
+\begin{equation}
+	\label{eqn:focalloss}
+	\centering
+	FL = \left\{ \begin{array}{lcc} -\alpha(1-p)^{\gamma}log(p)& y = 1 \\ 
+		\\  -(1-\alpha)p^{\gamma}log(1-p) & otherwise  \\ \end{array} \right.
+\end{equation}
 
 Donde $log(p)$ hace alusión a CrossEntropy evaluado a un único elemento, y el valor $\alpha$ es aquel que modula el efecto regularizador.
 
-Los casos \textit{difíciles} hacen referencia a los falsos negativos mientras que los sencillos son los correctamente clasificados, en especial los Verdaderos negativos. Cuanto más valor se aporte a $\gamma$, mayor será la importancia de los objetos no clasificados correctamente, y con $\alpha$, cuanto mayor, mayor es la importancia del conjunto no clasificado en completo.\\
+Los casos ``difíciles'' hacen referencia a los falsos negativos mientras que los sencillos son los correctamente clasificados, en especial los verdaderos negativos. Cuanto más valor se aporte a $\gamma$, mayor será la importancia de los objetos no clasificados correctamente, y con $\alpha$, cuanto mayor, mayor es la importancia del conjunto no clasificado en completo.
 
 Esta función de pérdida es muy útil para el problema, ya que el dataset sufre de un problema de desbalanceo importante en sus clases, tanto a nivel de clasificación benigno-maligno, como a nivel de enfermedades de cada tipo. Por tanto, esta función de pérdida se hace ideal para dar más importancia a las clases menos representadas, y que por ende, tenderán a ser marginales para el modelo si no se ajusta adecuadamente. Su configuración por defecto, con $\gamma = 2$ es la adecuada para la mayoría de problemas, y será la configuración empleada para este dataset de entrenamiento.
 
 \section{Especificaciones y framework de trabajo}
 
-La realización de este proyecto usará el lenguaje Python, debido a la gran extensión de las librerías y frameworks de deep learning desarrollados en la última decada. Concretamente, se basará en el uso de la librería de aprendizaje Pytorch\cite{paszke2019pytorch}, con el apoyo del framework de alto nivel FastAI\cite{howard2018fastai}.
+La realización de este proyecto usará el lenguaje Python, debido a la gran extensión de las librerías y frameworks de deep learning desarrollados en la última decada. Concretamente, se basará en el uso de la librería de aprendizaje PyTorch~\cite{paszke2019pytorch}, con el apoyo del framework de alto nivel FastAI~\cite{howard2018fastai}.
 
-Se ha elegido Pytorch por su tendencia creciente en las publicaciones científicas, así como su interfaz simplificada frente a Tensorflow. Aunque ambas soluciones son equivalentes, se ha elegido la primera por su reciente incorporación de capacidades para modelos Android, capaz de superar levemente en rendimiento promedio a Tensorflow lite.
+Se ha elegido PyTorch por su tendencia creciente en las publicaciones científicas, así como su interfaz simplificada frente a TensorFlow. Aunque ambas soluciones son equivalentes, se ha elegido la primera por su reciente incorporación de capacidades para modelos Android, capaz de superar levemente en rendimiento promedio a TensorFlow lite.
 
-FastAI, por su parte, esta basado en Pytorch, y permite la implementación de modelos y  la organización de los datasets de forma simplificada mediante un mayor grado de abstracción. Permitirá simplificar la implementación en aquellas tareas que funcionen adecuadamente con las configuraciones ofrecidas.\\
+FastAI, por su parte, esta basado en PyTorch, y permite la implementación de modelos y  la organización de los datasets de forma simplificada mediante un mayor grado de abstracción. Permitirá simplificar la implementación en aquellas tareas que funcionen adecuadamente con las configuraciones ofrecidas.\\
 
-Para las ténicas de aumento de datos, se emplearán dos librerias:
+Para las técnicas de aumento de datos, se emplearán dos librerias:
 \begin{itemize}
-	\item \textbf{Imgaug}: librería de aumento de datos, específicamente diseñada para tareas de aprendizaje profundo, y agnóstica en cuanto al framework de desarrollo empleado. Esto permite su utilización de forma independiente, de forma previa al aprendizaje, para realizar otras tareas, como el oversampling de clases minoritarias, procedimiento el cual aplicaremos para equilibrar el entrenamiento en clasificación binaria (benigno vs maligno).
+	\item \textbf{Imgaug}~\cite{imgaug}. Librería de aumento de datos, específicamente diseñada para tareas de aprendizaje profundo, y agnóstica en cuanto al framework de desarrollo empleado. Esto permite su utilización de forma independiente, de forma previa al aprendizaje, para realizar otras tareas, como el oversampling de clases minoritarias, procedimiento el cual aplicaremos para equilibrar el entrenamiento en clasificación binaria (benigno vs maligno).
 	
-	 \item \textbf{Albumentations}: se trata de otra librería de aumento de datos, que se integra de forma nativa con el formato datablock de FastAI. Nos permitirá realizar aumento de datos de la forma habitual, cuando no se necesite aplicar oversampling a los datos de entrenamiento.
+	 \item \textbf{Albumentations}~\cite{2018arXiv180906839B}. Librería de aumento de datos, que se integra de forma nativa con el formato datablock de FastAI. Nos permitirá realizar aumento de datos de la forma habitual, cuando no se necesite aplicar oversampling a los datos de entrenamiento.
 \end{itemize}
 
 En cuanto a las características del sistema, se usarán las dos configuraciones siguientes:

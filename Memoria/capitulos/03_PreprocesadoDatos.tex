@@ -12,7 +12,7 @@ A continuación, se describe la estrategia seguida para el procesado global de l
 
 \section{Estrategia de preprocesado para la fusión}
 
-En el punto de partida, antes del preprocesado, contamos con 5 datasets muy diferentes entre sí. Cada uno ha sido documentado y organizado siguiendo unos criterios no estándares que nos afectan en gran medida a la hora de emplear estos datos para el aprendizaje. Antes de proceder con el desarrollo de los modelos, debemos de estadarizarlos a un formato común para evitar que existan clases con el mismo diagnóstico que, por cuestiones de formato, se consideren etiquetadas como clases distintas, por usar criterios distintos de escritura, como ausencia de espacio, mayúsculas o one hot encoding. 
+En el punto de partida, antes del preprocesado, contamos con 5 datasets muy diferentes entre sí. Cada uno ha sido documentado y organizado siguiendo unos criterios no estándares que nos afectan en gran medida a la hora de emplear estos datos para el aprendizaje. Antes de proceder con el desarrollo de los modelos, debemos de estadarizarlos a un formato común para evitar que existan clases con el mismo diagnóstico que, por cuestiones de formato, se consideren etiquetadas como clases distintas, por usar criterios distintos de escritura, como ausencia de espacio, mayúsculas o one hot encoding.// 
 
 Concretamente, los datos recopilados poseen el siguiente formato de etiquetado:
 \begin{itemize}
@@ -23,17 +23,17 @@ Concretamente, los datos recopilados poseen el siguiente formato de etiquetado:
 	\item  \textbf{PAD-UFES 20}. Fichero CSV, con los nombres de diagnóstico escritos en minúsculas, sin espacios.
 \end{itemize}
 
-Podemos observar la gran variedad de formatos de registro empleados, y que , por tanto, es completamente obligatorio y necesario realizar una transformación para hacerlo homogéneo. En este caso, se ha considerado adecuado realizar una transformación de las etiquetas al siguiente formato: uso únicamente de minúsculas, con ausencia de caracteres especiales, nombres sin abreviaturas, y evitando el uso de espacios, con el uso de la barra baja como carácter sustitutivo. Para la clasificación binaria, se utilizará one hot encoding, denotando como 0 los casos negativos y como unos, los positivos.\\
+Podemos observar la gran variedad de formatos de registro empleados, y que, por tanto, es completamente obligatorio y necesario realizar una transformación para hacerlo homogéneo. En este caso, se ha considerado adecuado realizar una transformación de las etiquetas al siguiente formato: uso únicamente de minúsculas, con ausencia de caracteres especiales, nombres sin abreviaturas, y evitando el uso de espacios, con el uso de la barra baja como carácter sustitutivo. Para la clasificación binaria, se utilizará one hot encoding, denotando como 0 los casos negativos y como unos, los positivos.\\
 
 
-De esta forma, se obtiene un fichero CSV donde encontrar los valores necesarios para entrenar los modelos. Para poder localizar cada imagen, se mantendrá el arbol de directorios por defecto de cada dataset, y se anotará su directorio en un nuevo fichero .csv, que contendrá las etiquetas estandarizadas y los nombres de los ficheros de imagen con y sin el directorio. En resumen, contará con los campos que podemos apreciar en las columnas de la tabla \ref{formatocsv}
+De esta forma, se obtiene un fichero CSV donde encontrar los valores necesarios para entrenar los modelos. Para poder localizar cada imagen, se mantendrá el arbol de directorios por defecto de cada dataset, y se anotará su directorio en un nuevo fichero .csv, que contendrá las etiquetas estandarizadas y los nombres de los ficheros de imagen con y sin el directorio. En resumen, contará con los campos que podemos apreciar en las columnas de la tabla \ref{formatocsv}:
 
 \begin{itemize}
 	\item \textbf{image}. Nombre la imagen, sin el path en su nombre, y con la extensión del formato.
 	\item \textbf{dir}. Directorio donde se aloja la imagen, respetando la estructura de carpetas original seguida por el dataset de origen.
 	\item \textbf{label}. Etiqueta con el diagnóstico de la lesión, siguiendo las pautas indicadas anteriormente.
 	\item \textbf{dataset}. Columna que indica el dataset de procedencia de la imagen, por si fuese necesario utilizar solo un subconjunto de todos los datos.
-	\item \textbf{bin}: columna para la etiqueta que indica si se trata de clase Benigna (0) o Maligna (1).
+	\item \textbf{bin}. Columna para la etiqueta que indica si se trata de clase Benigna (0) o Maligna (1).
 \end{itemize}
 
 \begin{table}[H]
@@ -70,7 +70,7 @@ Cada clase descargada, además, se ha sometido a un proceso de filtro, sobre tod
 	 \item \textbf{Scar }
 \end{multiitem}
 
-Estas clases se almacenan en ficheros ZIP cada una, así que tras ser descargadas, deben ser extraídas y añadidas al fichero CSV que definimos anteriormente (ver pseucódigo \ref{extract}). Al tratarase del primer subconjunto que se añadirá, será la parte del código encargada de crear el fichero y establecer las columnas mencionadas. Además, se realizará la transformación de las etiquetas, dispuestas en el formato de la enumeración anterior, a notación \textit{snake case}(uso de minúscula y ``\_''como espacio). Numerando el proceso, se ha creado el script de Python\footnote{Python: \url{https://www.python.org/}} descrito en el pseudocódigo del algoritmo\ref{isiccrear}.
+Estas clases se almacenan en ficheros ZIP cada una, así que tras ser descargadas, deben ser extraídas y añadidas al fichero CSV que definimos anteriormente (ver pseucódigo \ref{extract}). Al tratarase del primer subconjunto que se añadirá, será la parte del código encargada de crear el fichero y establecer las columnas mencionadas. Además, se realizará la transformación de las etiquetas, dispuestas en el formato de la enumeración anterior, a notación \textit{snake case} (uso de minúscula y ``\_''como espacio). Numerando el proceso, se ha creado el script de Python\footnote{Python: \url{https://www.python.org/}} descrito en el pseudocódigo del algoritmo~\ref{isiccrear}.
 
 
  
@@ -109,10 +109,10 @@ Estas clases se almacenan en ficheros ZIP cada una, así que tras ser descargada
 
 
 \begin{enumerate}
-	\item Extraer las imágenes mediante uzip en una carpeta con el mismo nombre de la clase a la que pertenecen (algoritmo~\ref{extract})
+	\item Extraer las imágenes mediante uzip en una carpeta con el mismo nombre de la clase a la que pertenecen (algoritmo~\ref{extract}).
 	\item Crear un fichero CSV, denominado \textit{preprocessedData.csv}, donde se alojarán las 5 columnas: images, dir, label, dataset, bin.
-	\item Recorrer cada carpeta creada, y añadir los 4 primeros campos
-	\item Una vez añadidas todas las imágenes, se renombran las etiquetas a camel case(notación que usa la mayúscula para el inicio de cada palabra, sin espacios) mediante las funciones \textit{upper()}, \textit{lower()} y\textit{ replace()}de la clase string de Python.
+	\item Recorrer cada carpeta creada, y añadir los 4 primeros campos.
+	\item Una vez añadidas todas las imágenes, se renombran las etiquetas a camel case (notación que usa la mayúscula para el inicio de cada palabra, sin espacios) mediante las funciones \textit{upper()}, \textit{lower()} y\textit{ replace()} de la clase string de Python.
 \end{enumerate}
 
 \begin{algorithm}[H]
@@ -169,7 +169,7 @@ No se debe pasar por alto que las imágenes se encuentran separadas vertical y h
 \begin{enumerate}
 	\item Eliminar 4 píxeles en blanco de los extremos para que todas las bandas blancas queden del mismo grosor.
 	\item Hallar el numero de imágenes por fila y columana de forma aproximada, teniendo en cuenta el tamaño de miniatura y el borde.
-	\item Recortar la imagen usando el método findContours() de OpenCV. Este método binariza la imagen transformándola a blanco y negro, para identificar correctamente los bordes de cada una de las miniaturas en forma de puntos de interés, y devolviendo las coordenadas de sus esquinas en un vector multidimensional. 
+	\item Recortar la imagen usando el método \textit{findContours()} de OpenCV. Este método binariza la imagen transformándola a blanco y negro, para identificar correctamente los bordes de cada una de las miniaturas en forma de puntos de interés, y devolviendo las coordenadas de sus esquinas en un vector multidimensional. 
 	\item Para cada imagen, obtenemos la esquina superior izquierda de la misma, y mediante el ancho y alto de la imagen, recortamos dicha sección y se almacena en una nueva variable.
 	\item Se recortan los bordes de dicha imagen y se almacena el resultado en disco, en una carpeta que posee el mismo nombre que la imagen de la que fue extraída.
 	\item Se repite el paso 3-6 para cada imagen de la matriz, pasando a abrir la siguiente matriz hasta que no quede ninguna por recortar.
@@ -229,9 +229,9 @@ Una vez finalizado el proceso definido en el algoritmo \ref{cortarasan}, el rest
 
 Es importante destacar que el dataset Hallym, también será incluido en el conjunto final, siendo el procedimiento de preprocesado a aplicar exactamente el mismo al descrito en este punto.
 
-\subsection{PAD UFES 20}
+\subsection{PAD-UFES 20}
 
-PAD UFES 20, como ya describimos en la sección \ref{padufesdesc}, se trata de un dataset diseñado para el entrenamiento de sistemas de asistencia en la toma de decisiones, donde el experto dermatólogo puede utilizarlo como un medio de apoyo. Contiene 6 enfermedades distintas, siendo 3 cancerosas (células basales, células escamosas o melanoma maligno) y 3 benignas (actinic keratosis, nevus, keratosis seborreica).
+PAD-UFES 20, como ya describimos en la sección \ref{padufesdesc}, se trata de un dataset diseñado para el entrenamiento de sistemas de asistencia en la toma de decisiones, donde el experto dermatólogo puede utilizarlo como un medio de apoyo. Contiene 6 enfermedades distintas, siendo 3 cancerosas (células basales, células escamosas o melanoma maligno) y 3 benignas (actinic keratosis, nevus, keratosis seborreica).
 
 La estructura de presentación de los datos es más sencilla que ASAN, pues las imágenes son individuales, y cuentan con un fichero CSV donde se describen las etiquetas y otros metadatos asociados a las imágenes. La única modificación necesaria es actualizar el path de cada imagen y la nomenclatura del diagnóstico de la enfermedad, teniendo en cuenta que debemos de tranformar de abreveviatura a camel case:
 \begin{itemize}
@@ -248,7 +248,7 @@ La estructura de presentación de los datos es más sencilla que ASAN, pues las 
 
 \begin{algorithm}
 
-	\caption{Formato de las imágenes de PAD UFES}
+	\caption{Formato de las imágenes de PAD-UFES}
 	\label{cortarpadufes}
 	\begin{algorithmic}
 		\State  var PAD\_UFES\_PATH : directory of PAD UFES 20 dataset
@@ -358,7 +358,7 @@ Aumentar de forma desmesurada este valor también puede tener consecuencias nega
  
  \subsection{Etiquetado binario}
  
-Una vez disponemos de todas las imágenes correctamente etiquetadas y redireccionadas desde el fichero preprocessedData.csv, podemos continuar con el etiquetado binario de las enfermedades. Para disponer también de los datos de malignidad de las enfermedades, se ha realizado manualmente una distinción de las distintas enfermedades entre benignas y malignas. Aprovechando que existe una minoría de imágenes malignas, por defecto se establecieron todas las etiquetas al valor 0 (benigno), y aquellas pertenecientes al subconjunto de malignas, a 1, siguiendo el procedimiento descrito a continuación:
+Una vez disponemos de todas las imágenes correctamente etiquetadas y redireccionadas desde el fichero \textit{preprocessedData.csv}, podemos continuar con el etiquetado binario de las enfermedades. Para disponer también de los datos de malignidad de las enfermedades, se ha realizado manualmente una distinción de las distintas enfermedades entre benignas y malignas. Aprovechando que existe una minoría de imágenes malignas, por defecto se establecieron todas las etiquetas al valor 0 (benigno), y aquellas pertenecientes al subconjunto de malignas, a 1, siguiendo el procedimiento descrito a continuación:
  
  \begin{enumerate}
  	\item Crear una nueva columna, de nombre ``bin'', que contendrá 0 como valor de inicialización.
@@ -388,15 +388,20 @@ Con este paso, finalizamos la uniformización de los datos en lo que corresponde
 En este punto, estudiaremos la importancia de un correcto particionado de los datos para el entrenamiento del modelo y su posterior verificación de rendimiento. Se estudiará la importancia de disponer de un estimador no sesgado del modelo entrenado, y las decisiones tomadas para el problema que nos concierne en lo que respecta a la calidad de imagen. Para su mejora en calidad, emplearemos GANs con las imágenes de inferior resolución.
 
 \subsection{Importancia de la separación train-test}
-En las tareas de aprendizaje de Machine learning y Deep learning, el objetivo es disponer del mayor número de datos posible, por lo que la opción de privar al proceso de entrenamiento de un subconjunto de ellos, o incluso proceder a su eliminación, puede ser una decisión demasiado drástica que ha de tomarse con fundamento.\\
+En las tareas de aprendizaje de Machine learning y deep learning, el objetivo es disponer del mayor número de datos posible, por lo que la opción de privar al proceso de entrenamiento de un subconjunto de ellos, o incluso proceder a su eliminación, puede ser una decisión demasiado drástica que ha de tomarse con fundamento.\\
 
 Sin embargo, cuando realizamos un modelo de aprendizaje, realmente estamos creando una hipótesis, un modelo que construimos y queremos hacer que se acerque lo máximo posible a la expresión que define la población real del problema. Pero, para poder estimar la bondad de nuestro ajuste de forma fiable, necesitamos algún estimador no sesgado que nos refleje la calidad del modelo y nos permita saber el error que comete nuestra hipótesis con respecto a la distribución de la población real, al que denominaremos como error fuera de la muestra, abreviado como $E_{out}$.  Esto se debe a que, para construir este modelo aproximado, estamos empleando una muestra de la población, la cual es continuamente iterada para ir ajustando los filtros aplicados sobre el conjunto y que permite inferir de sus características extraídas las etiqueta de cada una de las imágenes.\\
 
 Podemos conseguir un estimador no sesgado separando un conjunto de datos del total, y obteniendo un conjunto de test, el cual no se ha visto involucrado en ninguna fase del proceso de aprendizaje. La hipótesis final, a la que llamaremos $g$, es evaluada en este subdataset, y el resultado será un buen estimador del $E_{out}$. A este error podemos llamarlo $E_{test}$. Al seleccionarlo como estimador de $E_{out}$, estamos afirmando de alguna manera de que éste se tratará de un estimador que generaliza muy bien el error out-of-sample.\\
 
-Este conjunto recibirá un número efectivo de hipótesis $|\mathcal H|= 1$, es decir, únicamente es evaluado con la hipótesis final de nuestro modelo (su ajuste paramétrico final). Esta hipótesis se elige sin conocer el comportamiento de los datos que el conjunto de test contiene, ya que si la estimación de $g$ se ve afectada de alguna forma por los ejemplares ya utilizados en el entrenamiento, no conseguiremos un estimador insesgado, y la ecuación de Hoeffding, no será aplicable. Dicha ecuación enuncia, que para muestras idénticamente distribuidas, e independientes entre sí, se cumple la siguiente desigualdad \cite{Mostafa2012}:
+Este conjunto recibirá un número efectivo de hipótesis $|\mathcal H|= 1$, es decir, únicamente es evaluado con la hipótesis final de nuestro modelo (su ajuste paramétrico final). Esta hipótesis se elige sin conocer el comportamiento de los datos que el conjunto de test contiene, ya que si la estimación de $g$ se ve afectada de alguna forma por los ejemplares ya utilizados en el entrenamiento, no conseguiremos un estimador no sesgado, y la ecuación de Hoeffding, no será aplicable. Dicha ecuación enuncia, que para muestras idénticamente distribuidas, e independientes entre sí, se cumple la desigualdad \ref{eqn:hoeffding}.
 
-$$P(\mathcal{D}: | E_{out}(h) E_{in}(h) |  > \epsilon \leq 2e^{-2\epsilon^2	N}$$
+\begin{equation}
+	\label{eqn:hoeffding}
+	\centering 
+	P(\mathcal{D}: | E_{out}(h) E_{in}(h) |  > \epsilon \leq 2e^{-2\epsilon^2	N}
+\end{equation}
+
 
 Donde, para cualquier valor de $\epsilon$:
 \begin{itemize}
@@ -409,7 +414,7 @@ Donde, para cualquier valor de $\epsilon$:
 Es decir, se cumple que $E_{out}$ se convierte en un estimador muy cercano al valor real del modelo. Dichas restricciones de independencia y pertenencia a la misma distribución son claves,
  motivo por el cual la eliminación de imágenes duplicadas fue clave (ya que cualquier contaminación entre el conjunto de entrenamiento y aprendizaje puede crear sesgos al alza en los resultados). \\
 
-El valor del entrenamiento $E_{in}$ sí que sería un estimador sesgado de forma optimista, pues el modelo ha adaptado los filtros para ser capaz de inferir el mayor número posible de etiquetas correctas del conjunto de entrenamiento. Pero esto no ha ocurrido con test, por lo que podemos dar como resultado un estimador fiable y robusto de cómo se comportará nuestro modelo con otros elementos de la población real.\\
+El valor del entrenamiento $E_{in}$ sí que sería un estimador sesgado de forma optimista, pues el modelo ha adaptado los filtros para ser capaz de inferir el mayor número posible de etiquetas correctas del conjunto de entrenamiento. Pero esto no ha ocurrido con test, por lo que podemos dar como resultado un estimador fiable y robusto de cómo se comportará nuestro modelo con otros elementos de la población real.
 
 Cuanto mayor es el tamaño del conjunto, más cercano será el valor del error de nuestra partición de test, $E_{test}$, con respecto a $E_{out}$. Pero, cuantos menos datos para entrenar dispongamos, menos se parecerá la estimación al comportamiento real de la población, y a $f$. Tenemos que conseguir un equilibrio entre ambos tamaños para aprovechar la mayor cantidad de datos posibles, pero disponiendo de un $E_{test}$ fiable. Normalmente, los valores recomendados suelen ser entre un 10\%-30\% de porcentaje de los datos dedicados al conjunto de test, quedando entre un 70 \%-90\% de datos de entrenamiento. Para este problema, la separación entrenamiento-test elegida ha sido 60\%-40\%, respectivamente, que a priori, puede ser muy elevada y salir de la recomendación empírica, pero debido a la existencia de grandes desiquilibrios y una cantidad de datos más que suficiente, de aproximadamente 110.000 ejemplares, podemos obtener de esta forma un estimador muy fiable.
 
@@ -455,20 +460,28 @@ De esta forma, seguimos manteniendo la proporción a nivel de conjunto global, y
 
 \subsection{Particionado de validación}
 
-Una vez separado nuestro conjunto de test, únicamente trabajaremos con el resto de valores, que componen el conjunto de entrenamiento. Con ellos, realizaremos el estudio estadístico, ya descrito parcialmente en el punto anterior, y todo el procedimiento de preprocesado de imágenes y ajuste del modelo.
+Una vez separado nuestro conjunto de test, únicamente trabajaremos con el resto de valores, que componen el conjunto de entrenamiento. Con ellos, realizaremos el estudio estadístico, ya descrito parcialmente en el punto anterior, y todo el procedimiento de preprocesado de imágenes y ajuste del modelo.\\
 
-Durante las fases de ajuste del modelo elegido en nuestras hipótesis, necesitaremos estudiar qué parámetros favorecen mejores resultados, así como el tipo de regularización a emplear y el coeficiente $\lambda$ de participación de este.
+Durante las fases de ajuste del modelo elegido en nuestras hipótesis, necesitaremos estudiar qué parámetros favorecen mejores resultados, así como el tipo de regularización a emplear y el coeficiente $\lambda$ de participación de este.\\
 
-Una forma de realizar esta práctica consiste en el uso del subconjunto de validación. Este concepto se asemeja al concepto del conjunto de test, con la diferencia de que se utiliza como estimador no sesgado para evaluar los parámetros relevantes de cada algoritmo, o los modelos a comparar. Estimamos el error out-sample de forma directa mediante el error obtenido $E_{val}$. Lo conseguimos al evaluar el modelo sin tener en cuenta los K valores extraídos para la validación, utilizándolo como estimador, $E_{val}$.
+Una forma de realizar esta práctica consiste en el uso del subconjunto de validación. Este concepto se asemeja al concepto del conjunto de test, con la diferencia de que se utiliza como estimador no sesgado para evaluar los parámetros relevantes de cada algoritmo, o los modelos a comparar. Estimamos el error out-sample de forma directa mediante el error obtenido $E_{val}$. Lo conseguimos al evaluar el modelo sin tener en cuenta los K valores extraídos para la validación, utilizándolo como estimador, $E_{val}$, como se muestra en la ecuación \ref{eqn:equiv}.
 
-$$E_{out}(g) \approx E_{out}(g^-) \approx E_{val}(g^-)$$
+\begin{equation}
+	\label{eqn:equiv}
+	\centering
+	E_{out}(g) \approx E_{out}(g^-) \approx E_{val}(g^-)
+\end{equation}
+
 
 Siendo $E_{out}(g)$ el error final cuando se utiliza todo el conjunto de datos $\mathcal D$.
 La parte izquierda de la ecuación funciona mejor cuanto más pequeña sea k, mientras que por la derecha, un mayor valor de k permitirá una mejor estimación a traves de $E_{val}$.\\
 
-El caso ideal sería, para acercanos lo máximo posible entre $E_{out}(g)$ y $ E_{out}(g^-)$ es elegir k lo más pequeño posible, cuyo caso extremo es k=1. De esta forma estaríamos haciendo \textit{leave one out}, método el cual evalúa todo el conjunto como entrenamiento, reservando solo un único valor para validación. La combinación de este proceso aplicado a todos los elementos nos permitirá conseguir el error de validación cruzada, dado por:
-
-$$E_{cv} = \frac{1}{N}\sum^{N}_{n=1} e_n$$
+El caso ideal sería, para acercanos lo máximo posible entre $E_{out}(g)$ y $ E_{out}(g^-)$ es elegir k lo más pequeño posible, cuyo caso extremo es k=1. De esta forma estaríamos haciendo \textit{leave one out}, método el cual evalúa todo el conjunto como entrenamiento, reservando solo un único valor para validación. La combinación de este proceso aplicado a todos los elementos nos permitirá conseguir el error de validación cruzada, dado por la ecuación \ref{eqn:leaveone}.
+\begin{equation}
+	\label{eqn:leaveone}
+	\centering
+E_{cv} = \frac{1}{N}\sum^{N}_{n=1} e_n
+\end{equation}
 
 donde $e_n = E_{val}(g^-_n) = e(g_n^-(x_n),y_n)$, tal y como se ha explicado. Pero es muy costoso computacionalmente, sobre todo ante casos como este, donde el conjunto de entrenamiento contiene alrededor de 60.000 valores. Es por ello que simplificaremos este enfoque al conjunto de validación único.\\
 
@@ -476,7 +489,7 @@ Un caso menos costoso computacionalmente es $V$ Cross-Validation, donde dividimo
 
 Los valores escogidos para esta partición será un \textbf{70\% de entrenamiento, y 30\% de validación}.
 
-\section{Uso de GANs de super resolución}
+\section{Uso de GANs de súper resolución}
 
 Las imágenes procedentes de los datasets seleccionados poseen una buena resolución, siendo esta, en media, prácticamente equivalente a lo que se conoce como alta resolución en aprendizaje profundo (1024 x 1024). Sin embargo, aquellas imágenes pertenecientes a los datasets Severance y ASAN, que fueron almacenadas en forma de matriz de imágenes, poseen una calidad muy pobre, de apenas 98x98 píxeles, como ya destacamos durante su preprocesado. En caso de que estos datasets aporten clases completamente nuevas respecto a los 3 conjuntos restantes, la red podría clasificarlas erróneamente basándose únicamente en la resolución.\\
 
@@ -497,7 +510,7 @@ Se trata de una arquitectura surgida en 2014 del grupo de investigación de Ian 
  
  Se trata de un proceso comúnmente vinculado al aprendizaje no supervisado, en el que el interés reside en la generación de imágenes sintéticas para fines como el entrenamiento de otros modelos profundos con clases infrarrepresentadas. La GAN puede encargarse de aumentar el tamaño sintéticamente de aquellas clases infrarrepresentadas para mejorar la calidad del aprendizaje y que este se realice de forma equilibrada. Por tanto, puede considerarse como una técnica de aumento de datos.
 
-Sin embargo, esta no se trata de la única aplicación. El problema al que nos enfrentamos, donde requerimos un aumento de la resolución para la mejora de calidad de la imagen, también es una tarea realizable y demostrada por la literatura en la que las GANs logran buenos resultados. Al expandir una imagen de tamaño, requerimos ``rellenar'' aquellos píxeles intermedios faltantes al redimensionar la imagen. Esta tarea es bastante similar a la realizada por una GAN tradicional, con la diferencia de que sólo debemos generar los píxeles intermedios, y de forma que estos se adapten al entorno del resto de la imagen.  ESRGAN\cite{wang2018esrgan} logra este efecto.\\
+Sin embargo, esta no se trata de la única aplicación. El problema al que nos enfrentamos, donde requerimos un aumento de la resolución para la mejora de calidad de la imagen, también es una tarea realizable y demostrada por la literatura en la que las GANs logran buenos resultados. Al expandir una imagen de tamaño, requerimos ``rellenar'' aquellos píxeles intermedios faltantes al redimensionar la imagen. Esta tarea es bastante similar a la realizada por una GAN tradicional, con la diferencia de que sólo debemos generar los píxeles intermedios, y de forma que estos se adapten al entorno del resto de la imagen.  ESRGAN\cite{wang2018esrgan} logra este efecto.
 
 Esta red ha demostrado cuantiosos éxistos en la literatura al ser utilizada como forma de reescalado de datos, debido a sus mejoras propuestas frente a las GANs tradicionales. Una de las claves reside en la función de pérdida; en lugar de discriminar si la imagen es adecuada o no, se ha empleado un ``grado de percepción'' (Perceptual Loss) de la imagen, donde se discrimina la calidad de la imagen generada en una escala. \\
 
@@ -583,7 +596,7 @@ Donde la función \textit{read\_images} (pseudocódigo \ref{fig:readimg}) es la 
 
 De esta forma, conseguimos reescalar cada una de las imágenes sin necesidad de modificar el archivo CSV previamente guardado para entrenamiento y test. Los resultados son bastante notables, ya que al aumentar la resolución a una 4 veces mayor, pueden apreciarse detalles con mayor claridad. Se puede apreciar un ejemplo de muestra en la figura \ref{fig:calidad}. 
 	
-l\begin{figure}[H]
+\begin{figure}[H]
 		\centering
 		\subfigure[Original]{\includegraphics[width=0.3\textwidth]{imagenes/194_13_orig.jpg}} 
 		\subfigure[Reescalada]{\includegraphics[width=0.3\textwidth]{imagenes/SEV_194_13.png}} 

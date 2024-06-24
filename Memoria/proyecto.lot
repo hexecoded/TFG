@@ -8,7 +8,8 @@
 \contentsline {table}{\numberline {2.3}{\ignorespaces Número de imágenes duplicadas encontradas ~\cite {CASSIDY2022102305}}}{55}{table.2.3}%
 \contentsline {table}{\numberline {2.4}{\ignorespaces Tabla de imágenes únicas extraída de ~\cite {CASSIDY2022102305}. En este caso, el autor descarta el uso del dataset de 2016 por su baja aportación}}{56}{table.2.4}%
 \contentsline {table}{\numberline {2.5}{\ignorespaces Distribución de clases de ASAN dataset}}{57}{table.2.5}%
-\contentsline {table}{\numberline {2.6}{\ignorespaces Tabla de casos diagnosticados en PAD-UFES 20}}{62}{table.2.6}%
+\contentsline {table}{\numberline {2.6}{\ignorespaces Resultados obtenidos con ASAN, extraídos de \cite {HAN20189}}}{59}{table.2.6}%
+\contentsline {table}{\numberline {2.7}{\ignorespaces Tabla de casos diagnosticados en PAD-UFES 20}}{62}{table.2.7}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces Formato del fichero csv normalizado}}{69}{table.3.1}%
 \addvspace {10\p@ }
@@ -20,9 +21,9 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {5.1}{\ignorespaces Informe de clasificación}}{100}{table.5.1}%
 \contentsline {table}{\numberline {5.2}{\ignorespaces Cabecera para trasfer learning binario}}{105}{table.5.2}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Informe de clasificación Resnet50}}{108}{table.5.3}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces Informe de clasificación de EfficientNet B5}}{110}{table.5.4}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Informe de clasificación de MobileNet V2}}{112}{table.5.5}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Informe de clasificación ResNet50}}{108}{table.5.3}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Informe de clasificación de EfficientNet-B5}}{110}{table.5.4}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Informe de clasificación de MobileNet V2}}{111}{table.5.5}%
 \contentsline {table}{\numberline {5.6}{\ignorespaces Valores de las métricas de cada modelo}}{113}{table.5.6}%
 \contentsline {table}{\numberline {5.7}{\ignorespaces Informe de clasificación para validación maligna}}{117}{table.5.7}%
 \contentsline {subtable}{\numberline {(a)}{\ignorespaces {Fase de congelado}}}{117}{table.5.7}%
@@ -34,8 +35,8 @@
 \contentsline {table}{\numberline {5.8}{\ignorespaces Informe de clasificación para validación maligna (Pesos)}}{118}{table.5.8}%
 \contentsline {subtable}{\numberline {(a)}{\ignorespaces {Fase de congelado}}}{118}{table.5.8}%
 \contentsline {subtable}{\numberline {(b)}{\ignorespaces {Descongelado}}}{118}{table.5.8}%
-\contentsline {table}{\numberline {5.9}{\ignorespaces Clasificación para validación benigna (Ordenadas de mayor a menor rep., sin pesos)}}{121}{table.5.9}%
-\contentsline {table}{\numberline {5.10}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor rep.)}}{122}{table.5.10}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Clasificación para validación benigna (Ordenadas de mayor a menor representación, sin pesos)}}{121}{table.5.9}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Informe de clasificación para validación benigna (Ordenadas de mayor a menor representación)}}{122}{table.5.10}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {6.1}{\ignorespaces Resultados de inferencia en test para el modelo original}}{131}{table.6.1}%
 \contentsline {table}{\numberline {6.2}{\ignorespaces Resultados de inferencia en test para el modelo cuantizado}}{131}{table.6.2}%
